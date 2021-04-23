@@ -2,7 +2,7 @@ These are my personal notes to prepare for Linux Foundation Certified System Adm
 
 This repository includes a detailed guide for each topic in the official checklist of [domains and competencies](https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/#exams) the candidates are requested to master in order to pass the exam.
 
-These notes has been collected from a wide range of [sources](./domains/references) available on the web and partially re-elaborated by me, plus some additional topics of interest for a developer/sysadmin (still in progress).
+These notes has been collected from a wide range of sources (please, see `references.md`) available on the web and partially re-elaborated by me, plus some additional topics of interest for a developer/sysadmin (still in progress).
 
 Furthermore, it contains the answers to the practice questions (tasks quite similar to the real ones in the exam) meant to help candidates prepare for the exam.
 
