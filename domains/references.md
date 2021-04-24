@@ -5,7 +5,7 @@
 - [Simone Savi's personal notes](https://github.com/simonesavi/lfcs.git)
 - [Ubuntu Server guide](https://ubuntu.com/server/docs)
 - [Tecmint](https://www.tecmint.com/category/lfcs/)
-- [DigitaOcean](https://www.digitalocean.com/community/tutorials?q=ubuntu)
+- [DigitalOcean](https://www.digitalocean.com/community/tutorials?q=ubuntu)
 - [Unix&Linux](https://unix.stackexchange.com/)
 - [AskUbuntu](https://askubuntu.com/)
 - [ServerFault](https://serverfault.com/)
