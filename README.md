@@ -1,8 +1,8 @@
-# Linux Foundation Certified System Administrator (LFCS) 
+# Linux Foundation Certified System Administrator (LFCS) exam personal notes 
 
 These are my personal notes to prepare for the [LFCS](https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/#exams) exam.
 
-This repository includes a detailed guide for each topic in the official [checklist](domains/checklist.md) of domains and competencies the candidates are requested to master in order to pass the exam.
+This repository consists of a detailed guide for each topic in the official [checklist](domains/checklist.md) of domains and competencies the candidates are requested to master in order to pass the exam.
 
 These notes has been collected from a wide range of [sources](domains/references.md) available on the web and partially re-elaborated by me, plus some additional topics of interest for a developer/sysadmin (still in progress).
 
