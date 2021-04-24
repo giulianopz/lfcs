@@ -2,9 +2,9 @@
 
 These are my personal notes to prepare for the [LFCS](https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/#exams) exam.
 
-This repository includes a detailed guide for each topic in the official checklist (please, see `checklist.md`) of domains and competencies the candidates are requested to master in order to pass the exam.
+This repository includes a detailed guide for each topic in the official [checklist](domains/checklist.md) of domains and competencies the candidates are requested to master in order to pass the exam.
 
-These notes has been collected from a wide range of sources (please, see `references.md`) available on the web and partially re-elaborated by me, plus some additional topics of interest for a developer/sysadmin (still in progress).
+These notes has been collected from a wide range of [sources](domains/references.md) available on the web and partially re-elaborated by me, plus some additional topics of interest for a developer/sysadmin (still in progress).
 
 Please, note that I took into consideration only Ubuntu (18.04/20.04). Things can be different in CentOs. 
 
