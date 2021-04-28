@@ -85,7 +85,7 @@
 
 - [x] a. Bash refresher
 - [x] b. SSH-tunneling
-- [ ] c. Examine TLS handshake issues
+- [x] c. Debugging TLS handshake issues
 - [ ] d. Repair the GRUB from live CD or USB stick 
 - [ ] e. SFTP chroot jail
 - [ ] f. SSH chroot jail
