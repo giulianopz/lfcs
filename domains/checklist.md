@@ -99,5 +99,5 @@
 - [x] p. DNS essentials
 - [x] q. Network-Manager
 - [ ] r. TMUX
-- [ ] s. Git refresher
+- [ ] s. Git refresher + git-secret
 - [ ] t. Tips & tricks

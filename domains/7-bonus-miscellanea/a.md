@@ -311,3 +311,5 @@ ${arr[@]:s:n}           # retieves [n] elements starting at index [s]
 ---
 
 This refresher is mostly based on a nice [guide](http://matt.might.net/articles/bash-by-example/) written by Matt Might.
+
+You can find [here](https://github.com/dylanaraps/pure-bash-bible) a huge collection of bash gems.
