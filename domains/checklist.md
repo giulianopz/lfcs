@@ -84,20 +84,20 @@
 ## 7. Bonus/Miscellanea - 0%
 
 - [x] a. Bash refresher
-- [x] b. SSH-tunneling
-- [x] c. Debugging TLS handshake issues
+- [ ] b. Git refresher + git-secret
+- [ ] c. Vi(m) refresher
 - [x] d. Repair the GRUB from live CD or USB stick 
-- [ ] e. SFTP chroot jail
-- [ ] f. SSH chroot jail
-- [ ] g. Create a self-signed SSL certificate for Apache web server 
-- [ ] h. Disable ssh-login as root via PAM
-- [ ] i. Vi(m) refresher
-- [ ] l. Troubleshooting networks
-- [ ] m. Add a CA certificate
-- [ ] n. Understand the GNU Autotools
-- [ ] o. Manage your dotfiles with GNU stow
-- [x] p. DNS essentials
-- [x] q. Network-Manager
-- [ ] r. TMUX
-- [ ] s. Git refresher + git-secret
+- [ ] e. Add a CA certificate
+- [ ] f. Create a self-signed SSL certificate for Apache web server
+- [x] g. Debugging TLS handshake issues
+- [ ] h. SFTP chroot jail
+- [ ] i. SSH chroot jail
+- [ ] l. Disable ssh-login as root via PAM
+- [ ] m. Understand the GNU Autotools
+- [ ] n. Manage your dotfiles with GNU stow
+- [x] o. DNS essentials
+- [x] p. Network-Manager
+- [x] q. SSH-tunneling
+- [ ] r. Troubleshooting networks
+- [ ] s. TMUX
 - [ ] t. Tips & tricks
