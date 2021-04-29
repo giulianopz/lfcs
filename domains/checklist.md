@@ -86,7 +86,7 @@
 - [x] a. Bash refresher
 - [x] b. SSH-tunneling
 - [x] c. Debugging TLS handshake issues
-- [ ] d. Repair the GRUB from live CD or USB stick 
+- [x] d. Repair the GRUB from live CD or USB stick 
 - [ ] e. SFTP chroot jail
 - [ ] f. SSH chroot jail
 - [ ] g. Create a self-signed SSL certificate for Apache web server 

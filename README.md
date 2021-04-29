@@ -1,4 +1,4 @@
-# Linux Foundation Certified System Administrator (LFCS) exam personal notes 
+# Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes 
 
 These are my personal notes to prepare for the [LFCS](https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/#exams) exam.
 
