@@ -90,14 +90,13 @@
 - [ ] e. Add a CA certificate
 - [ ] f. Create a self-signed SSL certificate for Apache web server
 - [x] g. Debugging TLS handshake issues
-- [ ] h. SFTP chroot jail
-- [ ] i. SSH chroot jail
-- [ ] l. Disable ssh-login as root via PAM
-- [ ] m. Understand the GNU Autotools
-- [ ] n. Manage your dotfiles with GNU stow
-- [x] o. DNS essentials
-- [x] p. Network-Manager
-- [x] q. SSH-tunneling
-- [ ] r. Troubleshooting networks
-- [ ] s. TMUX
-- [ ] t. Tips & tricks
+- [ ] h. Chroot jails
+- [ ] i. Disable ssh-login as root via PAM
+- [ ] l. GNU Autotools
+- [ ] m. Manage your dotfiles with GNU stow
+- [x] n. DNS essentials
+- [x] o. Network-Manager
+- [x] p. SSH-tunneling
+- [ ] q. Troubleshooting networks
+- [ ] r. TMUX
+- [ ] s. Tips & tricks
