@@ -100,6 +100,6 @@
 - [ ] q. Troubleshooting networks
 - [ ] r. TMUX
 - [ ] s. Alpine e-mail setup
-- [ ] t. How to fix Nvidia graphics card Problems
+- [ ] t. How to fix Nvidia graphics card problems
 - [ ] u. GPG & SSH keys 
 - [ ] v. Tips & tricks
