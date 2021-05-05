@@ -301,6 +301,8 @@ nameserver 8.8.4.4
 
 Finally, to update /etc/resolv.conf by typing: `sudo resolvconf -u`
 
+The /etc/resolv.conf file will be replaced by a symbolic link to /etc/resolvconf/run/resolv.conf, so that the system resolver will use this file instead of the previously symlinked /run/systemd/resolve/stub-resolv.conf. 
+
 ### Static Hostnames
 
 Static hostnames are locally defined hostname-to-IP mappings located in the file `/etc/hosts`. Entries in the hosts file will have precedence over DNS by default. This means that if your system tries to resolve a hostname and it matches an entry in /etc/hosts, it will not attempt to look up the record in DNS. In some configurations, especially when Internet access is not required, servers that communicate with a limited number of resources can be conveniently set to use static hostnames instead of DNS.
