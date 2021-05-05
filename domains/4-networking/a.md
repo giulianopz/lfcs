@@ -269,6 +269,38 @@ server1.dev.example.com
 
 If no matches are found, the DNS server will provide a result of notfound and the DNS query will fail.
 
+---
+
+If you are using NetworkManager in a desktop version of Ubuntu, editing /etc/netplan/*.yaml could not be enough.
+
+If your current DNS server still points to your router (i.e. 192.168.1.1), there are at least two ways to solve this problem:
+
+1. You may configure these settings using the already mentioned GUI:
+
+  a. Choose a connection (from the *Wired* or *Wireless* tab) and click *Edit*
+  b. Click on the IPv4 Settings tab
+  c. Choose **Automatic (DHCP) addresses only** instead of just *Automatic (DHCP)*
+  d. Enter the DNS servers in the *DNS servers* field, separated by spaces (e.g. 208.67.222.222 for OpenDNS)
+  e. Click on *Apply*.
+
+> Note: 'Automatic (DHCP) addresses only' means that the network you are connecting to uses a DHCP server to assign IP addresses but you want to assign DNS servers manually.
+
+> Note: NetworkManager saves these settings in /etc/NetworkManager/system-connections/[name-of-your-connection].
+
+2) or, if your DNS settigs are messed up by multiple programs trying to update it, you can use `resolvconf`:
+```
+sudo apt install resolvconf 
+sudo systemctl enable --now resolvconf.service
+```
+
+Then, edit /etc/resolvconf/resolv.conf.d/head and insert the nameservers youu want as:
+```
+nameserver 8.8.8.8 
+nameserver 8.8.4.4
+```
+
+Finally, to update /etc/resolv.conf by typing: `sudo resolvconf -u`
+
 ### Static Hostnames
 
 Static hostnames are locally defined hostname-to-IP mappings located in the file `/etc/hosts`. Entries in the hosts file will have precedence over DNS by default. This means that if your system tries to resolve a hostname and it matches an entry in /etc/hosts, it will not attempt to look up the record in DNS. In some configurations, especially when Internet access is not required, servers that communicate with a limited number of resources can be conveniently set to use static hostnames instead of DNS.

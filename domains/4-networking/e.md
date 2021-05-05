@@ -39,9 +39,9 @@ network:
     version: 2
 ```
 
-Once you made all required changes to add the static route all the new netplan configuration using the bellow command: `sudo netplan apply`
+Once you made all required changes to add the static route all the new netplan configuration using the below command: `sudo netplan apply`
 
-Or, if you want to test it first, and potentially roll back any changes, you can use the following command: `sudo netplan try`
+Or, if you want to test it first, and potentially roll back any changes, you can use the following command: `sudo netplan try [config-file]`
 
 This option apply the changes, and provide a 120 timeout where by if you don’t accept the changes, they will revert back. This is useful to prevent you from locking yourself out of the system, if the network change didn’t work the way you were intending.
 
