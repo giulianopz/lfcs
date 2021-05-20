@@ -95,21 +95,23 @@ Review the recent history interactively choosing if deleting some of the latest 
 
 ## Stash
 
-Put in stash: `git stash save "Message"`
+Show stash history: `git stash list`
 
-Show stash: `git stash list`
+Put a specific file into the stash: `git stash push -m ["welcome_cart"] [app/views/cart/welcome.html]`
 
-Show stash stats: `git stash show stash@{0}`
+View the content of the most recent stash commit: `git stash show -p`
 
-Show stash changes: `git stash show -p stash@{0}`
+View the content of an arbitrary stash: `git stash show -p stash@{1}`
 
-Use custom stash item and drop it: `git stash pop stash@{0}`
+Extract a single file from a stash commit:
+```
+git show stash@{0}:[full filename]  >  [newfile]
+git show stash@{0}:[./relative filename] > [newfile]
+```
 
-Use custom stash item and do not drop it: `git stash apply stash@{0}`
+Apply this stash commit on top of the working tree and remove it from the stash: `git stash pop stash@{0}`
 
-Use custom stash item and index: `git stash apply --index`
-
-Create branch from stash: `git stash branch new_branch`
+Apply this stash commit on top of the working tree but do not remove it: `git stash apply stash@{0}`
 
 Delete custom stash item: `git stash drop stash@{0}`
 
@@ -117,60 +119,27 @@ Delete complete stash: `git stash clear`
 
 ## Gitignore & Gitkeep
 
-About: https://help.github.com/articles/ignoring-files
+Add or edit gitignore: `vi .gitignore`
 
-Useful templates: https://github.com/github/gitignore
+Track empty dir: `touch dir/.gitkeep`
 
-Add or edit gitignore: 
-`nano .gitignore`
-
-Track empty dir: 
-`touch dir/.gitkeep`
+Useful template generator: https://www.toptal.com/developers/gitignore.
 
 ## Log
 
-Show commits:
-`git log`
-
-Show oneline-summary of commits:
-`git log --oneline`
-
-Show oneline-summary of commits with full SHA-1:
-`git log --format=oneline`
-
-Show oneline-summary of the last three commits:
-`git log --oneline -3`
+Show commits: `git log`
 
 Show only custom commits:
-`git log --author="Sven"`
-`git log --grep="Message"`
-`git log --until=2013-01-01`
-`git log --since=2013-01-01`
+```
+git log --author="Sven"
+git log --grep="Message"
+git log --until=2013-01-01
+git log --since=2013-01-01
+```
 
-Show only custom data of commit:
-`git log --format=short`
-`git log --format=full`
-`git log --format=fuller`
-`git log --format=email`
-`git log --format=raw`
+Show stats and summary of commits: `git log --stat --summary`
 
-Show changes:
-`git log -p`
-
-Show every commit since special commit for custom file only:
-`git log 6eb715d.. index.html`
-
-Show changes of every commit since special commit for custom file only:
-`git log -p 6eb715d.. index.html`
-
-Show stats and summary of commits:
-`git log --stat --summary`
-
-Show history of commits as graph:
-`git log --graph`
-
-Show history of commits as graph-summary:
-`git log --oneline --graph --all --decorate`
+Show history of commits as graph-summary: `git log --oneline --graph --all --decorate`
 
 ## Compare
 
@@ -211,23 +180,6 @@ Useful comparings:
 
 Blame:
 `git blame -L10,+1 index.html`
-
-## Releases & Version Tags
-
-Show all released versions:
-`git tag`
-
-Show all released versions with comments:
-`git tag -l -n1`
-
-Create release version:
-`git tag v1.0.0`
-
-Create release version with comment:
-`git tag -a v1.0.0 -m 'Message'`
-
-Checkout a specific release version:
-`git checkout v1.0.0`
 
 ## Collaborate
 
@@ -303,23 +255,21 @@ Delete remote branch (push nothing):
 `git push origin --delete branchname`
 
 ## Archive
+
 Create a zip-archive: `git archive --format zip --output filename.zip master`
 
-Export/write custom log to a file: `git log --author=sven --all > log.txt`
 
 ## Troubleshooting
 Ignore files that have already been committed to a Git repository: http://stackoverflow.com/a/1139797/1815847
 
 ## Security
-Hide Git on the web via `.htaccess`: `RedirectMatch 404 /\.git` 
-(more info here: http://stackoverflow.com/a/17916515/1815847)
+
+git-secret
 
 ## Large File Storage
+
 Website: https://git-lfs.github.com/
 
-Install: `brew install git-lfs`
-
-Track `*.psd` files: `git lfs track "*.psd"` (init, add, commit and push as written above)
 
 ### Resources to learn more:
 
