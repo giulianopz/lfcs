@@ -83,9 +83,9 @@
 
 ## 7. Bonus/Miscellanea - 0%
 
-- [x] a. Bash refresher
+- [x] a. bash refresher
 - [ ] b. git refresher (+ git-secret)
-- [ ] c. Vi(m) refresher
+- [ ] c. vi(m) refresher
 - [x] d. Repair the GRUB from live CD or USB stick 
 - [x] e. Install a CA certificate
 - [ ] f. Create a self-signed SSL certificate for Apache web server
