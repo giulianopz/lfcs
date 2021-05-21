@@ -83,9 +83,9 @@
 
 ## 7. Bonus/Miscellanea - 0%
 
-- [x] a. bash refresher
-- [ ] b. git refresher (+ git-secret)
-- [ ] c. vi(m) refresher
+- [x] a. bash
+- [x] b. git
+- [ ] c. vi(m)
 - [x] d. Repair the GRUB from live CD or USB stick 
 - [x] e. Install a CA certificate
 - [ ] f. Create a self-signed SSL certificate for Apache web server
@@ -98,7 +98,7 @@
 - [x] o. Network-Manager
 - [x] p. SSH-tunneling
 - [ ] q. Troubleshooting networks
-- [ ] r. TMUX
+- [ ] r. tmux
 - [ ] s. Alpine e-mail setup
 - [ ] t. How to fix Nvidia graphics card problems
 - [ ] u. GPG & SSH keys 

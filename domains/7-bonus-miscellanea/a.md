@@ -1,4 +1,4 @@
-## Bash refresher
+## bash
 
 Variables have a dual nature since eache variable is also an array.
 

@@ -1,4 +1,4 @@
-## Vi(m) refresher
+## vi(m)
 
 ### Minimal Configuration
 

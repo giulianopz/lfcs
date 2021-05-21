@@ -1,6 +1,4 @@
-## git refresher (+ git-secret)
-
-### Quick refresher
+## git refresher
 
 ## General
 
@@ -25,6 +23,8 @@ Commit changes with title and description: `git commit -m "Title" -m "Descriptio
 Add and commit in one step: `git commit -a -m "Message"`
 
 Update most recent unpushed commit message: `git commit --amend -m "New Message"`
+
+Show all configuration settings included thei location: `git config --show-origin --list`
 
 ## Undo
 
@@ -67,9 +67,7 @@ Remove file only from the index: `git rm --cached index.html`
 
 Show all branches (including the remote ones): `git branch -l -a`
 
-Fetch all changes from the remote and remove deleted branches: `git fetch -a -p`
-
-Create and switch to a new branch:`git branch -b [branchname]`
+Create and switch to a new branch:`git checkout -b [branchname]`
 
 Move to branch: `git checkout [branchname]`
 
@@ -117,14 +115,6 @@ Delete custom stash item: `git stash drop stash@{0}`
 
 Delete complete stash: `git stash clear`
 
-## Gitignore & Gitkeep
-
-Add or edit gitignore: `vi .gitignore`
-
-Track empty dir: `touch dir/.gitkeep`
-
-Useful template generator: https://www.toptal.com/developers/gitignore.
-
 ## Log
 
 Show commits: `git log`
@@ -141,135 +131,89 @@ Show stats and summary of commits: `git log --stat --summary`
 
 Show history of commits as graph-summary: `git log --oneline --graph --all --decorate`
 
+A nice [trick](https://stackoverflow.com/questions/1057564/pretty-git-branch-graphs) is to add some aliases in your `~/.gitconfig` for using `git log` with a good combination of options, like:
+```
+[alias]
+lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+lg = !"git lg1"
+```
+
 ## Compare
 
-Compare modified files:
-`git diff`
+See lastest changes in a file: `git diff [filename]`
 
-Compare modified files and highlight changes only:
-`git diff --color-words index.html`
+Compare modified files and highlight changes only: `git diff --color-words [filename]`
 
-Compare modified files within the staging area:
-`git diff --staged`
+Compare modified files within the staging area: `git diff --staged [filename]`
 
-Compare branches:
-`git diff master..branchname`
-
-Compare branches like above:
-`git diff --color-words master..branchname^`
+Compare branches: `git diff master..branchname`
 
 Compare commits:
-`git diff 6eb715d`
-`git diff 6eb715d..HEAD`
-`git diff 6eb715d..537a09f`
+```
+git diff 6eb715d
+git diff 6eb715d..HEAD
+git diff 6eb715d..537a09f
+```
 
 Compare commits of file:
-`git diff 6eb715d index.html`
-`git diff 6eb715d..537a09f index.html`
+```
+git diff 6eb715d [filename]
+git diff 6eb715d..537a09f [filename]
+```
 
-Compare without caring about spaces:
-`git diff -b 6eb715d..HEAD` or:
-`git diff --ignore-space-change 6eb715d..HEAD`
+Compare without caring about whitespaces:
+```
+git diff -b 6eb715d..HEAD
+git diff --ignore-space-change 6eb715d..HEAD
+```
 
-Compare without caring about all spaces:
-`git diff -w 6eb715d..HEAD` or:
-`git diff --ignore-all-space 6eb715d..HEAD`
+This ignores differences even if one line has whitespace where the other line has none:
+```
+git diff -w 6eb715d..HEAD
+git diff --ignore-all-space 6eb715d..HEAD
+```
 
-Useful comparings:
-`git diff --stat --summary 6eb715d..HEAD`
-
-Blame:
-`git blame -L10,+1 index.html`
+Show what revision and author last modified each line of a file: `git blame -L10,+1 [filename]`
 
 ## Collaborate
 
-Show remote:
-`git remote`
+Fetch all changes from the remote and remove deleted branches: `git fetch -a -p`
 
-Show remote details:
-`git remote -v`
+Push to a branch and set it as the default upstream: `git push -u origin [master]`
 
-Add remote upstream from GitHub project:
-`git remote add upstream https://github.com/user/project.git`
+Pull a specific branch: `git pull origin [branchname]`
 
-Add remote upstream from existing empty project on server:
-`git remote add upstream ssh://root@123.123.123.123/path/to/repository/.git`
+Clone: `git clone https://github.com/user/project.git`
 
-Fetch:
-`git fetch upstream`
-
-Fetch a custom branch:
-`git fetch upstream branchname:local_branchname`
-
-Merge fetched commits:
-`git merge upstream/master`
-
-Remove origin:
-`git remote rm origin`
-
-Show remote branches:
-`git branch -r`
-
-Show all branches (remote and local):
-`git branch -a`
-
-Create and checkout branch from a remote branch:
-`git checkout -b local_branchname upstream/remote_branchname`
-
-Compare:
-`git diff origin/master..master`
-
-Push (set default with `-u`):
-`git push -u origin master`
-
-Push:
-`git push origin master`
-
-Force-Push:
-`git push origin master --force
-
-Pull:
-`git pull`
-
-Pull specific branch:
-`git pull origin branchname`
-
-Fetch a pull request on GitHub by its ID and create a new branch:
-`git fetch upstream pull/ID/head:new-pr-branch`
-
-Clone to localhost:
-`git clone https://github.com/user/project.git` or:
-`git clone ssh://user@domain.com/~/dir/.git`
-
-Clone to localhost folder:
+Clone to local folder:
 `git clone https://github.com/user/project.git ~/dir/folder`
 
-Clone specific branch to localhost:
-`git clone -b branchname https://github.com/user/project.git`
+Configure Meld as mergetool in your `.gitconfig` to resolve conflicts:
+```
+[mergetool "meld"]
+    cmd = meld \"$LOCAL\" \"$MERGED\" \"$REMOTE\" --output \"$MERGED\"
+```
 
-Clone with token authentication (in CI environment):
-`git clone https://oauth2:<token>@gitlab.com/username/repo.git`
+Resolve conflicts after attempted merge by means of a mergetool: `git mergetool`
 
-Delete remote branch (push nothing):
-`git push origin :branchname` or:
-`git push origin --delete branchname`
+## Gitignore 
+
+Add a `.gitignore` file at the root of the repository to instruct git to not track specific file types or filepaths: `vi .gitignore`
+
+You can create your own file from an online template generator: https://www.toptal.com/developers/gitignore
 
 ## Archive
 
 Create a zip-archive: `git archive --format zip --output filename.zip master`
 
-
-## Troubleshooting
-Ignore files that have already been committed to a Git repository: http://stackoverflow.com/a/1139797/1815847
-
 ## Security
 
-git-secret
+To encrypt your private data inside a git repo: https://git-secret.io/
 
 ## Large File Storage
 
-Website: https://git-lfs.github.com/
-
+To version large files (.wav, .pdf, etc) in a git repository: https://git-lfs.github.com/ (it's not free)
 
 ### Resources to learn more:
 
