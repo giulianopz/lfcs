@@ -1,4 +1,4 @@
-## git refresher
+## git
 
 ## General
 
@@ -12,17 +12,34 @@ git remote add origin https://github.com/{user-name}/{repository-name}.git
 git push -u origin main
 ```
 
-Get everything ready to commit: `git add .`
+Create a minimal configuration for git in your `~/.gitconfig`:
+```
+[user]
+    name = [username]
+    email = [email-address]
 
-Get custom file ready to commit: `git add index.html`
+# choose a difftool
+[diff]
+    guitool = meld
 
-Commit changes: `git commit -m "Message"`
+[difftool "meld"]
+    cmd = meld \"$REMOTE\" \"$LOCAL\" --label \"DIFF (ORIGINAL MY)\"
 
-Commit changes with title and description: `git commit -m "Title" -m "Description..."`
+# choose a mergetool
+[merge]
+    tool = meld
 
-Add and commit in one step: `git commit -a -m "Message"`
+[mergetool "meld"]
+    cmd = meld \"$LOCAL\" \"$MERGED\" \"$REMOTE\" --output \"$MERGED\"
 
-Update most recent unpushed commit message: `git commit --amend -m "New Message"`
+# store your credentials in a plain-text file
+[credential]
+        helper = store --file ~/.gitcredentials
+
+# choose a default editor
+[core]
+        editor = vi
+```
 
 Show all configuration settings included thei location: `git config --show-origin --list`
 
@@ -178,6 +195,18 @@ Show what revision and author last modified each line of a file: `git blame -L10
 
 ## Collaborate
 
+Get everything ready to commit: `git add .`
+
+Get custom file ready to commit: `git add index.html`
+
+Commit changes: `git commit -m "Message"`
+
+Commit changes with title and description: `git commit -m "Title" -m "Description..."`
+
+Add and commit in one step: `git commit -a -m "Message"`
+
+Update most recent unpushed commit message: `git commit --amend -m "New Message"`
+
 Fetch all changes from the remote and remove deleted branches: `git fetch -a -p`
 
 Push to a branch and set it as the default upstream: `git push -u origin [master]`
@@ -189,13 +218,7 @@ Clone: `git clone https://github.com/user/project.git`
 Clone to local folder:
 `git clone https://github.com/user/project.git ~/dir/folder`
 
-Configure Meld as mergetool in your `.gitconfig` to resolve conflicts:
-```
-[mergetool "meld"]
-    cmd = meld \"$LOCAL\" \"$MERGED\" \"$REMOTE\" --output \"$MERGED\"
-```
-
-Resolve conflicts after attempted merge by means of a mergetool: `git mergetool`
+Resolve conflicts after attempted merge by means of a mergetool (see the config file above in the 'General' section): `git mergetool`
 
 ## Gitignore 
 
