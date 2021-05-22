@@ -41,7 +41,7 @@ Create a minimal configuration for git in your `~/.gitconfig`:
         editor = vi
 ```
 
-Show all configuration settings included thei location: `git config --show-origin --list`
+Show all configuration settings and their location: `git config --show-origin --list`
 
 ## Undo
 
