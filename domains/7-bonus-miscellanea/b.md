@@ -134,7 +134,10 @@ Delete complete stash: `git stash clear`
 
 ## Log
 
-Show commits: `git log`
+Show commit logs: `git log`
+
+> Note: git log shows the current `HEAD` and its ancestry. That is, it prints the commit `HEAD` points to, then its parent, its parent, and so on. It traverses back through the repo's ancestry, by recursively looking up each commit's parent. `git reflog `doesn't traverse `HEAD`'s ancestry at all. The `reflog` is an ordered list of the commits that `HEAD` has pointed to: it's undo history for your repo. The reflog isn't part of the repo itself (it's stored separately to the commits themselves) and isn't included in pushes, fetches or clones: it's purely local. Aside: understanding `reflog` means you can't really lose data from your repo once it's been committed. If you accidentally reset to an older commit, or rebase wrongly, or any other operation that visually "removes" commits, you can use `reflog` to see where you were before and `git reset --hard` back to that ref to restore your previous state. Remember, refs imply not just the commit but the entire history behind it. ([source](https://stackoverflow.com/a/17860179/9109880))
+
 
 Show only custom commits:
 ```
@@ -148,7 +151,7 @@ Show stats and summary of commits: `git log --stat --summary`
 
 Show history of commits as graph-summary: `git log --oneline --graph --all --decorate`
 
-A nice [trick](https://stackoverflow.com/questions/1057564/pretty-git-branch-graphs) is to add some aliases in your `~/.gitconfig` for using `git log` with a good combination of options, like:
+A nice [trick](https://stackoverflow.com/a/9074343/9109880) is to add some aliases in your `~/.gitconfig` for using `git log` with a good combination of options, like:
 ```
 [alias]
 lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
@@ -164,7 +167,14 @@ Compare modified files and highlight changes only: `git diff --color-words [file
 
 Compare modified files within the staging area: `git diff --staged [filename]`
 
-Compare branches: `git diff master..branchname`
+Compare branches: `git diff [branch1]..[branch2]`
+
+> Note: This command combined with the two-dot operator will show you all the commits that “branch2” has that are not in “branch1”. While if used with three dots it will compare the top of the right branch with the common ancestor of the two branches (see [here](https://devconnected.com/how-to-compare-two-git-branches/)).
+
+To see the commit differences between two branches, use `git log` and specify the branches that you want to compare.
+`git log [branch1]..[branch2]`
+
+> Note: This won’t show you the actual file differences between the two branches but only the commits.
 
 Compare commits:
 ```
