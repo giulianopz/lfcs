@@ -230,7 +230,7 @@ Clone to local folder:
 
 Resolve conflicts after attempted merge by means of a mergetool (see the config file above in the 'General' section): `git mergetool`
 
-## Gitignore 
+## Ignore 
 
 Add a `.gitignore` file at the root of the repository to instruct git to not track specific file types or filepaths: `vi .gitignore`
 
