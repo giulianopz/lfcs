@@ -88,7 +88,7 @@
 - [ ] c. vi(m)
 - [x] d. Repair the GRUB from live CD or USB stick 
 - [x] e. Install a CA certificate
-- [ ] f. Create a self-signed SSL certificate for Apache web server
+- [x] f. Create a self-signed SSL certificate for Apache web server
 - [x] g. Debugging TLS handshake issues
 - [ ] h. Chroot jails
 - [ ] i. Disable ssh-login as root via PAM
