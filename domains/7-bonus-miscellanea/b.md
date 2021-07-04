@@ -70,6 +70,9 @@ To throw away not yet pushed changes in your working directory, use instead:
 
 Typically, to discard all recent changes resetting the HEAD to the previous commit: `git reset --hard HEAD^`
 
+Alternatively, to reset the current local branch to a particular point in time:
+`git reset --hard master@{"10 minutes ago"}`
+
 Remove a file from the staging area: `git restore --staged [<filepath>]` 
 
 Undo modifications on the working tree (restore files from latest commited version): `git checkout -- index.html`

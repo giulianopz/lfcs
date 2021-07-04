@@ -1,36 +1,36 @@
 ## 1. Essential Commands - 25%
 
-- [x] a. Log into local & remote graphical and text mode consoles
-- [x] b. Search for files (find & locate)
-- [x] c. Evaluate and compare the basic file system features and options
-- [x] d. Compare and manipulate file content (diff)
-- [x] e. Use input-output redirection (e.g. >, >>, |, 2>)
-- [x] f. Analyze text using basic regular expressions (grep, sed, awk)
-- [x] g. Archive, backup, compress, unpack, and uncompress files (tar, gzip, bzip2, xz, rsync)
-- [x] h. Create, delete, copy, and move files and directories
-- [x] i. Create and manage hard and soft links (ln)
-- [x] l. List, set, and change standard file permissions (including SUID/SGID, sticky bit)
-- [x] m. Read, and use system documentation (man, info, help)
-- [x] n. Manage access to the root account
+- [x] a. [Log into local & remote graphical and text mode consoles](1-essential-commands/a.md)
+- [x] b. [Search for files (find & locate)](1-essential-commands/b.md)
+- [x] c. [Evaluate and compare the basic file system features and options](1-essential-commands/c.md)
+- [x] d. [Compare and manipulate file content (diff)](1-essential-commands/d.md)
+- [x] e. [Use input-output redirection (e.g. >, >>, |, 2>)](1-essential-commands/e.md)
+- [x] f. [Analyze text using basic regular expressions (grep, sed, awk)](1-essential-commands/f.md)
+- [x] g. [Archive, backup, compress, unpack, and uncompress files (tar, gzip, bzip2, xz, rsync)](1-essential-commands/g.md)
+- [x] h. [Create, delete, copy, and move files and directories](1-essential-commands/h.md)
+- [x] i. [Create and manage hard and soft links (ln)](1-essential-commands/i.md)
+- [x] l. [List, set, and change standard file permissions (including SUID/SGID, sticky bit)](1-essential-commands/l.md)
+- [x] m. [Read, and use system documentation (man, info, help)](1-essential-commands/m.md)
+- [x] n. [Manage access to the root account](1-essential-commands/n.md)
 
 ## 2. Operation of Running Systems - 20%
 
-- [x] a. Boot, reboot, and shut down a system safely
-- [x] b. Boot or change system into different operating modes
-- [x] c. Install, configure and troubleshoot bootloaders
-- [x] d. Diagnose and manage processes
-- [x] e. Locate and analyze system log files
-- [x] f. Schedule tasks to run at a set date and time (cron, anacron, at)
-- [x] g. Verify completion of scheduled jobs
-- [x] h. Update software to provide required functionality and security
-- [x] i. Verify the integrity and availability of resources
-- [x] l. Verify the integrity and availability of key processes
-- [x] m. Change kernel runtime parameters, persistent and non-persistent
-- [x] n. Use scripting to automate system maintenance tasks
-- [x] o. Manage the startup process and services
-- [x] p. List and identify SELinux/AppArmor file and process contexts
-- [x] q. Manage software
-- [x] r. Identify the component of a Linux distribution that a file belongs to
+- [x] a. [Boot, reboot, and shut down a system safely](2-operation-of-running-systems/a.md)
+- [x] b. [Boot or change system into different operating modes](2-operation-of-running-systems/b.md)
+- [x] c. [Install, configure and troubleshoot bootloaders](2-operation-of-running-systems/c.md)
+- [x] d. [Diagnose and manage processes](2-operation-of-running-systems/d.md)
+- [x] e. [Locate and analyze system log files](2-operation-of-running-systems/e.md)
+- [x] f. [Schedule tasks to run at a set date and time (cron, anacron, at)](2-operation-of-running-systems/f.md)
+- [x] g. [Verify completion of scheduled jobs](2-operation-of-running-systems/g.md)
+- [x] h. [Update software to provide required functionality and security](2-operation-of-running-systems/h.md)
+- [x] i. [Verify the integrity and availability of resources](2-operation-of-running-systems/i.md)
+- [x] l. [Verify the integrity and availability of key processes](2-operation-of-running-systems/l.md)
+- [x] m. [Change kernel runtime parameters, persistent and non-persistent](2-operation-of-running-systems/m.md)
+- [x] n. [Use scripting to automate system maintenance tasks](2-operation-of-running-systems/n.md)
+- [x] o. [Manage the startup process and services](2-operation-of-running-systems/o.md)
+- [x] p. [List and identify SELinux/AppArmor file and process contexts](2-operation-of-running-systems/p.md)
+- [x] q. [Manage software](2-operation-of-running-systems/q.md)
+- [x] r. [Identify the component of a Linux distribution that a file belongs to](2-operation-of-running-systems/r.md)
 
 ## 3. User and Group Management - 10%
 
