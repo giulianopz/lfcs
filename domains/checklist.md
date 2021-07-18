@@ -103,4 +103,4 @@
 - [ ] t. How to fix Nvidia graphics card problems
 - [ ] u. GPG & SSH keys
 - [ ] v. How to use Linux's built-in USB attack protection
-- [ ] z. Tips & tricks
+- [ ] z. [Tips & tricks](7-bonus-miscellanea/z.md)
