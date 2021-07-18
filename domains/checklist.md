@@ -34,73 +34,73 @@
 
 ## 3. User and Group Management - 10%
 
-- [x] a. Create, delete, and modify local user accounts
-- [x] b. Create, delete, and modify local groups and group memberships
-- [x] c. Manage system-wide environment profiles
-- [x] d. Manage template user environment (/etc/skel/)
-- [x] e. Configure user resource limits
-- [x] f. Manage user privileges
-- [x] g. Configure PAM
+- [x] a. [Create, delete, and modify local user accounts](3-user-and-group-management/a.md)
+- [x] b. [Create, delete, and modify local groups and group memberships](3-user-and-group-management/b.md)
+- [x] c. [Manage system-wide environment profiles](3-user-and-group-management/c.md)
+- [x] d. [Manage template user environment (/etc/skel/)](3-user-and-group-management/d.md)
+- [x] e. [Configure user resource limits](3-user-and-group-management/e.md)
+- [x] f. [Manage user privileges](3-user-and-group-management/f.md)
+- [x] g. [Configure PAM](3-user-and-group-management/g.md)
 
 ## 4. Networking - 12%
 
-- [x] a. Configure networking and hostname resolution statically or dynamically
-- [x] b. Configure network services to start automatically at boot
-- [x] c. Implement packet filtering (iptables, firewalld or ufw)
-- [x] d. Start, stop, and check the status of network services
-- [x] e. Statically route IP traffic
-- [x] f. Synchronize time using other network peers
+- [x] a. [Configure networking and hostname resolution statically or dynamically](4-networking/a.md)
+- [x] b. [Configure network services to start automatically at boot](4-networking/b.md)
+- [x] c. [Implement packet filtering (iptables, firewalld or ufw)](4-networking/c.md)
+- [x] d. [Start, stop, and check the status of network services](4-networking/d.md)
+- [x] e. [Statically route IP traffic](4-networking/e.md)
+- [x] f. [Synchronize time using other network peers](4-networking/f.md)
 
 ## 5. Service Configuration - 20%
 
-- [x] a. Configure a caching DNS server
-- [x] b. Maintain a DNS zone
-- [x] c. Configure email aliases
-- [x] d. Configure SSH servers and clients
-- [x] e. Restrict access to the HTTP proxy server
-- [x] f. Configure an IMAP and IMAPS service
-- [x] g. Query and modify the behavior of system services at various operating modes
-- [x] h. Configure an HTTP server
-- [x] i. Configure HTTP server log files
-- [x] l. Configure a database server
-- [x] m. Restrict access to a web page
-- [x] n. Manage and configure containers
-- [x] o. Manage and configure Virtual Machines
+- [x] a. [Configure a caching DNS server](5-service-configuration/a.md)
+- [x] b. [Maintain a DNS zone](5-service-configuration/b.md)
+- [x] c. [Configure email aliases](5-service-configuration/c.md)
+- [x] d. [Configure SSH servers and clients](5-service-configuration/d.md)
+- [x] e. [Restrict access to the HTTP proxy server](5-service-configuration/e.md)
+- [x] f. [Configure an IMAP and IMAPS service](5-service-configuration/f.md)
+- [x] g. [Query and modify the behavior of system services at various operating modes](5-service-configuration/g.md)
+- [x] h. [Configure an HTTP server](5-service-configuration/h.md)
+- [x] i. [Configure HTTP server log files](5-service-configuration/i.md)
+- [x] l. [Configure a database server](5-service-configuration/l.md)
+- [x] m. [Restrict access to a web page](5-service-configuration/m.md)
+- [x] n. [Manage and configure containers](5-service-configuration/n.md)
+- [x] o. [Manage and configure Virtual Machines](5-service-configuration/o.md)
 
 ## 6. Storage Management - 13%
 
-- [x] a. List, create, delete, and modify physical storage partitions (fdisk, gdisk)
-- [x] b. Manage and configure LVM storage
-- [x] c. Create and configure encrypted storage (LUKS)
-- [x] d. Configure systems to mount file systems at or during boot
-- [x] e. Configure and manage swap space
-- [x] f. Create and manage RAID devices (mdadm)
-- [x] g. Configure systems to mount file systems on demand
-- [x] h. Create, manage and diagnose advanced file system permissions (lsattr, chattr, getfacl, setfacl)
-- [x] i. Setup user and group disk quotas for filesystems
-- [x] l. Create and configure file systems
+- [x] a. [List, create, delete, and modify physical storage partitions (fdisk, gdisk)](6-storage-management/a.md)
+- [x] b. [Manage and configure LVM storage](6-storage-management/b.md)
+- [x] c. [Create and configure encrypted storage (LUKS)](6-storage-management/c.md)
+- [x] d. [Configure systems to mount file systems at or during boot](6-storage-management/d.md)
+- [x] e. [Configure and manage swap space](6-storage-management/e.md)
+- [x] f. [Create and manage RAID devices (mdadm)](6-storage-management/f.md)
+- [x] g. [Configure systems to mount file systems on demand](6-storage-management/g.md)
+- [x] h. [Create, manage and diagnose advanced file system permissions (lsattr, chattr, getfacl, setfacl)](6-storage-management/h.md)
+- [x] i. [Setup user and group disk quotas for filesystems](6-storage-management/i.md)
+- [x] l. [Create and configure file systems](6-storage-management/l.md)
 
 
 ## 7. Bonus/Miscellanea - 0%
 
-- [x] a. bash
-- [x] b. git
+- [x] a. [bash](7-bonus-miscellanea/a.md)
+- [x] b. [git](7-bonus-miscellanea/b.md)
 - [ ] c. vi(m)
-- [x] d. Repair the GRUB from live CD or USB stick 
-- [x] e. Install a CA certificate
-- [x] f. Create a self-signed SSL certificate for Apache web server
-- [x] g. Debugging TLS handshake issues
+- [x] d. [Repair the GRUB from live CD or USB stick](7-bonus-miscellanea/d.md)
+- [x] e. [Install a CA certificate](7-bonus-miscellanea/e.md)
+- [x] f. [Create a self-signed SSL certificate for Apache web server](7-bonus-miscellanea/f.md)
+- [x] g. [Debugging TLS handshake issues](7-bonus-miscellanea/g.md)
 - [ ] h. Chroot jails
 - [ ] i. Disable ssh-login as root via PAM
 - [ ] l. GNU Autotools
 - [ ] m. Manage your dotfiles with GNU stow
-- [x] n. DNS essentials
-- [x] o. Network-Manager
-- [x] p. SSH-tunneling
+- [x] n. [DNS essentials](7-bonus-miscellanea/n.md)
+- [x] o. [Network-Manager](7-bonus-miscellanea/o.md)
+- [x] p. [SSH-tunneling](7-bonus-miscellanea/p.md)
 - [ ] q. Troubleshooting networks
 - [ ] r. tmux
 - [ ] s. Alpine e-mail setup
 - [ ] t. How to fix Nvidia graphics card problems
-- [ ] u. GPG & SSH keys 
+- [ ] u. GPG & SSH keys
 - [ ] v. How to use Linux's built-in USB attack protection
 - [ ] z. Tips & tricks
