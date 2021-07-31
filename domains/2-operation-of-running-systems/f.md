@@ -6,13 +6,13 @@ To run tasks at a specific time in the future different services are available:
 - `cron` can schedule tasks on a repetitive basis, such as daily, weekly, or monthly
 - `anacron` can  be  used  to  execute  commands periodically, with a frequency specified in days, but unlike cron, it does not assume that the machine is running continuously.
 
---- 
+---
 
 ### Cron
 
 The crond daemon is the background service that enables cron functionality.
 
-The cron service checks for files in the `/var/spool/cron` and `/etc/cron.d` directories and the '/etc/anacrontab` file. The contents of these files define cron jobs that are to be run at various intervals. The individual user cron files are located in /var/spool/cron, and system services and applications generally add cron job files in the /etc/cron.d directory.
+The cron service checks for files in the `/var/spool/cron` and `/etc/cron.d` directories and the `/etc/anacrontab` file. The contents of these files define cron jobs that are to be run at various intervals. The individual user cron files are located in /var/spool/cron, and system services and applications generally add cron job files in the /etc/cron.d directory.
 
 The cron utility runs based on commands specified in a cron table (crontab). Each user, including root, can have a cron file. These files don't exist by default, but can be created in the /var/spool/cron directory using the `crontab -e` command that's also used to edit a cron file:
 ```
@@ -41,13 +41,13 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 # 25 04 1 * * /usr/bin/dnf -y update
 ```
 
-The first three lines in the code above set up a default environment. The environment must be set to whatever is necessary for a given user because cron does not provide an environment of any kind. 
+The first three lines in the code above set up a default environment. The environment must be set to whatever is necessary for a given user because cron does not provide an environment of any kind.
 
 > Warning: If no user is specified, the job is run as the user that owns the crontab file, root in the case of the root crontab.
 
 To prevent possible misuse, you can control access to the `crontab` command by using two files in the /etc/cron.d directory: `cron.deny` and `cron.allow`. These files permit only specified users to perform crontab command tasks such as creating, editing, displaying, or removing their own crontab files.
 
-The cron.deny and cron.allow files consist of a list of user names, one user name per line. 
+The cron.deny and cron.allow files consist of a list of user names, one user name per line.
 
 These access control files work together as follows:
 
@@ -58,7 +58,7 @@ These access control files work together as follows:
 
 ### Anacron
 
-The `anacron` program performs the same function as crond, but it adds the ability to run jobs that were skipped, such as if the computer was off or otherwise unable to run the job for one or more cycles. The anacron program provides some easy options for running regularly scheduled tasks. Just install your scripts in the `/etc/cron.[hourly|daily|weekly|monthly]` directories, depending how frequently they need to be run.
+The **anacron** program performs the same function as crond, but it adds the ability to run jobs that were skipped, such as if the computer was off or otherwise unable to run the job for one or more cycles. The anacron program provides some easy options for running regularly scheduled tasks. Just install your scripts in the `/etc/cron.[hourly|daily|weekly|monthly]` directories, depending how frequently they need to be run. Alternatively, just specify the job to run in `/etc/anacrontab` as you would do with the crontab but with anacron-specific syntax (see below).
 
 anacron itself doesn't run as a service/daemon, but as a cron job: /etc/cron.d/anacron. So cron is running and checking if anacron is present for the daily, weekly and monthly tasks (it would be duplication of effort to have both running preriod-fixed tasks), but not for the hourly tasks. cron runs the hourly tasks.
 
@@ -70,11 +70,11 @@ So, actually anacron uses a variety of methods to run:
 
 anacron will check if a job has been executed within the specified period in the period field. If not, it executes the command specified in the command field after waiting the number of minutes specified in the delay field. Once the job has been executed, it records the date in a timestamp file in the /var/spool/anacron directory with the name specified in the job-id field:
 ```
-cat /var/spool/anacron/bck.weekly 
+cat /var/spool/anacron/bck.weekly
 >20210328
 ```
 
-> Note: the specified delay times in each line help prevent these jobs from overlapping themselves and other cron jobs.    
+> Note: the specified delay times in each line help prevent these jobs from overlapping themselves and other cron jobs.
 
 > Tip: Instead of placing whole bash programs in the cron.X directories, just install them in the `/usr/local/bin` directory, which will allow you to run them easily from the command line. Then, add a symlink in the appropriate cron directory, such as `/etc/cron.daily`.
 
