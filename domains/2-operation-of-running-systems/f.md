@@ -58,7 +58,7 @@ These access control files work together as follows:
 
 ### Anacron
 
-The **anacron** program performs the same function as crond, but it adds the ability to run jobs that were skipped, such as if the computer was off or otherwise unable to run the job for one or more cycles. The anacron program provides some easy options for running regularly scheduled tasks. Just install your scripts in the `/etc/cron.[hourly|daily|weekly|monthly]` directories, depending how frequently they need to be run. Alternatively, just specify the job to run in `/etc/anacrontab` as you would do with the crontab but with anacron-specific syntax (see below).
+The **anacron** program performs the same function as crond, but it adds the ability to run jobs that were skipped, such as if the computer was off or otherwise unable to run the job for one or more cycles. The anacron program provides some easy options for running regularly scheduled tasks. Just install your scripts in the `/etc/cron.[hourly|daily|weekly|monthly]` directories, depending how frequently they need to be run (but see below tip). Alternatively, specify the job to run in `/etc/anacrontab` as you would do with the crontab but with anacron-specific syntax (see below).
 
 anacron itself doesn't run as a service/daemon, but as a cron job: /etc/cron.d/anacron. So cron is running and checking if anacron is present for the daily, weekly and monthly tasks (it would be duplication of effort to have both running preriod-fixed tasks), but not for the hourly tasks. cron runs the hourly tasks.
 
@@ -74,7 +74,9 @@ cat /var/spool/anacron/bck.weekly
 >20210328
 ```
 
-> Note: the specified delay times in each line help prevent these jobs from overlapping themselves and other cron jobs.
+To quickly check if anacron jobs are really executed, you can force immediately their execution: `anacron -f -n`
+
+> Note: The specified delay times in each line help prevent these jobs from overlapping themselves and other cron jobs.
 
 > Tip: Instead of placing whole bash programs in the cron.X directories, just install them in the `/usr/local/bin` directory, which will allow you to run them easily from the command line. Then, add a symlink in the appropriate cron directory, such as `/etc/cron.daily`.
 
