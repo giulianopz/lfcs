@@ -2,7 +2,7 @@
 
 ## General
 
-Initialize a directory as a git repository hosted on GitHub: 
+Initialize a directory as a git repository hosted on GitHub:
 ```
 touch README.md
 git init
@@ -73,7 +73,7 @@ Typically, to discard all recent changes resetting the HEAD to the previous comm
 Alternatively, to reset the current local branch to a particular point in time:
 `git reset --hard master@{"10 minutes ago"}`
 
-Remove a file from the staging area: `git restore --staged [<filepath>]` 
+Remove a file from the staging area: `git restore --staged [<filepath>]`
 
 Undo modifications on the working tree (restore files from latest commited version): `git checkout -- index.html`
 
@@ -100,6 +100,12 @@ Delete merged branch (only possible if not HEAD): `git branch -d [branch-to-dele
 Delete not merged branch: `git branch -D [branch-to-delete]`
 
 Delete remote branch: `git push origin --delete [branch-to-delete]`
+
+List branches merged into the HEAD (i.e. tip of current branch): `git branch --merged [branchname]`
+
+List branches that have not been merged:`git branch --no-merged [branchname]`
+
+> Note: By default this applies to only the local branches. The `-a` flag will show both local and remote branches, and the `-r` flag shows only the remote branches.
 
 ## Merge
 
@@ -233,7 +239,7 @@ Clone to local folder:
 
 Resolve conflicts after attempted merge by means of a mergetool (see the config file above in the 'General' section): `git mergetool`
 
-## Ignore 
+## Ignore
 
 Add a `.gitignore` file at the root of the repository to instruct git to not track specific file types or filepaths: `vi .gitignore`
 
