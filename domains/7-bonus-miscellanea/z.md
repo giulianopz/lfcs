@@ -15,3 +15,5 @@
 7. Always check if a piece of hardware is compatible with Linux, before buying it. For printers, have a look at this [list](https://haydenjames.io/finding-linux-compatible-printers/).
 
 8. https://www.linuxjournal.com/content/more-using-bashs-built-devtcp-file-tcpip
+
+9. Findo out neighbours in your local network: `sudo nmap -sn 192.168.1.0/24`
