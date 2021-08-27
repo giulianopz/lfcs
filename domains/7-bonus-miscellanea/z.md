@@ -16,4 +16,4 @@
 
 8. https://www.linuxjournal.com/content/more-using-bashs-built-devtcp-file-tcpip
 
-9. Findo out neighbours in your local network: `sudo nmap -sn 192.168.1.0/24`
+9. Find out neighbours in your local network: `sudo nmap -sn 192.168.1.0/24`
