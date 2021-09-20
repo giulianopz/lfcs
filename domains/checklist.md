@@ -104,3 +104,4 @@
 - [ ] u. GPG & SSH keys
 - [ ] v. How to use Linux's built-in USB attack protection
 - [ ] z. [Tips & tricks](7-bonus-miscellanea/z.md)
+- [ ] j. Repair a usb drive: https://www.maketecheasier.com/repair-corrupted-usb-drive-linux/
