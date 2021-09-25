@@ -17,3 +17,5 @@
 8. https://www.linuxjournal.com/content/more-using-bashs-built-devtcp-file-tcpip
 
 9. Find out neighbours in your local network: `sudo nmap -sn 192.168.1.0/24`
+
+10. [Learn the networking basics every sysadmin needs to know](https://www.redhat.com/sysadmin/sysadmin-essentials-networking-basics)
