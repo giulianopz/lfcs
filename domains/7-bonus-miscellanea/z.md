@@ -19,3 +19,5 @@
 9. Find out neighbours in your local network: `sudo nmap -sn 192.168.1.0/24`
 
 10. [Learn the networking basics every sysadmin needs to know](https://www.redhat.com/sysadmin/sysadmin-essentials-networking-basics)
+
+11. Use floating-point arithmetich in bash: `bc <<< 'scale=2; 61/14'`
