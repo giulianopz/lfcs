@@ -245,6 +245,10 @@ Add a `.gitignore` file at the root of the repository to instruct git to not tra
 
 You can create your own file from an online template generator: https://www.toptal.com/developers/gitignore
 
+To check what gitignore rule is causing a particular path to be ignored, run git check-ignore:
+`git check-ignore -v [path/to/check]`
+
+
 ## Archive
 
 Create a zip-archive: `git archive --format zip --output filename.zip master`
