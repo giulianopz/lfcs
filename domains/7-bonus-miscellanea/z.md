@@ -21,3 +21,5 @@
 10. [Learn the networking basics every sysadmin needs to know](https://www.redhat.com/sysadmin/sysadmin-essentials-networking-basics)
 
 11. Use floating-point arithmetich in bash: `bc <<< 'scale=2; 61/14'`
+
+12. https://www.linuxjournal.com/content/more-using-bashs-built-devtcp-file-tcpip

@@ -107,6 +107,8 @@ List branches that have not been merged:`git branch --no-merged [branchname]`
 
 > Note: By default this applies to only the local branches. The `-a` flag will show both local and remote branches, and the `-r` flag shows only the remote branches.
 
+Return to the previous branch (just as `cd -`): `git checkout -`
+
 ## Merge
 
 Merge `branchname` into the cuurent branch: `git merge [branchname]`
