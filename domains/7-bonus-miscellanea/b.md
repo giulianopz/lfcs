@@ -170,6 +170,8 @@ lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(
 lg = !"git lg1"
 ```
 
+Followh the commit history of a single file: `git log --oneline -M --stat --follow -- src/somefile.ts`
+
 ## Compare
 
 See lastest changes in a file: `git diff [filename]`
