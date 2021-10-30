@@ -86,7 +86,7 @@ echo ${#array[@]}       # right: prints out the size of the array
 To slice strings and arrays:
 ```
 echo ${string:6:3}          # the first num is the start index, the second one is the size of slice
-echo ${array[@]:3:2} 
+echo ${array[@]:3:2}
 ```
 
 Existence testing operators:
@@ -174,9 +174,9 @@ wait $pid
 echo Process $pid finished!
 
 for f in *.jpg
-do 
+do
   convert $f ${f%.jpg}.png &
-done 
+done
 wait
 echo All images have been converted!
 ```
@@ -200,7 +200,7 @@ echo {0..10}
 Conditions are expressed as a command (such as `test`) whose exit status is mapped to true/false (0/non-zero):
 ```
 if http -k start
-then 
+then
   echo OK
 else
   echo KO
@@ -220,7 +220,7 @@ fi
   [ $a = $b ]         # will fail if one of the two variables is empty or contains a whitespace
   [ "$a" = "$b" ]     # you have to double-quote them to avoid this problem
   [[ $a = $b ]]       # this instead won't fail
-  ``` 
+  ```
 > Tip: Additionally, double brackets support:
   ```
   [[ $a = ?at ]]      # glob patterns
@@ -307,6 +307,14 @@ ${arr[@]:s:n}           # retieves [n] elements starting at index [s]
 -k      # sticky bit is active
 -nt/ot  # is newer/older than
 ```
+
+To create a simple [script](https://www.linux.com/training-tutorials/writing-simple-bash-script/):
+
+  1. put a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) at the very first line: `#!/bin/bash`
+  2. write your stuff afterwards
+  3. execute the script from its path or sourcing it
+
+> Note: When you execute the script you are opening a new shell, type the commands in the new shell, copy the output back to your current shell, then close the new shell. Any changes to environment will take effect only in the new shell and will be lost once the new shell is closed. When you source the script you are typing the commands in your current shell. Any changes to the environment will take effect and stay in your current shell.
 
 ---
 
