@@ -180,9 +180,15 @@ Compare modified files and highlight changes only: `git diff --color-words [file
 
 Compare modified files within the staging area: `git diff --staged [filename]`
 
-Compare branches: `git diff [branch1]..[branch2]`
+Compare branches showing differences line by line: `git diff [branch1]..[branch2]`
 
 > Note: This command combined with the two-dot operator will show you all the commits that “branch2” has that are not in “branch1”. While if used with three dots it will compare the top of the right branch with the common ancestor of the two branches (see [here](https://devconnected.com/how-to-compare-two-git-branches/)).
+
+Compare lines in a file bewtween two branches:
+`git diff [mybranch]..[master] -- [myfile.cs]`
+
+Get only the name of the files which are different in the two branches:
+`git diff –-name-only [mybranch]..[master]`
 
 To see the commit differences between two branches, use `git log` and specify the branches that you want to compare.
 `git log [branch1]..[branch2]`
