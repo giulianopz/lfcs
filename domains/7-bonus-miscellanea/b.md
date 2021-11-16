@@ -83,6 +83,8 @@ Remove files from the working tree and the index: `git rm index.html`
 
 Remove file only from the index: `git rm --cached index.html`
 
+If you have unadvertedly pushed sensitive data or something else that you regret, you can clean up those files with [BFG](https://rtyley.github.io/bfg-repo-cleaner/), a faster alternative to `git-filter-branch`.
+
 ## Branch
 
 Show all branches (including the remote ones): `git branch -l -a`
