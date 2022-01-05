@@ -14,7 +14,7 @@
 
 7. Always check if a piece of hardware is compatible with Linux, before buying it. For printers, have a look at this [list](https://haydenjames.io/finding-linux-compatible-printers/) or che the [OpenPrinting](https://www.openprinting.org/printers/) database.
 
-8. https://www.linuxjournal.com/content/more-using-bashs-built-devtcp-file-tcpip
+8. [More on Using Bash's Built-in /dev/tcp File (TCP/IP)](https://www.linuxjournal.com/content/more-using-bashs-built-devtcp-file-tcpip).
 
 9. Find out neighbours in your local network: `sudo nmap -sn 192.168.1.0/24`
 
@@ -22,4 +22,4 @@
 
 11. Use floating-point arithmetich in bash: `bc <<< 'scale=2; 61/14'`
 
-12. https://www.linuxjournal.com/content/more-using-bashs-built-devtcp-file-tcpip
+12. Encrypt your emails with [GnuPG](https://emailselfdefense.fsf.org/en/) to protect yourself from mass surveillance.
