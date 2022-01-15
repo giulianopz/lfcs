@@ -23,3 +23,7 @@
 11. Use floating-point arithmetich in bash: `bc <<< 'scale=2; 61/14'`
 
 12. Encrypt your emails with [GnuPG](https://emailselfdefense.fsf.org/en/) to protect yourself from mass surveillance.
+
+13. [Check the physical health of a USB stick](https://www.cyberciti.biz/faq/linux-check-the-physical-health-of-a-usb-stick-flash-drive/)
+
+14. [Micro BGP Suite: The Swiss Army Knife of Routing Analysis](https://labs.ripe.net/author/lorenzo_cogotti/micro-bgp-suite-the-swiss-army-knife-of-routing-analysis/)
