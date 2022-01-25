@@ -27,3 +27,9 @@
 13. [Check the physical health of a USB stick](https://www.cyberciti.biz/faq/linux-check-the-physical-health-of-a-usb-stick-flash-drive/)
 
 14. [Micro BGP Suite: The Swiss Army Knife of Routing Analysis](https://labs.ripe.net/author/lorenzo_cogotti/micro-bgp-suite-the-swiss-army-knife-of-routing-analysis/)
+
+15. Playgrounds to fiddle around with:
+    1.  [systemd by example](https://systemd-by-example.com/)
+    2.  [mess with dns](https://messwithdns.net/)
+    3.  [a simple DNS lookup tool](https://dns-lookup.jvns.ca/)
+    4.  [nginx](https://nginx-playground.wizardzines.com/)
