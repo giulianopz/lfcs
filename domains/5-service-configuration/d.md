@@ -57,7 +57,15 @@ Please, note that this requires that password authentication is enabled on the r
 Finally, double check the permissions on the authorized_keys file, only the authenticated user should have read and write permissions. If the permissions are not correct change them by:
 `chmod 600 .ssh/authorized_keys`
 
-You should now be able to SSH to the host without being prompted for a password.
+You should now be able to SSH to the host without being prompted for a password, but you will be asked to provide the passphrase of the private key.
+
+To avoid it, you can use `ssh-agent` to handle passwords for SSH private keys. Use `ssh-add` to add the keys to the list maintained by ssh-agent. After you add a private key password to ssh-agent, you do not need to enter it each time you connect to a remote host with your public key until you restart your host or you log out from it:
+```
+ssh-agent $SHELL
+ssh-add
+ssh-add -l
+ssh <username>@<remotehost>
+```
 
 4. Import keys from public keyservers
 
@@ -79,9 +87,9 @@ For example, plug the U2F device in and generate a keypair to use with it:
 $ ssh-keygen -t ecdsa-sk
 Generating public/private ecdsa-sk key pair.
 You may need to touch your authenticator to authorize key generation. <-- touch device
-Enter file in which to save the key (/home/ubuntu/.ssh/id_ecdsa_sk): 
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
+Enter file in which to save the key (/home/ubuntu/.ssh/id_ecdsa_sk):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
 Your identification has been saved in /home/ubuntu/.ssh/id_ecdsa_sk
 Your public key has been saved in /home/ubuntu/.ssh/id_ecdsa_sk.pub
 The key fingerprint is:
