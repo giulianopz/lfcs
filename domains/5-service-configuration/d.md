@@ -67,7 +67,16 @@ ssh-add -l
 ssh <username>@<remotehost>
 ```
 
-4. Import keys from public keyservers
+To completely automate ssh-login without neither entering the passphrase, you can use `gpg` and `sshpass`:
+```
+sudo apt install sshpass
+echo 'YOUR_PWD' > .sshpasswd
+gpg -c .sshpasswd
+rm .sshpasswd
+gpg -d -q .sshpasswd.gpg | sshpass -Ppassphrase ssh -o StrictHostKeyChecking=no -tt <username>@<remotehost>
+```
+
+1. Import keys from public keyservers
 
 These days many users have already ssh keys registered with services like launchpad or github. Those can be easily imported with:
 `ssh-import-id <username-on-remote-service>`
