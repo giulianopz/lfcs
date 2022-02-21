@@ -21,7 +21,7 @@ The common configuration elements of TCP/IP and their purposes are as follows:
 - **Gateway Address**: A Gateway Address is the IP address through which a particular network, or host on a network, may be reached. If one network host wishes to communicate with another network host, and that host is not located on the same network, then a gateway must be used. In many cases, the Gateway Address will be that of a router on the same network, which will in turn pass traffic on to other networks or hosts, such as Internet hosts. The value of the Gateway Address setting must be correct, or your system will not be able to reach any hosts beyond those on the same network.
 
 - **Nameserver Address**: Nameserver Addresses represent the IP addresses of Domain Name Service (DNS) systems, which resolve network hostnames into IP addresses. There are three levels of Nameserver Addresses, which may be specified in order of precedence: The Primary Nameserver, the Secondary Nameserver, and the Tertiary Nameserver. In order for your system to be able to resolve network hostnames into their corresponding IP addresses, you must specify valid Nameserver Addresses which you are authorized to use in your system’s TCP/IP configuration. In many cases these addresses can and will be provided by your network service provider,but many free and publicly accessible nameservers are available for use, such as the Level3 (Verizon) servers with IP addresses from 4.2.2.1 to 4.2.2.6.
-    
+
 > Tip: The IP address, Netmask, Network Address, Broadcast Address, Gateway Address, and Nameserver Addresses are typically specified via the appropriate directives in the file /etc/network/interfaces (before Ubuntu 18.04, see below). For more information, view the system manual page for interfaces: `man interfaces`
 
 ### Netplan
@@ -162,7 +162,7 @@ To verify your default gateway configuration, you can use the ip command in the 
 ip route show
 >default via 10.102.66.1 dev eth0 proto dhcp src 10.102.66.200 metric 100
 >10.102.66.0/24 dev eth0 proto kernel scope link src 10.102.66.200
->10.102.66.1 dev eth0 proto dhcp scope link src 10.102.66.200 metric 100 
+>10.102.66.1 dev eth0 proto dhcp scope link src 10.102.66.200 metric 100
 ```
 
 If you require DNS for your temporary network configuration, you can add DNS server IP addresses in the file /etc/resolv.conf. In general, editing `/etc/resolv.conf` directly is not recommanded, but this is a temporary and non-persistent configuration. The example below shows how to enter two DNS servers to `/etc/resolv.conf`, which should be changed to servers appropriate for your network:
@@ -191,6 +191,16 @@ network:
 The configuration can then be applied using the netplan command: `sudo netplan apply`
 
 In case you see any error, try debugging to investigate the problem. To run debug, use the following command as sudo: `sudo netplan –d apply`
+
+To ensure that whether our machine is managing by “systemd-networkd”, all we have to do is using this command:
+```
+networkctl
+#in case of success, you should see a something like this:
+IDX LINK    TYPE  OPERATIONAL   SETUP
+_______________________________________
+1 enp3s0   ether  routable  configured
+2 wlp2s0b1 wlan   routable  configured
+```
 
 Once all the configurations are successfully applied, restart the Network-Manager service by running the following command: `sudo systemctl restart network-manager`
 
@@ -289,19 +299,19 @@ If your current DNS server still points to your router (i.e. 192.168.1.1), there
 
 2) or, if your DNS settigs are messed up by multiple programs trying to update it, you can use `resolvconf`:
 ```
-sudo apt install resolvconf 
+sudo apt install resolvconf
 sudo systemctl enable --now resolvconf.service
 ```
 
 Then, edit /etc/resolvconf/resolv.conf.d/head and insert the nameservers youu want as:
 ```
-nameserver 8.8.8.8 
+nameserver 8.8.8.8
 nameserver 8.8.4.4
 ```
 
 Finally, to update /etc/resolv.conf by typing: `sudo resolvconf -u`
 
-The /etc/resolv.conf file will be replaced by a symbolic link to /etc/resolvconf/run/resolv.conf, so that the system resolver will use this file instead of the previously symlinked /run/systemd/resolve/stub-resolv.conf. 
+The /etc/resolv.conf file will be replaced by a symbolic link to /etc/resolvconf/run/resolv.conf, so that the system resolver will use this file instead of the previously symlinked /run/systemd/resolve/stub-resolv.conf.
 
 ### Static Hostnames
 
