@@ -12,7 +12,7 @@ To attempt to reload the service without interrupting normal functionality, we c
 
 To enable a service to start automatically at boot, type: `sudo systemctl enable <unit>.service`
 
-This will create a symbolic link from the system’s copy of the service file (usually in /lib/systemd/system or /etc/systemd/system) into the location on disk where systemd looks for autostart files (usually `/etc/systemd/system/some_target.target.wants`). 
+This will create a symbolic link from the system’s copy of the service file (usually in /lib/systemd/system or /etc/systemd/system) into the location on disk where systemd looks for autostart files (usually `/etc/systemd/system/some_target.target.wants`).
 
 > Note: To enable and start a service, use: `sudo systemctl enable --now <unit>.service`
 
@@ -32,7 +32,7 @@ To see only active service units, we can use: `systemctl list-units --type=servi
 
 To show whether the unit is active, information about the process, and the latest journal entries: `systemctl status <unit>.service`
 
-A unit file contains the parameters that systemd uses to manage and run a unit. To see the full contents of a unit file, type:
+A unit file contains the parameters that systemd uses to manage and run a unit. To see the full contents of a unit file (and the ovverriding files, if any), type:
 `systemctl cat <unit>.service`
 
 To see the dependency tree of a unit (which units systemd will attempt to activate when starting the unit), type:
@@ -49,7 +49,7 @@ To add a unit file snippet, which can be used to append or override settings in 
 
 This will be a blank file that can be used to override or add directives to the unit definition. A directory will be created within the `/etc/systemd/system` directory which contains the name of the unit with `.d` appended. For instance, for the `nginx.service`, a directory called `nginx.service.d` will be created. Within this directory, a snippet will be created called override.conf. When the unit is loaded, systemd will, in memory, merge the override snippet with the full unit file. The snippet’s directives will take precedence over those found in the original unit file (usually found somewhere in `/lib/systemd/system`).
 
-If you prefer to modify the entire content of the unit file instead of creating a snippet, pass the --full flag:
+If you prefer to modify the entire content of the unit file instead of creating a snippet, pass the `--full` flag:
 `sudo systemctl edit --full <unit>.service`
 
 After modifying a unit file, you should reload the systemd process itself to pick up your changes:
