@@ -192,7 +192,7 @@ The configuration can then be applied using the netplan command: `sudo netplan a
 
 In case you see any error, try debugging to investigate the problem. To run debug, use the following command as sudo: `sudo netplan –d apply`
 
-To ensure that whether our machine is managing by “systemd-networkd”, all we have to do is using this command:
+To ensure that whether our machine is managed by “systemd-networkd”, all you have to do is using this command:
 ```
 networkctl
 #in case of success, you should see a something like this:
@@ -374,7 +374,7 @@ network:
 
 Now apply the configuration to enable the bridge: `sudo netplan apply`
 
-The new bridge interface should now be up and running. The `brctl` command provides useful information about the state of the bridge, controls which interfaces are part of the bridge, etc.
+The new bridge interface should now be up and running. The `brctl` command can provide useful information about the state of the bridge: `sudo brctl show`
 
 ---
 

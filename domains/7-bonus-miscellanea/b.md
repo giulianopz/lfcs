@@ -63,6 +63,28 @@ Merge branch 'gh-pages'
 ```
 In this situation, `git revert 8f937c6 -m 1` will get you the tree as it was in `8989ee0`, and `git revert -m 2` will reinstate the tree as it was in `7c6b236`.
 
+Reverting a revert commit may seem unlikely, but it's actually common when you need for example to create a PR of a feature branch which was merged but then reverted:
+```
+# fix your code in the feature branch
+$ git commit -m "fixed issues in feature-branch'
+
+# create a new branch tracking the target branch of the PR (e.g. develop)
+$ git checkout -b revert-the-revert-branch -t develop
+
+# revert the reversion commit by its hash
+# you can find find it by inspecting the changelog
+# e.g.: 'git log | grep -C5 revert | head'
+$ git revert <revert-commit-hash>
+
+# checkout the original feature branch
+$ git checkout feature-branch
+
+# merge the revert branch into it
+$ git merge revert-the-revert-branch
+
+# resolve the eventual conflicts, commit and recreate the PR
+```
+
 To throw away not yet pushed changes in your working directory, use instead:
 `git reset [--soft | --mixed | --hard ] [<commit>]`
 
