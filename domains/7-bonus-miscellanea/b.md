@@ -48,7 +48,9 @@ Show all configuration settings and their location: `git config --show-origin --
 Undo an already pushed commit recording a new commit: `git revert [<commit>]`
 
 Note that it only reverts that specific commit and not commits after that. If you want to revert a range of commits, you can do it like this:
-`git revert [<oldest_commit_hash>]..[<latest_commit_hash>]`
+`git revert [<oldest_commit_hash>]^..[<latest_commit_hash>]`
+
+> Note: The `^` in the previous command is required as the first end of the interval is not inclusive.
 
 To undo a pushed merge: `git revert -m 1 [<merge-commit-hash>]`
 
