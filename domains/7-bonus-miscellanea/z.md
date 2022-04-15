@@ -12,11 +12,11 @@
 
 6. Bash allows you to ignore history entries that begin with a space if you set the `HISTCONTROL` variable to `ignorespace`. Type a space before a command before running it in the bash shell and the command will run normally, but won’t appear in your history if you have this variable enabled. This allows you to keep your history a bit cleaner, choosing to run commands without them appearing in your history. Bash also allows you to ignore duplicate commands that can clutter your history. To do so, set `HISTCONTROL` to `ignoredups`. To use both the ignorespace and ignoredups feature, set the `HISTCONTROL` variable to `ignoreboth`.
 
-7. Always check if a piece of hardware is compatible with Linux, before buying it. For printers, have a look at this [list](https://haydenjames.io/finding-linux-compatible-printers/) or che the [OpenPrinting](https://www.openprinting.org/printers/) database.
+7. Always check if a piece of hardware is compatible with Linux, before buying it. For printers, have a look at this [list](https://haydenjames.io/finding-linux-compatible-printers/) or che the [OpenPrinting](https://www.openprinting.org/printers/) database. A recent project which aims  help people to collaboratively debug hardware related issues, check for Linux-compatibility and find drivers is [Hardware for Linux](https://linux-hardware.org/).
 
 8. [More on Using Bash's Built-in /dev/tcp File (TCP/IP)](https://www.linuxjournal.com/content/more-using-bashs-built-devtcp-file-tcpip).
 
-9. Find out neighbours in your local network: `sudo nmap -sn 192.168.1.0/24`
+9.  Find out neighbours in your local network: `sudo nmap -sn 192.168.1.0/24`
 
 10. [Learn the networking basics every sysadmin needs to know](https://www.redhat.com/sysadmin/sysadmin-essentials-networking-basics)
 
