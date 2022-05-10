@@ -105,4 +105,4 @@
 - [ ] v. GPG & SSH keys
 - [ ] j. How to use Linux's built-in USB attack protection
 - [ ] k. Repair a usb drive
-- [ ] l. How to handle dynamic and static libraries in Linux https://opensource.com/article/20/6/linux-libraries
+- [ ] l. How to handle dynamic and static libraries in Linux
