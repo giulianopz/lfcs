@@ -1,29 +1,22 @@
-## Repair the GRUB from live CD or USB stick 
+## vi(m)
 
-1. Insert the bootable device and boot into *Try Ubuntu* mode
+### Minimal Configuration
 
-2. Find out you root partition by typing: `sudo fdisk -l` or `sudo blkid`
+Type the following lines into `~/.vimrc`:
+```
+set nocompatible    # make vim not campatible with vi
+filetype off        # disable file type detection
+set hlsearch        # highlight all search results
+set ignorecase      # do case insensitive search 
+set incsearch       # show incremental search results as you type
+set number          # display line number
+set noswapfile      # disable swap file
+```
 
-3. Mount you main partition: `sudo mount [/dev/sda2] /mnt`
+I found the first two lines necessary to solve the common [problem](https://vim.fandom.com/wiki/Fix_arrow_keys_that_display_A_B_C_D_on_remote_shell) with arrow keys misinterpreted as A, B, C, D.
 
-> Note: If you have separate partitions for /boo, /var and /usr, repeat steps 2 and 3 to mount them to /mnt/boot, /mnt/var and /mnt/usr respectively 
+More on vim:
 
-4. Bind-mount pseudo-filesystems: `for i in /sys /proc /run /dev; do sudo mount --bind "$i" "/mnt/"$i"; done`
-
-> Note: A **bind mount** is an alternate view of a directory tree. Classically, mounting creates a view of a storage device as a directory tree. A bind mount instead takes an existing directory tree and replicates it under a different point. The directories and files in the bind mount are the same as the original.
-
-5. If Ubuntu was installed in EFI mode, use `sudo fdisk -l | grep -i efi` to find your EFI partition and then mount it: `sudo mount [/dev/sda1] /mnt/boot/efi`
-
-6. `sudo chroot /mnt`
-
-7. `update-grub`
-
-If this doesnt't fix the GRUB, go on:
-
-8. `grub-install /dev/sda; update-grub`
-
-9. I fthe EFI partition ha changed, you may need to update it in /etc/fstab accordingly
-
-10. `sudo reboot`
-
-11. At this point, you should be able to boot normally (remember to unplug the bootable media).
+1. [interactive Vim tutorial](https://www.openvim.com/)
+2. [Learn Vim (the Smart Way)](https://github.com/iggredible/Learn-Vim)
+3. [Vim tips & tricks](https://www.cs.swarthmore.edu/oldhelp/vim/home.html)

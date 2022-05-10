@@ -1,305 +1,323 @@
-## git
+## bash
 
-## General
+Variables have a dual nature since eache variable is also an array.
 
-Initialize a directory as a git repository hosted on GitHub:
+To define a variable, simply: `foo=42`
+
+To reference the value of a variable: `echo $foo`
+
+To remove a variable= `unset foo`
+
+To assign a value which contains spaces, quote it: `foo="x j z"`
+
+Since every variable is an array, the variable itself is an implicit reference to the first index (0), so:
 ```
-touch README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/{user-name}/{repository-name}.git
-git push -u origin main
-```
-
-Create a minimal configuration for git in your `~/.gitconfig`:
-```
-[user]
-    name = [username]
-    email = [email-address]
-
-# choose a difftool
-[diff]
-    guitool = meld
-
-[difftool "meld"]
-    cmd = meld \"$REMOTE\" \"$LOCAL\" --label \"DIFF (ORIGINAL MY)\"
-
-# choose a mergetool
-[merge]
-    tool = meld
-
-[mergetool "meld"]
-    cmd = meld \"$LOCAL\" \"$MERGED\" \"$REMOTE\" --output \"$MERGED\"
-
-# store your credentials in a plain-text file
-[credential]
-        helper = store --file ~/.gitcredentials
-
-# choose a default editor
-[core]
-        editor = vi
+echo $foo
+# equals to
+echo ${foo[0]}
 ```
 
-Show all configuration settings and their location: `git config --show-origin --list`
+> Note: Wrap the variable into curly braces for variable/array manipulation.
 
-## Undo
-
-Undo an already pushed commit recording a new commit: `git revert [<commit>]`
-
-Note that it only reverts that specific commit and not commits after that. If you want to revert a range of commits, you can do it like this:
-`git revert [<oldest_commit_hash>]^..[<latest_commit_hash>]`
-
-> Note: The `^` in the previous command is required as the first end of the interval is not inclusive.
-
-To undo a pushed merge: `git revert -m 1 [<merge-commit-hash>]`
-
-The `-m 1` option tells Git that we want to keep the left side of the merge (which is the branch we had merged into). When you view a merge commit in the output of git log, you will see its parents listed on the line that begins with Merge:
+You can declare an array with explicitly or with parenthes:
 ```
-commit 8f937c683929b08379097828c8a04350b9b8e183
-Merge: 8989ee0 7c6b236
-Author: Ben James <ben@example.com>
-Date:   Wed Aug 17 22:49:41 2011 +0100
-
-Merge branch 'gh-pages'
-```
-In this situation, `git revert 8f937c6 -m 1` will get you the tree as it was in `8989ee0`, and `git revert -m 2` will reinstate the tree as it was in `7c6b236`.
-
-Reverting a revert commit may seem unlikely, but it's actually common when you need for example to create a PR of a feature branch which was merged but then reverted:
-```
-# fix your code in the feature branch
-$ git commit -m "fixed issues in feature-branch'
-
-# create a new branch tracking the target branch of the PR (e.g. develop)
-$ git checkout -b revert-the-revert-branch -t develop
-
-# revert the reversion commit by its hash
-# you can find find it by inspecting the changelog
-# e.g.: 'git log | grep -C5 revert | head'
-$ git revert <revert-commit-hash>
-
-# checkout the original feature branch
-$ git checkout feature-branch
-
-# merge the revert branch into it
-$ git merge revert-the-revert-branch
-
-# resolve the eventual conflicts, commit and recreate the PR
+declare -a array_name
+array_name[index_1]=value_1
+array_name[index_2]=value_2
+array_name[index_n]=value_n
+# or
+array_name=(value_1, value_2, value_n)
 ```
 
-To throw away not yet pushed changes in your working directory, use instead:
-`git reset [--soft | --mixed | --hard ] [<commit>]`
-
-![reset-ops-visually-exaplained](https://i.stack.imgur.com/qRAte.jpg)
-
-Typically, to discard all recent changes resetting the HEAD to the previous commit: `git reset --hard HEAD^`
-
-Alternatively, to reset the current local branch to a particular point in time:
-`git reset --hard master@{"10 minutes ago"}`
-
-Remove a file from the staging area: `git restore --staged [<filepath>]`
-
-Undo modifications on the working tree (restore files from latest commited version): `git checkout -- index.html`
-
-Restore file from a custom commit (in current branch): `git checkout 6eb715d -- index.html`
-
-Remove files from the working tree and the index: `git rm index.html`
-
-Remove file only from the index: `git rm --cached index.html`
-
-If you have inadvertently pushed sensitive data or something else that you regret, you can clean up those files with [BFG](https://rtyley.github.io/bfg-repo-cleaner/), a faster alternative to `git-filter-branch`.
-
-## Branch
-
-Show all branches (including the remote ones): `git branch -l -a`
-
-Create and switch to a new branch:`git checkout -b [branchname]`
-
-Move to branch: `git checkout [branchname]`
-
-Checkout to new branch tracking a remote one: `git checkout --track origin/[branchname]`
-
-Rename branch: `git branch -m [branchname] [new-branchname]`
-
-Delete merged branch (only possible if not HEAD): `git branch -d [branch-to-delete]`
-
-Delete not merged branch: `git branch -D [branch-to-delete]`
-
-Delete remote branch: `git push origin --delete [branch-to-delete]`
-
-List branches merged into the HEAD (i.e. tip of current branch): `git branch --merged [branchname]`
-
-List branches that have not been merged:`git branch --no-merged [branchname]`
-
-> Note: By default this applies to only the local branches. The `-a` flag will show both local and remote branches, and the `-r` flag shows only the remote branches.
-
-Return to the previous branch (just as `cd -`): `git checkout -`
-
-## Merge
-
-Merge `branchname` into the cuurent branch: `git merge [branchname]`
-
-Stop merge (in case of conflicts): `git merge --abort`
-
-Merge only one specific commit: `git cherry-pick [073791e7]`
-
-Review the recent history interactively choosing if deleting some of the latest commits: `git rebase -i HEAD~[N]`
-
-## Stash
-
-Show stash history: `git stash list`
-
-Put a specific file into the stash: `git stash push -m ["welcome_cart"] [app/views/cart/welcome.html]`
-
-View the content of the most recent stash commit: `git stash show -p`
-
-View the content of an arbitrary stash: `git stash show -p stash@{1}`
-
-Extract a single file from a stash commit:
+To access all elements in an array:
 ```
-git show stash@{0}:[full filename]  >  [newfile]
-git show stash@{0}:[./relative filename] > [newfile]
+echo ${array[@]}
+# or
+echo ${array[*]}
 ```
 
-Apply this stash commit on top of the working tree and remove it from the stash: `git stash pop stash@{0}`
+To copy an array: `copy=("${array[@]}")`
 
-Apply this stash commit on top of the working tree but do not remove it: `git stash apply stash@{0}`
+> Note: double quotes are needed for values conaining white spaces.
 
-Delete custom stash item: `git stash drop stash@{0}`
-
-Delete complete stash: `git stash clear`
-
-## Log
-
-Show commit logs: `git log`
-
-> Note: git log shows the current `HEAD` and its ancestry. That is, it prints the commit `HEAD` points to, then its parent, its parent, and so on. It traverses back through the repo's ancestry, by recursively looking up each commit's parent. `git reflog `doesn't traverse `HEAD`'s ancestry at all. The `reflog` is an ordered list of the commits that `HEAD` has pointed to: it's undo history for your repo. The reflog isn't part of the repo itself (it's stored separately to the commits themselves) and isn't included in pushes, fetches or clones: it's purely local. Aside: understanding `reflog` means you can't really lose data from your repo once it's been committed. If you accidentally reset to an older commit, or rebase wrongly, or any other operation that visually "removes" commits, you can use `reflog` to see where you were before and `git reset --hard` back to that ref to restore your previous state. Remember, refs imply not just the commit but the entire history behind it. ([source](https://stackoverflow.com/a/17860179/9109880))
-
-
-Show only custom commits:
+Special variables for grabbing arguments in functions and scripts:
 ```
-git log --author="Sven"
-git log --grep="Message"
-git log --until=2013-01-01
-git log --since=2013-01-01
+$0          # script or shell name
+$[1-9]      # print the nth arg (1 <= n <= 9)
+$#          # the number of args
+$@          # all args passed
+$*          # same, but with a subtle difference, see below
+$?          # exit status of the previously run command (if !=0, it's an error)
+$$          # PID of the current shell
+$!          # PID of the most recently backgrounded process
 ```
 
-Show stats and summary of commits: `git log --stat --summary`
+> Note: To know if you are in a subshell: `echo $SHLVL`
 
-Show history of commits as graph-summary: `git log --oneline --graph --all --decorate`
-
-A nice [trick](https://stackoverflow.com/a/9074343/9109880) is to add some aliases in your `~/.gitconfig` for using `git log` with a good combination of options, like:
+bash can operate on the value of a variable while deferencing that same variable:
 ```
-[alias]
-lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-lg = !"git lg1"
+foo="I'm a cat"
+echo ${foo/cat/dog}
 ```
 
-Followh the commit history of a single file: `git log --oneline -M --stat --follow -- src/somefile.ts`
+To replace all instances of a string: `echo ${foo//cat/dog}`
 
-## Compare
+> Note: a replacement operation does not modify the value of the variable.
 
-See lastest changes in a file: `git diff [filename]`
+To delete a substring: `echo ${foo/cat}`
 
-Compare modified files and highlight changes only: `git diff --color-words [filename]`
-
-Compare modified files within the staging area: `git diff --staged [filename]`
-
-Compare branches showing differences line by line: `git diff [branch1]..[branch2]`
-
-> Note: This command combined with the two-dot operator will show you all the commits that “branch2” has that are not in “branch1”. While if used with three dots it will compare the top of the right branch with the common ancestor of the two branches (see [here](https://devconnected.com/how-to-compare-two-git-branches/)).
-
-Compare lines in a file bewtween two branches:
-`git diff [mybranch]..[master] -- [myfile.cs]`
-
-Get only the name of the files which are different in the two branches:
-`git diff –-name-only [mybranch]..[master]`
-
-To see the commit differences between two branches, use `git log` and specify the branches that you want to compare.
-`git log [branch1]..[branch2]`
-
-> Note: This won’t show you the actual file differences between the two branches but only the commits.
-
-Compare commits:
+`#` and `##` remove the shortest and longest prefix of a variable matching a certain pattern:
 ```
-git diff 6eb715d
-git diff 6eb715d..HEAD
-git diff 6eb715d..537a09f
+path="/usr/bin:/bin:/sbin"
+echo ${path#/usr}           # prints out "/bin:/bin:/sbin"
+echo ${path#*/bin}          # prints out ":/bin:/sbin"
+echo ${path##*/bin}         # prints out ":/sbin"
+
 ```
 
-Compare commits of file:
-```
-git diff 6eb715d [filename]
-git diff 6eb715d..537a09f [filename]
-```
+Similarly, `%` is used for suffuxes.
 
-Compare without caring about whitespaces:
+bash operators operate on both strings and array, so avoid common mistakes such as:
 ```
-git diff -b 6eb715d..HEAD
-git diff --ignore-space-change 6eb715d..HEAD
+echo ${#array}          # wrong: prints out the length of the first element of the array (chars in a string)
+echo ${#array[@]}       # right: prints out the size of the array
 ```
 
-This ignores differences even if one line has whitespace where the other line has none:
+To slice strings and arrays:
 ```
-git diff -w 6eb715d..HEAD
-git diff --ignore-all-space 6eb715d..HEAD
+echo ${string:6:3}          # the first num is the start index, the second one is the size of slice
+echo ${array[@]:3:2}
 ```
 
-Show what revision and author last modified each line of a file: `git blame -L10,+1 [filename]`
+Existence testing operators:
+```
+echo ${username-defualt}        # prints "default" if username var in unset
+echo ${username:-defualt}       # checks both for existence and emptiness
+echo ${unsetvar:=resetvar}      # like "-", but sets the var if it doesn't have a value
+echo ${foo+42}                  # prints "42" if foo is set
+echo ${foo?failure: no args}    # crashes the program with the given message, if the var is unset
+```
 
-## Collaborate
+`!` operator is used for **indirect lookup** or (indirect reference):
+```
+foo=bar
+bar=42
+echo ${!foo}        # print $bar, that is "42"
+```
 
-Get everything ready to commit: `git add .`
+similarly, with arrays:
+```
+letters=(a b c d e)
+char=letters[1]
+echo ${!char}       # prints "b"
+```
 
-Get custom file ready to commit: `git add index.html`
+As to string declaration, you can use:
 
-Commit changes: `git commit -m "Message"`
+- single quotes (`'`) for literal strings
+- double quotes (`"`) for interpolated strings
 
-Commit changes with title and description: `git commit -m "Title" -m "Description..."`
+Mathematical expressions can be declared as follows:
+```
+echo $((3 + 3))
+# or
+((x = 3 + 3)); echo $x
+```
 
-Add and commit in one step: `git commit -a -m "Message"`
+To explicitly declare an integer variable:
+```
+declare -i number
+number=2+4*10
+```
 
-Update most recent unpushed commit message: `git commit --amend -m "New Message"`
+To dump textual content directly into stdin:
+```
+# a file
+grep [pattern] < myfile.txt
+# a string
+grep [pattern] <<< "this is a string"
+# a here-document
+grep [pattern] <<EOF
+first line
+second line
+etc
+EOF
+```
 
-Fetch all changes from the remote and remove deleted branches: `git fetch -a -p`
+The notation `M>&N` redirects the output of channel M to channel N, e.g. to redirect stderr to stdout: `2>&1`
 
-Push to a branch and set it as the default upstream: `git push -u origin [master]`
+> Note: in bash, `&>` equals to `2>&1`.
 
-Pull a specific branch: `git pull origin [branchname]`
+> Note: `>` is the same as `1>`.
 
-Clone: `git clone https://github.com/user/project.git`
+To learn more about redirections, look [here](../1-essential-commands/e.md).
 
-Clone to local folder:
-`git clone https://github.com/user/project.git ~/dir/folder`
+Capturing stdout can be accomplished as:
+```
+echo `date`
+# or
+echo $(date)
+```
 
-Resolve conflicts after attempted merge by means of a mergetool (see the config file above in the 'General' section): `git mergetool`
+**Process substitution** involves expanding output of a command into a temporary file which can be read from a command which expects a file to be passed:
+```
+cat <(uptime)
+# which works as
+uptime | cat
+```
 
-## Ignore
+`wait` command waits for a PID's associated process to terminate, but without a PID it waits for all child processes to finish (e.g, it can be used after multiple processes are launched in a for loop):
+```
+time-consuming-command &
+pid=$!
+wait $pid
+echo Process $pid finished!
 
-Add a `.gitignore` file at the root of the repository to instruct git to not track specific file types or filepaths: `vi .gitignore`
+for f in *.jpg
+do
+  convert $f ${f%.jpg}.png &
+done
+wait
+echo All images have been converted!
+```
 
-You can create your own file from an online template generator: https://www.toptal.com/developers/gitignore
+**Glob patterns** are automatically expanded to an array of matching strings:
 
-To check what gitignore rule is causing a particular path to be ignored, run git check-ignore:
-`git check-ignore -v [path/to/check]`
+- `*`, any string
+- `?`, a single char
+- `[aGfz]`, any char between square brackets
+- `[a-d]`, any char between `a` and `d`
 
+**Brace expansion** is used to expand elements inside curly braces into a set or sequence:
+```
+mkdir /opt/{zotero, skype, office}
+# or
+echo {0..10}
+```
 
-## Archive
+### Control Structures
 
-Create a zip-archive: `git archive --format zip --output filename.zip master`
+Conditions are expressed as a command (such as `test`) whose exit status is mapped to true/false (0/non-zero):
+```
+if http -k start
+then
+  echo OK
+else
+  echo KO
+fi
+# or
 
-## Security
+if [ "$1" = "-v" ]
+then
+  echo "switching to verbose output"
+fi
+```
 
-To encrypt your private data inside a git repo: https://git-secret.io/
+> Note: An alternative syntax for `test [args]` is `[args]`.
 
-## Large File Storage
+> Tip: Double brackets are safer than single brackets:
+  ```
+  [ $a = $b ]         # will fail if one of the two variables is empty or contains a whitespace
+  [ "$a" = "$b" ]     # you have to double-quote them to avoid this problem
+  [[ $a = $b ]]       # this instead won't fail
+  ```
+> Tip: Additionally, double brackets support:
+  ```
+  [[ $a = ?at ]]      # glob patterns
+  [[ $a < $b ]]       # lexicographical comparison
+  [[ $a =~ ^.at ]]    # regex patterns with the operator "=~"
+  ```
+  To learn more, look [here](https://scriptingosx.com/2018/02/single-brackets-vs-double-brackets/).
 
-To version large files (.wav, .pdf, etc) in a git repository: https://git-lfs.github.com/ (it's not free)
+Iterations are declared as follows.
+```
+while [command]; do [command]; done
+# or
+for [var] in [array]; do [command]; done
+```
 
-### Resources to learn more:
+Subroutine (functions) act almost like a separate script. They can see and modify variable defined in the outer scope:
+```
+funcion <name> {
+  # commands
+}
 
-1. [Learn Git Branching](https://learngitbranching.js.org/)
-2. [Pro Git](https://git-scm.com/book/en/v2)
-3. [Oh Shit, Git!?!](https://ohshitgit.com/)
-4. [Git Cheatsheet](https://gist.github.com/hofmannsven/6814451)
+# or
+
+<name> () {
+  # commands
+}
+```
+
+### Array syntax
+
+```
+arr=()                  # creates an empty array
+arr=(1 2 3)             # creates and initializes an array
+${arr[2]}               # retrieves the 3rd element
+${arr[@]}               # retrieves all element
+${!arr[@]}              # retrieves array indices
+${#arr[@]}              # get array size
+arr[0]=3                # overwrites first element
+arr+=(4)                # appends a value
+arr=($(ls))             # saves ls output as an array of filenames
+${arr[@]:s:n}           # retieves [n] elements starting at index [s]
+```
+
+> Note: Beware of array quirks  when using `@` vs. `*`:
+  - `*` combines all args into a single string, while `@` requotes the individual args
+  - if the var IFS (internal field separator) is set, then elements in `$*` are separated by this deimiter value.
+
+### Test flag operators
+
+```
+# boolean conditions
+-a      # &&
+-o      # ||
+
+# integer comparison
+-eq     # "equals to"
+-ne     # "not equal"
+-gt     # >
+-ge     # >=
+-lt     # <
+-le     # <=
+
+# string comparison
+=
+==      # the pattern is literla if within double brackets and variables/string are within double quotes
+!=
+<       # alphabetical order
+>       # must be escaped if within single brackets, e.g. "\>"
+-z      # string is null
+-n      # string is not null
+
+# file test
+
+-e      # file exists
+-f      # file is a regular file
+-d      # is a directory
+-h/-L   # is a symlink
+-s      # is not zero-size
+-r      # has read permissions
+-w      # has write permissions
+-x      # has execute permissions
+-u      # SUDI bit is active
+-g      # SGID bit is active
+-k      # sticky bit is active
+-nt/ot  # is newer/older than
+```
+
+To create a simple [script](https://www.linux.com/training-tutorials/writing-simple-bash-script/):
+
+  1. put a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) at the very first line: `#!/bin/bash`
+  2. write your stuff afterwards
+  3. execute the script from its path or sourcing it
+
+> Note: When you execute the script you are opening a new shell, type the commands in the new shell, copy the output back to your current shell, then close the new shell. Any changes to environment will take effect only in the new shell and will be lost once the new shell is closed. When you source the script you are typing the commands in your current shell. Any changes to the environment will take effect and stay in your current shell.
+
+---
+
+This refresher is mostly based on a nice [guide](http://matt.might.net/articles/bash-by-example/) written by Matt Might.
+
+You can find [here](https://github.com/dylanaraps/pure-bash-bible) a huge collection of bash gems.

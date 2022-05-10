@@ -83,25 +83,26 @@
 
 ## 7. Bonus/Miscellanea - 0%
 
-- [x] a. [bash](7-bonus-miscellanea/a.md)
-- [x] b. [git](7-bonus-miscellanea/b.md)
-- [ ] c. vi(m)
-- [x] d. [Repair the GRUB from live CD or USB stick](7-bonus-miscellanea/d.md)
-- [x] e. [Install a CA certificate](7-bonus-miscellanea/e.md)
-- [x] f. [Create a self-signed SSL certificate for Apache web server](7-bonus-miscellanea/f.md)
-- [x] g. [Debugging TLS handshake issues](7-bonus-miscellanea/g.md)
-- [ ] h. Chroot jails
-- [ ] i. Disable ssh-login as root via PAM
-- [ ] l. GNU Autotools
-- [ ] m. Manage your dotfiles with GNU stow
-- [x] n. [DNS essentials](7-bonus-miscellanea/n.md)
-- [x] o. [Network-Manager](7-bonus-miscellanea/o.md)
-- [x] p. [SSH-tunneling](7-bonus-miscellanea/p.md)
-- [ ] q. Troubleshooting networks
-- [ ] r. tmux
-- [ ] s. Alpine e-mail setup
-- [ ] t. How to fix Nvidia graphics card problems
-- [ ] u. GPG & SSH keys
-- [ ] v. How to use Linux's built-in USB attack protection
-- [ ] z. [Tips & tricks](7-bonus-miscellanea/z.md)
-- [ ] j. Repair a usb drive: https://www.maketecheasier.com/repair-corrupted-usb-drive-linux/
+- [ ] a. [Tips & tricks](7-bonus-miscellanea/z.md)
+- [x] b. [bash](7-bonus-miscellanea/a.md)
+- [x] c. [git](7-bonus-miscellanea/b.md)
+- [ ] d. vi(m)
+- [x] e. [Repair the GRUB from live CD or USB stick](7-bonus-miscellanea/d.md)
+- [x] f. [Install a CA certificate](7-bonus-miscellanea/e.md)
+- [x] g. [Create a self-signed SSL certificate for Apache web server](7-bonus-miscellanea/f.md)
+- [x] h. [Debugging TLS handshake issues](7-bonus-miscellanea/g.md)
+- [ ] i. Chroot jails
+- [ ] l. Disable ssh-login as root via PAM
+- [ ] m. GNU Autotools
+- [ ] n. Manage your dotfiles with GNU stow
+- [x] o. [DNS essentials](7-bonus-miscellanea/n.md)
+- [x] p. [Network-Manager](7-bonus-miscellanea/o.md)
+- [x] q. [SSH-tunneling](7-bonus-miscellanea/p.md)
+- [ ] r. Troubleshooting networks
+- [ ] s. tmux
+- [ ] t. Alpine e-mail setup
+- [ ] u. How to fix Nvidia graphics card problems
+- [ ] v. GPG & SSH keys
+- [ ] j. How to use Linux's built-in USB attack protection
+- [ ] k. Repair a usb drive
+- [ ] l. How to handle dynamic and static libraries in Linux https://opensource.com/article/20/6/linux-libraries

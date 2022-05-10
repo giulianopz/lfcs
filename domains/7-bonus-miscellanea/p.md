@@ -1,39 +1,27 @@
-## SSH-tunneling
+## Network-Manager
 
-SSH-tunneling (or port forwarding, PF) is a method for creating an encrypted SSH connection between a client and a server machine through which services port can be relayed. There are three types of SSH-tunneling:
+The point of **NetworkManager** is to make networking configuration and setup as painless and automatic as possible. If using DHCP, NetworkManager is intended to replace default routes, obtain IP addresses from a DHCP server and change nameservers whenever it sees fit. In effect, the goal of NetworkManager is to make networking Just Work.
 
-- local (LPF), allows you to forward a port on the local (ssh client) machine to a port on the remote (ssh server) machine, which is then forwarded to a port on the destination machine, and is mostly used to connect to a service (e.g. a database) available on an internal network
-- remote (RPF), allows you to forward a port on the remote (ssh server) machine to a port on the local (ssh client) machine, which is then forwarded to a port on the destination machine, and is often used to give access to an internal service to someone from the outside (e.g. to show a preview of a webappp hosted on your local machine to your colleague)
-- dynamic (DPF), allows you to create a socket on the local (ssh client) machine, which acts as a SOCKS proxy server.
+The computer should use the wired network connection when it's plugged in, but automatically switch to a wireless connection when the user unplugs it and walks away from the desk. Likewise, when the user plugs the computer back in, the computer should switch back to the wired connection. The user should, most times, not even notice that their connection has been managed for them; they should simply see uninterrupted network connectivity. 
 
-### LPF
+NetworkManager is composed of two layers:
 
-To create a LPF:
+- a daemon running as root: `network-manager`.
+- a front-end: `nmcli` and `nmtui` (enclosed in package network-manager), `nm-tray`, `network-manager-gnome` (`nm-applet`), `plasma-nm`. 
+
+Start network manager: `sudo systemctl start network-manager`
+
+Enable starting the network manager when the system boots: `sudo systemctl enable network-manager`
+
+Depending on the Netplan backend in use (desktop or server:
+`sudo systemctl [start|restart|stop|status] [network-manager|system-networkd]`
+
+Use `nmcli` to manage the former, and `networkctl` for the latter.
+
+Establish a wifi connection:
 ```
-ssh -L [local-ip:]local-port:destination-ip:destination-port [user@]ssh-server
-# if local-ip is omitted, it defaults to localhost
-
-# e.g
-ssh -L 3336:db-hostname:3336 user@intermediate-host
-
-# but if the destination host is the same as the ssh server used to access it, simply
-ssh -L 3336:localhost:3336 -N -f user@db-hostname
+nmcli d                                           # determine the name of the wifi interface
+nmcli r wifi on                                   # make sure wifi radio is on
+nmcli d wifi list                                 # list available wifi connections
+nmcli d wifi connect <some-wifi> password <pwd>   # connect to an access point
 ```
-
-> Note: `-f` is to run the remote connection in the background, `-N` to not execute a remote command.
-
-> Note: Make sure 'AllowTcpForwarding' is **not** set to 'no' in the remote ssh server configuration.
-
-### RPF
-
-To create a RPF:
-```
-ssh -R [remote-ip:]remote-port:dest-ip:dest-port [user@]ssh-server
-
-# e.g.
-ssh -R 8080:localhost:3000 -N -f user@ssh-server-ip
-```
-
-The ssh server will listen on 8080, tunneling all traffic from this port to your local port 3000, so that your colleagues can access your webapp at ssh-server-ip:8080.
-
-> Note: Make sure 'GatewayPorts' is set to 'yes' in the remote ssh server configuration.
