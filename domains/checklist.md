@@ -92,7 +92,7 @@
 - [x] g. [Create a self-signed SSL certificate for Apache web server](7-bonus-miscellanea/f.md)
 - [x] h. [Debugging TLS handshake issues](7-bonus-miscellanea/h.md)
 - [ ] i. Chroot jails
-[ ] j. How to use Linux's built-in USB attack protection
+- [ ] j. How to use Linux's built-in USB attack protection
 - [ ] k. Repair a usb drive
 - [ ] l. Disable ssh-login as root via PAM
 - [ ] m. GNU Autotools
