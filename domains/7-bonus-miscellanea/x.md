@@ -1,6 +1,6 @@
-## Fix corrupted text
+## Debugging corrupted character encoding issues
 
-It may happen that you see corrupted text. Maybe your application (the client) sees a JSON request with some corrupted chars because it is using a different character encoding (UTF-8 vs. ISO-8859-1) than the server it is communicating with.
+It may happen that you see corrupted text: scrambled, garbled, or displayed as "garbage" characters. Let's say your application (the client) receives a JSON request with some corrupted chars. For example, it could use a different character encoding (UTF-8 vs. ISO-8859-1) than the server it is communicating with.
 
 Let's say you have produced a [hex dump]((https://www.suse.com/c/making-sense-hexdump/)) (e.g. with `xdd FILE`) of such request to debug the issue:
 ```
