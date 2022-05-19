@@ -106,4 +106,4 @@
 - [ ] u. How to fix Nvidia graphics card problems
 - [ ] v. GPG & SSH keys
 - [ ] w. How to handle dynamic and static libraries in Linux
-- [ ] x. [Debugging corrupted character encoding issues](7-bonus-miscellanea/x.md)
+- [x] x. [Debugging corrupted character encoding issues](7-bonus-miscellanea/x.md)
