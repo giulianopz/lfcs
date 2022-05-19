@@ -92,6 +92,8 @@
 - [x] g. [Create a self-signed SSL certificate for Apache web server](7-bonus-miscellanea/f.md)
 - [x] h. [Debugging TLS handshake issues](7-bonus-miscellanea/g.md)
 - [ ] i. Chroot jails
+[ ] j. How to use Linux's built-in USB attack protection
+- [ ] k. Repair a usb drive
 - [ ] l. Disable ssh-login as root via PAM
 - [ ] m. GNU Autotools
 - [ ] n. Manage your dotfiles with GNU stow
@@ -103,6 +105,5 @@
 - [ ] t. Alpine e-mail setup
 - [ ] u. How to fix Nvidia graphics card problems
 - [ ] v. GPG & SSH keys
-- [ ] j. How to use Linux's built-in USB attack protection
-- [ ] k. Repair a usb drive
-- [ ] l. How to handle dynamic and static libraries in Linux
+- [ ] w. How to handle dynamic and static libraries in Linux
+- [ ] x. Fix corrupted text
