@@ -31,3 +31,7 @@ You can read correctly the corrupted char by executing:
 ```
 
 Please, note now the a with tilde in `juã_rez` correctly encoded.
+
+This conversion is possible because UTF-8 (which is multi-byte) is capable of encoding any Unicode code points, while ISO-8859-1 (which is single-byte) can handle only a subset of them. So, transcoding from ISO-8859-1 to UTF-8 is not a problem. Instead, going backwards from UTF-8 to ISO-8859-1 will cause replacement characters (e.g. �) to appear in the text when unsupported characters are found.
+
+Debugging this kind of issues can be tricky: make sure you know at least the absolute minimum about [character encoding](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/).
