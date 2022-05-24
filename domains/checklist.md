@@ -107,3 +107,4 @@
 - [ ] v. GPG & SSH keys
 - [ ] w. How to handle dynamic and static libraries in Linux
 - [x] x. [Debugging corrupted character encoding issues](7-bonus-miscellanea/x.md)
+- [x] y. [How to test the microphone](7-bonus-miscellanea/y.md)
