@@ -108,3 +108,4 @@
 - [ ] w. How to handle dynamic and static libraries in Linux
 - [x] x. [Debugging corrupted character encoding issues](7-bonus-miscellanea/x.md)
 - [x] y. [How to test the microphone](7-bonus-miscellanea/y.md)
+- [x] z. [Automate Login via SSH](7-bonus-miscellanea/z.md)
