@@ -95,7 +95,7 @@
 - [ ] j. How to use Linux's built-in USB attack protection
 - [ ] k. Repair a usb drive
 - [ ] l. Disable ssh-login as root via PAM
-- [ ] m. GNU Autotools
+- [ ] m. Makefile & GNU Autotools  
 - [ ] n. Manage your dotfiles with GNU stow
 - [x] o. [DNS essentials](7-bonus-miscellanea/o.md)
 - [x] p. [Network-Manager](7-bonus-miscellanea/p.md)

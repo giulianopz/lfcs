@@ -33,3 +33,21 @@
     2.  [mess with dns](https://messwithdns.net/)
     3.  [a simple DNS lookup tool](https://dns-lookup.jvns.ca/)
     4.  [nginx](https://nginx-playground.wizardzines.com/)
+
+16. Capture (unencrypted) HTTP traffic on localhost with nc, e.g.:
+```
+# listen fon incoming communication on a specific port in a shell
+:~$ nc -l 8080
+# send a request to this port from another shell in your machine
+:~$ curl -X POST -H "Content-Type: application/json" -d '{"hello": "world"}' http://localhost:8080
+# return to the main shell to see the received request
+:~$ nc -l 8080
+POST / HTTP/1.1
+Host: localhost:8080
+User-Agent: curl/7.68.0
+Accept: */*
+Content-Type: application/json
+Content-Length: 18
+
+{"hello": "world"}
+```
