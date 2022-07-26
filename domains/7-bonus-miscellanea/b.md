@@ -312,12 +312,16 @@ To create a simple [script](https://www.linux.com/training-tutorials/writing-sim
 
   1. put a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) at the very first line: `#!/bin/bash`
   2. write your stuff afterwards
-  3. execute the script from its path or sourcing it
+  3. execute the script from its path (i.e `./script.sh`) or sourcing it (i.e. `source script.sh`)
 
-> Note: When you execute the script you are opening a new shell, type the commands in the new shell, copy the output back to your current shell, then close the new shell. Any changes to environment will take effect only in the new shell and will be lost once the new shell is closed. When you source the script you are typing the commands in your current shell. Any changes to the environment will take effect and stay in your current shell.
+> Note: When you execute the script you are opening a new shell, type the commands in the new shell, copy the output back to your current shell, then close the new shell. Any changes to environment will take effect only in the new shell and will be lost once the new shell is closed. When you `source` the script you are typing the commands in your current shell. Any changes to the environment will take effect and stay in your current shell.
 
+> Note: source is a synonym for dot operator (i.e. '.') in bash, but not in POSIX sh, so for maximum compatibility use the period: so, `source filename [arguments]` is just like `. filename [arguments]
+`
 ---
 
-This refresher is mostly based on a nice [guide](http://matt.might.net/articles/bash-by-example/) written by Matt Might.
+References and further reading:
 
-You can find [here](https://github.com/dylanaraps/pure-bash-bible) a huge collection of bash gems.
+- This refresher is mostly based on a nice [guide](http://matt.might.net/articles/bash-by-example/) written by Matt Might.
+- You can find [here](https://github.com/dylanaraps/pure-bash-bible) a huge collection of bash gems.
+- For the source vs dot operator, see [here](https://ss64.com/bash/source.html)
