@@ -285,7 +285,7 @@ ${arr[@]:s:n}           # retieves [n] elements starting at index [s]
 
 # string comparison
 =
-==      # the pattern is literla if within double brackets and variables/string are within double quotes
+==      # the pattern is literal if within double brackets and variables/string are within double quotes
 !=
 <       # alphabetical order
 >       # must be escaped if within single brackets, e.g. "\>"
