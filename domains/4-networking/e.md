@@ -48,9 +48,9 @@ This option apply the changes, and provide a 120 timeout where by if you don’t
 Check all static routes available on your Ubuntu system:
 ```
 ip route s
-> default via 192.168.1.1 dev enp0s3 proto static 
-> 172.16.0.0/24 via 192.168.1.100 dev enp0s3 proto static 
-> 192.168.1.0/24 dev enp0s3 proto kernel scope link src 192.168.1.202 
+> default via 192.168.1.1 dev enp0s3 proto static
+> 172.16.0.0/24 via 192.168.1.100 dev enp0s3 proto static
+> 192.168.1.0/24 dev enp0s3 proto kernel scope link src 192.168.1.202
 ```
 
 To add non-persistent routes:
@@ -76,3 +76,8 @@ If you wish to add one temporarily, simply run the `ip route add` command with t
 **eth0** is the network interface assigned to your main network (in this case, 10.0.0.0/8)
 
 > Note: *ip route add* command will only persist until the next reboot or interface/network settings restart.
+
+---
+
+Further reading:
+- [Understanding modern Linux routing (and wg-quick)](https://ro-che.info/articles/2021-02-27-linux-routing)
