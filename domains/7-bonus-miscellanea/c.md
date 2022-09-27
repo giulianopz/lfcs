@@ -309,6 +309,7 @@ export PS1='\[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]
 ```
 
 This should modify the prompt as follows:
+
 ![git-branch-name-bash-prompt](../../assets/img/git-branch-name-bash-prompt.png)
 
 [PS1](https://wiki.archlinux.org/title/Bash/Prompt_customization) is the primary prompt (in bash) which is displayed before each command, thus it is the one most people customize. In the lines above PS1 is set to a string composed of [backslash-escaped characters](https://misc.flogisoft.com/bash/tip_colors_and_formatting) that are expanded dynamically every time the prompt shows up.
