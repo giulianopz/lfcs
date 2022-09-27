@@ -297,6 +297,26 @@ To encrypt your private data inside a git repo: https://git-secret.io/
 
 To version large files (.wav, .pdf, etc) in a git repository: https://git-lfs.github.com/ (it's not free)
 
+## Add current branch name to bash prompt
+
+Put the following lines in your `.bashrc`:
+```
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+export PS1='\[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\e[91m\]$(parse_git_branch)\[\033[00m\]\$ '
+```
+
+This should modify the prompt as follows:
+![git-branch-name-bash-prompt](../../assets/img/git-branch-name-bash-prompt.png)
+
+[PS1](https://wiki.archlinux.org/title/Bash/Prompt_customization) is the primary prompt (in bash) which is displayed before each command, thus it is the one most people customize. In the lines above PS1 is set to a string composed of [backslash-escaped characters](https://misc.flogisoft.com/bash/tip_colors_and_formatting) that are expanded dynamically every time the prompt shows up.
+
+> Warning: Using double quotes  (`"`) instead of single quotes (`'`) will result in the function `parse_git_branch` to be evaluated only once (when you first enter the git dir).
+
+---
+
 ### Resources to learn more:
 
 1. [Learn Git Branching](https://learngitbranching.js.org/)
