@@ -250,6 +250,10 @@ Show what revision and author last modified each line of a file: `git blame -L10
 
 ## Collaborate
 
+Clone: `git clone https://github.com/user/project.git`
+
+Clone to local folder: `git clone https://github.com/user/project.git ~/dir/folder`
+
 Get everything ready to commit: `git add .`
 
 Get custom file ready to commit: `git add index.html`
@@ -268,12 +272,17 @@ Push to a branch and set it as the default upstream: `git push -u origin [master
 
 Pull a specific branch: `git pull origin [branchname]`
 
-Clone: `git clone https://github.com/user/project.git`
-
-Clone to local folder:
-`git clone https://github.com/user/project.git ~/dir/folder`
-
 Resolve conflicts after attempted merge by means of a mergetool (see the config file above in the 'General' section): `git mergetool`
+
+Sync a fork with original repository:
+```bash
+# Add a new remote repository with 'upstream' alias
+git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+# Sync your fork
+git fetch upstream
+git checkout master
+git merge upstream/master
+```
 
 ## Ignore
 
