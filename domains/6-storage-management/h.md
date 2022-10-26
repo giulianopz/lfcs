@@ -80,7 +80,7 @@ To remove all entries (entries of the owner, group and others are retained): `se
 
 ### File Attributes
 
-In Linux, file attributes are meta-data properties that describe the file’s behavior. For example, an attribute can indicate whether a file is compressed or specify if the file can be deleted.
+In Linux, file attributes are meta-data properties that describe the file's behavior. For example, an attribute can indicate whether a file is compressed or specify if the file can be deleted.
 
 Some attributes like immutability can be set or cleared, while others like encryption are read-only and can only be viewed. The support for certain attributes depends on the filesystem being used.
 

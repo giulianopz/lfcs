@@ -20,7 +20,7 @@ The common configuration elements of TCP/IP and their purposes are as follows:
 
 - **Gateway Address**: A Gateway Address is the IP address through which a particular network, or host on a network, may be reached. If one network host wishes to communicate with another network host, and that host is not located on the same network, then a gateway must be used. In many cases, the Gateway Address will be that of a router on the same network, which will in turn pass traffic on to other networks or hosts, such as Internet hosts. The value of the Gateway Address setting must be correct, or your system will not be able to reach any hosts beyond those on the same network.
 
-- **Nameserver Address**: Nameserver Addresses represent the IP addresses of Domain Name Service (DNS) systems, which resolve network hostnames into IP addresses. There are three levels of Nameserver Addresses, which may be specified in order of precedence: The Primary Nameserver, the Secondary Nameserver, and the Tertiary Nameserver. In order for your system to be able to resolve network hostnames into their corresponding IP addresses, you must specify valid Nameserver Addresses which you are authorized to use in your system’s TCP/IP configuration. In many cases these addresses can and will be provided by your network service provider,but many free and publicly accessible nameservers are available for use, such as the Level3 (Verizon) servers with IP addresses from 4.2.2.1 to 4.2.2.6.
+- **Nameserver Address**: Nameserver Addresses represent the IP addresses of Domain Name Service (DNS) systems, which resolve network hostnames into IP addresses. There are three levels of Nameserver Addresses, which may be specified in order of precedence: The Primary Nameserver, the Secondary Nameserver, and the Tertiary Nameserver. In order for your system to be able to resolve network hostnames into their corresponding IP addresses, you must specify valid Nameserver Addresses which you are authorized to use in your system's TCP/IP configuration. In many cases these addresses can and will be provided by your network service provider,but many free and publicly accessible nameservers are available for use, such as the Level3 (Verizon) servers with IP addresses from 4.2.2.1 to 4.2.2.6.
 
 > Tip: The IP address, Netmask, Network Address, Broadcast Address, Gateway Address, and Nameserver Addresses are typically specified via the appropriate directives in the file /etc/network/interfaces (before Ubuntu 18.04, see below). For more information, view the system manual page for interfaces: `man interfaces`
 
@@ -327,7 +327,7 @@ The following is an example of a hosts file where a number of local servers have
 10.0.0.14   server4 server4.example.com file
 ```
 
-> Note: In the above example, notice that each of the servers have been given aliases in addition to their proper names and FQDN’s. Server1 has been mapped to the name vpn, server2 is referred to as mail, server3 as www, and server4 as file.
+> Note: In the above example, notice that each of the servers have been given aliases in addition to their proper names and FQDN's. Server1 has been mapped to the name vpn, server2 is referred to as mail, server3 as www, and server4 as file.
 
 To block ads and tracking sites, append to /etc/hosts the MVPS HOSTS [file](https://winhelp2002.mvps.org/hosts.txt).
 

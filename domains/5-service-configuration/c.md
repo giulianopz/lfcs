@@ -1,8 +1,8 @@
 ## Configure email aliases
 
-The process of getting an email from one person to another over a network or the Internet involves many systems working together. Each of these systems must be correctly configured for the process to work. The sender uses a **Mail User Agent** (MUA), or email client, to send the message through one or more **Mail Transfer Agents** (MTA), the last of which will hand it off to a **Mail Delivery Agent** (MDA) for delivery to the recipient’s mailbox, from which it will be retrieved by the recipient’s email client, usually via a POP3 or IMAP server.
+The process of getting an email from one person to another over a network or the Internet involves many systems working together. Each of these systems must be correctly configured for the process to work. The sender uses a **Mail User Agent** (MUA), or email client, to send the message through one or more **Mail Transfer Agents** (MTA), the last of which will hand it off to a **Mail Delivery Agent** (MDA) for delivery to the recipient's mailbox, from which it will be retrieved by the recipient's email client, usually via a POP3 or IMAP server.
 
-The **sendmail** smtp mail server is able to set up mailbox aliases which can be used to forward mail to specific users, or even other aliases. This can be done by simply editing a configuration file called ‘aliases’ that is generally located in **/etc/mail/aliases** (symlinked to **/etc/aliases**).
+The **sendmail** smtp mail server is able to set up mailbox aliases which can be used to forward mail to specific users, or even other aliases. This can be done by simply editing a configuration file called ‘aliases' that is generally located in **/etc/mail/aliases** (symlinked to **/etc/aliases**).
 
 The following are some example aliases from an aliases file:
 ```
@@ -46,7 +46,7 @@ On the line starting with 127.0.0.1, add the hostname to the end so it looks the
 
 (You willl notice that your hostname can also be identified on the line that starts with 127.0.1.1 where it appears twice)
 
-3. Run Sendmail’s config and answer ‘Y’ to everything:
+3. Run Sendmail's config and answer ‘Y' to everything:
 `sudo sendmailconfig`
 
 4. Restart Apache

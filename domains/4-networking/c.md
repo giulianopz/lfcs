@@ -2,7 +2,7 @@
 
 The Linux kernel includes the *Netfilter* subsystem, which is used to manipulate or decide the fate of network traffic headed into or through your server. All modern Linux firewall solutions use this system for packet filtering.
 
-The kernel’s packet filtering system would be of little use to administrators without a userspace interface to manage it. This is the purpose of *iptables*: when a packet reaches your server, it will be handed off to the Netfilter subsystem for acceptance, manipulation, or rejection based on the rules supplied to it from userspace via iptables. Thus, iptables is all you need to manage your firewall, if you’re familiar with it, but many frontends are available to simplify the task.
+The kernel's packet filtering system would be of little use to administrators without a userspace interface to manage it. This is the purpose of *iptables*: when a packet reaches your server, it will be handed off to the Netfilter subsystem for acceptance, manipulation, or rejection based on the rules supplied to it from userspace via iptables. Thus, iptables is all you need to manage your firewall, if you're familiar with it, but many frontends are available to simplify the task.
 
 Starting with CentOS 7, *firewall-d* replaced iptables as the default firewall management tool. The default firewall configuration tool for Ubuntu is *ufw*. By default, ufw is set to deny all incoming connections and allow all outgoing connections. This means anyone trying to reach your server would not be able to connect, while any application within the server would be able to reach the outside world.
 

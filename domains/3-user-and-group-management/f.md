@@ -11,9 +11,9 @@ These privileges are gained by adding the user to the `sudo` group. Users in the
 If you want a new user to be able to perform administrative tasks, you need to add the user to the `sudo` group:
 `sudo usermod -aG sudo <username>`
 
-As an alternative to putting your user in the sudo group, you can use the `visudo` command, which opens a configuration file called `/etc/sudoers` in the system’s default editor, and explicitly specify privileges on a per-user basis: `sudo visudo`
+As an alternative to putting your user in the sudo group, you can use the `visudo` command, which opens a configuration file called `/etc/sudoers` in the system's default editor, and explicitly specify privileges on a per-user basis: `sudo visudo`
 
-> Note: Typically, visudo uses vim to open the /etc/sudoers. If you don’t have experience with vim and you want to edit the file with nano , change the default editor by running: sudo EDITOR=nano visudo
+> Note: Typically, visudo uses vim to open the /etc/sudoers. If you don't have experience with vim and you want to edit the file with nano , change the default editor by running: sudo EDITOR=nano visudo
 
 Use the arrow keys to move the cursor, search for the line that defines root previleges and use the same syntax for this user:
 ```

@@ -73,10 +73,10 @@ Use curly braces to consider any listed element: `mkdir /etc/{public,private,pro
 
 Named character classes ([[:named:]]) are used inside brackets to represent an entire class of chars. Their interpretation depends on the LC_CTYPE locale. Some of them are listed below:
 
-- ‘[:alnum:]’, prints all those files having alphabets and digits, both lower and uppercases are considered.
-- ‘[:alpha:]’, prints all those files having alphabets only, both lower and uppercases are considered.
-- ‘[:digit:]’, prints all those files having digits.
-- ‘[:lower:]’, prints all those files having lower-case letters.
-- ‘[:punct:]’, prints all those files having punctuation characters, will search for ! ” # $ % & ‘ ( ) * + , – . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~.
-- ‘[:space:]’, prints all those files having space characters.
-- ‘[:upper:]’, prints all those files having lower-case letters.
+- ‘[:alnum:]', prints all those files having alphabets and digits, both lower and uppercases are considered.
+- ‘[:alpha:]', prints all those files having alphabets only, both lower and uppercases are considered.
+- ‘[:digit:]', prints all those files having digits.
+- ‘[:lower:]', prints all those files having lower-case letters.
+- ‘[:punct:]', prints all those files having punctuation characters, will search for ! ” # $ % & ‘ ( ) * + , – . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~.
+- ‘[:space:]', prints all those files having space characters.
+- ‘[:upper:]', prints all those files having lower-case letters.

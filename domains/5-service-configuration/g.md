@@ -4,7 +4,7 @@ The basic object that systemd manages and acts upon is a **unit**. Units can be 
 
 ### Basic Unit Management
 
-All of the normal init system commands have equivalent actions with the systemctl command. We will use the nginx.service unit to demonstrate (you’ll have to install Nginx with your package manager to get this service file).
+All of the normal init system commands have equivalent actions with the systemctl command. We will use the nginx.service unit to demonstrate (you'll have to install Nginx with your package manager to get this service file).
 
 For instance, we can start the service by typing:
 `sudo systemctl start nginx.service`
@@ -77,7 +77,7 @@ As always, you can limit the entries to the current boot by adding the -b flag:
 
 ### Inspecting Units and Unit Files
 
-By now, you know how to modify a unit’s state by starting or stopping it, and you know how to view state and journal information to get an idea of what is happening with the process. However, we haven’t seen yet how to inspect other aspects of units and unit files.
+By now, you know how to modify a unit's state by starting or stopping it, and you know how to view state and journal information to get an idea of what is happening with the process. However, we haven't seen yet how to inspect other aspects of units and unit files.
 
 A unit file contains the parameters that systemd uses to manage and run a unit. To see the full contents of a unit file, type:
 `systemctl cat nginx.service`
@@ -88,14 +88,14 @@ To see the dependency tree of a unit (which units systemd will attempt to activa
 This will show the dependent units, with target units recursively expanded. To expand all dependent units recursively, pass the --all flag:
 `systemctl list-dependencies --all nginx.service`
 
-Finally, to see the low-level details of the unit’s settings on the system, you can use the show option:
+Finally, to see the low-level details of the unit's settings on the system, you can use the show option:
 `systemctl show nginx.service`
 
 This will give you the value of each parameter being managed by systemd.
 
 ### Modifying Unit Files
 
-If you need to make a modification to a unit file, systemd allows you to make changes from the systemctl command itself so that you don’t have to go to the actual disk location.
+If you need to make a modification to a unit file, systemd allows you to make changes from the systemctl command itself so that you don't have to go to the actual disk location.
 
 To add a unit file snippet, which can be used to append or override settings in the default unit file, simply call the edit option on the unit:
 `sudo systemctl edit nginx.service`
@@ -110,19 +110,19 @@ After modifying a unit file, you should reload the systemd process itself to pic
 
 The files that define how systemd will handle a unit can be found in many different locations, each of which have different priorities and implications.
 
-The system’s copy of unit files are generally kept in the **/lib/systemd/system directory**. When software installs unit files on the system, this is the location where they are placed by default.
+The system's copy of unit files are generally kept in the **/lib/systemd/system directory**. When software installs unit files on the system, this is the location where they are placed by default.
 
-Unit files stored here are able to be started and stopped on-demand during a session. This will be the generic, vanilla unit file, often written by the upstream project’s maintainers that should work on any system that deploys systemd in its standard implementation. You should not edit files in this directory. Instead you should override the file, if necessary, using another unit file location which will supersede the file in this location.
+Unit files stored here are able to be started and stopped on-demand during a session. This will be the generic, vanilla unit file, often written by the upstream project's maintainers that should work on any system that deploys systemd in its standard implementation. You should not edit files in this directory. Instead you should override the file, if necessary, using another unit file location which will supersede the file in this location.
 
-If you wish to modify the way that a unit functions, the best location to do so is within the **/etc/systemd/system directory**. Unit files found in this directory location take precedence over any of the other locations on the filesystem. If you need to modify the system’s copy of a unit file, putting a replacement in this directory is the safest and most flexible way to do this.
+If you wish to modify the way that a unit functions, the best location to do so is within the **/etc/systemd/system directory**. Unit files found in this directory location take precedence over any of the other locations on the filesystem. If you need to modify the system's copy of a unit file, putting a replacement in this directory is the safest and most flexible way to do this.
 
-If you wish to override only specific directives from the system’s unit file, you can actually provide unit file snippets within a subdirectory. These will append or modify the directives of the system’s copy, allowing you to specify only the options you want to change.
+If you wish to override only specific directives from the system's unit file, you can actually provide unit file snippets within a subdirectory. These will append or modify the directives of the system's copy, allowing you to specify only the options you want to change.
 
-The correct way to do this is to create a directory named after the unit file with .d appended on the end. So for a unit called example.service, a subdirectory called *example.service.d* could be created. Within this directory a file ending with .conf can be used to override or extend the attributes of the system’s unit file.
+The correct way to do this is to create a directory named after the unit file with .d appended on the end. So for a unit called example.service, a subdirectory called *example.service.d* could be created. Within this directory a file ending with .conf can be used to override or extend the attributes of the system's unit file.
 
 There is also a location for run-time unit definitions at /run/systemd/system. Unit files found in this directory have a priority landing between those in /etc/systemd/system and /lib/systemd/system. Files in this location are given less weight than the former location, but more weight than the latter.
 
-The systemd process itself uses this location for dynamically created unit files created at runtime. This directory can be used to change the system’s unit behavior for the duration of the session. All changes made in this directory will be lost when the server is rebooted.
+The systemd process itself uses this location for dynamically created unit files created at runtime. This directory can be used to change the system's unit behavior for the duration of the session. All changes made in this directory will be lost when the server is rebooted.
 
 
 ### Using Targets (Runlevels)

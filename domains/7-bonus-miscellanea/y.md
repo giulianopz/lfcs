@@ -9,7 +9,7 @@ card 0: PCH [HDA Intel PCH], device 0: ALC255 Analog [ALC255 Analog]
   Subdevice #0: subdevice #0
 ```
 
-Select one of the audio-input devices from the list and use it to record a 10-second audio clip to see if it’s working:
+Select one of the audio-input devices from the list and use it to record a 10-second audio clip to see if it's working:
 ```
 :~# arecord -f cd -d 10 --device="hw:0,0" /tmp/test-mic.wav
 ```

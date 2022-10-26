@@ -104,7 +104,7 @@ cat data/file2
 
 tar --extract --verbose --verbose --listed-incremental=/dev/null --file=data3.tar
 >drwxrwxr-x ubuntu/ubuntu    15 2018-04-03 14:55 data/
->tar: Deleting ‘data/file1’
+>tar: Deleting ‘data/file1'
 
 # the dir is now up-to-date to the last backup
 ```
@@ -140,7 +140,7 @@ Omitting the filename from the destination location copies the file with the cur
 The real power of rsync comes when synchronizing directories. The example below shows how to create a local backup of website files:
 `rsync -a /var/www/domain.com/public_html/ /var/www/domain.com/public_html_backup/`
 
-> Note: If the destination directory doesn’t exist, rsync will create it.
+> Note: If the destination directory doesn't exist, rsync will create it.
 
 > Note: It is worth mentioning that rsync gives different treatment to the source directories with a trailing slash (`/`). If the source directory has a trailing slash, the command will copy only the directory contents to the destination directory. When the trailing slash is omitted, rsync copies the source directory inside the destination directory.
 
@@ -151,7 +151,7 @@ When using rsync to transfer data remotely, it must be installed on both the sou
 In the following example, we are transferring a directory from a local to a remote machine: 
 `rsync -a /opt/media/ remote_user@remote_host_or_ip:/opt/media/`
 
-> Note: If we run the command again, we will get a shorter output, because no changes have been made. This illustrates rsync’s ability to use modification times to determine if changes have been made.
+> Note: If we run the command again, we will get a shorter output, because no changes have been made. This illustrates rsync's ability to use modification times to determine if changes have been made.
 
 To transfer data from a remote to a local machine, use the remote location as a source:
 `rsync -a remote_user@remote_host_or_ip:/opt/media/ /opt/media/`

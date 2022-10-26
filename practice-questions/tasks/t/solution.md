@@ -1,4 +1,4 @@
-Working with archives and compressed files is an integral part of the System Administrator’s job.
+Working with archives and compressed files is an integral part of the System Administrator's job.
 Perform the following tasks to demonstrate your ability to work with archives and compressed files:
 
 1. Extract all files from archive file ​/opt/SAMPLE001.zip into target directory ​/opt/SAMPLE001:

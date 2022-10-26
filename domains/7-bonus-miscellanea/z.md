@@ -21,7 +21,7 @@ In the above script:
   - `$argv 0` should be the IP address of your server
 - `spawn` invokes a new process or session
 - `expect` waits for the spawned process output in the expected pattern
-- `send` writes to the spawned process’ stdin
+- `send` writes to the spawned process' stdin
 - `interact` gives the control back to the current process so that stdin is sent to the current process, and subsequently, stdout and stderr are returned.
 
 If your home server doesn't have a static IP address, you could automate the IP discovery by scanning your own home network with an alias in your `.bash_aliases`:

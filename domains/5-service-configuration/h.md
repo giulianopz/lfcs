@@ -15,8 +15,8 @@ Implementation
 
 Web Servers are heavily used in the deployment of Web sites and in this scenario we can use two different implementations:
 
-- Static Web Server: The content of the server’s response will be the hosted files “as-is”.
-- Dynamic Web Server: Consist in a Web Server plus an extra software, usually an application server and a database. For example, to produce the Web pages you see in the Web browser, the- application server might fill an HTML template with contents from a database. Due to that we say that the content of the server’s response is generated dynamically.
+- Static Web Server: The content of the server's response will be the hosted files “as-is”.
+- Dynamic Web Server: Consist in a Web Server plus an extra software, usually an application server and a database. For example, to produce the Web pages you see in the Web browser, the- application server might fill an HTML template with contents from a database. Due to that we say that the content of the server's response is generated dynamically.
 
 ### Installation
 
@@ -58,7 +58,7 @@ If you wish to configure a new virtual host or site, copy that file into the sam
 
 Edit the new file to configure the new site using some of the directives described below.
 
-The **ServerAdmin** directive specifies the email address to be advertised for the server’s administrator. The default value is webmaster@localhost. This should be changed to an emailaddress that is delivered to you (if you are the server’s administrator). If your website has a problem, Apache2 will display an error message containing this email address to reportthe problem to. Find this directive in your site’s configuration file in /etc/apache2/sites-available.
+The **ServerAdmin** directive specifies the email address to be advertised for the server's administrator. The default value is webmaster@localhost. This should be changed to an emailaddress that is delivered to you (if you are the server's administrator). If your website has a problem, Apache2 will display an error message containing this email address to reportthe problem to. Find this directive in your site's configuration file in /etc/apache2/sites-available.
 
 The **Listen** directive specifies the port, and optionally the IP address, Apache2 should listen on. If the IP address is not specified, Apache2 will listen on all IP addresses assignedto the machine it runs on. The default value for the Listen directive is 80. Change this to 127.0.0.1:80 to cause Apache2 to listen only on your loopback interface so that it will notbe available to the Internet, to (for example) 81 to change the port that it listens on, or leave it as is for normal operation. This directive can be found and changed in its ownfile, /etc/apache2/ports.conf
 
@@ -68,7 +68,7 @@ You may also want your site to respond to www.mynewsite.com, since many users wi
 For example, the following configuration will cause your site to respond to any domain request ending in .mynewsite.com.
 `ServerAlias *.mynewsite.com`
 
-The **DocumentRoot** directive specifies where Apache2 should look for the files that make up the site. The default value is /var/www/html, as specified in /etc/apache2/sites-available000-default.conf. If desired, change this value in your site’s virtual host file, and remember to create that directory if necessary!
+The **DocumentRoot** directive specifies where Apache2 should look for the files that make up the site. The default value is /var/www/html, as specified in /etc/apache2/sites-available000-default.conf. If desired, change this value in your site's virtual host file, and remember to create that directory if necessary!
 
 ## Enable the new VirtualHost using the a2ensite utility and restart Apache2:
 ```
@@ -80,7 +80,7 @@ Note
 > Be sure to replace mynewsite with a more descriptive name for the VirtualHost. One method is to name the file after the ServerName directive of the VirtualHost.
 
 Note
-> If you haven’t been using actual domain names that you own to test this procedure and have been using some example domains instead, you can at least test the functionality of this process by temporarily modifying the /etc/hosts file on your local computer:
+> If you haven't been using actual domain names that you own to test this procedure and have been using some example domains instead, you can at least test the functionality of this process by temporarily modifying the /etc/hosts file on your local computer:
 ```
 <your_server_IP> example.com
 ```

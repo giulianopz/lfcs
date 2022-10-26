@@ -60,7 +60,7 @@ The first three fields are quite self-explanatory, while the others deserve a le
 
     - `loop`: mounts an image (an .iso file, for example) as a loop device
 
-    > Tip: This option can be used to simulate the presence of the disk’s contents in an optical media reader
+    > Tip: This option can be used to simulate the presence of the disk's contents in an optical media reader
 
     - `noexec`: prevents the execution of executable files on the particular filesystem (the opposite of `exec`)
     - `nouser`: prevents any users (other than root) to mount and unmount the filesystem (the opposite of `user`)

@@ -49,7 +49,7 @@ useradd -D
 >CREATE_MAIL_SPOOL=no
 ```
 
-Let’s say you want to change the default login shell from /bin/sh to /bin/bash. To do that, specify the new shell as shown below:
+Let's say you want to change the default login shell from /bin/sh to /bin/bash. To do that, specify the new shell as shown below:
 ```
 sudo useradd -D -s /bin/bash
 sudo useradd -D | grep -i shell
@@ -117,7 +117,7 @@ To delete the user and its home directory and mail spool: `sudo userdel -r <user
 
 If the user you want to remove is still logged in, or if there are running processes that belong to this user, the userdel command does not allow to remove the user.
 
-In this situation, it is recommended to log out the user and kill all user’s running processes with the killall command:
+In this situation, it is recommended to log out the user and kill all user's running processes with the killall command:
 `sudo killall -u <username>`
 
 Once done, you can remove the user.

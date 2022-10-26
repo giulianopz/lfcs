@@ -1,6 +1,6 @@
 ## Manage template user environment
 
-The `/etc/skel` directory contains files and directories that are automatically copied over to a new user’s when it is created from `useradd` command:
+The `/etc/skel` directory contains files and directories that are automatically copied over to a new user's when it is created from `useradd` command:
 ```
 ll /etc/skel/
 >total 48K

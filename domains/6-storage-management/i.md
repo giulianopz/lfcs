@@ -6,7 +6,7 @@ Thus, a limit is placed on the disk usage allowed for a given user or a specific
 
 ### 1. Installing the Quota Tools
 
-To set and check quotas, we first need to install the quota command line tools using apt. Let’s update our package list, then install the package:
+To set and check quotas, we first need to install the quota command line tools using apt. Let's update our package list, then install the package:
 ```
 sudo apt update
 sudo apt install quota
@@ -23,9 +23,9 @@ If you get no output from the above command, install the linux-image-extra-virtu
 
 ### 3. Updating Filesystem Mount Options
 
-To activate quotas on a particular filesystem, we need to mount it with a few quota-related options specified. We do this by updating the filesystem’s entry in the /etc/fstab configuration file. Open that file in your favorite text editor now: `sudo vi /etc/fstab`
+To activate quotas on a particular filesystem, we need to mount it with a few quota-related options specified. We do this by updating the filesystem's entry in the /etc/fstab configuration file. Open that file in your favorite text editor now: `sudo vi /etc/fstab`
 
-This file’s contents will be similar to the following:
+This file's contents will be similar to the following:
 ```
 LABEL=cloudimg-rootfs   /        ext4   defaults        0 0
 LABEL=UEFI      /boot/efi       vfat    defaults        0 0
@@ -47,13 +47,13 @@ cat /proc/mounts | grep ' / '
 >/dev/vda1 / ext4 rw,relatime,quota,usrquota,grpquota,data=ordered 0 0
 ```
 
-Note the two options that we specified. Now that we’ve installed our tools and updated our filesystem options, we can turn on the quota system.
+Note the two options that we specified. Now that we've installed our tools and updated our filesystem options, we can turn on the quota system.
 
 ### 4. Enabling Quotas
 
 Before finally turning on the quota system, we need to manually run the quotacheck command once: `sudo quotacheck -ugm /`
 
-This command creates the files `/aquota.user` and `/aquota.group`. These files contain information about the limits and usage of the filesystem, and they need to exist before we turn on quota monitoring. The quotacheck parameters we’ve used are:
+This command creates the files `/aquota.user` and `/aquota.group`. These files contain information about the limits and usage of the filesystem, and they need to exist before we turn on quota monitoring. The quotacheck parameters we've used are:
 
 - `(-u)`, specifies that a user-based quota file should be created
 - `(-g)`, indicates that a group-based quota file should be created
@@ -61,19 +61,19 @@ This command creates the files `/aquota.user` and `/aquota.group`. These files c
 
 We can verify that the appropriate files were created by listing the root directory: `ls /aquota*`
 
-Now we’re ready to turn on the quota system: `sudo quotaon -v /`
+Now we're ready to turn on the quota system: `sudo quotaon -v /`
  
-Our server is now monitoring and enforcing quotas, but we’ve not set any yet!
+Our server is now monitoring and enforcing quotas, but we've not set any yet!
 
 ### 5. Configuring Quotas for a User
 
-There are a few ways we can set quotas for users or groups. Here, we’ll go over how to set quotas with both the `edquota` and `setquota` commands.
+There are a few ways we can set quotas for users or groups. Here, we'll go over how to set quotas with both the `edquota` and `setquota` commands.
 
 #### 5.1 Using edquota to Set a User Quota
 
-We use the `edquota` command to edit quotas. Let’s edit our example **sammy** user’s quota: `sudo edquota -u sammy`
+We use the `edquota` command to edit quotas. Let's edit our example **sammy** user's quota: `sudo edquota -u sammy`
 
-The `-u` option specifies that this is a user quota we’ll be editing. If you’d like to edit a group’s quota instead, use the `-g` option in its place.
+The `-u` option specifies that this is a user quota we'll be editing. If you'd like to edit a group's quota instead, use the `-g` option in its place.
 
 This will open up a file in your default text editor:
 ```
@@ -84,13 +84,13 @@ Disk quotas for user sammy (uid 1000):
 
 This lists the username and uid, the filesystems that have quotas enabled on them, and the block- and inode-based usage and limits. Setting an **inode-based** quota would limit how many files and directories a user can create, regardless of the amount of disk space they use. Most people will want **block-based** quotas, which specifically limit disk space usage. This is what we will configure.
 
-> Note: The concept of a block is poorly specified and can change depending on many factors, including which command line tool is reporting them. In the context of setting quotas on Ubuntu, it’s fairly safe to assume that 1 block equals 1 kilobyte of disk space.
+> Note: The concept of a block is poorly specified and can change depending on many factors, including which command line tool is reporting them. In the context of setting quotas on Ubuntu, it's fairly safe to assume that 1 block equals 1 kilobyte of disk space.
 
 In the above listing, our user sammy is using 40 blocks, or 40KB of space on the /dev/vda1 drive. The soft and hard limits are both disabled with a 0 value.
 
 Each type of quota allows you to set both a soft limit and a hard limit. When a user exceeds the soft limit, they are over quota, but they are not immediately prevented from consuming more space or inodes. Instead, some leeway is given: the user has – by default – seven days to get their disk use back under the soft limit. At the end of the seven day **grace period**, if the user is still over the soft limit it will be treated as a hard limit. A hard limit is less forgiving: all creation of new blocks or inodes is immediately halted when you hit the specified hard limit. This behaves as if the disk is completely out of space: writes will fail, temporary files will fail to be created, and the user will start to see warnings and errors while performing common tasks.
 
-Let’s update our sammy user to have a block quota with a 100MB soft limit, and a 110MB hard limit:
+Let's update our sammy user to have a block quota with a 100MB soft limit, and a 110MB hard limit:
 ```
 Disk quotas for user sammy (uid 1000):
   Filesystem                   blocks       soft       hard     inodes     soft     hard
@@ -107,14 +107,14 @@ sudo quota -vs sammy
 
 The command outputs our current quota status, and shows that our quota is 100M while our limit is 110M. This corresponds to the soft and hard limits respectively.
 
-> Note: If you want your users to be able to check their own quotas without having sudo access, you’ll need to give them permission to read the quota files we created in Step 4. One way to do this would be to make a users group, make those files readable by the users group, and then make sure all your users are also placed in the group.
+> Note: If you want your users to be able to check their own quotas without having sudo access, you'll need to give them permission to read the quota files we created in Step 4. One way to do this would be to make a users group, make those files readable by the users group, and then make sure all your users are also placed in the group.
 
 #### 5.2 Using setquota to Set a User Quota
 
-Unlike `edquota`, setquota will update our user’s quota information in a single command, without an interactive editing step. We will specify the username and the soft and hard limits for both block- and inode-based quotas, and finally the filesystem to apply the quota to:
+Unlike `edquota`, setquota will update our user's quota information in a single command, without an interactive editing step. We will specify the username and the soft and hard limits for both block- and inode-based quotas, and finally the filesystem to apply the quota to:
 `sudo setquota -u sammy 200M 220M 0 0 /`
 
-The above command will double sammy’s block-based quota limits to 200 megabytes and 220 megabytes. The `0 0` for inode-based soft and hard limits indicates that they remain unset. This is required even if we’re not setting any inode-based quotas.
+The above command will double sammy's block-based quota limits to 200 megabytes and 220 megabytes. The `0 0` for inode-based soft and hard limits indicates that they remain unset. This is required even if we're not setting any inode-based quotas.
 
 Once again, use the quota command to check our work:
 ```
@@ -143,7 +143,7 @@ To generate a report on current quota usage for all users on a particular filesy
 >sammy     --     40K    100M    110M             13     0     0
 ```
 
-In this instance we’re generating a report for the / root filesystem. The `-s` command tells repquota to use human-readable numbers when possible. There are a few system users listed, which probably have no quotas set by default. Our user sammy is listed at the bottom, with the amounts used and soft and hard limits.
+In this instance we're generating a report for the / root filesystem. The `-s` command tells repquota to use human-readable numbers when possible. There are a few system users listed, which probably have no quotas set by default. Our user sammy is listed at the bottom, with the amounts used and soft and hard limits.
 
 Also note the `Block grace time: 7days` callout, and the `grace` column. If our user was over the soft limit, the grace column would show how much time they had left to get back under the limit.
 
@@ -152,7 +152,7 @@ Also note the `Block grace time: 7days` callout, and the `grace` column. If our 
 We can configure the period of time where a user is allowed to float above the soft limit. We use the setquota command to do so:
 `sudo setquota -t 864000 864000 /`
 
-The above command sets both the block and inode grace times to 864000 seconds, or 10 days. This setting applies to all users, and both values must be provided even if you don’t use both types of quota (block vs. inode).
+The above command sets both the block and inode grace times to 864000 seconds, or 10 days. This setting applies to all users, and both values must be provided even if you don't use both types of quota (block vs. inode).
 
 > Note: The values must be specified in seconds.
 

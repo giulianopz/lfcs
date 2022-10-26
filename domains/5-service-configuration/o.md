@@ -37,7 +37,7 @@ You either need:
 - a keyboard and monitor will need to be attached to the physical machine.
 - use cloud images which are meant to self-initialize (**Multipass** and **UVTool**)
 
-In the case of virtual machines a Graphical User Interface (GUI) is analogous to using a physical keyboard and mouse on a real computer. Instead of installing a GUI, the **virt-viewer** or **virt-manager** application can be used to connect to a virtual machine’s console using **VNC**.
+In the case of virtual machines a Graphical User Interface (GUI) is analogous to using a physical keyboard and mouse on a real computer. Instead of installing a GUI, the **virt-viewer** or **virt-manager** application can be used to connect to a virtual machine's console using **VNC**.
 
 ### virsh
 

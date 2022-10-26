@@ -10,7 +10,7 @@ Common regex characters:
 | `\` | escape a special character (e.g. `\.` matches a literal dot) |
 | `?` | the preceding character may or may not be present (e.g. `/hell?o/` would match `hello` or `helo`) |
 | `*` | any number of the preceding character is allowed (e.g. `.*` will match any single-line string, including an empty string, and gets used a lot) |
-| `+` | one or more of the preceding character (`.+` is the same as `.*` except that it won’t match an empty string) |
+| `+` | one or more of the preceding character (`.+` is the same as `.*` except that it won't match an empty string) |
 | `|` | “or”, matches the preceding section or the following section (e.g. `hello|mad` will match `hello` or `mad`) |
 | `()` | group a section together, this can be useful for conditionals (`(a|b)`), multipliers (`(hello)+`), or to create groups for substitutions |
 | `{}` | specify how many of the preceding character (e.g. `a{12}` matches 12 `a`s in a row) |

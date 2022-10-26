@@ -20,7 +20,7 @@ To reboot using the same method: `sudo telinit 6`
 
 ### Apply brute force
 
-There’s a provision in the Linux kernel for system requests (**Sysrq** on most keyboards). You can communicate directly with this subsystem using key combinations, ideally regardless of what state your computer is in; it gets complex on some keyboards because the **Sysrq** key can be a special function key that requires a different key to access (such as Fn on many laptops).
+There's a provision in the Linux kernel for system requests (**Sysrq** on most keyboards). You can communicate directly with this subsystem using key combinations, ideally regardless of what state your computer is in; it gets complex on some keyboards because the **Sysrq** key can be a special function key that requires a different key to access (such as Fn on many laptops).
 
 An option less likely to fail is using echo to insert information into /proc, manually. First, make sure that the Sysrq system is enabled:
 `sudo echo 1 > /proc/sys/kernel/sysrq`

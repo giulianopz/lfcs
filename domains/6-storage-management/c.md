@@ -54,7 +54,7 @@ sudo cryptsetup -v status backupSSD
 
 This mapping is not persistent. If you want to open the disk/partition automatically on boot, you will need to amend /etc/crypttab to set up a mapped device name (see below).
 
-Do not omit this step - or the partition won’t mount (`-L` denotes the partition label): `sudo mkfs.ext4 /dev/mapper/backupSSD -L "Extra SSD 1TB"`
+Do not omit this step - or the partition won't mount (`-L` denotes the partition label): `sudo mkfs.ext4 /dev/mapper/backupSSD -L "Extra SSD 1TB"`
 
 Create a mount point and give the mount point appropriate ownership:
 ```

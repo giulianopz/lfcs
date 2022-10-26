@@ -11,7 +11,7 @@ Here is an example record from the access log file that uses the Debian' combine
 192.168.33.1 - - [08/Jan/2020:21:39:03 +0000] "GET / HTTP/1.1" 200 6169 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
 ```
 
-Let’s break down what each field of the record means:
+Let's break down what each field of the record means:
 
 - `%h` (192.168.33.1) - The Hostname or the IP address of the client making the request.
 - `%l` (-) - Remote logname. When the user name is not set, this field shows -.

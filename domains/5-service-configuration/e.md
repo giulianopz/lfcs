@@ -1,6 +1,6 @@
 ## Restrict access to the HTTP proxy server
 
-**Squid** is a full-featured caching proxy supporting popular network protocols like HTTP, HTTPS, FTP, and more. It can be used to improve the web server’s performance by caching repeated requests, filter web traffic, and access geo-restricted content.
+**Squid** is a full-featured caching proxy supporting popular network protocols like HTTP, HTTPS, FTP, and more. It can be used to improve the web server's performance by caching repeated requests, filter web traffic, and access geo-restricted content.
 
 ### Installing Squid on Ubuntu
 
@@ -61,9 +61,9 @@ Whenever you make changes to the configuration file, you need to restart the Squ
 
 ### Squid Authentication
 
-If restricting access based on IP doesn’t work for your use case, you can configure squid to use a back-end to authenticate users. Squid supports Samba, LDAP, and HTTP basic auth.
+If restricting access based on IP doesn't work for your use case, you can configure squid to use a back-end to authenticate users. Squid supports Samba, LDAP, and HTTP basic auth.
 
-In this guide, we’ll use basic auth. It is a simple authentication method built into the HTTP protocol.
+In this guide, we'll use basic auth. It is a simple authentication method built into the HTTP protocol.
 
 To generate a crypted password, use the openssl tool. The following command appends the USERNAME:PASSWORD pair to the /etc/squid/htpasswd file:
 `printf "USERNAME:$(openssl passwd -crypt PASSWORD)\n" | sudo tee -a /etc/squid/htpasswd`
@@ -98,13 +98,13 @@ Restart the Squid service:
 
 ### Configuring firewall
 
-To open the Squid ports, enable the UFW ‘Squid’ profile:
+To open the Squid ports, enable the UFW ‘Squid' profile:
 `sudo ufw allow 'Squid'`
 
 ## Configuring Firefox to Use Proxy
 
 
-In the upper right-hand corner, click on the hamburger icon ☰ to open Firefox’s menu: click on the ⚙ Preferences link.
+In the upper right-hand corner, click on the hamburger icon ☰ to open Firefox's menu: click on the ⚙ Preferences link.
 
 Scroll down to the Network Settings section and click on the Settings... button.
 
@@ -122,4 +122,4 @@ At this point, your Firefox is configured, and you can browse the Internet throu
 
 To revert back to the default settings, go to Network Settings, select the Use system proxy settings radio button and save the settings.
 
-There are several plugins that can also help you to configure Firefox’s proxy settings, such as FoxyProxy.
+There are several plugins that can also help you to configure Firefox's proxy settings, such as FoxyProxy.

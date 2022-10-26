@@ -4,13 +4,13 @@
 
 IP routing is a means of specifying and discovering paths in a TCP/IP network along which network data may be sent. Routing uses a set of routing tables to direct the forwarding of network data packets from their source to the destination, often via many intermediary network nodes known as routers. There are two primary forms of IP routing: Static Routing and Dynamic Routing.
 
-**Static routing** involves manually adding IP routes to the system’s routing table, and this is usually done by manipulating the routing table with the route command. Static routing enjoys many advantages over dynamic routing, such as simplicity of implementation on smaller networks, predictability (the routing table is always computed in advance, and thus the route is precisely the same each time it is used), and low overhead on other routers and network links due to the lack of a dynamic routing protocol. However, static routing does present some disadvantages as well. For example, static routing is limited to small networks and does not scale well. Static routing also fails completely to adapt to network outages and failures along the route due to the fixed nature of the route.
+**Static routing** involves manually adding IP routes to the system's routing table, and this is usually done by manipulating the routing table with the route command. Static routing enjoys many advantages over dynamic routing, such as simplicity of implementation on smaller networks, predictability (the routing table is always computed in advance, and thus the route is precisely the same each time it is used), and low overhead on other routers and network links due to the lack of a dynamic routing protocol. However, static routing does present some disadvantages as well. For example, static routing is limited to small networks and does not scale well. Static routing also fails completely to adapt to network outages and failures along the route due to the fixed nature of the route.
 
 **Dynamic routing** depends on large networks with multiple possible IP routes from a source to a destination and makes use of special routing protocols, such as the *Router Information Protocol* (**RIP**), which handle the automatic adjustments in routing tables that make dynamic routing possible. Dynamic routing has several advantages over static routing, such as superior scalability and the ability to adapt to failures and outages along network routes. Additionally, there is less manual configuration of the routing tables, since routers learn from one another about their existence and available routes. This trait also eliminates the possibility of introducing mistakes in the routing tables via human error. Dynamic routing is not perfect, however, and presents disadvantages such as heightened complexity and additional network overhead from router communications, which does not immediately benefit the end users, but still consumes network bandwidth.
 
 ---
 
-When you need to access network devices located on a different network segment than the one you are on, you need to have a route set up so the networking stack knows how to get to the other network segment. This generally just points to your main gateway, but you may want to set up additional static routes, where you don’t want the traffic going through your main default gateway.
+When you need to access network devices located on a different network segment than the one you are on, you need to have a route set up so the networking stack knows how to get to the other network segment. This generally just points to your main gateway, but you may want to set up additional static routes, where you don't want the traffic going through your main default gateway.
 
 For Ubuntu versions prior to 18.04, you had to manually edit the */etc/network/interfaces* file to set up persistent static routes. With the introduction of Ubuntu 18.04, along came the netplan YAML based network configuration tool.
 
@@ -43,7 +43,7 @@ Once you made all required changes to add the static route all the new netplan c
 
 Or, if you want to test it first, and potentially roll back any changes, you can use the following command: `sudo netplan try [config-file]`
 
-This option apply the changes, and provide a 120 timeout where by if you don’t accept the changes, they will revert back. This is useful to prevent you from locking yourself out of the system, if the network change didn’t work the way you were intending.
+This option apply the changes, and provide a 120 timeout where by if you don't accept the changes, they will revert back. This is useful to prevent you from locking yourself out of the system, if the network change didn't work the way you were intending.
 
 Check all static routes available on your Ubuntu system:
 ```

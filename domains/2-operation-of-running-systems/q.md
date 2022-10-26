@@ -38,7 +38,7 @@ sudo add-apt-repository 'deb [arch=amd64] https://repo.mongodb.org/apt/ubuntu bi
 sudo apt install mongodb-org
 ```
 
-For example, to add the a PPA repo (e.g. Jonathon F’s PPA which provides FFmpeg version 4.x) you would run:
+For example, to add the a PPA repo (e.g. Jonathon F's PPA which provides FFmpeg version 4.x) you would run:
 ```
 sudo add-apt-repository ppa:jonathonf/ffmpeg-4`
 # the PPA repository public key will be automatically downloaded and registered
@@ -54,7 +54,7 @@ If you want to have more control over how your sources are organized you can man
 
 `dpkg` is a low-level package manager for Debian-based systems. It can install, remove, and build packages, but unlike other package management systems, it cannot automatically download and install packages or their dependencies. `apt` and `aptitude` are newer, and layer additional features on top of dpkg. 
 
-To list all packages in the system’s package database, including all packages, installed and uninstalled, from a terminal prompt type:
+To list all packages in the system's package database, including all packages, installed and uninstalled, from a terminal prompt type:
 `dpkg -l`
 
 Depending on the number of packages on your system, this can generate a large amount of output. Pipe the output through grep to see if a specific package is installed: `dpkg -l | grep <package-name-or-regex>`

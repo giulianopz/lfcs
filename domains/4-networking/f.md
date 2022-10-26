@@ -4,15 +4,15 @@ Ubuntu by default uses **timedatectl** (front-end utility)/**timesyncd** (daemon
 
 Until recently, most network time synchronization was handled by the Network Time Protocol daemon or **ntpd**. This service connects to a pool of other NTP servers that provide it with constant and accurate time updates.
 
-Ubuntu’s default install now uses **timesyncd** instead of ntpd. timesyncd connects to the same time servers and works in roughly the same way, but is more lightweight and more integrated with systemd and the low level workings of Ubuntu.
+Ubuntu's default install now uses **timesyncd** instead of ntpd. timesyncd connects to the same time servers and works in roughly the same way, but is more lightweight and more integrated with systemd and the low level workings of Ubuntu.
 
 `ntpdate` is considered deprecated in favor of `timedatectl` (or `chrony`) and thereby no more installed by default. timesyncd will generally do the right thing keeping your time in sync, and chrony will help with more complex cases: `systemd-timesyncd` implements SNTP, not NTP, hence multi-server support is out of focus; if you want a full NTP implementation, please use `ntpd` (<18.04) or `chrony` (>18.04).
 
-We can query the status of timesyncd by running timedatectl with no arguments. You don’t need to use sudo in this case: `timedatectl`
+We can query the status of timesyncd by running timedatectl with no arguments. You don't need to use sudo in this case: `timedatectl`
 
 *system clock synchronized: yes* indicates that the time has been successfully synced, and *systemd-timesyncd.service active: yes* means that timesyncd is enabled and running.
 
-If you’re not sure about your time zone, you can list the available time zones with the following command: `timedatectl list-timezones`
+If you're not sure about your time zone, you can list the available time zones with the following command: `timedatectl list-timezones`
 
 Next, you can set the time zone using the timedatectl set-timezone command: `timedatectl set-timezone America/Antigua`
 

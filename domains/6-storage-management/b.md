@@ -28,7 +28,7 @@ To create a volume group named "vg00" using /dev/sdb and /dev/sdc (we will save 
 
 As it was the case with physical volumes, you can also view information about this volume group by issuing: `sudo vgdisplay vg00`
 
-It is considered good practice to name each logical volume according to its intended use. For example, let’s create two LVs named "vol_projects" (10 GB) and "vol_backups" (remaining space), which we can use later to store project documentation and system backups, respectively.
+It is considered good practice to name each logical volume according to its intended use. For example, let's create two LVs named "vol_projects" (10 GB) and "vol_backups" (remaining space), which we can use later to store project documentation and system backups, respectively.
 
 The `-n` option is used to indicate a name for the LV, whereas `-L` sets a fixed size and `-l` (lowercase L) is used to indicate a percentage of the remaining space in the container VG:
 ```
@@ -48,7 +48,7 @@ To view information about a single LV, use lvdisplay with the VG and LV as param
 
 Before each logical volume can be used, we need to create a filesystem on top of it.
 
-We’ll use ext4 as an example here since it allows us both to increase and reduce the size of each LV (as opposed to xfs that only allows to increase the size):
+We'll use ext4 as an example here since it allows us both to increase and reduce the size of each LV (as opposed to xfs that only allows to increase the size):
 ```
 sudo mkfs.ext4 /dev/vg00/vol_projects
 sudo mkfs.ext4 /dev/vg00/vol_backups
@@ -64,7 +64,7 @@ sudo lvextend -l +100%FREE -r /dev/vg00/vol_backups
 
 > Note: If you don't use the (-r) switch, the filesytem must be resized apart, e.g for ext4 filesystems: `sudo resize2fs </dev/mapper/myvg-mylv>` 
 
-It is important to include the minus (`-`) or plus (`+`) signs while resizing a logical volume. Otherwise, you’re setting a fixed size for the LV instead of resizing it.
+It is important to include the minus (`-`) or plus (`+`) signs while resizing a logical volume. Otherwise, you're setting a fixed size for the LV instead of resizing it.
 
 It can happen that you arrive at a point when resizing logical volumes cannot solve your storage needs anymore and you need to buy an extra storage device. Keeping it simple, you will need another disk. We are going to simulate this situation by adding the remaining PV from our initial setup (/dev/sdd).
 

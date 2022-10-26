@@ -30,7 +30,7 @@ grep <username> /etc/group
 >oper:x:5008:<username>
 ```
 
-The `newgroup` command executes a new shell and changes a user’s real group information:
+The `newgroup` command executes a new shell and changes a user's real group information:
 ```
 id
 >uid=5004(<username>) gid=5004(oinstall) groups=5004(oinstall),5005(dba) ...

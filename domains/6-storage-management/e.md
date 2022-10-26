@@ -4,7 +4,7 @@ One of the easiest way of guarding against out-of-memory errors in applications 
 
 > Warning: Although swap is generally recommended for systems utilizing traditional spinning hard drives, using swap with SSDs can cause issues with hardware degradation over time. 
 
-The information written to disk will be significantly slower than information kept in RAM, but the operating system will prefer to keep running application data in memory and use swap for the older data. Overall, having swap space as a fallback for when your system’s RAM is depleted can be a good safety net against out-of-memory exceptions on systems with non-SSD storage available.
+The information written to disk will be significantly slower than information kept in RAM, but the operating system will prefer to keep running application data in memory and use swap for the older data. Overall, having swap space as a fallback for when your system's RAM is depleted can be a good safety net against out-of-memory exceptions on systems with non-SSD storage available.
 
 ### 1. Checking the System for Swap Information
 
@@ -12,7 +12,7 @@ Before we begin, we can check if the system already has some swap space availabl
 
 We can see if the system has any configured swap by typing: `sudo swapon --show`
 
-If you don’t get back any output, this means your system does not have swap space available currently.
+If you don't get back any output, this means your system does not have swap space available currently.
 
 You can verify that there is no active swap using the free utility:
 ```
@@ -27,7 +27,7 @@ As you can see in the Swap row of the output, no swap is active on the system.
 
 ## 2. Checking Available Space on the Hard Drive Partition
 
-Before we create our swap file, we’ll check our current disk usage to make sure we have enough space:
+Before we create our swap file, we'll check our current disk usage to make sure we have enough space:
 ```
 df -h
 >Output
@@ -97,7 +97,7 @@ Add the swap file information to the end of your /etc/fstab file by typing:
 
 ### Tuning your Swap Settings
 
-There are a few options that you can configure that will have an impact on your system’s performance when dealing with swap:
+There are a few options that you can configure that will have an impact on your system's performance when dealing with swap:
 
 - `swappiness`, a parameter which configures how often your system swaps data out of RAM to the swap space, expressed as a percentage.
 
@@ -113,7 +113,7 @@ There are a few options that you can configure that will have an impact on your 
 
 -  `vfs_cache_pressure`, a parameter which configures how much the system will choose to cache inode and dentry information over other data.
 
-    Basically, this is access data about the filesystem. This is generally very costly to look up and very frequently requested, so it’s an excellent thing for your system to cache. You can see the current value by querying the proc filesystem again: `cat /proc/sys/vm/vfs_cache_pressure`
+    Basically, this is access data about the filesystem. This is generally very costly to look up and very frequently requested, so it's an excellent thing for your system to cache. You can see the current value by querying the proc filesystem again: `cat /proc/sys/vm/vfs_cache_pressure`
 
     As it is currently configured, our system removes inode information from the cache too quickly. We can set this to a more conservative setting like 50 by typing: `sudo sysctl vm.vfs_cache_pressure=50`
 

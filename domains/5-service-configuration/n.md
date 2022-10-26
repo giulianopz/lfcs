@@ -11,7 +11,7 @@ Prerequisites:
 - Docker **Community Edition** (CE) is installed as described in the offical [doc](https://docs.docker.com/engine/install/ubuntu/)
 - a personal account on **Docker Hub**
 
-Docker containers are built from Docker images. By default, Docker pulls these images from Docker Hub, a Docker registry managed by Docker, the company behind the Docker project. Anyone can host their Docker images on Docker Hub, so most applications and Linux distributions you’ll need will have images hosted there.
+Docker containers are built from Docker images. By default, Docker pulls these images from Docker Hub, a Docker registry managed by Docker, the company behind the Docker project. Anyone can host their Docker images on Docker Hub, so most applications and Linux distributions you'll need will have images hosted there.
 
 If you want to avoid typing sudo whenever you run the docker command, add your username to the docker group: `sudo usermod -aG docker ${USER}`
 
@@ -27,23 +27,23 @@ To check whether you can access and download images from Docker Hub, type: `dock
 
 You can search for images available on Docker Hub by using: `docker search ubuntu`
 
-Once you’ve identified the image that you would like to use, you can download it to your computer using: `docker pull ubuntu`
+Once you've identified the image that you would like to use, you can download it to your computer using: `docker pull ubuntu`
 
 After an image has been downloaded, you can then run a container using the downloaded image with the `run` subcommand. As you saw with the hello-world example, if an image has not been downloaded when docker is executed with the `run` subcommand, the Docker client will first download the image, then run a container using it.
 
 To see the images that have been downloaded to your computer, type: `docker images`
 
-After using Docker for a while, you’ll have many active (running) and inactive containers on your computer. To view the active ones, use: `docker ps`
+After using Docker for a while, you'll have many active (running) and inactive containers on your computer. To view the active ones, use: `docker ps`
 
 To view all containers — active and inactive: `docker ps -a`
 
 To view the latest container you created: `docker ps -l`
 
-To start a stopped container, use docker start, followed by the container ID or the container’s name: `docker start d9b100f2f636`
+To start a stopped container, use docker start, followed by the container ID or the container's name: `docker start d9b100f2f636`
 
 To stop a running container, use docker stop, followed by the container ID or name: `docker stop [sharp_volhard]`
 
-Once you’ve decided you no longer need a container anymore, remove it: `docker rm [festive_williams]`
+Once you've decided you no longer need a container anymore, remove it: `docker rm [festive_williams]`
 
 Containers can be turned into images which you can use to build new containers.
 

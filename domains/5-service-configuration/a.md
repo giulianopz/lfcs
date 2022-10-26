@@ -9,7 +9,7 @@ The following is meant to show you how to set up a local DNS resolver on Ubuntu 
 - recursive DNS server
 - recursive resolver
 
-Also, be aware that a DNS server can also be called a name server, as said before. Examples of DNS resolver are `8.8.8.8` (Google public DNS server) and `1.1.1.1` (Cloudflare public DNS server). The OS on your computer also has a resolver, although it’s called *stub resolver* due to its limited capability. A stub resolver is a small DNS client on the end user’s computer that receives DNS requests from applications such as Firefox and forward requests to a recursive resolver. Almost every resolver can cache DNS response to improve performance, so they are also called caching DNS server.
+Also, be aware that a DNS server can also be called a name server, as said before. Examples of DNS resolver are `8.8.8.8` (Google public DNS server) and `1.1.1.1` (Cloudflare public DNS server). The OS on your computer also has a resolver, although it's called *stub resolver* due to its limited capability. A stub resolver is a small DNS client on the end user's computer that receives DNS requests from applications such as Firefox and forward requests to a recursive resolver. Almost every resolver can cache DNS response to improve performance, so they are also called caching DNS server.
 
 There are many ways to configure BIND9. Some of the most common configurations are a caching nameserver, primary server, and secondary server:
 
@@ -37,7 +37,7 @@ It is possible to configure the same server to be a caching name server, primary
 
 ## Caching Nameserver
 
-The default configuration acts as a caching server. Simply uncomment and edit /etc/bind/named.conf.options to set the IP addresses of your ISP’s DNS servers:
+The default configuration acts as a caching server. Simply uncomment and edit /etc/bind/named.conf.options to set the IP addresses of your ISP's DNS servers:
 ```
 forwarders {
     1.2.3.4;
@@ -58,7 +58,7 @@ This will open TCP and UDP port 53 to the private network 192.168.0.0/24. Then f
 
 Now on the BIND resolver, check the query log with the following command: `sudo journalctl -eu named`
 
-This will show the latest log message of the bind9 service unit. You should fine something like the following line in the log, which indicates that a DNS query for google.com’s A record has been received from port 57806 of 192.168.0.103:
+This will show the latest log message of the bind9 service unit. You should fine something like the following line in the log, which indicates that a DNS query for google.com's A record has been received from port 57806 of 192.168.0.103:
 ```
 named[1162]: client @0x7f4d2406f0f0 192.168.0.103#57806 (google.com): query: google.com IN A +E(0)K (192.168.0.102)
 ```
@@ -82,13 +82,13 @@ After a second dig there should be improvement: `;; Query time: 1 msec`
 
 ## Setting the Default DNS Resolver on Ubuntu 20.04 Server
 
-**systemd-resolved** provides the stub resolver on Ubuntu 20.04. As mentioned in the beginning of this article, a stub resolver is a small DNS client on the end-user’s computer that receives DNS requests from applications such as Firefox and forward requests to a recursive resolver.
+**systemd-resolved** provides the stub resolver on Ubuntu 20.04. As mentioned in the beginning of this article, a stub resolver is a small DNS client on the end-user's computer that receives DNS requests from applications such as Firefox and forward requests to a recursive resolver.
 
 The default recursive resolver can be seen with this command: `systemd-resolve --status`
 
-If you don'find `127.0.0.1` as your current DNS Server, BIND isn’t the default. If your are testing it on your laptop, chances are that your current DNS server is your home router. 
+If you don'find `127.0.0.1` as your current DNS Server, BIND isn't the default. If your are testing it on your laptop, chances are that your current DNS server is your home router. 
 
-If you run the following command on the BIND server, the related DNS query won’t be found in BIND log: `dig A facebook.com`
+If you run the following command on the BIND server, the related DNS query won't be found in BIND log: `dig A facebook.com`
 
 Instead, you need to explicitly tell dig to use BIND: `dig A facebook.com @127.0.0.1`
 
@@ -102,4 +102,4 @@ Now run the following command to check the default DNS resolver: `systemd-resolv
 
 Now perform a DNS query without specifying 127.0.0.1: `dig A facebook.com`
 
-You will see the DNS query in BIND log, which means BIND is now the default recursive resolver. If you don’t see any queries in the BIND log, you might need to configure per-link DNS server.
+You will see the DNS query in BIND log, which means BIND is now the default recursive resolver. If you don't see any queries in the BIND log, you might need to configure per-link DNS server.

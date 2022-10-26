@@ -80,7 +80,7 @@ semanage port -l | grep ssh                                         # find ssh p
 semanage port -m -t ssh_port_t -p tcp 9999                          # -m for modiy, -a for add, -d for delete
 ```
 
-If you need to set up a Apache virtual host using a directory other than /var/www/html as DocumentRoot. Apache will refuse to serve the content because the index.html has been labeled with the `default_t` SELinux type, which Apache can’t access. To add apache read-only access to dir:
+If you need to set up a Apache virtual host using a directory other than /var/www/html as DocumentRoot. Apache will refuse to serve the content because the index.html has been labeled with the `default_t` SELinux type, which Apache can't access. To add apache read-only access to dir:
 ```
 semanage fcontext -a -t httpd_sys_content_t "/custom_dir(/.*)?"     #  -a add, -t type
 restorecon -R -v /custom_dir                                        # remember to run restorecon after you set the file context

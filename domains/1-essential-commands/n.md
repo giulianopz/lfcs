@@ -1,6 +1,6 @@
 ## Manage access to the root account
 
-By default Ubuntu does not set up a root password during installation and therefore you don’t get the facility to log in as root. However, this does not mean that the root account doesn’t exist in Ubuntu or that it can’t be completely accessed. Instead you are given the ability to execute tasks with superuser privileges using the `sudo` command.
+By default Ubuntu does not set up a root password during installation and therefore you don't get the facility to log in as root. However, this does not mean that the root account doesn't exist in Ubuntu or that it can't be completely accessed. Instead you are given the ability to execute tasks with superuser privileges using the `sudo` command.
 
 To access the root user account run one of the following commands and enter your normal-user password: 
 ```

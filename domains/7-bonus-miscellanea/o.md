@@ -30,7 +30,7 @@ The following are the most common DNS server types that are used to resolve host
 
 - DNS Root Server
 
-> The root server is the first step in the journey from hostname to IP address. The DNS Root Server extracts the Top Level Domain (TLD) from the user’s query — for example, www.example.com —... provides details for the .com TLD Name Server. In turn, that server will provide details for domains with the .com DNS zone, including “example.com”.
+> The root server is the first step in the journey from hostname to IP address. The DNS Root Server extracts the Top Level Domain (TLD) from the user's query — for example, www.example.com —... provides details for the .com TLD Name Server. In turn, that server will provide details for domains with the .com DNS zone, including “example.com”.
 
 >There are 13 root servers worldwide, indicated by the letters A through M, operated by organizations like the Internet Systems Consortium, Verisign, ICANN, the University of Maryland, and the U.S. Army Research Lab.
 
@@ -57,7 +57,7 @@ DNS servers create a DNS record to provide important information about a domain 
 
 ## DNS Can Do Much More
 
-Now that’s we’ve covered the major types of traditional DNS infrastructure, you should know that DNS can be more than just the “plumbing” of the Internet. Advanced DNS solutions can help do some amazing things, including:
+Now that's we've covered the major types of traditional DNS infrastructure, you should know that DNS can be more than just the “plumbing” of the Internet. Advanced DNS solutions can help do some amazing things, including:
 
 - Global server load balancing (GSLB): fast routing of connections between globally distributed data centers
 - Multi CDN: routing users to the CDN that will provide the best experience

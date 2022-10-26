@@ -219,7 +219,7 @@ Get only the name of the files which are different in the two branches:
 To see the commit differences between two branches, use `git log` and specify the branches that you want to compare.
 `git log [branch1]..[branch2]`
 
-> Note: This won’t show you the actual file differences between the two branches but only the commits.
+> Note: This won't show you the actual file differences between the two branches but only the commits.
 
 Compare commits:
 ```

@@ -15,7 +15,7 @@ sysctl net.ipv4.ip_forward
 cat /proc/sys/net/ipv4/ip_forward
 ```
 
-To set the value for a kernel parameter we can use `sysctl`, but using the `-w` option and followed by the parameter’s name, the equal sign, and the desired value.
+To set the value for a kernel parameter we can use `sysctl`, but using the `-w` option and followed by the parameter's name, the equal sign, and the desired value.
 
 Another method consists of using echo to overwrite the file associated with the parameter. In other words, the following methods are equivalent to disable the packet forwarding functionality in our system (which, by the way, should be the default value when a box is not supposed to pass traffic between networks):
 ```
@@ -31,7 +31,7 @@ Then run following command to apply the changes to the running configuration.
 
 Other examples of important kernel runtime parameters are:
 
-- `fs.file-max` specifies the maximum number of file handles the kernel can allocate for the system. Depending on the intended use of your system (web / database / file server, to name a few examples), you may want to change this value to meet the system’s needs. Otherwise, you will receive a “Too many open files” error message at best, and may prevent the operating system to boot at the worst. If due to an innocent mistake you find yourself in this last situation, boot in single user mode and edit /etc/sysctl.conf as instructed earlier. To set the same restriction on a per-user basis, use `ulimit`.
+- `fs.file-max` specifies the maximum number of file handles the kernel can allocate for the system. Depending on the intended use of your system (web / database / file server, to name a few examples), you may want to change this value to meet the system's needs. Otherwise, you will receive a “Too many open files” error message at best, and may prevent the operating system to boot at the worst. If due to an innocent mistake you find yourself in this last situation, boot in single user mode and edit /etc/sysctl.conf as instructed earlier. To set the same restriction on a per-user basis, use `ulimit`.
 
 - `kernel.sysrq` is used to enable the SysRq key in your keyboard (also known as the print screen key) so as to allow certain key combinations to invoke emergency actions when the system has become unresponsive. The default value (16) indicates that the system will honor the Alt+SysRq+key combination and perform the actions listed in the sysrq.c documentation found in kernel.org (where key is one letter in the b-z range). For example, Alt+SysRq+b will reboot the system forcefully (use this as a last resort if your server is unresponsive).
 

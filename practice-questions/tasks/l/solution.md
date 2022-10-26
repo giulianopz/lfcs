@@ -1,6 +1,6 @@
 Create a user account with username ​sysadmin​ with thefollowing attributes:
 1. Use a password of ​science​.
-2. This user’s home directory is defined as ​/sysadmin/​:
+2. This user's home directory is defined as ​/sysadmin/​:
 ```
 sudo useradd "sysadmin" -d "/home/sysadmin" -m
 sudo passwd sysadmin # science

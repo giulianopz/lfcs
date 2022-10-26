@@ -63,8 +63,8 @@ The **anacron** program performs the same function as crond, but it adds the abi
 anacron itself doesn't run as a service/daemon, but as a cron job: /etc/cron.d/anacron. So cron is running and checking if anacron is present for the daily, weekly and monthly tasks (it would be duplication of effort to have both running preriod-fixed tasks), but not for the hourly tasks. cron runs the hourly tasks.
 
 So, actually anacron uses a variety of methods to run:
-- if the system is running systemd, it uses a systemd timer (in the Debian package, you’ll see it in /lib/systemd/system/anacron.timer)
-- if the system isn’t running systemd, it uses a system cron job (in /etc/cron.d/anacron)
+- if the system is running systemd, it uses a systemd timer (in the Debian package, you'll see it in /lib/systemd/system/anacron.timer)
+- if the system isn't running systemd, it uses a system cron job (in /etc/cron.d/anacron)
 - in all cases it runs daily, weekly and monthly cron jobs (in /etc/cron.{daily,weekly,monthly}/0anacron)
 - it also runs at boot (from /etc/init.d/anacron or its systemd unit).
 
@@ -180,9 +180,9 @@ These shortcuts can be used in any of the crontab files.
 
 The at command takes the date and time (runtime) when you want to execute the job as a command-line parameter, and the command to be executed from the standard input.
 
-Let’s create a job that will be executed at 9:00 am: `at 09:00`
+Let's create a job that will be executed at 9:00 am: `at 09:00`
 
-Once you hit Enter, you’ll be presented with the at command prompt that most often starts with `at>`. You also see a warning that tells you the shell in which the command will run:
+Once you hit Enter, you'll be presented with the at command prompt that most often starts with `at>`. You also see a warning that tells you the shell in which the command will run:
 ```
 warning: commands will be executed using /bin/sh
 at>
@@ -190,7 +190,7 @@ at>
 
 Enter one or more command you want to execute: `tar -xf /home/linuxize/file.tar.gz`
 
-When you’re done entering the commands, press Ctrl-D to exit the prompt and save the job:
+When you're done entering the commands, press Ctrl-D to exit the prompt and save the job:
 ```
 at> <EOT>
 job 4 at Tue May  5 09:00:00 2020
@@ -215,6 +215,6 @@ Time, date and increment can be combined.
 
 Alternatively, use a here document or pass a file with `-f`.
 
-To list the user’s pending jobs run the atq or at -l command: `atq`
+To list the user's pending jobs run the atq or at -l command: `atq`
 
 To remove a pending job invoke the atrm or at -r command followed by the job number: `atrm 9`

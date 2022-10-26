@@ -14,7 +14,7 @@ It will print:
 - `user`, user owning the process
 - `pid`, process ID of the process (it is set when process start, this means that implicitly provides info on starting order of processes)
 - `%cpu`, the CPU time used divided by the time the process has been running
-- `%mem`, ratio of the process’s resident set size to the physical memory on the machine
+- `%mem`, ratio of the process's resident set size to the physical memory on the machine
 - `VSZ` (virtual memory), virtual memory usage of entire process (in KiB)
 - `RSS` (resident memory), resident set size, the non-swapped physical memory that a task has used (in KiB)
 - `tty`, terminal the process is running on (`?` means that isn't attached to a tty)

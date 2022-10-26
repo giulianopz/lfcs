@@ -18,7 +18,7 @@ When the system boots you are presented with the GRUB menu if you repeatedly pre
 
 The GRUB v2 configuration is read on boot from `/boot/grub/grub.cfg` or `/boot/grub2/grub.cfg`, `whereas /boot/grub/grub.conf` or `/boot/grub/menu.lst` are used in v1. These files are NOT to be edited by hand, but are modified based on the contents of `/etc/default/grub` and the files found inside `/etc/grub.d`.
 
-If you’re interested specifically in the options available for /etc/default/grub, you can invoke the configuration section directly:
+If you're interested specifically in the options available for /etc/default/grub, you can invoke the configuration section directly:
 `info -f grub -n 'Simple configuration'`
 
 When multiple operating systems or kernels are installed in the same machine, `GRUB_DEFAULT` requires an integer value that indicates which OS or kernel entry in the GRUB initial screen should be selected to boot by default. The list of entries can be viewed using the following command:

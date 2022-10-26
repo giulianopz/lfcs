@@ -35,7 +35,7 @@ To make your OpenSSH server display the contents of the /etc/issue.net file as a
 After making changes to the /etc/ssh/sshd_config file, save the file, and restart the sshd server application to effect the changes using the following command at a terminal prompt:
 `sudo systemctl restart sshd.service`
 
-> Warning: Many other configuration directives for sshd are available to change the server application’s behavior to fit your needs. Be advised, however, if your only method of access to a server is ssh, and you make a mistake in configuring sshd via the /etc/ssh/sshd_config file, you may find you are locked out of the server upon restarting it. Additionally, if an incorrect configuration directive is supplied, the sshd server may refuse to start, so be extra careful when editing this file on a remote server.
+> Warning: Many other configuration directives for sshd are available to change the server application's behavior to fit your needs. Be advised, however, if your only method of access to a server is ssh, and you make a mistake in configuring sshd via the /etc/ssh/sshd_config file, you may find you are locked out of the server upon restarting it. Additionally, if an incorrect configuration directive is supplied, the sshd server may refuse to start, so be extra careful when editing this file on a remote server.
 
 3. SSH Keys
 
@@ -87,7 +87,7 @@ The prefix `lp:` is implied and means fetching from launchpad, the alternative `
 
 OpenSSH 8.2 added support for U2F/FIDO hardware authentication devices. These devices are used to provide an extra layer of security on top of the existing key-based authentication, as the hardware token needs to be present to finish the authentication.
 
-It’s very simple to use and setup. The only extra step is generate a new keypair that can be used with the hardware device. For that, there are two key types that can be used: ecdsa-sk and ed25519-sk. The former has broader hardware support, while the latter might need a more recent device.
+It's very simple to use and setup. The only extra step is generate a new keypair that can be used with the hardware device. For that, there are two key types that can be used: ecdsa-sk and ed25519-sk. The former has broader hardware support, while the latter might need a more recent device.
 
 Once the keypair is generated, it can be used as you would normally use any other type of key in openssh. The only requirement is that in order to use the private key, the U2F device has to be present on the host.
 

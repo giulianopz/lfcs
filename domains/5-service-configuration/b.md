@@ -20,7 +20,7 @@ There is a DNS zone for each Top Level Domain, such as “.com”, “.org” or
 
 If a domain has subdomains, they can be part of the same zone. Alternatively, if a subdomain is an independent website, and requires separate DNS management, it can be defined as its own DNS zone.
 
-DNS servers can be deployed in a **primary/secondary** topology, where a secondary DNS server holds a read-only copy of the primary DNS server’s DNS records. The primary server holds the primary zone file, and the secondary server constitutes an identical secondary zone; DNS requests are distributed between primary and secondary servers. A **DNS zone transfer** occurs when the primary server zone file is copied, in whole or in part, to the secondary DNS server.
+DNS servers can be deployed in a **primary/secondary** topology, where a secondary DNS server holds a read-only copy of the primary DNS server's DNS records. The primary server holds the primary zone file, and the secondary server constitutes an identical secondary zone; DNS requests are distributed between primary and secondary servers. A **DNS zone transfer** occurs when the primary server zone file is copied, in whole or in part, to the secondary DNS server.
 
 DNS **zone files** are defined in RFC 1035 and RFC 1034. A zone file contains mappings between domain names, IP addresses and other resources, organized in the form of **resource records** (RR).
 
@@ -71,7 +71,7 @@ zone "example.com" {
 
 Now use an existing zone file as a template to create the **/etc/bind/db.example.com** file: `sudo cp /etc/bind/db.local /etc/bind/db.example.com`
 
-Edit the new zone file `/etc/bind/db.example.com` and change `localhost.` to the FQDN of your server, leaving the additional `.` at the end. Change `127.0.0.1` to the nameserver’s IP Address and `root.localhost` to a valid email address, but with a `.` instead of the usual `@` symbol, again leaving the `.` at the end. Change the comment to indicate the domain this file is for.
+Edit the new zone file `/etc/bind/db.example.com` and change `localhost.` to the FQDN of your server, leaving the additional `.` at the end. Change `127.0.0.1` to the nameserver's IP Address and `root.localhost` to a valid email address, but with a `.` instead of the usual `@` symbol, again leaving the `.` at the end. Change the comment to indicate the domain this file is for.
 
 Create an A record for the base domain, **example.com**. Also, create an A record for **ns.example.com**, the name server in this example:
 ```

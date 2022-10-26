@@ -10,7 +10,7 @@
 
 5. Create a simple chat with `netcat` (TODO)
 
-6. Bash allows you to ignore history entries that begin with a space if you set the `HISTCONTROL` variable to `ignorespace`. Type a space before a command before running it in the bash shell and the command will run normally, but won’t appear in your history if you have this variable enabled. This allows you to keep your history a bit cleaner, choosing to run commands without them appearing in your history. Bash also allows you to ignore duplicate commands that can clutter your history. To do so, set `HISTCONTROL` to `ignoredups`. To use both the ignorespace and ignoredups feature, set the `HISTCONTROL` variable to `ignoreboth`.
+6. Bash allows you to ignore history entries that begin with a space if you set the `HISTCONTROL` variable to `ignorespace`. Type a space before a command before running it in the bash shell and the command will run normally, but won't appear in your history if you have this variable enabled. This allows you to keep your history a bit cleaner, choosing to run commands without them appearing in your history. Bash also allows you to ignore duplicate commands that can clutter your history. To do so, set `HISTCONTROL` to `ignoredups`. To use both the ignorespace and ignoredups feature, set the `HISTCONTROL` variable to `ignoreboth`.
 
 7. Always check if a piece of hardware is compatible with Linux, before buying it. For printers, have a look at this [list](https://haydenjames.io/finding-linux-compatible-printers/) or check the [OpenPrinting](https://www.openprinting.org/printers/) database. A recent project which aims  help people to collaboratively debug hardware related issues, check for Linux-compatibility and find drivers is [Hardware for Linux](https://linux-hardware.org/). If you are currently not able to write your own printer driver but you have some interest in it, consider starting from [here](https://openprinting.github.io/documentation/02-designing-printer-drivers).
 
@@ -50,4 +50,18 @@ Content-Type: application/json
 Content-Length: 18
 
 {"hello": "world"}
+```
+
+17. Beware of commands with the same name, especially command shell built-in vs- external command as `time`:
+```bash
+:~$ type -a time
+time is a shell keyword
+time is /usr/bin/time
+time is /bin/time
+```
+Use the full path to execute to not execute the built-in command:
+```bash
+/usr/bin/time [OPTIONS] COMMAND [ARG]...
+#or
+/bin/time [OPTIONS] COMMAND [ARG]...
 ```
