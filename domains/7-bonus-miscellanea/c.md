@@ -264,7 +264,14 @@ Commit changes with title and description: `git commit -m "Title" -m "Descriptio
 
 Add and commit in one step: `git commit -a -m "Message"`
 
-Update most recent unpushed commit message: `git commit --amend -m "New Message"`
+Rewrite the most recent **not-pushed** commit message: `git commit --amend -m "New Message"`
+
+> Note: if the commit was pushed, it will take more steps to rewrite it:
+    - use `git rebase -i HEAD~n` to display a list of the last nn commits in your default text editor
+    - replace `pick` with `reword` before each commit message that needs to be changed
+    - save and close the commit list file
+    - in each resulting commit file, type the new commit message, save the file, and close it
+    - force push the amended commits using `git push --force`.
 
 Fetch all changes from the remote and remove deleted branches: `git fetch -a -p`
 
