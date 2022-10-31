@@ -266,12 +266,12 @@ Add and commit in one step: `git commit -a -m "Message"`
 
 Rewrite the most recent **not-pushed** commit message: `git commit --amend -m "New Message"`
 
-> Note: if the commit was pushed, it will take more steps to rewrite it:
-    - use `git rebase -i HEAD~n` to display a list of the last nn commits in your default text editor
-    - replace `pick` with `reword` before each commit message that needs to be changed
-    - save and close the commit list file
-    - in each resulting commit file, type the new commit message, save the file, and close it
-    - force push the amended commits using `git push --force`.
+If the commit was pushed, it will take more steps to rewrite it:
+- use `git rebase -i HEAD~n` to display a list of the last nn commits in your default text editor
+- replace `pick` with `reword` before each commit message that needs to be changed
+- save and close the commit list file
+- in each resulting commit file, type the new commit message, save the file, and close it
+- force push the amended commits using `git push --force`.
 
 Fetch all changes from the remote and remove deleted branches: `git fetch -a -p`
 
@@ -300,6 +300,19 @@ You can create your own file from an online template generator: https://www.topt
 To check what gitignore rule is causing a particular path to be ignored, run git check-ignore:
 `git check-ignore -v [path/to/check]`
 
+## Signing commits
+
+Sign individual commits with:
+- `git commit -s [..]`, to add a `Signed-off-by` trailer by the committer at the end of the commit log message,
+- `git commit -S [<keyid>] [..]`, to sign the commit with a GPG key.
+
+For the second option you will need to upload the public key to your git hosting service (e.g. GitHub) and configure git locally to use a default key:
+```
+git config [--global] user.signingkey <keyid>
+git config [--global] commit.gpgsign true
+```
+
+To retrieve the id of an existing GPG key, run: `gpg --list-secret-keys --keyid-format LONG`. The key id is the alphanumeric string after the string `sec rsaXXXX/` in the command output. Then you can use hte id to print out the public key: `gpg --armor --export <keyid>`.
 
 ## Archive
 
