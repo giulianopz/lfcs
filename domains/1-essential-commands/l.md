@@ -52,7 +52,7 @@ There are other special permissions that can be granted to file/directories:
 | sgid (2, -s/-S) | run as group owner | subfiles inherit group of parent dir, while subdirs inherit sgid |
 | sticky bit (1, -t/-T) | N/A | files inside dir can be deleted only by the owner |
 
-> Note: Since the special bits appear in the third position as exec bit, "-lowercase" means only the special bit is active, whereas "-uppercase" means that both special bit and exec bit are set.  
+> Note: Since the special bits appear in the third position as exec bit, "-uppercase" means only the special bit is active, whereas "-lowercase" means that both special bit and exec bit are set.  
 
 Special bits can be set with:
 
