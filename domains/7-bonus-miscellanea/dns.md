@@ -1,6 +1,6 @@
 ## How DNS Works
 
-DNS is a global system for translating IP addresses to human-readable domain names. When a user tries to access a web address like “example.com”, their web browser or application performs a DNS Query against a DNS server, supplying the hostname. The DNS server takes the hostname and resolves it into a numeric IP address, which the web browser can connect to.
+DNS is a global system for translating IP addresses to human-readable domain names. When a user tries to access a web address like "example.com", their web browser or application performs a DNS Query against a DNS server, supplying the hostname. The DNS server takes the hostname and resolves it into a numeric IP address, which the web browser can connect to.
 
 A component called a DNS Resolver is responsible for checking if the hostname is available in local cache, and if not, contacts a series of DNS Name Servers, until eventually it receives the IP of the service the user is trying to reach, and returns it to the browser or application. This usually takes less than a second.
 
@@ -10,7 +10,7 @@ There are three types of queries in the DNS system:
 
 - Recursive Query
 
-> In a recursive query, a DNS client provides a hostname, and the DNS Resolver “must” provide an answer—it responds with either a relevant resource record, or an error message if it can't be found. The resolver starts a recursive query process, starting from the DNS Root Server, until it finds the Authoritative Name Server (for more on Authoritative Name Servers see DNS Server Types below) that holds the IP address and other information for the requested hostname.
+> In a recursive query, a DNS client provides a hostname, and the DNS Resolver "must" provide an answer—it responds with either a relevant resource record, or an error message if it can't be found. The resolver starts a recursive query process, starting from the DNS Root Server, until it finds the Authoritative Name Server (for more on Authoritative Name Servers see DNS Server Types below) that holds the IP address and other information for the requested hostname.
 
 - Iterative Query
 
@@ -26,17 +26,17 @@ The following are the most common DNS server types that are used to resolve host
 
 - DNS Resolver
 
-> A DNS resolver (recursive resolver), is designed to receive DNS queries, which include a human-readable hostname such as “www.example.com”, and is responsible for tracking the IP address for that hostname.
+> A DNS resolver (recursive resolver), is designed to receive DNS queries, which include a human-readable hostname such as "www.example.com", and is responsible for tracking the IP address for that hostname
 
 - DNS Root Server
 
-> The root server is the first step in the journey from hostname to IP address. The DNS Root Server extracts the Top Level Domain (TLD) from the user's query — for example, www.example.com —... provides details for the .com TLD Name Server. In turn, that server will provide details for domains with the .com DNS zone, including “example.com”.
+> The root server is the first step in the journey from hostname to IP address. The DNS Root Server extracts the Top Level Domain (TLD) from the user's query — for example, www.example.com —... provides details for the .com TLD Name Server. In turn, that server will provide details for domains with the .com DNS zone, including "example.com".
 
 >There are 13 root servers worldwide, indicated by the letters A through M, operated by organizations like the Internet Systems Consortium, Verisign, ICANN, the University of Maryland, and the U.S. Army Research Lab.
 
 - Authoritative DNS Server
 
-> Higher level servers in the DNS hierarchy define which DNS server is the “authoritative” name server for a specific hostname, meaning that it holds the up-to-date information for that hostname.
+> Higher level servers in the DNS hierarchy define which DNS server is the "authoritative" name server for a specific hostname, meaning that it holds the up-to-date information for that hostname.
 
 > The Authoritative Name Server is the last stop in the name server query—it takes the hostname and returns the correct IP address to the DNS Resolver (or if it cannot find the domain, returns the message NXDOMAIN).
 
@@ -48,7 +48,7 @@ DNS servers create a DNS record to provide important information about a domain 
 - IP Version 6 Address record (AAAA Record)—stores a hostname and its corresponding IPv6 address.
 - Canonical Name record (CNAME Record)—can be used to alias a hostname to another hostname. When a DNS client requests a record that contains a CNAME, which points- to another hostname, the DNS resolution process is repeated with the new hostname.
 - Mail exchanger record (MX Record)—specifies an SMTP email server for the domain, used to route outgoing emails to an email server.
-- Name Server records (NS Record)—specifies that a DNS Zone, such as “example.com” is delegated to a specific Authoritative Name Server, and provides the address- of the name server.
+- Name Server records (NS Record)—specifies that a DNS Zone, such as "example.com" is delegated to a specific Authoritative Name Server, and provides the address- of the name server.
 - Reverse-lookup Pointer records (PTR Record)—allows a DNS resolver to provide an IP address and receive a hostname (reverse DNS lookup).
 - Certificate record (CERT Record)—stores encryption certificates—PKIX, SPKI, PGP, and so on.
 - Service Location (SRV Record)—a service location record, like MX but for other communication protocols.
@@ -57,7 +57,7 @@ DNS servers create a DNS record to provide important information about a domain 
 
 ## DNS Can Do Much More
 
-Now that's we've covered the major types of traditional DNS infrastructure, you should know that DNS can be more than just the “plumbing” of the Internet. Advanced DNS solutions can help do some amazing things, including:
+Now that's we've covered the major types of traditional DNS infrastructure, you should know that DNS can be more than just the "plumbing" of the Internet. Advanced DNS solutions can help do some amazing things, including:
 
 - Global server load balancing (GSLB): fast routing of connections between globally distributed data centers
 - Multi CDN: routing users to the CDN that will provide the best experience
