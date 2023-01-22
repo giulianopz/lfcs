@@ -1,4 +1,4 @@
-## How to fix screen low resolution
+## How to fix low screen resolution
 
 Sometimes when you connect a device to a monitor (external or integrated), you may experience an unexpected low resolution that you cannot change via system setting GUI of your desktop environment: only lower resolutions could be available. 
 
