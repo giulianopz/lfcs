@@ -108,5 +108,5 @@
 - [x] [Debugging corrupted character encoding issues](7-bonus-miscellanea/corrupted-chars.md)
 - [x] [How to test a microphone](7-bonus-miscellanea/mic.md)
 - [x] [Automate login via SSH](7-bonus-miscellanea/ssh-login.md)
-- [ ] [How to fix screen low resolution](7-bonus-miscellanea/edid.md)
+- [x] [How to fix low screen resolution](7-bonus-miscellanea/edid.md)
 - [ ] [Tips & tricks](7-bonus-miscellanea/tips-tricks.md)
