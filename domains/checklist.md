@@ -83,29 +83,30 @@
 
 ## 7. Bonus/Miscellanea - 0%
 
-- [ ] a. [Tips & tricks](7-bonus-miscellanea/a.md)
-- [x] b. [bash](7-bonus-miscellanea/b.md)
-- [x] c. [git](7-bonus-miscellanea/c.md)
-- [ ] d. vi(m)
-- [x] e. [Repair the GRUB from live CD or USB stick](7-bonus-miscellanea/e.md)
-- [x] f. [Install a CA certificate](7-bonus-miscellanea/f.md)
-- [x] g. [Create a self-signed SSL certificate for Apache web server](7-bonus-miscellanea/f.md)
-- [x] h. [Debugging TLS handshake issues](7-bonus-miscellanea/h.md)
-- [ ] i. Chroot jails
-- [ ] j. How to use Linux's built-in USB attack protection
-- [ ] k. Repair a usb drive
-- [ ] l. Disable ssh-login as root via PAM
-- [ ] m. Makefile & GNU Autotools  
-- [ ] n. Manage your dotfiles with GNU stow
-- [x] o. [DNS essentials](7-bonus-miscellanea/o.md)
-- [x] p. [Network-Manager](7-bonus-miscellanea/p.md)
-- [x] q. [SSH-tunneling](7-bonus-miscellanea/q.md)
-- [ ] r. Troubleshooting networks
-- [ ] s. tmux
-- [ ] t. Alpine e-mail setup
-- [ ] u. How to fix Nvidia graphics card problems
-- [ ] v. GPG & SSH keys
-- [ ] w. How to handle dynamic and static libraries in Linux
-- [x] x. [Debugging corrupted character encoding issues](7-bonus-miscellanea/x.md)
-- [x] y. [How to test a microphone](7-bonus-miscellanea/y.md)
-- [x] z. [Automate login via SSH](7-bonus-miscellanea/z.md)
+- [x] [bash](7-bonus-miscellanea/bash.md)
+- [x] [git](7-bonus-miscellanea/git.md)
+- [ ] vi(m)
+- [ ] tmux
+- [x] [Repair the GRUB from live CD or USB stick](7-bonus-miscellanea/grub.md)
+- [x] [Install a CA certificate](7-bonus-miscellanea/ca-certs.md)
+- [x] [Create a self-signed SSL certificate for Apache web server](7-bonus-miscellanea/self-signed-ssl-cert.md)
+- [x] [Debugging TLS handshake issues](7-bonus-miscellanea/tls-issues.md)
+- [ ] Chroot jails
+- [ ] How to use Linux's built-in USB attack protection
+- [ ] Repair a usb drive
+- [ ] Disable ssh-login as root via PAM
+- [ ] Makefile & GNU Autotools  
+- [ ] Manage your dotfiles with GNU stow
+- [x] [DNS essentials](7-bonus-miscellanea/dns.md)
+- [x] [Network-Manager](7-bonus-miscellanea/net-manager.md)
+- [x] [SSH-tunneling](7-bonus-miscellanea/ssh-tunneling.md)
+- [ ] Troubleshooting networks
+- [ ] Alpine e-mail setup
+- [ ] How to fix Nvidia graphics card problems
+- [ ] GPG & SSH keys
+- [ ] How to handle dynamic and static libraries in Linux
+- [x] [Debugging corrupted character encoding issues](7-bonus-miscellanea/corrupted-chars.md)
+- [x] [How to test a microphone](7-bonus-miscellanea/mic.md)
+- [x] [Automate login via SSH](7-bonus-miscellanea/ssh-login.md)
+- [ ] [How to fix screen low resolution](7-bonus-miscellanea/edid.md)
+- [ ] [Tips & tricks](7-bonus-miscellanea/tips-tricks.md)
