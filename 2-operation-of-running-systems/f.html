@@ -1,0 +1,374 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Schedule tasks to run at a set date and time - Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../1-essential-commands/index.html"><strong aria-hidden="true">1.</strong> Essential Commands - 25%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-essential-commands/a.html"><strong aria-hidden="true">1.1.</strong> Log into local & remote graphical and text mode consoles</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/b.html"><strong aria-hidden="true">1.2.</strong> Search for files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/c.html"><strong aria-hidden="true">1.3.</strong> Evaluate and compare the basic file system features and options</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/d.html"><strong aria-hidden="true">1.4.</strong> Compare and manipulate file content</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/e.html"><strong aria-hidden="true">1.5.</strong> Use input-output redirection</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/f.html"><strong aria-hidden="true">1.6.</strong> Analyze text using basic regular expressions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/g.html"><strong aria-hidden="true">1.7.</strong> Archive, backup, compress, unpack, and uncompress files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/h.html"><strong aria-hidden="true">1.8.</strong> Create, delete, copy, and move files and directories</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/i.html"><strong aria-hidden="true">1.9.</strong> Create and manage hard and soft links</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/l.html"><strong aria-hidden="true">1.10.</strong> List, set, and change standard file permissions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/m.html"><strong aria-hidden="true">1.11.</strong> Read, and use system documentation</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/n.html"><strong aria-hidden="true">1.12.</strong> Manage access to the root account</a></li></ol></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/index.html"><strong aria-hidden="true">2.</strong> Operation of Running Systems - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/a.html"><strong aria-hidden="true">2.1.</strong> Boot, reboot, and shut down a system safely</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/b.html"><strong aria-hidden="true">2.2.</strong> Boot or change system into different operating modes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/c.html"><strong aria-hidden="true">2.3.</strong> Install, configure and troubleshoot bootloaders</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/d.html"><strong aria-hidden="true">2.4.</strong> Diagnose and manage processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/e.html"><strong aria-hidden="true">2.5.</strong> Locate and analyze system log files</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/f.html" class="active"><strong aria-hidden="true">2.6.</strong> Schedule tasks to run at a set date and time</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/g.html"><strong aria-hidden="true">2.7.</strong> Verify completion of scheduled jobs</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/h.html"><strong aria-hidden="true">2.8.</strong> Update software to provide required functionality and security</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/i.html"><strong aria-hidden="true">2.9.</strong> Verify the integrity and availability of resources</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/l.html"><strong aria-hidden="true">2.10.</strong> Verify the integrity and availability of key processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/m.html"><strong aria-hidden="true">2.11.</strong> Change kernel runtime parameters, persistent and non-persistent</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/n.html"><strong aria-hidden="true">2.12.</strong> Use scripting to automate system maintenance tasks</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/o.html"><strong aria-hidden="true">2.13.</strong> Manage the startup process and services</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/p.html"><strong aria-hidden="true">2.14.</strong> List and identify SELinux/AppArmor file and process contexts</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/q.html"><strong aria-hidden="true">2.15.</strong> Manage software</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/r.html"><strong aria-hidden="true">2.16.</strong> Identify the component of a Linux distribution that a file belongs to</a></li></ol></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/index.html"><strong aria-hidden="true">3.</strong> User and Group Management - 10%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-user-and-group-management/a.html"><strong aria-hidden="true">3.1.</strong> Create, delete, and modify local user accounts</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/b.html"><strong aria-hidden="true">3.2.</strong> Create, delete, and modify local groups and group memberships</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/c.html"><strong aria-hidden="true">3.3.</strong> Manage system-wide environment profiles</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/d.html"><strong aria-hidden="true">3.4.</strong> Manage template user environment</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/e.html"><strong aria-hidden="true">3.5.</strong> Configure user resource limits</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/f.html"><strong aria-hidden="true">3.6.</strong> Manage user privileges</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/g.html"><strong aria-hidden="true">3.7.</strong> Configure PAM</a></li></ol></li><li class="chapter-item expanded "><a href="../4-networking/index.html"><strong aria-hidden="true">4.</strong> Networking - 12%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4-networking/a.html"><strong aria-hidden="true">4.1.</strong> Configure networking and hostname resolution statically or dynamically</a></li><li class="chapter-item expanded "><a href="../4-networking/b.html"><strong aria-hidden="true">4.2.</strong> Configure network services to start automatically at boot</a></li><li class="chapter-item expanded "><a href="../4-networking/c.html"><strong aria-hidden="true">4.3.</strong> Implement packet filtering (iptables, firewalld or ufw)</a></li><li class="chapter-item expanded "><a href="../4-networking/d.html"><strong aria-hidden="true">4.4.</strong> Start, stop, and check the status of network services</a></li><li class="chapter-item expanded "><a href="../4-networking/e.html"><strong aria-hidden="true">4.5.</strong> Statically route IP traffic</a></li><li class="chapter-item expanded "><a href="../4-networking/f.html"><strong aria-hidden="true">4.6.</strong> Synchronize time using other network peers</a></li></ol></li><li class="chapter-item expanded "><a href="../5-service-configuration/index.html"><strong aria-hidden="true">5.</strong> Service Configuration - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../5-service-configuration/a.html"><strong aria-hidden="true">5.1.</strong> Configure a caching DNS server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/b.html"><strong aria-hidden="true">5.2.</strong> Maintain a DNS zone</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/c.html"><strong aria-hidden="true">5.3.</strong> Configure email aliases</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/d.html"><strong aria-hidden="true">5.4.</strong> Configure SSH servers and clients</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/e.html"><strong aria-hidden="true">5.5.</strong> Restrict access to the HTTP proxy server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/f.html"><strong aria-hidden="true">5.6.</strong> Configure an IMAP and IMAPS service</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/g.html"><strong aria-hidden="true">5.7.</strong> Query and modify the behavior of system services at various operating modes</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/h.html"><strong aria-hidden="true">5.8.</strong> Configure an HTTP server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/i.html"><strong aria-hidden="true">5.9.</strong> Configure HTTP server log files</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/l.html"><strong aria-hidden="true">5.10.</strong> Configure a database server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/m.html"><strong aria-hidden="true">5.11.</strong> Restrict access to a web page</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/n.html"><strong aria-hidden="true">5.12.</strong> Manage and configure containers</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/o.html"><strong aria-hidden="true">5.13.</strong> Manage and configure Virtual Machines</a></li></ol></li><li class="chapter-item expanded "><a href="../6-storage-management/index.html"><strong aria-hidden="true">6.</strong> Storage Management - 13%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6-storage-management/a.html"><strong aria-hidden="true">6.1.</strong> List, create, delete, and modify physical storage partitions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/b.html"><strong aria-hidden="true">6.2.</strong> Manage and configure LVM storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/c.html"><strong aria-hidden="true">6.3.</strong> Create and configure encrypted storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/d.html"><strong aria-hidden="true">6.4.</strong> Configure systems to mount file systems at or during boot</a></li><li class="chapter-item expanded "><a href="../6-storage-management/e.html"><strong aria-hidden="true">6.5.</strong> Configure and manage swap space</a></li><li class="chapter-item expanded "><a href="../6-storage-management/f.html"><strong aria-hidden="true">6.6.</strong> Create and manage RAID devices</a></li><li class="chapter-item expanded "><a href="../6-storage-management/g.html"><strong aria-hidden="true">6.7.</strong> Configure systems to mount file systems on demand</a></li><li class="chapter-item expanded "><a href="../6-storage-management/h.html"><strong aria-hidden="true">6.8.</strong> Create, manage and diagnose advanced file system permissions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/i.html"><strong aria-hidden="true">6.9.</strong> Setup user and group disk quotas for filesystems</a></li><li class="chapter-item expanded "><a href="../6-storage-management/l.html"><strong aria-hidden="true">6.10.</strong> Create and configure file systems</a></li></ol></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/index.html"><strong aria-hidden="true">7.</strong> Bonus/Miscellanea - 0%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/bash.html"><strong aria-hidden="true">7.1.</strong> bash</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/git.html"><strong aria-hidden="true">7.2.</strong> git</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/grub.html"><strong aria-hidden="true">7.3.</strong> Repair the GRUB from live CD or USB stick</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ca-certs.html"><strong aria-hidden="true">7.4.</strong> Install a CA certificate</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/self-signed-ssl-cert.html"><strong aria-hidden="true">7.5.</strong> Create a self-signed SSL certificate for Apache web server</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tls-issues.html"><strong aria-hidden="true">7.6.</strong> Debugging TLS handshake issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/dns.html"><strong aria-hidden="true">7.7.</strong> DNS essentials</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/net-manager.html"><strong aria-hidden="true">7.8.</strong> Network-Manager</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-tunneling.html"><strong aria-hidden="true">7.9.</strong> SSH-tunneling</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/corrupted-chars.html"><strong aria-hidden="true">7.10.</strong> Debugging corrupted character encoding issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/mic.html"><strong aria-hidden="true">7.11.</strong> How to test a microphone</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-login.html"><strong aria-hidden="true">7.12.</strong> Automate login via SSH</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/edid.html"><strong aria-hidden="true">7.13.</strong> How to fix low screen resolution</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tips-tricks.html"><strong aria-hidden="true">7.14.</strong> Tips & tricks</a></li></ol></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">8.</strong> References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs/edit/main/domains/2-operation-of-running-systems/f.md " title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="schedule-tasks-to-run-at-a-set-date-and-time"><a class="header" href="#schedule-tasks-to-run-at-a-set-date-and-time">Schedule tasks to run at a set date and time</a></h2>
+<p>To run tasks at a specific time in the future different services are available:</p>
+<ul>
+<li><code>at</code> specifies a one-time task that runs at a certain time</li>
+<li><code>cron</code> can schedule tasks on a repetitive basis, such as daily, weekly, or monthly</li>
+<li><code>anacron</code> can  be  used  to  execute  commands periodically, with a frequency specified in days, but unlike cron, it does not assume that the machine is running continuously.</li>
+</ul>
+<hr />
+<h3 id="cron"><a class="header" href="#cron">Cron</a></h3>
+<p>The crond daemon is the background service that enables cron functionality.</p>
+<p>The cron service checks for files in the <code>/var/spool/cron</code> and <code>/etc/cron.d</code> directories and the <code>/etc/anacrontab</code> file. The contents of these files define cron jobs that are to be run at various intervals. The individual user cron files are located in /var/spool/cron, and system services and applications generally add cron job files in the /etc/cron.d directory.</p>
+<p>The cron utility runs based on commands specified in a cron table (crontab). Each user, including root, can have a cron file. These files don't exist by default, but can be created in the /var/spool/cron directory using the <code>crontab -e</code> command that's also used to edit a cron file:</p>
+<pre><code>SHELL=/bin/bash
+MAILTO=root@example.com
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+
+# For details see man 4 crontabs
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
+
+# backup using the rsbu program to the internal 4TB HDD and then 4TB external
+01 01 * * * /usr/local/bin/rsbu -vbd1 ; /usr/local/bin/rsbu -vbd2
+
+# Set the hardware clock to keep it in sync with the more accurate system clock
+03 05 * * * /sbin/hwclock --systohc
+
+# Perform monthly updates on the first of the month
+# 25 04 1 * * /usr/bin/dnf -y update
+</code></pre>
+<p>The first three lines in the code above set up a default environment. The environment must be set to whatever is necessary for a given user because cron does not provide an environment of any kind.</p>
+<blockquote>
+<p>Warning: If no user is specified, the job is run as the user that owns the crontab file, root in the case of the root crontab.</p>
+</blockquote>
+<p>To prevent possible misuse, you can control access to the <code>crontab</code> command by using two files in the /etc/cron.d directory: <code>cron.deny</code> and <code>cron.allow</code>. These files permit only specified users to perform crontab command tasks such as creating, editing, displaying, or removing their own crontab files.</p>
+<p>The cron.deny and cron.allow files consist of a list of user names, one user name per line.</p>
+<p>These access control files work together as follows:</p>
+<ul>
+<li>if cron.allow exists, only the users who are listed in this file can create, edit, display, or remove crontab files</li>
+<li>if cron.allow does not exist, all users can submit crontab files, except for users who are listed in cron.deny</li>
+<li>if neither cron.allow nor cron.deny exists, superuser privileges are required to run the crontab command.</li>
+</ul>
+<h3 id="anacron"><a class="header" href="#anacron">Anacron</a></h3>
+<p>The <strong>anacron</strong> program performs the same function as crond, but it adds the ability to run jobs that were skipped, such as if the computer was off or otherwise unable to run the job for one or more cycles. The anacron program provides some easy options for running regularly scheduled tasks. Just install your scripts in the <code>/etc/cron.[hourly|daily|weekly|monthly]</code> directories, depending how frequently they need to be run (but see below tip). Alternatively, specify the job to run in <code>/etc/anacrontab</code> as you would do with the crontab but with anacron-specific syntax (see below).</p>
+<p>anacron itself doesn't run as a service/daemon, but as a cron job: /etc/cron.d/anacron. So cron is running and checking if anacron is present for the daily, weekly and monthly tasks (it would be duplication of effort to have both running preriod-fixed tasks), but not for the hourly tasks. cron runs the hourly tasks.</p>
+<p>So, actually anacron uses a variety of methods to run:</p>
+<ul>
+<li>if the system is running systemd, it uses a systemd timer (in the Debian package, you'll see it in /lib/systemd/system/anacron.timer)</li>
+<li>if the system isn't running systemd, it uses a system cron job (in /etc/cron.d/anacron)</li>
+<li>in all cases it runs daily, weekly and monthly cron jobs (in /etc/cron.{daily,weekly,monthly}/0anacron)</li>
+<li>it also runs at boot (from /etc/init.d/anacron or its systemd unit).</li>
+</ul>
+<p>anacron will check if a job has been executed within the specified period in the period field. If not, it executes the command specified in the command field after waiting the number of minutes specified in the delay field. Once the job has been executed, it records the date in a timestamp file in the /var/spool/anacron directory with the name specified in the job-id field:</p>
+<pre><code>cat /var/spool/anacron/bck.weekly
+&gt;20210328
+</code></pre>
+<p>To quickly check if anacron jobs are really executed, you can force immediately their execution: <code>anacron -f -n</code></p>
+<blockquote>
+<p>Note: The specified delay times in each line help prevent these jobs from overlapping themselves and other cron jobs.</p>
+</blockquote>
+<blockquote>
+<p>Tip: Instead of placing whole bash programs in the cron.X directories, just install them in the <code>/usr/local/bin</code> directory, which will allow you to run them easily from the command line. Then, add a symlink in the appropriate cron directory, such as <code>/etc/cron.daily</code>.</p>
+</blockquote>
+<h3 id="examples-of-job-definition-syntax"><a class="header" href="#examples-of-job-definition-syntax">Examples of job definition syntax:</a></h3>
+<p>Every minute of every day:</p>
+<pre><code># m h dom mon dow command
+* * * * * /home/user/command.sh
+# or
+0-59 0-23 0-31 0-12 0-7 /home/user/command.sh
+</code></pre>
+<p>Every 15 minutes of every day:</p>
+<pre><code># m h dom mon dow command
+*/15 * * * * /home/user/command.sh
+# or
+0-59/15 * * * * /home/user/command.sh
+# or
+0,15,30,45 * * * * /home/user/command.sh
+</code></pre>
+<blockquote>
+<p>Note: The division expressions must result in a remainder of zero for the job to run.</p>
+</blockquote>
+<p>Every 5 minutes of the 2 am hour starting at 2:03:</p>
+<pre><code># m h dom mon dow command
+03-59/5 02 * * * /home/user/command.sh
+# This runs at 2:03, 2:08, 2:13, 2:18, 2:23, and so on until 2:58
+</code></pre>
+<p>Every day at midnight:</p>
+<pre><code># m h dom mon dow command
+0 0 * * * /home/user/command.sh
+# or
+0 0 * * 0-7 /home/user/command.sh
+</code></pre>
+<p>Twice a day:</p>
+<pre><code># m h dom mon dow command
+0 */12 * * * /home/user/command.sh
+# or
+# m h dom mon dow command
+0 0-23/12 * * * /home/user/command.sh
+# or
+0 0,12 * * * /home/user/command.sh
+</code></pre>
+<p>Every weekday at 2 am:</p>
+<pre><code># m h dom mon dow command
+0 02 * * 1-5 /home/user/command.sh
+</code></pre>
+<p>Weekends at 2 am:</p>
+<pre><code># m h dom mon dow command
+0 02 * * 6,7 /home/user/command.sh
+# or
+0 02 * * 6-7 /home/user/command.sh
+</code></pre>
+<p>Once a month on the 15th at 2 am:</p>
+<pre><code># m h dom mon dow command
+0 02 15 * * /home/user/command.sh
+</code></pre>
+<p>Every 2 days at 2 am:</p>
+<pre><code># m h dom mon dow command
+0 02 */2 * * /home/user/command.sh
+</code></pre>
+<p>Every 2 months at 2 am on the 1st:</p>
+<pre><code># m h dom mon dow command
+0 02 1 */2 * /home/user/command.sh
+</code></pre>
+<h3 id="shortcuts"><a class="header" href="#shortcuts">Shortcuts</a></h3>
+<p>The are shortcuts which can be used to replace the five fields usually used to specify times. The <code>@</code> character is used to identify shortcuts to cron. The list below, taken from the crontab(5) man page, shows the shortcuts with their equivalent meanings.</p>
+<ul>
+<li><code>@reboot</code>: run once after reboot</li>
+<li><code>@yearly</code>: run once a year, i.e. <code>0 0 1 1 *</code></li>
+<li><code>@annually</code>: run once a year, i.e. <code>0 0 1 1 *</code></li>
+<li><code>@monthly</code>: run once a month, i.e. <code>0 0 1 * *</code></li>
+<li><code>@weekly</code>: run once a week, i.e. <code>0 0 * * 0</code></li>
+<li><code>@daily</code>: run once a day, i.e. <code>0 0 * * *</code></li>
+<li><code>@hourly</code>: run once an hour, i.e. <code>0 * * * *</code></li>
+</ul>
+<p>These shortcuts can be used in any of the crontab files.</p>
+<h3 id="at"><a class="header" href="#at">At</a></h3>
+<p><code>at</code> is an interactive command-line utility that allows you to schedule commands to be executed at a particular time. Jobs created with at are executed only once.</p>
+<p>The at command takes the date and time (runtime) when you want to execute the job as a command-line parameter, and the command to be executed from the standard input.</p>
+<p>Let's create a job that will be executed at 9:00 am: <code>at 09:00</code></p>
+<p>Once you hit Enter, you'll be presented with the at command prompt that most often starts with <code>at&gt;</code>. You also see a warning that tells you the shell in which the command will run:</p>
+<pre><code>warning: commands will be executed using /bin/sh
+at&gt;
+</code></pre>
+<p>Enter one or more command you want to execute: <code>tar -xf /home/linuxize/file.tar.gz</code></p>
+<p>When you're done entering the commands, press Ctrl-D to exit the prompt and save the job:</p>
+<pre><code>at&gt; &lt;EOT&gt;
+job 4 at Tue May  5 09:00:00 2020
+</code></pre>
+<p>The command will display the job number and the execution time and date.</p>
+<p>There are also other ways to pass the command you want to run, besides entering the command in the at prompt. One way is to use echo and pipe the command to at:</p>
+<pre><code>echo &quot;command_to_be_run&quot; | at 09:00
+</code></pre>
+<p>The at utility accepts a wide range of time specifications. You can specify time, date, and increment from the current time:</p>
+<ul>
+<li>
+<p>time: to specify a time, use the <code>HH:MM</code> or <code>HHMM</code> form. To indicate a 12-hour time format, use <code>am</code> or <code>pm</code> after the time (e.g. <code>at 1pm + 2 days</code>). You can also use strings like <code>now</code>, <code>midnight</code>, <code>noon</code>, or <code>teatime</code> (16:00). If the specified time is passed, the job will be executed the next day.</p>
+</li>
+<li>
+<p>date: the command allows you to schedule job execution on a given date. The date can be specified using the month name followed by the day and an optional year. You can use strings, such as <code>today</code>, <code>tomorrow</code>, or weekday. The date can be also indicated using the <code>MMDD[CC]YY</code>, <code>MM/DD/[CC]YY</code>, <code>DD.MM.[CC]YY</code> or <code>[CC]YY-MM-DD</code> formats (e.g. <code>at 12:30 102120</code>).</p>
+</li>
+<li>
+<p>increment: at also accepts increments in the <code>now + count time-unit</code> format, where <code>count</code> is a number and <code>time-unit</code> can be one of the following strings: <code>minutes</code>, <code>hours</code>, <code>days</code>, or <code>weeks</code> (e.g. <code>at sunday +10 minutes</code>).</p>
+</li>
+</ul>
+<p>Time, date and increment can be combined.</p>
+<p>Alternatively, use a here document or pass a file with <code>-f</code>.</p>
+<p>To list the user's pending jobs run the atq or at -l command: <code>atq</code></p>
+<p>To remove a pending job invoke the atrm or at -r command followed by the job number: <code>atrm 9</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2-operation-of-running-systems/e.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../2-operation-of-running-systems/g.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2-operation-of-running-systems/e.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../2-operation-of-running-systems/g.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

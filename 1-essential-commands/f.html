@@ -1,0 +1,448 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Analyze text using basic regular expressions - Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../1-essential-commands/index.html"><strong aria-hidden="true">1.</strong> Essential Commands - 25%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-essential-commands/a.html"><strong aria-hidden="true">1.1.</strong> Log into local & remote graphical and text mode consoles</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/b.html"><strong aria-hidden="true">1.2.</strong> Search for files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/c.html"><strong aria-hidden="true">1.3.</strong> Evaluate and compare the basic file system features and options</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/d.html"><strong aria-hidden="true">1.4.</strong> Compare and manipulate file content</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/e.html"><strong aria-hidden="true">1.5.</strong> Use input-output redirection</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/f.html" class="active"><strong aria-hidden="true">1.6.</strong> Analyze text using basic regular expressions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/g.html"><strong aria-hidden="true">1.7.</strong> Archive, backup, compress, unpack, and uncompress files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/h.html"><strong aria-hidden="true">1.8.</strong> Create, delete, copy, and move files and directories</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/i.html"><strong aria-hidden="true">1.9.</strong> Create and manage hard and soft links</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/l.html"><strong aria-hidden="true">1.10.</strong> List, set, and change standard file permissions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/m.html"><strong aria-hidden="true">1.11.</strong> Read, and use system documentation</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/n.html"><strong aria-hidden="true">1.12.</strong> Manage access to the root account</a></li></ol></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/index.html"><strong aria-hidden="true">2.</strong> Operation of Running Systems - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/a.html"><strong aria-hidden="true">2.1.</strong> Boot, reboot, and shut down a system safely</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/b.html"><strong aria-hidden="true">2.2.</strong> Boot or change system into different operating modes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/c.html"><strong aria-hidden="true">2.3.</strong> Install, configure and troubleshoot bootloaders</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/d.html"><strong aria-hidden="true">2.4.</strong> Diagnose and manage processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/e.html"><strong aria-hidden="true">2.5.</strong> Locate and analyze system log files</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/f.html"><strong aria-hidden="true">2.6.</strong> Schedule tasks to run at a set date and time</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/g.html"><strong aria-hidden="true">2.7.</strong> Verify completion of scheduled jobs</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/h.html"><strong aria-hidden="true">2.8.</strong> Update software to provide required functionality and security</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/i.html"><strong aria-hidden="true">2.9.</strong> Verify the integrity and availability of resources</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/l.html"><strong aria-hidden="true">2.10.</strong> Verify the integrity and availability of key processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/m.html"><strong aria-hidden="true">2.11.</strong> Change kernel runtime parameters, persistent and non-persistent</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/n.html"><strong aria-hidden="true">2.12.</strong> Use scripting to automate system maintenance tasks</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/o.html"><strong aria-hidden="true">2.13.</strong> Manage the startup process and services</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/p.html"><strong aria-hidden="true">2.14.</strong> List and identify SELinux/AppArmor file and process contexts</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/q.html"><strong aria-hidden="true">2.15.</strong> Manage software</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/r.html"><strong aria-hidden="true">2.16.</strong> Identify the component of a Linux distribution that a file belongs to</a></li></ol></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/index.html"><strong aria-hidden="true">3.</strong> User and Group Management - 10%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-user-and-group-management/a.html"><strong aria-hidden="true">3.1.</strong> Create, delete, and modify local user accounts</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/b.html"><strong aria-hidden="true">3.2.</strong> Create, delete, and modify local groups and group memberships</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/c.html"><strong aria-hidden="true">3.3.</strong> Manage system-wide environment profiles</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/d.html"><strong aria-hidden="true">3.4.</strong> Manage template user environment</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/e.html"><strong aria-hidden="true">3.5.</strong> Configure user resource limits</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/f.html"><strong aria-hidden="true">3.6.</strong> Manage user privileges</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/g.html"><strong aria-hidden="true">3.7.</strong> Configure PAM</a></li></ol></li><li class="chapter-item expanded "><a href="../4-networking/index.html"><strong aria-hidden="true">4.</strong> Networking - 12%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4-networking/a.html"><strong aria-hidden="true">4.1.</strong> Configure networking and hostname resolution statically or dynamically</a></li><li class="chapter-item expanded "><a href="../4-networking/b.html"><strong aria-hidden="true">4.2.</strong> Configure network services to start automatically at boot</a></li><li class="chapter-item expanded "><a href="../4-networking/c.html"><strong aria-hidden="true">4.3.</strong> Implement packet filtering (iptables, firewalld or ufw)</a></li><li class="chapter-item expanded "><a href="../4-networking/d.html"><strong aria-hidden="true">4.4.</strong> Start, stop, and check the status of network services</a></li><li class="chapter-item expanded "><a href="../4-networking/e.html"><strong aria-hidden="true">4.5.</strong> Statically route IP traffic</a></li><li class="chapter-item expanded "><a href="../4-networking/f.html"><strong aria-hidden="true">4.6.</strong> Synchronize time using other network peers</a></li></ol></li><li class="chapter-item expanded "><a href="../5-service-configuration/index.html"><strong aria-hidden="true">5.</strong> Service Configuration - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../5-service-configuration/a.html"><strong aria-hidden="true">5.1.</strong> Configure a caching DNS server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/b.html"><strong aria-hidden="true">5.2.</strong> Maintain a DNS zone</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/c.html"><strong aria-hidden="true">5.3.</strong> Configure email aliases</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/d.html"><strong aria-hidden="true">5.4.</strong> Configure SSH servers and clients</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/e.html"><strong aria-hidden="true">5.5.</strong> Restrict access to the HTTP proxy server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/f.html"><strong aria-hidden="true">5.6.</strong> Configure an IMAP and IMAPS service</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/g.html"><strong aria-hidden="true">5.7.</strong> Query and modify the behavior of system services at various operating modes</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/h.html"><strong aria-hidden="true">5.8.</strong> Configure an HTTP server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/i.html"><strong aria-hidden="true">5.9.</strong> Configure HTTP server log files</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/l.html"><strong aria-hidden="true">5.10.</strong> Configure a database server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/m.html"><strong aria-hidden="true">5.11.</strong> Restrict access to a web page</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/n.html"><strong aria-hidden="true">5.12.</strong> Manage and configure containers</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/o.html"><strong aria-hidden="true">5.13.</strong> Manage and configure Virtual Machines</a></li></ol></li><li class="chapter-item expanded "><a href="../6-storage-management/index.html"><strong aria-hidden="true">6.</strong> Storage Management - 13%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6-storage-management/a.html"><strong aria-hidden="true">6.1.</strong> List, create, delete, and modify physical storage partitions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/b.html"><strong aria-hidden="true">6.2.</strong> Manage and configure LVM storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/c.html"><strong aria-hidden="true">6.3.</strong> Create and configure encrypted storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/d.html"><strong aria-hidden="true">6.4.</strong> Configure systems to mount file systems at or during boot</a></li><li class="chapter-item expanded "><a href="../6-storage-management/e.html"><strong aria-hidden="true">6.5.</strong> Configure and manage swap space</a></li><li class="chapter-item expanded "><a href="../6-storage-management/f.html"><strong aria-hidden="true">6.6.</strong> Create and manage RAID devices</a></li><li class="chapter-item expanded "><a href="../6-storage-management/g.html"><strong aria-hidden="true">6.7.</strong> Configure systems to mount file systems on demand</a></li><li class="chapter-item expanded "><a href="../6-storage-management/h.html"><strong aria-hidden="true">6.8.</strong> Create, manage and diagnose advanced file system permissions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/i.html"><strong aria-hidden="true">6.9.</strong> Setup user and group disk quotas for filesystems</a></li><li class="chapter-item expanded "><a href="../6-storage-management/l.html"><strong aria-hidden="true">6.10.</strong> Create and configure file systems</a></li></ol></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/index.html"><strong aria-hidden="true">7.</strong> Bonus/Miscellanea - 0%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/bash.html"><strong aria-hidden="true">7.1.</strong> bash</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/git.html"><strong aria-hidden="true">7.2.</strong> git</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/grub.html"><strong aria-hidden="true">7.3.</strong> Repair the GRUB from live CD or USB stick</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ca-certs.html"><strong aria-hidden="true">7.4.</strong> Install a CA certificate</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/self-signed-ssl-cert.html"><strong aria-hidden="true">7.5.</strong> Create a self-signed SSL certificate for Apache web server</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tls-issues.html"><strong aria-hidden="true">7.6.</strong> Debugging TLS handshake issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/dns.html"><strong aria-hidden="true">7.7.</strong> DNS essentials</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/net-manager.html"><strong aria-hidden="true">7.8.</strong> Network-Manager</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-tunneling.html"><strong aria-hidden="true">7.9.</strong> SSH-tunneling</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/corrupted-chars.html"><strong aria-hidden="true">7.10.</strong> Debugging corrupted character encoding issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/mic.html"><strong aria-hidden="true">7.11.</strong> How to test a microphone</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-login.html"><strong aria-hidden="true">7.12.</strong> Automate login via SSH</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/edid.html"><strong aria-hidden="true">7.13.</strong> How to fix low screen resolution</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tips-tricks.html"><strong aria-hidden="true">7.14.</strong> Tips & tricks</a></li></ol></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">8.</strong> References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs/edit/main/domains/1-essential-commands/f.md " title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="analyze-text-using-basic-regular-expressions"><a class="header" href="#analyze-text-using-basic-regular-expressions">Analyze text using basic regular expressions</a></h2>
+<p>A regular expression (shortened as <strong>regex</strong>) is a sequence of characters that specifies a search pattern. For an overview on regular expressions, look <a href="https://www.regular-expressions.info/quickstart.html">here</a>. <a href="https://regexone.com/">Here</a> you can find an interactive tutorial to learn the basic of regex syntax.</p>
+<p>Common regex characters:</p>
+<div class="table-wrapper"><table><thead><tr><th>Symbol</th><th>Function</th></tr></thead><tbody>
+<tr><td><code>.</code></td><td>matches any single character (except newlines, normally)</td></tr>
+<tr><td><code>\</code></td><td>escape a special character (e.g. <code>\.</code> matches a literal dot)</td></tr>
+<tr><td><code>?</code></td><td>the preceding character may or may not be present (e.g. <code>/hell?o/</code> would match <code>hello</code> or <code>helo</code>)</td></tr>
+<tr><td><code>*</code></td><td>any number of the preceding character is allowed (e.g. <code>.*</code> will match any single-line string, including an empty string, and gets used a lot)</td></tr>
+<tr><td><code>+</code></td><td>one or more of the preceding character (<code>.+</code> is the same as <code>.*</code> except that it won't match an empty string)</td></tr>
+<tr><td>`</td><td>`</td></tr>
+<tr><td><code>()</code></td><td>group a section together, this can be useful for conditionals (`(a</td></tr>
+<tr><td><code>{}</code></td><td>specify how many of the preceding character (e.g. <code>a{12}</code> matches 12 <code>a</code>s in a row)</td></tr>
+<tr><td><code>[]</code></td><td>match any character in this set. - defines ranges (e.g. <code>[a-z]</code> is any lowercase letter), <code>^</code> means &quot;not&quot; (e.g. <code>[^,]+</code> match any number of non-commas in a row)</td></tr>
+<tr><td><code>^</code></td><td>beginning of line</td></tr>
+<tr><td><code>$</code></td><td>end of line</td></tr>
+</tbody></table>
+</div>
+<p>The three major dialects every programmer should know are:</p>
+<ul>
+<li>basic regular expressions (BRE)</li>
+<li>extended regular expressions (ERE)</li>
+<li>Perl-compatible regular expressions (PCRE).</li>
+</ul>
+<p>Essentials text stream processing tools to use in conjunction with regex patterns are:</p>
+<ul>
+<li><strong>grep</strong>, filters its input against a pattern;</li>
+<li><strong>sed</strong>, applies transformation rules to each line; and</li>
+<li><strong>awk</strong>, manipulates an ad hoc database stored as text, e.g. CSV files.</li>
+</ul>
+<h3 id="1-grep"><a class="header" href="#1-grep">1. grep</a></h3>
+<p>The <code>grep</code> tool can filter a file, line by line, against a pattern. By default, grep uses basic regular expressions (BRE). BRE differs syntactically in several key ways. Specifically, the operators <code>{}</code>, <code>()</code>, <code>+</code>, <code>|</code> and <code>?</code> must be escaped with <code>\</code>.</p>
+<p>Useful grep flags:</p>
+<ul>
+<li><code>-v</code>, inverts the match</li>
+<li><code>--color(==always)</code>, colors the matched text</li>
+<li><code>-F</code>, interprets the pattern as a literal string</li>
+<li><code>-H</code>, <code>-h</code>, prints (or doesn't print) the matched filename</li>
+<li><code>-i</code>, matches case insensitively</li>
+<li><code>-l</code>, prints names of files that match instead</li>
+<li><code>-n</code>, prints the line number</li>
+<li><code>-w</code>, forces the pattern to match an entire word</li>
+<li><code>-x</code>, forces patterns to match the whole line.</li>
+</ul>
+<p>The <code>egrep</code> tool is identical to grep, except that it uses extended regular expressions (actually, equivalent to <code>grep -E</code>). Extended regular expressions are identical to basic regular expressions, but the operators <code>{}</code>, <code>()</code>, <code>+</code>, <code>|</code> and <code>?</code> should not be escaped. </p>
+<p>PCREs can be used by means of the <code>-P</code> flag of <code>grep</code>. Perl has a richer and more predictable syntax than even the extended regular expressions syntax. </p>
+<blockquote>
+<p>Tip: If you have a choice, always use Perl-style regex.</p>
+</blockquote>
+<p>Examples:</p>
+<pre><code># search for a string in one or more files
+----------------------------------------
+grep 'fred' /etc/passwd                             # search for lines containing 'fred' in /etc/passwd
+grep fred /etc/passwd                               # quotes usually not when you don't use regex patterns
+grep null *.scala                                   # search multiple files
+
+# case-insensitive
+----------------
+grep -i joe users.txt                               # find joe, Joe, JOe, JOE, etc.
+
+# regular expressions
+-------------------
+grep '^fred' /etc/passwd                            # find 'fred', but only at the start of a line
+grep '[FG]oo' *                                     # find Foo or Goo in all files in the current dir
+grep '[0-9][0-9][0-9]' *                            # find all lines in all files in the current dir with three numbers in a row
+
+# display matching filenames, not lines
+-------------------------------------
+grep -l StartInterval *.plist                       # show all filenames containing the string 'StartInterval'
+
+# show matching line numbers
+--------------------------
+grep -n we gettysburg-address.txt                   # show line numbers as well as the matching lines
+
+# lines before and after grep match
+---------------------------------
+grep -B5 &quot;the living&quot; gettysburg-address.txt        # show all matches, and five lines before each match
+grep -A10 &quot;the living&quot; gettysburg-address.txt       # show all matches, and ten lines after each match
+grep -B5 -A5 &quot;the living&quot; gettysburg-address.txt    # five lines before and ten lines after
+
+# invert the sense of matching
+-------------------
+grep -v fred /etc/passwd                            # find any line *not* containing 'fred'
+grep -vi fred /etc/passwd                           # same thing, case-insensitive
+
+# grep in a pipeline
+------------------
+ps aux | grep httpd                                 # all processes containing 'httpd'
+ps aux | grep -i java                               # all processes containing 'java', ignoring case
+ls -al | grep '^d'                                  # list all dirs in the current dir
+
+# search for multiple patterns
+----------------------------
+egrep 'apple|banana|orange' *                       # search for multiple patterns, all files in current dir
+
+# grep + find
+-----------
+find . -type f -exec grep -il 'foo' {} \;           # print all filenames of files under current dir containing 'foo', case-insensitive
+
+# recursive grep search
+---------------------
+grep -rl 'null' .                                   # similar to the previous find command; does a recursive search
+grep -ril 'null' /home/al/sarah /var/www            # search multiple dirs
+egrep -ril 'aja|alvin' .                            # multiple patterns, recursive
+
+# grep gzipped files
+---------------
+zgrep foo myfile.gz                                 # all lines containing the pattern 'foo'
+zgrep 'GET /blog' access_log.gz                     # all lines containing 'GET /blog'
+zgrep 'GET /blog' access_log.gz | less              # same thing, case-insensitive
+
+# submatch backreferences to print out words that repeat themselves:
+---------------
+grep '^\(.*\)\1$' /usr/share/dict/words             # prints &quot;beriberi, bonbon, cancan, ...&quot;
+
+# match text after a string, but excluding this string from the captured text (so called, &quot;positive look-behind&quot;)
+---------------
+grep -P '(?&lt;=name=)[ A-Za-z0-9]*' filename
+</code></pre>
+<p>For grep advanced features, look <a href="https://caspar.bgsu.edu/~courses/Stats/Labs/Handouts/grepadvanced.htm">here</a>.</p>
+<h3 id="2-sed"><a class="header" href="#2-sed">2. sed</a></h3>
+<p><code>sed</code> is a &quot;stream editor&quot;, which reads a file line-by-line, conditionally applying a sequence of operations to each line and (possibly) printing the result.</p>
+<p>By default, sed uses basic regular expression syntax. To use the (more comfortable) extended syntax, supply the flag <code>-E</code>.</p>
+<p>Most sed programs consist of a single sed command: substitute (<code>s</code>). But a proper sed program is a sequence of sed commands. Most sed commands have one of three forms:</p>
+<ul>
+<li><em>operation</em>, apply this operation to the current line</li>
+<li><em>address operation</em>, apply this operation to the current line if at the specified address</li>
+<li><em>address1,address2 operation</em>, apply this operation to the current line if between the specified addresses.</li>
+</ul>
+<p>Useful operations:</p>
+<ul>
+<li><code>{ operation1 ; ... ; operationN }</code>, executes all of the specified operations, in order, on the given address</li>
+<li><code>s/pattern/replacement/arguments</code>, replaces instances of pattern with replacement according to the arguments in the current line (in the replacement, <code>\n</code> stands for the nth submatch, while <code>&amp;</code> represents the entire match)</li>
+<li><code>b</code>, branches to a label, and if none is specified, then sed skips to processing the next line (think of this as a break operation)</li>
+<li><code>y/from/to/</code>, transliterates the characters in &quot;from&quot; to their corresponding character in &quot;to&quot;</li>
+<li><code>q</code>, quits sed</li>
+<li><code>d</code>, deletes the current line</li>
+<li><code>w</code>, file writes the current line to the specified file.</li>
+</ul>
+<p>Common arguments to the substitute operation:</p>
+<ul>
+<li>the most common argument to the substitute command is <code>g</code>, which means &quot;globally&quot; replace all matches on the current line, instead of just the first</li>
+<li><code>n</code>, tells sed to replace the nth match only, instead of the first</li>
+<li><code>p</code>, prints out the result if there is a substitution</li>
+<li><code>i</code>, ignores case during the match</li>
+<li><code>w file</code>, writes the current line to file.</li>
+</ul>
+<p>Useful flags:</p>
+<ul>
+<li><code>-n</code> suppresses automatic printing of each result; to print a result, use command <code>p</code>.</li>
+<li><code>-f filename</code> uses the given file as the sed program.</li>
+</ul>
+<p>Examples:</p>
+<pre><code>sed -n '1,13p;40p' &lt;file&gt;
+sed '12q' &lt;file&gt;
+sed -n '1,+4p' &lt;file&gt;
+sed -n '1~5p' &lt;file&gt;   # &quot;first~step&quot; pattern matches a line every 5 lines starting from the first line
+sed '1,3d' &lt;file&gt;   # deletes the first 3 lines from stdout (to overwrite the source file, use '-i' flag or '-i.bck' to backup the original file)
+# do not use '-n' with (d), otherwise the original file wil be overriden with the empty stdout
+sed '/pattern/d' &lt;file&gt; # delete all the lines matched by the given pattern
+sed 's/up/down/' &lt;file&gt; # substitues the first occurence matched by the pattern on every line
+sed 's/up/down/2' &lt;file&gt; # substitues only the second occurence on a line
+sed -n 's/up/down/2p' &lt;file&gt;    # to see which lines would be modified
+sed 's/^.*at/(&amp;)/' &lt;file&gt;   # wraps the matched text into parentheses
+sed -E 's/([A-Z][a-z]*), ([A-Z][a-z]*( [A-Z][a-z]*[.]?)?)/\2 \1/g' &lt;file&gt;  # use '\n' to reference the groups in the regex pattern
+&gt;Might, Matthew B.
+&gt;Matthew B. Might
+</code></pre>
+<h3 id="3-awk"><a class="header" href="#3-awk">3. awk</a></h3>
+<p>The <code>awk</code> command provides a more traditional programming language for text processing than <code>sed</code>. Those accustomed to seeing only hairy awk one-liners might not even realize that awk is a real programming language.</p>
+<p>The major difference in philosophy between awk and sed is that awk is record-oriented rather than line-oriented. Each line of the input to awk is treated like a delimited record. The awk philosophy melds well with the Unix tradition of storing data in ad hoc line-oriented databases, e.g., /etc/passwd. The command line parameter <code>-F regex</code> sets the regular expression <em>regex</em> to be the field delimiter. </p>
+<p>An awk program consists of pattern-action pairs: <code>pattern { statements }</code>, followed by an (optional) sequence of function definitions.</p>
+<p>In fact, an action is optional, and a pattern by itself is equivalent to: <code>pattern { print }</code>. As each record is read, each pattern is checked in order, and if it matches, then the corresponding action is executed. </p>
+<p>The form for function defintion is: <code>function name(arg1,...,argN) { statements }</code></p>
+<p>The patterns can have forms such as:</p>
+<ul>
+<li><code>/regex/</code>, which matches if the regex matches something on the line</li>
+<li><code>expression</code>, which matches if expression is non-zero or non-null</li>
+<li><code>pattern1, pattern2</code>, a range pattern which matches all records (inclusive) between <em>pattern1</em> and <em>pattern2</em></li>
+<li><code>BEGIN</code>, which matches before the first line is read</li>
+<li><code>END</code>, which matches after the last line is read.</li>
+</ul>
+<p>Some implementations of awk, like <code>gawk</code>, provide additional patterns:</p>
+<ul>
+<li><code>BEGINFILE</code>, which matches before a new file is read</li>
+<li><code>ENDFILE</code>, which matches after a file is read.</li>
+</ul>
+<p>A basic awk expression is either:</p>
+<ul>
+<li>a special variable (<code>$1</code> or <code>NF</code>)</li>
+<li>a regular variable (<code>foo</code>)</li>
+<li>a string literal (<code>&quot;foobar&quot;</code>)</li>
+<li>a numeric constant (<code>3</code>, <code>3.1</code>)</li>
+<li>a regex constant (<code>/foo|bar/</code>).</li>
+</ul>
+<p>There are several special variables in AWK:</p>
+<div class="table-wrapper"><table><thead><tr><th>Variable</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>$0</td><td>the entire text of the matched record</td></tr>
+<tr><td>$n</td><td>the nth entry in the current record</td></tr>
+<tr><td>FILENAME</td><td>name of current file</td></tr>
+<tr><td>NR</td><td>number of records seen so far</td></tr>
+<tr><td>FNR</td><td>number of records so far in this file</td></tr>
+<tr><td>NF</td><td>number of fields in current record</td></tr>
+<tr><td>FS</td><td>input field delimiter, defaults to whitespace</td></tr>
+<tr><td>RS</td><td>record delimiter, defaults to newline</td></tr>
+<tr><td>OFS</td><td>output field delimiter, defaults to space</td></tr>
+<tr><td>ORS</td><td>output record delimiter, defaults to newline</td></tr>
+</tbody></table>
+</div>
+<p>awk is a small language, with only a handful of forms for statements.</p>
+<p>The man page lists all of them:</p>
+<ul>
+<li>if (expression) statement [ else statement ]</li>
+<li>while (expression) statement</li>
+<li>for (expression; expression; expression) statement</li>
+<li>for (var in array) statement</li>
+<li>do statement while (expression)</li>
+<li>break</li>
+<li>continue</li>
+<li>{ [ statement ... ] }</li>
+<li>expression</li>
+<li>print [ expression-list ] [ &gt; expression ]</li>
+<li>printf format [ , expression-list ] [ &gt; expression ]</li>
+<li>return [ expression ]</li>
+<li>next</li>
+<li>nextfile</li>
+<li>delete array[expression]</li>
+<li>delete array</li>
+<li>exit [ expression ] </li>
+</ul>
+<p>The most common statement is <code>print</code>, which is equivalent to <code>print $0</code>. </p>
+<p>Useful flags:</p>
+<ul>
+<li><code>-f filename</code>, uses the provided file as the awk program</li>
+<li><code>-F regex</code>, sets the input field separator</li>
+<li><code>-v var=value</code>, sets a global variable (multiple <code>-v</code> flags are allowed).</li>
+</ul>
+<p>Examples:</p>
+<pre><code>ps aux | awk '{print $1}'   # prints the first column
+ps aux | awk '{printf(&quot;%-40s %s\n&quot;, $2, $11)}' # prints the first column with a 40 chars right-padding
+ps aux | awk '/firefox/' # filters records by regex pattern
+ps aux | awk '$2==1645'  # filters records by field comparison
+ps aux | awk '$2 &gt; 2100'    # filters records by numeric comparison
+ps aux | awk '/firefox/ &amp;&amp; $2 &gt; 2100' # combines a regex pattern with a math operator
+ps aux | awk 'BEGIN {printf(&quot;%-26s %s\n&quot;, &quot;Command&quot;, &quot;CPU&quot;)} $3&gt;10 {print $11, $3}' # adds a header before processing any data
+ps aux | awk '{printf(&quot;%s %4.0f MB\n&quot;, $11, $6/1024)}'  # controls scale and rounds up
+ps aux | awk 'BEGIN {sum=0} /firefox/ {sum+=$6} END {printf(&quot;Total memory consumed by Firefox: %.0f MB\n&quot;, sum/1024)}'  # sums field values in a column
+ps aux | awk 'BEGIN {i=1; while (i&lt;6) {print &quot;Square of&quot;, i, &quot;is&quot;, i*i; ++i}}'  # to use a while loop
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../1-essential-commands/e.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../1-essential-commands/g.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../1-essential-commands/e.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../1-essential-commands/g.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

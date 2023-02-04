@@ -1,0 +1,522 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Configure networking and hostname resolution statically or dynamically - Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../1-essential-commands/index.html"><strong aria-hidden="true">1.</strong> Essential Commands - 25%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-essential-commands/a.html"><strong aria-hidden="true">1.1.</strong> Log into local & remote graphical and text mode consoles</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/b.html"><strong aria-hidden="true">1.2.</strong> Search for files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/c.html"><strong aria-hidden="true">1.3.</strong> Evaluate and compare the basic file system features and options</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/d.html"><strong aria-hidden="true">1.4.</strong> Compare and manipulate file content</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/e.html"><strong aria-hidden="true">1.5.</strong> Use input-output redirection</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/f.html"><strong aria-hidden="true">1.6.</strong> Analyze text using basic regular expressions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/g.html"><strong aria-hidden="true">1.7.</strong> Archive, backup, compress, unpack, and uncompress files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/h.html"><strong aria-hidden="true">1.8.</strong> Create, delete, copy, and move files and directories</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/i.html"><strong aria-hidden="true">1.9.</strong> Create and manage hard and soft links</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/l.html"><strong aria-hidden="true">1.10.</strong> List, set, and change standard file permissions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/m.html"><strong aria-hidden="true">1.11.</strong> Read, and use system documentation</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/n.html"><strong aria-hidden="true">1.12.</strong> Manage access to the root account</a></li></ol></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/index.html"><strong aria-hidden="true">2.</strong> Operation of Running Systems - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/a.html"><strong aria-hidden="true">2.1.</strong> Boot, reboot, and shut down a system safely</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/b.html"><strong aria-hidden="true">2.2.</strong> Boot or change system into different operating modes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/c.html"><strong aria-hidden="true">2.3.</strong> Install, configure and troubleshoot bootloaders</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/d.html"><strong aria-hidden="true">2.4.</strong> Diagnose and manage processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/e.html"><strong aria-hidden="true">2.5.</strong> Locate and analyze system log files</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/f.html"><strong aria-hidden="true">2.6.</strong> Schedule tasks to run at a set date and time</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/g.html"><strong aria-hidden="true">2.7.</strong> Verify completion of scheduled jobs</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/h.html"><strong aria-hidden="true">2.8.</strong> Update software to provide required functionality and security</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/i.html"><strong aria-hidden="true">2.9.</strong> Verify the integrity and availability of resources</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/l.html"><strong aria-hidden="true">2.10.</strong> Verify the integrity and availability of key processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/m.html"><strong aria-hidden="true">2.11.</strong> Change kernel runtime parameters, persistent and non-persistent</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/n.html"><strong aria-hidden="true">2.12.</strong> Use scripting to automate system maintenance tasks</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/o.html"><strong aria-hidden="true">2.13.</strong> Manage the startup process and services</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/p.html"><strong aria-hidden="true">2.14.</strong> List and identify SELinux/AppArmor file and process contexts</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/q.html"><strong aria-hidden="true">2.15.</strong> Manage software</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/r.html"><strong aria-hidden="true">2.16.</strong> Identify the component of a Linux distribution that a file belongs to</a></li></ol></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/index.html"><strong aria-hidden="true">3.</strong> User and Group Management - 10%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-user-and-group-management/a.html"><strong aria-hidden="true">3.1.</strong> Create, delete, and modify local user accounts</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/b.html"><strong aria-hidden="true">3.2.</strong> Create, delete, and modify local groups and group memberships</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/c.html"><strong aria-hidden="true">3.3.</strong> Manage system-wide environment profiles</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/d.html"><strong aria-hidden="true">3.4.</strong> Manage template user environment</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/e.html"><strong aria-hidden="true">3.5.</strong> Configure user resource limits</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/f.html"><strong aria-hidden="true">3.6.</strong> Manage user privileges</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/g.html"><strong aria-hidden="true">3.7.</strong> Configure PAM</a></li></ol></li><li class="chapter-item expanded "><a href="../4-networking/index.html"><strong aria-hidden="true">4.</strong> Networking - 12%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4-networking/a.html" class="active"><strong aria-hidden="true">4.1.</strong> Configure networking and hostname resolution statically or dynamically</a></li><li class="chapter-item expanded "><a href="../4-networking/b.html"><strong aria-hidden="true">4.2.</strong> Configure network services to start automatically at boot</a></li><li class="chapter-item expanded "><a href="../4-networking/c.html"><strong aria-hidden="true">4.3.</strong> Implement packet filtering (iptables, firewalld or ufw)</a></li><li class="chapter-item expanded "><a href="../4-networking/d.html"><strong aria-hidden="true">4.4.</strong> Start, stop, and check the status of network services</a></li><li class="chapter-item expanded "><a href="../4-networking/e.html"><strong aria-hidden="true">4.5.</strong> Statically route IP traffic</a></li><li class="chapter-item expanded "><a href="../4-networking/f.html"><strong aria-hidden="true">4.6.</strong> Synchronize time using other network peers</a></li></ol></li><li class="chapter-item expanded "><a href="../5-service-configuration/index.html"><strong aria-hidden="true">5.</strong> Service Configuration - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../5-service-configuration/a.html"><strong aria-hidden="true">5.1.</strong> Configure a caching DNS server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/b.html"><strong aria-hidden="true">5.2.</strong> Maintain a DNS zone</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/c.html"><strong aria-hidden="true">5.3.</strong> Configure email aliases</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/d.html"><strong aria-hidden="true">5.4.</strong> Configure SSH servers and clients</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/e.html"><strong aria-hidden="true">5.5.</strong> Restrict access to the HTTP proxy server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/f.html"><strong aria-hidden="true">5.6.</strong> Configure an IMAP and IMAPS service</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/g.html"><strong aria-hidden="true">5.7.</strong> Query and modify the behavior of system services at various operating modes</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/h.html"><strong aria-hidden="true">5.8.</strong> Configure an HTTP server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/i.html"><strong aria-hidden="true">5.9.</strong> Configure HTTP server log files</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/l.html"><strong aria-hidden="true">5.10.</strong> Configure a database server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/m.html"><strong aria-hidden="true">5.11.</strong> Restrict access to a web page</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/n.html"><strong aria-hidden="true">5.12.</strong> Manage and configure containers</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/o.html"><strong aria-hidden="true">5.13.</strong> Manage and configure Virtual Machines</a></li></ol></li><li class="chapter-item expanded "><a href="../6-storage-management/index.html"><strong aria-hidden="true">6.</strong> Storage Management - 13%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6-storage-management/a.html"><strong aria-hidden="true">6.1.</strong> List, create, delete, and modify physical storage partitions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/b.html"><strong aria-hidden="true">6.2.</strong> Manage and configure LVM storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/c.html"><strong aria-hidden="true">6.3.</strong> Create and configure encrypted storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/d.html"><strong aria-hidden="true">6.4.</strong> Configure systems to mount file systems at or during boot</a></li><li class="chapter-item expanded "><a href="../6-storage-management/e.html"><strong aria-hidden="true">6.5.</strong> Configure and manage swap space</a></li><li class="chapter-item expanded "><a href="../6-storage-management/f.html"><strong aria-hidden="true">6.6.</strong> Create and manage RAID devices</a></li><li class="chapter-item expanded "><a href="../6-storage-management/g.html"><strong aria-hidden="true">6.7.</strong> Configure systems to mount file systems on demand</a></li><li class="chapter-item expanded "><a href="../6-storage-management/h.html"><strong aria-hidden="true">6.8.</strong> Create, manage and diagnose advanced file system permissions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/i.html"><strong aria-hidden="true">6.9.</strong> Setup user and group disk quotas for filesystems</a></li><li class="chapter-item expanded "><a href="../6-storage-management/l.html"><strong aria-hidden="true">6.10.</strong> Create and configure file systems</a></li></ol></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/index.html"><strong aria-hidden="true">7.</strong> Bonus/Miscellanea - 0%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/bash.html"><strong aria-hidden="true">7.1.</strong> bash</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/git.html"><strong aria-hidden="true">7.2.</strong> git</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/grub.html"><strong aria-hidden="true">7.3.</strong> Repair the GRUB from live CD or USB stick</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ca-certs.html"><strong aria-hidden="true">7.4.</strong> Install a CA certificate</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/self-signed-ssl-cert.html"><strong aria-hidden="true">7.5.</strong> Create a self-signed SSL certificate for Apache web server</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tls-issues.html"><strong aria-hidden="true">7.6.</strong> Debugging TLS handshake issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/dns.html"><strong aria-hidden="true">7.7.</strong> DNS essentials</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/net-manager.html"><strong aria-hidden="true">7.8.</strong> Network-Manager</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-tunneling.html"><strong aria-hidden="true">7.9.</strong> SSH-tunneling</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/corrupted-chars.html"><strong aria-hidden="true">7.10.</strong> Debugging corrupted character encoding issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/mic.html"><strong aria-hidden="true">7.11.</strong> How to test a microphone</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-login.html"><strong aria-hidden="true">7.12.</strong> Automate login via SSH</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/edid.html"><strong aria-hidden="true">7.13.</strong> How to fix low screen resolution</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tips-tricks.html"><strong aria-hidden="true">7.14.</strong> Tips & tricks</a></li></ol></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">8.</strong> References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs/edit/main/domains/4-networking/a.md " title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="configure-networking-and-hostname-resolution-statically-or-dynamically"><a class="header" href="#configure-networking-and-hostname-resolution-statically-or-dynamically">Configure networking and hostname resolution statically or dynamically</a></h2>
+<h3 id="networking"><a class="header" href="#networking">Networking</a></h3>
+<p>Networks consist of two or more devices, such as computer systems, printers, and related equipment which are connected by either physical cabling or wireless links for the purpose of sharing and distributing information among the connected devices.</p>
+<p>The two protocol components of TCP/IP deal with different aspects of computer networking. Internet Protocol, the “IP” of TCP/IP is a connectionless protocol which deals only with network packet routing using the IP Datagram as the basic unit of networking information. The IP Datagram consists of a header followed by a message. The Transmission Control Protocol is the “TCP” of TCP/IP and enables network hosts to establish connections which may be used to exchange data streams. TCP also guarantees that the data between connections is delivered and that it arrives at one network host in the same order as sent from another network host.</p>
+<p>The TCP/IP protocol configuration consists of several elements which must be set by editing the appropriate configuration files, or deploying solutions such as the Dynamic Host Configuration Protocol (DHCP) server which in turn, can be configured to provide the proper TCP/IP configuration settings to network clients automatically. These configuration values must be set correctly in order to facilitate the proper network operation of your Ubuntu system.</p>
+<p>The common configuration elements of TCP/IP and their purposes are as follows:</p>
+<ul>
+<li>
+<p><strong>IP address</strong>: The IP address is a unique identifying string expressed as four decimal numbers ranging from zero (0) to two-hundred and fifty-five (255), separated by periods, with each of the four numbers representing eight (8) bits of the address for a total length of thirty-two (32) bits for the whole address. This format is called <em>dotted quad notation</em>.</p>
+</li>
+<li>
+<p><strong>Netmask</strong>: The Subnet Mask (or simply, netmask) is a local bit mask, or set of flags which separate the portions of an IP address significant to the network from the bits significant to the subnetwork. For example, in a Class C network, the standard netmask is 255.255.255.0 which masks the first three bytes of the IPaddress and allows the last byte of the IP address to remain available for specifying hosts on the subnetwork.</p>
+</li>
+<li>
+<p><strong>Network Address</strong>: The Network Address represents the bytes comprising the network portion of an IP address. For example, the host 12.128.1.2 in a Class A network would use 12.0.0.0 as the network address, where twelve (12) represents the first byte of the IP address, (the network part) and zeroes (0) in all of the remaining three bytes to represent the potential host values. A network host using the private IP address 192.168.1.100 would in turn use a Network Address of 192.168.1.0, which specifies the first three bytes of the Class C 192.168.1 network and a zero (0) for all the possible hosts on the network.</p>
+</li>
+<li>
+<p><strong>Broadcast Address</strong>: The Broadcast Address is an IP address which allows network data to be sent simultaneously to all hosts on a given subnetwork rather than specifying a particular host. The standard general broadcast address for IP networks is 255.255.255.255, but this broadcast address cannot be used to send a broadcast message to every host on the Internet because routers block it. A more appropriate broadcast address is set to match a specific subnetwork. Forexample, on the private Class C IP network, 192.168.1.0, the broadcast address is 192.168.1.255. Broadcast messages are typically produced by network protocols such as the Address Resolution Protocol (ARP) and the Routing Information Protocol (RIP).</p>
+</li>
+<li>
+<p><strong>Gateway Address</strong>: A Gateway Address is the IP address through which a particular network, or host on a network, may be reached. If one network host wishes to communicate with another network host, and that host is not located on the same network, then a gateway must be used. In many cases, the Gateway Address will be that of a router on the same network, which will in turn pass traffic on to other networks or hosts, such as Internet hosts. The value of the Gateway Address setting must be correct, or your system will not be able to reach any hosts beyond those on the same network.</p>
+</li>
+<li>
+<p><strong>Nameserver Address</strong>: Nameserver Addresses represent the IP addresses of Domain Name Service (DNS) systems, which resolve network hostnames into IP addresses. There are three levels of Nameserver Addresses, which may be specified in order of precedence: The Primary Nameserver, the Secondary Nameserver, and the Tertiary Nameserver. In order for your system to be able to resolve network hostnames into their corresponding IP addresses, you must specify valid Nameserver Addresses which you are authorized to use in your system's TCP/IP configuration. In many cases these addresses can and will be provided by your network service provider,but many free and publicly accessible nameservers are available for use, such as the Level3 (Verizon) servers with IP addresses from 4.2.2.1 to 4.2.2.6.</p>
+</li>
+</ul>
+<blockquote>
+<p>Tip: The IP address, Netmask, Network Address, Broadcast Address, Gateway Address, and Nameserver Addresses are typically specified via the appropriate directives in the file /etc/network/interfaces (before Ubuntu 18.04, see below). For more information, view the system manual page for interfaces: <code>man interfaces</code></p>
+</blockquote>
+<h3 id="netplan"><a class="header" href="#netplan">Netplan</a></h3>
+<p>Ubuntu 18.04 (LTS) has switched from <strong>ifupdown</strong> to <strong>Netplan</strong> for configuring network interfaces. Netplan is based on YAML config files that makes configuration process very simple. Netplan has replaced the old configuration file<code> /etc/network/interface</code>s that was previously used for configuring network interfaces in Ubuntu.</p>
+<p>During early boot, the Netplan <em>networkd renderer</em> runs, reads /{lib,etc,run}/netplan/*.yaml and writes configuration to /run to hand off control of devices to the specified networking daemon:</p>
+<ul>
+<li>configured devices get handled by<code> systemd-network</code>d by default, unless explicitly marked as managed by a specific renderer (<strong>NetworkManager</strong>)</li>
+<li>devices not covered by the network config do not get touched at all.</li>
+</ul>
+<p>If you are not on an Ubuntu Server, but on Desktop, chances are that the network is driven by the NetworkManager.</p>
+<p>Netplan supports both networkd and NetworkManager as backends. You can specify which network backend should be used to configure particular devices by using the renderer key. You can also delegate all configuration of the network to NetworkManager itself by specifying only the renderer key:</p>
+<pre><code>network:
+    version: 2
+    renderer: NetworkManager
+</code></pre>
+<hr />
+<h3 id="ethernet-interfaces"><a class="header" href="#ethernet-interfaces">Ethernet Interfaces</a></h3>
+<p>Ethernet interfaces are identified by the system using predictable network interface names. These names can appear as <em>eno1</em> or <em>enp0s25</em>. However, in some cases an interface may still use the kernel <em>eth#</em> style of naming.</p>
+<p>To quickly identify all available Ethernet interfaces, you can use the <code>ip</code> command as shown below:</p>
+<pre><code>ip a
+&gt;1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+&gt;    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+&gt;    inet 127.0.0.1/8 scope host lo
+&gt;       valid_lft forever preferred_lft forever
+&gt;    inet6 ::1/128 scope host
+&gt;       valid_lft forever preferred_lft forever
+&gt;2: enp0s25: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
+&gt;    link/ether 00:16:3e:e2:52:42 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+&gt;    inet 10.102.66.200/24 brd 10.102.66.255 scope global dynamic eth0
+&gt;       valid_lft 3257sec preferred_lft 3257sec
+&gt;    inet6 fe80::216:3eff:fee2:5242/64 scope link
+&gt;       valid_lft forever preferred_lft forever
+</code></pre>
+<p>Another application that can help identify all network interfaces available to your system is the <code>lshw</code> command. This command provides greater details around the hardware capabilities of specific adapters. In the example below, <code>lshw</code> shows a single Ethernet interface with the logical name of <code>eth4</code> along with bus information, driver details and all supported capabilities:</p>
+<pre><code>sudo lshw -class network
+  *-network
+       description: Ethernet interface
+       product: MT26448 [ConnectX EN 10GigE, PCIe 2.0 5GT/s]
+       vendor: Mellanox Technologies
+       physical id: 0
+       bus info: pci@0004:01:00.0
+       logical name: eth4
+       version: b0
+       serial: e4:1d:2d:67:83:56
+       slot: U78CB.001.WZS09KB-P1-C6-T1
+       size: 10Gbit/s
+       capacity: 10Gbit/s
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm vpd msix pciexpress bus_master cap_list ethernet physical fibre 10000bt-fd
+       configuration: autonegotiation=off broadcast=yes driver=mlx4_en driverversion=4.0-0 duplex=full firmware=2.9.1326 ip=192.168.1.1 latency=0 link=yes multicast=yes port=fibre speed=10Gbit/s
+       resources: iomemory:24000-23fff irq:481 memory:3fe200000000-3fe2000fffff memory:240000000000-240007ffffff
+</code></pre>
+<h3 id="ethernet-interface-logical-names"><a class="header" href="#ethernet-interface-logical-names">Ethernet Interface Logical Names</a></h3>
+<p>Interface logical names can also be configured via a netplan configuration. If you would like control which interface receives a particular logical name use the <code>match</code> and <code>set-name</code> keys. The <code>match</code> key is used to find an adapter based on some criteria like MAC address, driver, etc. Then the <code>set-name</code> key can be used to change the device to the desired logial name:</p>
+<pre><code>network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth_lan0:
+      dhcp4: true
+      match:
+        macaddress: 00:11:22:33:44:55
+      set-name: eth_lan0
+</code></pre>
+<h3 id="ethernet-interface-settings"><a class="header" href="#ethernet-interface-settings">Ethernet Interface Settings</a></h3>
+<p><code>ethtool</code> is a program that displays and changes ethernet card settings such as auto-negotiation, port speed, duplex mode, and Wake-on-LAN. The following is an example of how to view supported features and configured settings of an ethernet interface.</p>
+<pre><code>sudo ethtool eth4
+&gt;Settings for eth4:
+&gt;    Supported ports: [ FIBRE ]
+&gt;    Supported link modes:   10000baseT/Full
+&gt;    Supported pause frame use: No
+&gt;    Supports auto-negotiation: No
+&gt;    Supported FEC modes: Not reported
+&gt;    Advertised link modes:  10000baseT/Full
+&gt;    Advertised pause frame use: No
+&gt;    Advertised auto-negotiation: No
+&gt;    Advertised FEC modes: Not reported
+&gt;    Speed: 10000Mb/s
+&gt;    Duplex: Full
+&gt;    Port: FIBRE
+&gt;    PHYAD: 0
+&gt;    Transceiver: internal
+&gt;    Auto-negotiation: off
+&gt;    Supports Wake-on: d
+&gt;    Wake-on: d
+&gt;    Current message level: 0x00000014 (20)
+&gt;                   link ifdown
+&gt;    Link detected: yes
+</code></pre>
+<h3 id="temporary-ip-address-assignment"><a class="header" href="#temporary-ip-address-assignment">Temporary IP Address Assignment</a></h3>
+<p>For temporary network configurations, you can use the ip command which is also found on most other GNU/Linux operating systems. The ip command allows you to configure settings which take effect immediately, however they are not persistent and will be lost after a reboot.</p>
+<p>To temporarily configure an IP address, you can use the ip command in the following manner. Modify the IP address and subnet mask to match your network requirements:
+<code>sudo ip addr add 10.102.66.200/24 dev enp0s25</code></p>
+<p>The ip can then be used to set the <strong>link</strong> (i.e. network device) up or down:</p>
+<pre><code>ip link set dev enp0s25 up
+ip link set dev enp0s25 down
+</code></pre>
+<p>To verify the IP address configuration of enp0s25, you can use the ip command in the following manner:</p>
+<pre><code>ip address show dev enp0s25
+&gt;10: enp0s25: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
+&gt;    link/ether 00:16:3e:e2:52:42 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+&gt;    inet 10.102.66.200/24 brd 10.102.66.255 scope global dynamic eth0
+&gt;       valid_lft 2857sec preferred_lft 2857sec
+&gt;    inet6 fe80::216:3eff:fee2:5242/64 scope link
+&gt;       valid_lft forever preferred_lft forever6
+</code></pre>
+<p>To configure a default gateway, you can use the ip command in the following manner. Modify the default gateway address to match your network requirements:
+<code>sudo ip route add default via 10.102.66.1</code></p>
+<p>To verify your default gateway configuration, you can use the ip command in the following manner:</p>
+<pre><code>ip route show
+&gt;default via 10.102.66.1 dev eth0 proto dhcp src 10.102.66.200 metric 100
+&gt;10.102.66.0/24 dev eth0 proto kernel scope link src 10.102.66.200
+&gt;10.102.66.1 dev eth0 proto dhcp scope link src 10.102.66.200 metric 100
+</code></pre>
+<p>If you require DNS for your temporary network configuration, you can add DNS server IP addresses in the file /etc/resolv.conf. In general, editing <code>/etc/resolv.conf</code> directly is not recommanded, but this is a temporary and non-persistent configuration. The example below shows how to enter two DNS servers to <code>/etc/resolv.conf</code>, which should be changed to servers appropriate for your network:</p>
+<pre><code>nameserver 8.8.8.8
+nameserver 8.8.4.4
+</code></pre>
+<p>If you no longer need this configuration and wish to purge all IP configuration from an interface, you can use the ip command with the flush option as shown below.
+<code>ip addr flush eth0</code></p>
+<blockquote>
+<p>Note: Flushing the IP configuration using the ip command does not clear the contents of /etc/resolv.conf. You must remove or modify those entries manually, or reboot which should also cause /etc/resolv.conf, which is a symlink to /run/systemd/resolve/stub-resolv.conf, to be re-written.</p>
+</blockquote>
+<h3 id="dynamic-ip-address-assignment-dhcp-client"><a class="header" href="#dynamic-ip-address-assignment-dhcp-client">Dynamic IP Address Assignment (DHCP Client)</a></h3>
+<p>To configure your server to use DHCP for dynamic address assignment, create a netplan configuration in the file <code>/etc/netplan/99_config.yaml</code>. The example below assumes you are configuring your first ethernet interface identified as <code>enp3s0</code>:</p>
+<pre><code>network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp3s0:
+      dhcp4: true
+</code></pre>
+<p>The configuration can then be applied using the netplan command: <code>sudo netplan apply</code></p>
+<p>In case you see any error, try debugging to investigate the problem. To run debug, use the following command as sudo: <code>sudo netplan –d apply</code></p>
+<p>To ensure that whether our machine is managed by “systemd-networkd”, all you have to do is using this command:</p>
+<pre><code>networkctl
+#in case of success, you should see a something like this:
+IDX LINK    TYPE  OPERATIONAL   SETUP
+_______________________________________
+1 enp3s0   ether  routable  configured
+2 wlp2s0b1 wlan   routable  configured
+</code></pre>
+<p>Once all the configurations are successfully applied, restart the Network-Manager service by running the following command: <code>sudo systemctl restart network-manager</code></p>
+<p>If you are using a Ubuntu Server, use the following command instead: <code>sudo systemctl restart system-networkd</code></p>
+<h3 id="static-ip-address-assignment"><a class="header" href="#static-ip-address-assignment">Static IP Address Assignment</a></h3>
+<p>To configure your system to use static address assignment, create a netplan configuration in the file <code>/etc/netplan/99_config.yaml</code>. The example below assumes you are configuring your first ethernet interface identified as <code>eth0</code>. Change the addresses, gateway4, and nameservers values to meet the requirements of your network:</p>
+<pre><code>network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      addresses:
+        - 10.10.10.2/24
+      gateway4: 10.10.10.1
+      nameservers:
+          search: [mydomain, otherdomain]
+          addresses: [10.10.10.1, 1.1.1.1]
+</code></pre>
+<p>The configuration can then be applied using the netplan command: <code>sudo netplan apply</code></p>
+<p><a href="https://netplan.io/examples/">Here</a> is a a collection of example netplan configurations for common scenarios.</p>
+<hr />
+<h3 id="name-resolution"><a class="header" href="#name-resolution">Name Resolution</a></h3>
+<p>Name resolution as it relates to IP networking is the process of mapping IP addresses to hostnames, making it easier to identify resources on a network. The following section will explain how to properly configure your system for name resolution using DNS and static hostname records.</p>
+<h3 id="dns-client-configuration"><a class="header" href="#dns-client-configuration">DNS Client Configuration</a></h3>
+<p>Traditionally, the file /etc/resolv.conf was a static configuration file that rarely needed to be changed or automatically changed via DCHP client hooks. systemd-resolved handles name server configuration, and it should be interacted with through the <code>systemd-resolve</code> command. Netplan configures systemd-resolved to generate a list of nameservers and domains to put in /etc/resolv.conf, which is a symlink:
+<code>/etc/resolv.conf -&gt; ../run/systemd/resolve/stub-resolv.conf</code></p>
+<p>To configure the resolver, add the IP addresses of the nameservers that are appropriate for your network to the netplan configuration file. You can also add a list of search domains (DNS suffixes), which are used when a non-fully qualified hostname is given. The resulting file might look like the following:</p>
+<pre><code>network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s25:
+      addresses:
+        - 192.168.0.100/24
+      gateway4: 192.168.0.1
+      nameservers:
+          search: [mydomain, otherdomain]
+          addresses: [1.1.1.1, 8.8.8.8, 4.4.4.4]
+</code></pre>
+<p>The <code>search</code> option can also be used with multiple domain names so that DNS queries will be appended in the order in which they are entered. For example, your network may have multiple sub-domains to search; a parent domain of example.com, and two sub-domains, sales.example.com and dev.example.com.</p>
+<p>If you have multiple domains you wish to search, your configuration might look like the following:</p>
+<pre><code>network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s25:
+      addresses:
+        - 192.168.0.100/24
+      gateway4: 192.168.0.1
+      nameservers:
+          search: [example.com, sales.example.com, dev.example.com]
+          addresses: [1.1.1.1, 8.8.8.8, 4.4.4.4]
+</code></pre>
+<p>If you try to ping a host with the name of server1, your system will automatically query DNS for its Fully Qualified Domain Name (FQDN) in the following order:</p>
+<pre><code>server1.example.com
+server1.sales.example.com
+server1.dev.example.com
+</code></pre>
+<p>If no matches are found, the DNS server will provide a result of notfound and the DNS query will fail.</p>
+<hr />
+<p>If you are using NetworkManager in a desktop version of Ubuntu, editing /etc/netplan/*.yaml could not be enough.</p>
+<p>If your current DNS server still points to your router (i.e. 192.168.1.1), there are at least two ways to solve this problem:</p>
+<ol>
+<li>You may configure these settings using the already mentioned GUI:</li>
+</ol>
+<p>a. Choose a connection (from the <em>Wired</em> or <em>Wireless</em> tab) and click <em>Edit</em>
+b. Click on the IPv4 Settings tab
+c. Choose <strong>Automatic (DHCP) addresses only</strong> instead of just <em>Automatic (DHCP)</em>
+d. Enter the DNS servers in the <em>DNS servers</em> field, separated by spaces (e.g. 208.67.222.222 for OpenDNS)
+e. Click on <em>Apply</em>.</p>
+<blockquote>
+<p>Note: 'Automatic (DHCP) addresses only' means that the network you are connecting to uses a DHCP server to assign IP addresses but you want to assign DNS servers manually.</p>
+</blockquote>
+<blockquote>
+<p>Note: NetworkManager saves these settings in /etc/NetworkManager/system-connections/[name-of-your-connection].</p>
+</blockquote>
+<ol start="2">
+<li>or, if your DNS settigs are messed up by multiple programs trying to update it, you can use <code>resolvconf</code>:</li>
+</ol>
+<pre><code>sudo apt install resolvconf
+sudo systemctl enable --now resolvconf.service
+</code></pre>
+<p>Then, edit /etc/resolvconf/resolv.conf.d/head and insert the nameservers youu want as:</p>
+<pre><code>nameserver 8.8.8.8
+nameserver 8.8.4.4
+</code></pre>
+<p>Finally, to update /etc/resolv.conf by typing: <code>sudo resolvconf -u</code></p>
+<p>The /etc/resolv.conf file will be replaced by a symbolic link to /etc/resolvconf/run/resolv.conf, so that the system resolver will use this file instead of the previously symlinked /run/systemd/resolve/stub-resolv.conf.</p>
+<h3 id="static-hostnames"><a class="header" href="#static-hostnames">Static Hostnames</a></h3>
+<p>Static hostnames are locally defined hostname-to-IP mappings located in the file <code>/etc/hosts</code>. Entries in the hosts file will have precedence over DNS by default. This means that if your system tries to resolve a hostname and it matches an entry in /etc/hosts, it will not attempt to look up the record in DNS. In some configurations, especially when Internet access is not required, servers that communicate with a limited number of resources can be conveniently set to use static hostnames instead of DNS.</p>
+<p>The following is an example of a hosts file where a number of local servers have been identified by simple hostnames, aliases and their equivalent Fully Qualified Domain Names (FQDNs):</p>
+<pre><code>127.0.0.1   localhost
+127.0.1.1   ubuntu-server
+10.0.0.11   server1 server1.example.com vpn
+10.0.0.12   server2 server2.example.com mail
+10.0.0.13   server3 server3.example.com www
+10.0.0.14   server4 server4.example.com file
+</code></pre>
+<blockquote>
+<p>Note: In the above example, notice that each of the servers have been given aliases in addition to their proper names and FQDN's. Server1 has been mapped to the name vpn, server2 is referred to as mail, server3 as www, and server4 as file.</p>
+</blockquote>
+<p>To block ads and tracking sites, append to /etc/hosts the MVPS HOSTS <a href="https://winhelp2002.mvps.org/hosts.txt">file</a>.</p>
+<h3 id="name-service-switch-configuration"><a class="header" href="#name-service-switch-configuration">Name Service Switch Configuration</a></h3>
+<p>The order in which your system selects a method of resolving hostnames to IP addresses is controlled by the <em>Name Service Switch</em> (<strong>NSS</strong>) configuration file <code>/etc/nsswitch.conf</code>. As mentioned in the previous section, typically static hostnames defined in the systems /etc/hosts file have precedence over names resolved from DNS. The following is an example of the line responsible for this order of hostname lookups in the file /etc/nsswitch.conf:
+<code>hosts:          files mdns4_minimal [NOTFOUND=return] dns mdns4</code></p>
+<p>The entries listed are:</p>
+<ul>
+<li>
+<p><code>files</code> first tries to resolve static hostnames located in /etc/hosts</p>
+</li>
+<li>
+<p><code>mdns4_minimal</code> attempts to resolve the name using Multicast DNS</p>
+</li>
+<li>
+<p><code>[NOTFOUND=return]</code> means that any response of notfound by the preceding mdns4_minimal process should be treated as authoritative and that the system should not try to continue hunting for an answer</p>
+</li>
+<li>
+<p><code>dns</code> represents a legacy unicast DNS query</p>
+</li>
+<li>
+<p><code>mdns4</code> represents a Multicast DNS query.</p>
+</li>
+</ul>
+<p>To modify the order of the above mentioned name resolution methods, you can simply change the <code>hosts:</code> string to the value of your choosing. For example, if you prefer to use legacy Unicast DNS versus Multicast DNS, you can change the string in /etc/nsswitch.conf as shown below:
+<code>hosts:          files dns [NOTFOUND=return] mdns4_minimal mdns4</code></p>
+<h3 id="bridging"><a class="header" href="#bridging">Bridging</a></h3>
+<p>Bridging multiple interfaces is a more advanced configuration, but is very useful in multiple scenarios. One scenario is setting up a bridge with multiple network interfaces, then using a firewall to filter traffic between two network segments. Another scenario is using bridge on a system with one interface to allow virtual machines direct access to the outside network. The following example covers the latter scenario.</p>
+<p>Configure the bridge by editing your netplan configuration found in /etc/netplan/:</p>
+<pre><code>network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp3s0:
+      dhcp4: no
+  bridges:
+    br0:
+      dhcp4: yes
+      interfaces:
+        - enp3s0
+</code></pre>
+<blockquote>
+<p>Note: Enter the appropriate values for your physical interface and network.</p>
+</blockquote>
+<p>Now apply the configuration to enable the bridge: <code>sudo netplan apply</code></p>
+<p>The new bridge interface should now be up and running. The <code>brctl</code> command can provide useful information about the state of the bridge: <code>sudo brctl show</code></p>
+<hr />
+<p>Resolve a hostname to an ip address: <code>dig +short google.com</code></p>
+<p>Resolve a hostname with another DNS server:</p>
+<pre><code>nslookup
+&gt; server 8.8.8.8
+&gt; some.hostname.com
+# or
+dig some.hostname.com @8.8.8.8
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../4-networking/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../4-networking/b.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../4-networking/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../4-networking/b.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

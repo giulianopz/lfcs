@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>DNS essentials - Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../1-essential-commands/index.html"><strong aria-hidden="true">1.</strong> Essential Commands - 25%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-essential-commands/a.html"><strong aria-hidden="true">1.1.</strong> Log into local & remote graphical and text mode consoles</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/b.html"><strong aria-hidden="true">1.2.</strong> Search for files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/c.html"><strong aria-hidden="true">1.3.</strong> Evaluate and compare the basic file system features and options</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/d.html"><strong aria-hidden="true">1.4.</strong> Compare and manipulate file content</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/e.html"><strong aria-hidden="true">1.5.</strong> Use input-output redirection</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/f.html"><strong aria-hidden="true">1.6.</strong> Analyze text using basic regular expressions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/g.html"><strong aria-hidden="true">1.7.</strong> Archive, backup, compress, unpack, and uncompress files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/h.html"><strong aria-hidden="true">1.8.</strong> Create, delete, copy, and move files and directories</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/i.html"><strong aria-hidden="true">1.9.</strong> Create and manage hard and soft links</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/l.html"><strong aria-hidden="true">1.10.</strong> List, set, and change standard file permissions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/m.html"><strong aria-hidden="true">1.11.</strong> Read, and use system documentation</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/n.html"><strong aria-hidden="true">1.12.</strong> Manage access to the root account</a></li></ol></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/index.html"><strong aria-hidden="true">2.</strong> Operation of Running Systems - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/a.html"><strong aria-hidden="true">2.1.</strong> Boot, reboot, and shut down a system safely</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/b.html"><strong aria-hidden="true">2.2.</strong> Boot or change system into different operating modes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/c.html"><strong aria-hidden="true">2.3.</strong> Install, configure and troubleshoot bootloaders</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/d.html"><strong aria-hidden="true">2.4.</strong> Diagnose and manage processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/e.html"><strong aria-hidden="true">2.5.</strong> Locate and analyze system log files</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/f.html"><strong aria-hidden="true">2.6.</strong> Schedule tasks to run at a set date and time</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/g.html"><strong aria-hidden="true">2.7.</strong> Verify completion of scheduled jobs</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/h.html"><strong aria-hidden="true">2.8.</strong> Update software to provide required functionality and security</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/i.html"><strong aria-hidden="true">2.9.</strong> Verify the integrity and availability of resources</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/l.html"><strong aria-hidden="true">2.10.</strong> Verify the integrity and availability of key processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/m.html"><strong aria-hidden="true">2.11.</strong> Change kernel runtime parameters, persistent and non-persistent</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/n.html"><strong aria-hidden="true">2.12.</strong> Use scripting to automate system maintenance tasks</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/o.html"><strong aria-hidden="true">2.13.</strong> Manage the startup process and services</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/p.html"><strong aria-hidden="true">2.14.</strong> List and identify SELinux/AppArmor file and process contexts</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/q.html"><strong aria-hidden="true">2.15.</strong> Manage software</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/r.html"><strong aria-hidden="true">2.16.</strong> Identify the component of a Linux distribution that a file belongs to</a></li></ol></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/index.html"><strong aria-hidden="true">3.</strong> User and Group Management - 10%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-user-and-group-management/a.html"><strong aria-hidden="true">3.1.</strong> Create, delete, and modify local user accounts</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/b.html"><strong aria-hidden="true">3.2.</strong> Create, delete, and modify local groups and group memberships</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/c.html"><strong aria-hidden="true">3.3.</strong> Manage system-wide environment profiles</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/d.html"><strong aria-hidden="true">3.4.</strong> Manage template user environment</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/e.html"><strong aria-hidden="true">3.5.</strong> Configure user resource limits</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/f.html"><strong aria-hidden="true">3.6.</strong> Manage user privileges</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/g.html"><strong aria-hidden="true">3.7.</strong> Configure PAM</a></li></ol></li><li class="chapter-item expanded "><a href="../4-networking/index.html"><strong aria-hidden="true">4.</strong> Networking - 12%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4-networking/a.html"><strong aria-hidden="true">4.1.</strong> Configure networking and hostname resolution statically or dynamically</a></li><li class="chapter-item expanded "><a href="../4-networking/b.html"><strong aria-hidden="true">4.2.</strong> Configure network services to start automatically at boot</a></li><li class="chapter-item expanded "><a href="../4-networking/c.html"><strong aria-hidden="true">4.3.</strong> Implement packet filtering (iptables, firewalld or ufw)</a></li><li class="chapter-item expanded "><a href="../4-networking/d.html"><strong aria-hidden="true">4.4.</strong> Start, stop, and check the status of network services</a></li><li class="chapter-item expanded "><a href="../4-networking/e.html"><strong aria-hidden="true">4.5.</strong> Statically route IP traffic</a></li><li class="chapter-item expanded "><a href="../4-networking/f.html"><strong aria-hidden="true">4.6.</strong> Synchronize time using other network peers</a></li></ol></li><li class="chapter-item expanded "><a href="../5-service-configuration/index.html"><strong aria-hidden="true">5.</strong> Service Configuration - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../5-service-configuration/a.html"><strong aria-hidden="true">5.1.</strong> Configure a caching DNS server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/b.html"><strong aria-hidden="true">5.2.</strong> Maintain a DNS zone</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/c.html"><strong aria-hidden="true">5.3.</strong> Configure email aliases</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/d.html"><strong aria-hidden="true">5.4.</strong> Configure SSH servers and clients</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/e.html"><strong aria-hidden="true">5.5.</strong> Restrict access to the HTTP proxy server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/f.html"><strong aria-hidden="true">5.6.</strong> Configure an IMAP and IMAPS service</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/g.html"><strong aria-hidden="true">5.7.</strong> Query and modify the behavior of system services at various operating modes</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/h.html"><strong aria-hidden="true">5.8.</strong> Configure an HTTP server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/i.html"><strong aria-hidden="true">5.9.</strong> Configure HTTP server log files</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/l.html"><strong aria-hidden="true">5.10.</strong> Configure a database server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/m.html"><strong aria-hidden="true">5.11.</strong> Restrict access to a web page</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/n.html"><strong aria-hidden="true">5.12.</strong> Manage and configure containers</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/o.html"><strong aria-hidden="true">5.13.</strong> Manage and configure Virtual Machines</a></li></ol></li><li class="chapter-item expanded "><a href="../6-storage-management/index.html"><strong aria-hidden="true">6.</strong> Storage Management - 13%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6-storage-management/a.html"><strong aria-hidden="true">6.1.</strong> List, create, delete, and modify physical storage partitions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/b.html"><strong aria-hidden="true">6.2.</strong> Manage and configure LVM storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/c.html"><strong aria-hidden="true">6.3.</strong> Create and configure encrypted storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/d.html"><strong aria-hidden="true">6.4.</strong> Configure systems to mount file systems at or during boot</a></li><li class="chapter-item expanded "><a href="../6-storage-management/e.html"><strong aria-hidden="true">6.5.</strong> Configure and manage swap space</a></li><li class="chapter-item expanded "><a href="../6-storage-management/f.html"><strong aria-hidden="true">6.6.</strong> Create and manage RAID devices</a></li><li class="chapter-item expanded "><a href="../6-storage-management/g.html"><strong aria-hidden="true">6.7.</strong> Configure systems to mount file systems on demand</a></li><li class="chapter-item expanded "><a href="../6-storage-management/h.html"><strong aria-hidden="true">6.8.</strong> Create, manage and diagnose advanced file system permissions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/i.html"><strong aria-hidden="true">6.9.</strong> Setup user and group disk quotas for filesystems</a></li><li class="chapter-item expanded "><a href="../6-storage-management/l.html"><strong aria-hidden="true">6.10.</strong> Create and configure file systems</a></li></ol></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/index.html"><strong aria-hidden="true">7.</strong> Bonus/Miscellanea - 0%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/bash.html"><strong aria-hidden="true">7.1.</strong> bash</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/git.html"><strong aria-hidden="true">7.2.</strong> git</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/grub.html"><strong aria-hidden="true">7.3.</strong> Repair the GRUB from live CD or USB stick</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ca-certs.html"><strong aria-hidden="true">7.4.</strong> Install a CA certificate</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/self-signed-ssl-cert.html"><strong aria-hidden="true">7.5.</strong> Create a self-signed SSL certificate for Apache web server</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tls-issues.html"><strong aria-hidden="true">7.6.</strong> Debugging TLS handshake issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/dns.html" class="active"><strong aria-hidden="true">7.7.</strong> DNS essentials</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/net-manager.html"><strong aria-hidden="true">7.8.</strong> Network-Manager</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-tunneling.html"><strong aria-hidden="true">7.9.</strong> SSH-tunneling</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/corrupted-chars.html"><strong aria-hidden="true">7.10.</strong> Debugging corrupted character encoding issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/mic.html"><strong aria-hidden="true">7.11.</strong> How to test a microphone</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-login.html"><strong aria-hidden="true">7.12.</strong> Automate login via SSH</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/edid.html"><strong aria-hidden="true">7.13.</strong> How to fix low screen resolution</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tips-tricks.html"><strong aria-hidden="true">7.14.</strong> Tips & tricks</a></li></ol></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">8.</strong> References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs/edit/main/domains/7-bonus-miscellanea/dns.md " title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="how-dns-works"><a class="header" href="#how-dns-works">How DNS Works</a></h2>
+<p>DNS is a global system for translating IP addresses to human-readable domain names. When a user tries to access a web address like &quot;example.com&quot;, their web browser or application performs a DNS Query against a DNS server, supplying the hostname. The DNS server takes the hostname and resolves it into a numeric IP address, which the web browser can connect to.</p>
+<p>A component called a DNS Resolver is responsible for checking if the hostname is available in local cache, and if not, contacts a series of DNS Name Servers, until eventually it receives the IP of the service the user is trying to reach, and returns it to the browser or application. This usually takes less than a second.</p>
+<h2 id="dns-types-3-dns-query-types"><a class="header" href="#dns-types-3-dns-query-types">DNS Types: 3 DNS Query Types</a></h2>
+<p>There are three types of queries in the DNS system:</p>
+<ul>
+<li>Recursive Query</li>
+</ul>
+<blockquote>
+<p>In a recursive query, a DNS client provides a hostname, and the DNS Resolver &quot;must&quot; provide an answer—it responds with either a relevant resource record, or an error message if it can't be found. The resolver starts a recursive query process, starting from the DNS Root Server, until it finds the Authoritative Name Server (for more on Authoritative Name Servers see DNS Server Types below) that holds the IP address and other information for the requested hostname.</p>
+</blockquote>
+<ul>
+<li>Iterative Query</li>
+</ul>
+<blockquote>
+<p>In an iterative query, a DNS client provides a hostname, and the DNS Resolver returns the best answer it can. If the DNS resolver has the relevant DNS records in its cache, it returns them. If not, it refers the DNS client to the Root Server, or another Authoritative Name Server which is nearest to the required DNS zone. The DNS client must then repeat the query directly against the DNS server it was referred to.</p>
+</blockquote>
+<ul>
+<li>Non-Recursive Query</li>
+</ul>
+<blockquote>
+<p>A non-recursive query is a query in which the DNS Resolver already knows the answer. It either immediately returns a DNS record because it already stores it in local cache, or queries a DNS Name Server which is authoritative for the record, meaning it definitely holds the correct IP for that hostname. In both cases, there is no need for additional rounds of queries (like in recursive or iterative queries). Rather, a response is immediately returned to the client.</p>
+</blockquote>
+<h2 id="dns-types-3-types-of-dns-servers"><a class="header" href="#dns-types-3-types-of-dns-servers">DNS Types: 3 Types of DNS Servers</a></h2>
+<p>The following are the most common DNS server types that are used to resolve hostnames into IP addresses:</p>
+<ul>
+<li>DNS Resolver</li>
+</ul>
+<blockquote>
+<p>A DNS resolver (recursive resolver), is designed to receive DNS queries, which include a human-readable hostname such as &quot;www.example.com&quot;, and is responsible for tracking the IP address for that hostname</p>
+</blockquote>
+<ul>
+<li>DNS Root Server</li>
+</ul>
+<blockquote>
+<p>The root server is the first step in the journey from hostname to IP address. The DNS Root Server extracts the Top Level Domain (TLD) from the user's query — for example, www.example.com —... provides details for the .com TLD Name Server. In turn, that server will provide details for domains with the .com DNS zone, including &quot;example.com&quot;.</p>
+</blockquote>
+<blockquote>
+<p>There are 13 root servers worldwide, indicated by the letters A through M, operated by organizations like the Internet Systems Consortium, Verisign, ICANN, the University of Maryland, and the U.S. Army Research Lab.</p>
+</blockquote>
+<ul>
+<li>Authoritative DNS Server</li>
+</ul>
+<blockquote>
+<p>Higher level servers in the DNS hierarchy define which DNS server is the &quot;authoritative&quot; name server for a specific hostname, meaning that it holds the up-to-date information for that hostname.</p>
+</blockquote>
+<blockquote>
+<p>The Authoritative Name Server is the last stop in the name server query—it takes the hostname and returns the correct IP address to the DNS Resolver (or if it cannot find the domain, returns the message NXDOMAIN).</p>
+</blockquote>
+<h2 id="dns-types-10-top-dns-record-types"><a class="header" href="#dns-types-10-top-dns-record-types">DNS Types: 10 Top DNS Record Types</a></h2>
+<p>DNS servers create a DNS record to provide important information about a domain or hostname, particularly its current IP address. The most common DNS record types are:</p>
+<ul>
+<li>Address Mapping record (A Record)—also known as a DNS host record, stores a hostname and its corresponding IPv4 address.</li>
+<li>IP Version 6 Address record (AAAA Record)—stores a hostname and its corresponding IPv6 address.</li>
+<li>Canonical Name record (CNAME Record)—can be used to alias a hostname to another hostname. When a DNS client requests a record that contains a CNAME, which points- to another hostname, the DNS resolution process is repeated with the new hostname.</li>
+<li>Mail exchanger record (MX Record)—specifies an SMTP email server for the domain, used to route outgoing emails to an email server.</li>
+<li>Name Server records (NS Record)—specifies that a DNS Zone, such as &quot;example.com&quot; is delegated to a specific Authoritative Name Server, and provides the address- of the name server.</li>
+<li>Reverse-lookup Pointer records (PTR Record)—allows a DNS resolver to provide an IP address and receive a hostname (reverse DNS lookup).</li>
+<li>Certificate record (CERT Record)—stores encryption certificates—PKIX, SPKI, PGP, and so on.</li>
+<li>Service Location (SRV Record)—a service location record, like MX but for other communication protocols.</li>
+<li>Text Record (TXT Record)—typically carries machine-readable data such as opportunistic encryption, sender policy framework, DKIM, DMARC, etc.</li>
+<li>Start of Authority (SOA Record)—this record appears at the beginning of a DNS zone file, and indicates the Authoritative Name Server for the current DNS zone,- contact details for the domain administrator, domain serial number, and information on how frequently DNS information for this zone should be refreshed.</li>
+</ul>
+<h2 id="dns-can-do-much-more"><a class="header" href="#dns-can-do-much-more">DNS Can Do Much More</a></h2>
+<p>Now that's we've covered the major types of traditional DNS infrastructure, you should know that DNS can be more than just the &quot;plumbing&quot; of the Internet. Advanced DNS solutions can help do some amazing things, including:</p>
+<ul>
+<li>Global server load balancing (GSLB): fast routing of connections between globally distributed data centers</li>
+<li>Multi CDN: routing users to the CDN that will provide the best experience</li>
+<li>Geographical routing: identifying the physical location of each user and ensuring they are routed to the nearest possible resource</li>
+<li>Data center and cloud migration: moving traffic in a controlled manner from on-premise resources to cloud resources</li>
+<li>Internet traffic management: reducing network congestion and ensuring traffic flows to the appropriate resource in an optimal manner</li>
+</ul>
+<h2 id="dns-search-domains"><a class="header" href="#dns-search-domains">DNS search domains</a></h2>
+<p>A search domain is a domain used as part of a domain search list. The domain search list, as well as the local domain name, is used by a resolver to create a fully qualified domain name (FQDN) from a relative name. For this purpose, the local domain name functions as a single-item search list. </p>
+<p>DNS search domains are used to go from a machine name to a Fully Qualified Domain Name.</p>
+<p>DNS searches can only look at a Fully Qualified Domain Name, such as <em>mymachine.example.com</em>. But, it's a pain to type out <em>mymachine.example.com</em>, you want to be able to just type mymachine.</p>
+<p>Using Search Domains is the mechanism to do this. If you type a name that does not end with a period, it knows it needs to add the search domains for the lookup. So, lets say your Search Domains list was: <em>example.org, example.com</em>.</p>
+<p>With <em>mymachine</em> it would try first <em>mymachine.example.org</em>, not find it, then try <em>mymachine.example.com</em>, found it, now done.</p>
+<p>With <em>mymachine.example.com</em> it would try <em>mymachine.example.com.example.org</em> (remember, it doesn't end with a period, still adds domains), fail, then <em>mymachine.example.com.example.com</em>, not find it, fall back to <em>mymachine.example.com</em>, found it, now done.</p>
+<p><em>mymachine.example.com.</em> ends with a period, no searching, just do <em>mymachine.example.com</em>.</p>
+<p>So, if you have your own DNS domain such as <em>example.com</em>, put it there. If not, ignore it. It really is more corporate than a home setting.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../7-bonus-miscellanea/tls-issues.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../7-bonus-miscellanea/net-manager.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../7-bonus-miscellanea/tls-issues.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../7-bonus-miscellanea/net-manager.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

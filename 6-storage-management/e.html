@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Configure and manage swap space - Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../1-essential-commands/index.html"><strong aria-hidden="true">1.</strong> Essential Commands - 25%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-essential-commands/a.html"><strong aria-hidden="true">1.1.</strong> Log into local & remote graphical and text mode consoles</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/b.html"><strong aria-hidden="true">1.2.</strong> Search for files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/c.html"><strong aria-hidden="true">1.3.</strong> Evaluate and compare the basic file system features and options</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/d.html"><strong aria-hidden="true">1.4.</strong> Compare and manipulate file content</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/e.html"><strong aria-hidden="true">1.5.</strong> Use input-output redirection</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/f.html"><strong aria-hidden="true">1.6.</strong> Analyze text using basic regular expressions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/g.html"><strong aria-hidden="true">1.7.</strong> Archive, backup, compress, unpack, and uncompress files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/h.html"><strong aria-hidden="true">1.8.</strong> Create, delete, copy, and move files and directories</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/i.html"><strong aria-hidden="true">1.9.</strong> Create and manage hard and soft links</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/l.html"><strong aria-hidden="true">1.10.</strong> List, set, and change standard file permissions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/m.html"><strong aria-hidden="true">1.11.</strong> Read, and use system documentation</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/n.html"><strong aria-hidden="true">1.12.</strong> Manage access to the root account</a></li></ol></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/index.html"><strong aria-hidden="true">2.</strong> Operation of Running Systems - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/a.html"><strong aria-hidden="true">2.1.</strong> Boot, reboot, and shut down a system safely</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/b.html"><strong aria-hidden="true">2.2.</strong> Boot or change system into different operating modes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/c.html"><strong aria-hidden="true">2.3.</strong> Install, configure and troubleshoot bootloaders</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/d.html"><strong aria-hidden="true">2.4.</strong> Diagnose and manage processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/e.html"><strong aria-hidden="true">2.5.</strong> Locate and analyze system log files</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/f.html"><strong aria-hidden="true">2.6.</strong> Schedule tasks to run at a set date and time</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/g.html"><strong aria-hidden="true">2.7.</strong> Verify completion of scheduled jobs</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/h.html"><strong aria-hidden="true">2.8.</strong> Update software to provide required functionality and security</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/i.html"><strong aria-hidden="true">2.9.</strong> Verify the integrity and availability of resources</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/l.html"><strong aria-hidden="true">2.10.</strong> Verify the integrity and availability of key processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/m.html"><strong aria-hidden="true">2.11.</strong> Change kernel runtime parameters, persistent and non-persistent</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/n.html"><strong aria-hidden="true">2.12.</strong> Use scripting to automate system maintenance tasks</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/o.html"><strong aria-hidden="true">2.13.</strong> Manage the startup process and services</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/p.html"><strong aria-hidden="true">2.14.</strong> List and identify SELinux/AppArmor file and process contexts</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/q.html"><strong aria-hidden="true">2.15.</strong> Manage software</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/r.html"><strong aria-hidden="true">2.16.</strong> Identify the component of a Linux distribution that a file belongs to</a></li></ol></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/index.html"><strong aria-hidden="true">3.</strong> User and Group Management - 10%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-user-and-group-management/a.html"><strong aria-hidden="true">3.1.</strong> Create, delete, and modify local user accounts</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/b.html"><strong aria-hidden="true">3.2.</strong> Create, delete, and modify local groups and group memberships</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/c.html"><strong aria-hidden="true">3.3.</strong> Manage system-wide environment profiles</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/d.html"><strong aria-hidden="true">3.4.</strong> Manage template user environment</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/e.html"><strong aria-hidden="true">3.5.</strong> Configure user resource limits</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/f.html"><strong aria-hidden="true">3.6.</strong> Manage user privileges</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/g.html"><strong aria-hidden="true">3.7.</strong> Configure PAM</a></li></ol></li><li class="chapter-item expanded "><a href="../4-networking/index.html"><strong aria-hidden="true">4.</strong> Networking - 12%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4-networking/a.html"><strong aria-hidden="true">4.1.</strong> Configure networking and hostname resolution statically or dynamically</a></li><li class="chapter-item expanded "><a href="../4-networking/b.html"><strong aria-hidden="true">4.2.</strong> Configure network services to start automatically at boot</a></li><li class="chapter-item expanded "><a href="../4-networking/c.html"><strong aria-hidden="true">4.3.</strong> Implement packet filtering (iptables, firewalld or ufw)</a></li><li class="chapter-item expanded "><a href="../4-networking/d.html"><strong aria-hidden="true">4.4.</strong> Start, stop, and check the status of network services</a></li><li class="chapter-item expanded "><a href="../4-networking/e.html"><strong aria-hidden="true">4.5.</strong> Statically route IP traffic</a></li><li class="chapter-item expanded "><a href="../4-networking/f.html"><strong aria-hidden="true">4.6.</strong> Synchronize time using other network peers</a></li></ol></li><li class="chapter-item expanded "><a href="../5-service-configuration/index.html"><strong aria-hidden="true">5.</strong> Service Configuration - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../5-service-configuration/a.html"><strong aria-hidden="true">5.1.</strong> Configure a caching DNS server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/b.html"><strong aria-hidden="true">5.2.</strong> Maintain a DNS zone</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/c.html"><strong aria-hidden="true">5.3.</strong> Configure email aliases</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/d.html"><strong aria-hidden="true">5.4.</strong> Configure SSH servers and clients</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/e.html"><strong aria-hidden="true">5.5.</strong> Restrict access to the HTTP proxy server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/f.html"><strong aria-hidden="true">5.6.</strong> Configure an IMAP and IMAPS service</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/g.html"><strong aria-hidden="true">5.7.</strong> Query and modify the behavior of system services at various operating modes</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/h.html"><strong aria-hidden="true">5.8.</strong> Configure an HTTP server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/i.html"><strong aria-hidden="true">5.9.</strong> Configure HTTP server log files</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/l.html"><strong aria-hidden="true">5.10.</strong> Configure a database server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/m.html"><strong aria-hidden="true">5.11.</strong> Restrict access to a web page</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/n.html"><strong aria-hidden="true">5.12.</strong> Manage and configure containers</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/o.html"><strong aria-hidden="true">5.13.</strong> Manage and configure Virtual Machines</a></li></ol></li><li class="chapter-item expanded "><a href="../6-storage-management/index.html"><strong aria-hidden="true">6.</strong> Storage Management - 13%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6-storage-management/a.html"><strong aria-hidden="true">6.1.</strong> List, create, delete, and modify physical storage partitions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/b.html"><strong aria-hidden="true">6.2.</strong> Manage and configure LVM storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/c.html"><strong aria-hidden="true">6.3.</strong> Create and configure encrypted storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/d.html"><strong aria-hidden="true">6.4.</strong> Configure systems to mount file systems at or during boot</a></li><li class="chapter-item expanded "><a href="../6-storage-management/e.html" class="active"><strong aria-hidden="true">6.5.</strong> Configure and manage swap space</a></li><li class="chapter-item expanded "><a href="../6-storage-management/f.html"><strong aria-hidden="true">6.6.</strong> Create and manage RAID devices</a></li><li class="chapter-item expanded "><a href="../6-storage-management/g.html"><strong aria-hidden="true">6.7.</strong> Configure systems to mount file systems on demand</a></li><li class="chapter-item expanded "><a href="../6-storage-management/h.html"><strong aria-hidden="true">6.8.</strong> Create, manage and diagnose advanced file system permissions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/i.html"><strong aria-hidden="true">6.9.</strong> Setup user and group disk quotas for filesystems</a></li><li class="chapter-item expanded "><a href="../6-storage-management/l.html"><strong aria-hidden="true">6.10.</strong> Create and configure file systems</a></li></ol></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/index.html"><strong aria-hidden="true">7.</strong> Bonus/Miscellanea - 0%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/bash.html"><strong aria-hidden="true">7.1.</strong> bash</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/git.html"><strong aria-hidden="true">7.2.</strong> git</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/grub.html"><strong aria-hidden="true">7.3.</strong> Repair the GRUB from live CD or USB stick</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ca-certs.html"><strong aria-hidden="true">7.4.</strong> Install a CA certificate</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/self-signed-ssl-cert.html"><strong aria-hidden="true">7.5.</strong> Create a self-signed SSL certificate for Apache web server</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tls-issues.html"><strong aria-hidden="true">7.6.</strong> Debugging TLS handshake issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/dns.html"><strong aria-hidden="true">7.7.</strong> DNS essentials</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/net-manager.html"><strong aria-hidden="true">7.8.</strong> Network-Manager</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-tunneling.html"><strong aria-hidden="true">7.9.</strong> SSH-tunneling</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/corrupted-chars.html"><strong aria-hidden="true">7.10.</strong> Debugging corrupted character encoding issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/mic.html"><strong aria-hidden="true">7.11.</strong> How to test a microphone</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-login.html"><strong aria-hidden="true">7.12.</strong> Automate login via SSH</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/edid.html"><strong aria-hidden="true">7.13.</strong> How to fix low screen resolution</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tips-tricks.html"><strong aria-hidden="true">7.14.</strong> Tips & tricks</a></li></ol></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">8.</strong> References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs/edit/main/domains/6-storage-management/e.md " title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="configure-and-manage-swap-space"><a class="header" href="#configure-and-manage-swap-space">Configure and manage swap space</a></h2>
+<p>One of the easiest way of guarding against out-of-memory errors in applications is to add some swap space to your server.</p>
+<blockquote>
+<p>Warning: Although swap is generally recommended for systems utilizing traditional spinning hard drives, using swap with SSDs can cause issues with hardware degradation over time. </p>
+</blockquote>
+<p>The information written to disk will be significantly slower than information kept in RAM, but the operating system will prefer to keep running application data in memory and use swap for the older data. Overall, having swap space as a fallback for when your system's RAM is depleted can be a good safety net against out-of-memory exceptions on systems with non-SSD storage available.</p>
+<h3 id="1-checking-the-system-for-swap-information"><a class="header" href="#1-checking-the-system-for-swap-information">1. Checking the System for Swap Information</a></h3>
+<p>Before we begin, we can check if the system already has some swap space available. It is possible to have multiple swap files or swap partitions, but generally one should be enough.</p>
+<p>We can see if the system has any configured swap by typing: <code>sudo swapon --show</code></p>
+<p>If you don't get back any output, this means your system does not have swap space available currently.</p>
+<p>You can verify that there is no active swap using the free utility:</p>
+<pre><code>free -h
+&gt;Output
+&gt;              total        used        free      shared  buff/cache   available
+&gt;Mem:           985M         84M        222M        680K        678M        721M
+&gt;Swap:            0B          0B          0B
+</code></pre>
+<p>As you can see in the Swap row of the output, no swap is active on the system.</p>
+<h2 id="2-checking-available-space-on-the-hard-drive-partition"><a class="header" href="#2-checking-available-space-on-the-hard-drive-partition">2. Checking Available Space on the Hard Drive Partition</a></h2>
+<p>Before we create our swap file, we'll check our current disk usage to make sure we have enough space:</p>
+<pre><code>df -h
+&gt;Output
+&gt;Filesystem      Size  Used Avail Use% Mounted on
+&gt;udev            481M     0  481M   0% /dev
+&gt;tmpfs            99M  656K   98M   1% /run
+&gt;/dev/vda1        25G  1.4G   23G   6% /
+&gt;tmpfs           493M     0  493M   0% /dev/shm
+&gt;tmpfs           5.0M     0  5.0M   0% /run/lock
+&gt;tmpfs           493M     0  493M   0% /sys/fs/cgroup
+&gt;/dev/vda15      105M  3.4M  102M   4% /boot/efi
+&gt;tmpfs            99M     0   99M   0% /run/user/1000
+</code></pre>
+<p>The device with <code>/</code> in the <code>Mounted on</code> column is our disk in this case. We have plenty of space available in this example (only 1.4G used). Your usage will probably be different.</p>
+<blockquote>
+<p>Note: Modern machines probably does not need swap space at all (see <a href="https://opensource.com/article/19/2/swap-space-poll">here</a>).</p>
+</blockquote>
+<h3 id="3-creating-a-swap-file"><a class="header" href="#3-creating-a-swap-file">3. Creating a Swap File</a></h3>
+<p>Now that we know our available hard drive space, we can create a swap file on our filesystem. We will allocate a file of the swap size that we want called <code>swapfile</code> in our root (/) directory.</p>
+<p>The best way of creating a swap file is with the <code>fallocate</code> program. This command instantly creates a file of the specified size:
+<code>sudo fallocate -l 1G /swapfile</code></p>
+<h3 id="4-enabling-the-swap-file"><a class="header" href="#4-enabling-the-swap-file">4. Enabling the Swap File</a></h3>
+<p>First, we need to lock down the permissions of the file so that only the users with root privileges can read the contents. This prevents normal users from being able to access the file, which would have significant security implications.</p>
+<p>Make the file only accessible to root by typing: <code>sudo chmod 600 /swapfile</code></p>
+<p>We can now mark the file as swap space by typing: </p>
+<pre><code>sudo mkswap /swapfile
+&gt;Output
+&gt;Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
+&gt;no label, UUID=6e965805-2ab9-450f-aed6-577e74089dbf
+</code></pre>
+<p>After marking the file, we can enable the swap file, allowing our system to start utilizing it: <code>sudo swapon /swapfile</code></p>
+<p>Verify that the swap is available by typing: </p>
+<pre><code>sudo swapon --show
+&gt;Output
+&gt;NAME      TYPE  SIZE USED PRIO
+&gt;/swapfile file 1024M   0B   -2
+</code></pre>
+<p>We can check the output of the free utility again to corroborate our findings:</p>
+<pre><code>free -h
+&gt;Output
+&gt;              total        used        free      shared  buff/cache   available
+&gt;Mem:           985M         84M        220M        680K        680M        722M
+&gt;Swap:          1.0G          0B        1.0G
+</code></pre>
+<h3 id="5-making-the-swap-file-permanent"><a class="header" href="#5-making-the-swap-file-permanent">5. Making the Swap File Permanent</a></h3>
+<p>Our recent changes have enabled the swap file for the current session. However, if we reboot, the server will not retain the swap settings automatically. We can change this by adding the swap file to our /etc/fstab file.</p>
+<p>Add the swap file information to the end of your /etc/fstab file by typing:
+<code>echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab</code></p>
+<hr />
+<h3 id="tuning-your-swap-settings"><a class="header" href="#tuning-your-swap-settings">Tuning your Swap Settings</a></h3>
+<p>There are a few options that you can configure that will have an impact on your system's performance when dealing with swap:</p>
+<ul>
+<li>
+<p><code>swappiness</code>, a parameter which configures how often your system swaps data out of RAM to the swap space, expressed as a percentage.</p>
+<p>We can see the current swappiness value by typing: <code>cat /proc/sys/vm/swappiness</code></p>
+<blockquote>
+<p>Tip: For a Desktop, a swappiness setting of 60 is not a bad value. For a server, you might want to move it closer to 0.</p>
+</blockquote>
+<p>We can set the swappiness to a different value by using the sysctl command.</p>
+<p>For instance, to set the swappiness to 10, we could type: <code>sudo sysctl vm.swappiness=10</code></p>
+<p>This setting will persist until the next reboot. We can set this value automatically at restart by adding the line to our /etc/sysctl.conf file: <code>vm.swappiness=10</code></p>
+</li>
+<li>
+<p><code>vfs_cache_pressure</code>, a parameter which configures how much the system will choose to cache inode and dentry information over other data.</p>
+<p>Basically, this is access data about the filesystem. This is generally very costly to look up and very frequently requested, so it's an excellent thing for your system to cache. You can see the current value by querying the proc filesystem again: <code>cat /proc/sys/vm/vfs_cache_pressure</code></p>
+<p>As it is currently configured, our system removes inode information from the cache too quickly. We can set this to a more conservative setting like 50 by typing: <code>sudo sysctl vm.vfs_cache_pressure=50</code></p>
+<p>Again, this is only valid for our current session. We can change that by adding it to our configuration file like we did with our swappiness setting: <code>vm.vfs_cache_pressure=50</code></p>
+</li>
+</ul>
+<hr />
+<h3 id="removing-a-swap-file"><a class="header" href="#removing-a-swap-file">Removing a Swap File</a></h3>
+<p>To deactivate and remove the swap file, start by deactivating the swap space by typing: <code>sudo swapoff -v /swapfile</code></p>
+<p>Next, remove the swap file entry <code>/swapfile</code> the <code>/etc/fstab</code> file.</p>
+<p>Finally, remove the actual swapfile file: <code>sudo rm /swapfile</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../6-storage-management/d.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../6-storage-management/f.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../6-storage-management/d.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../6-storage-management/f.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

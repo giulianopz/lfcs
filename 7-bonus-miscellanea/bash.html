@@ -1,0 +1,479 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>bash - Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../1-essential-commands/index.html"><strong aria-hidden="true">1.</strong> Essential Commands - 25%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-essential-commands/a.html"><strong aria-hidden="true">1.1.</strong> Log into local & remote graphical and text mode consoles</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/b.html"><strong aria-hidden="true">1.2.</strong> Search for files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/c.html"><strong aria-hidden="true">1.3.</strong> Evaluate and compare the basic file system features and options</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/d.html"><strong aria-hidden="true">1.4.</strong> Compare and manipulate file content</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/e.html"><strong aria-hidden="true">1.5.</strong> Use input-output redirection</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/f.html"><strong aria-hidden="true">1.6.</strong> Analyze text using basic regular expressions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/g.html"><strong aria-hidden="true">1.7.</strong> Archive, backup, compress, unpack, and uncompress files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/h.html"><strong aria-hidden="true">1.8.</strong> Create, delete, copy, and move files and directories</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/i.html"><strong aria-hidden="true">1.9.</strong> Create and manage hard and soft links</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/l.html"><strong aria-hidden="true">1.10.</strong> List, set, and change standard file permissions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/m.html"><strong aria-hidden="true">1.11.</strong> Read, and use system documentation</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/n.html"><strong aria-hidden="true">1.12.</strong> Manage access to the root account</a></li></ol></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/index.html"><strong aria-hidden="true">2.</strong> Operation of Running Systems - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/a.html"><strong aria-hidden="true">2.1.</strong> Boot, reboot, and shut down a system safely</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/b.html"><strong aria-hidden="true">2.2.</strong> Boot or change system into different operating modes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/c.html"><strong aria-hidden="true">2.3.</strong> Install, configure and troubleshoot bootloaders</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/d.html"><strong aria-hidden="true">2.4.</strong> Diagnose and manage processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/e.html"><strong aria-hidden="true">2.5.</strong> Locate and analyze system log files</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/f.html"><strong aria-hidden="true">2.6.</strong> Schedule tasks to run at a set date and time</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/g.html"><strong aria-hidden="true">2.7.</strong> Verify completion of scheduled jobs</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/h.html"><strong aria-hidden="true">2.8.</strong> Update software to provide required functionality and security</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/i.html"><strong aria-hidden="true">2.9.</strong> Verify the integrity and availability of resources</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/l.html"><strong aria-hidden="true">2.10.</strong> Verify the integrity and availability of key processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/m.html"><strong aria-hidden="true">2.11.</strong> Change kernel runtime parameters, persistent and non-persistent</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/n.html"><strong aria-hidden="true">2.12.</strong> Use scripting to automate system maintenance tasks</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/o.html"><strong aria-hidden="true">2.13.</strong> Manage the startup process and services</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/p.html"><strong aria-hidden="true">2.14.</strong> List and identify SELinux/AppArmor file and process contexts</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/q.html"><strong aria-hidden="true">2.15.</strong> Manage software</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/r.html"><strong aria-hidden="true">2.16.</strong> Identify the component of a Linux distribution that a file belongs to</a></li></ol></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/index.html"><strong aria-hidden="true">3.</strong> User and Group Management - 10%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-user-and-group-management/a.html"><strong aria-hidden="true">3.1.</strong> Create, delete, and modify local user accounts</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/b.html"><strong aria-hidden="true">3.2.</strong> Create, delete, and modify local groups and group memberships</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/c.html"><strong aria-hidden="true">3.3.</strong> Manage system-wide environment profiles</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/d.html"><strong aria-hidden="true">3.4.</strong> Manage template user environment</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/e.html"><strong aria-hidden="true">3.5.</strong> Configure user resource limits</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/f.html"><strong aria-hidden="true">3.6.</strong> Manage user privileges</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/g.html"><strong aria-hidden="true">3.7.</strong> Configure PAM</a></li></ol></li><li class="chapter-item expanded "><a href="../4-networking/index.html"><strong aria-hidden="true">4.</strong> Networking - 12%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4-networking/a.html"><strong aria-hidden="true">4.1.</strong> Configure networking and hostname resolution statically or dynamically</a></li><li class="chapter-item expanded "><a href="../4-networking/b.html"><strong aria-hidden="true">4.2.</strong> Configure network services to start automatically at boot</a></li><li class="chapter-item expanded "><a href="../4-networking/c.html"><strong aria-hidden="true">4.3.</strong> Implement packet filtering (iptables, firewalld or ufw)</a></li><li class="chapter-item expanded "><a href="../4-networking/d.html"><strong aria-hidden="true">4.4.</strong> Start, stop, and check the status of network services</a></li><li class="chapter-item expanded "><a href="../4-networking/e.html"><strong aria-hidden="true">4.5.</strong> Statically route IP traffic</a></li><li class="chapter-item expanded "><a href="../4-networking/f.html"><strong aria-hidden="true">4.6.</strong> Synchronize time using other network peers</a></li></ol></li><li class="chapter-item expanded "><a href="../5-service-configuration/index.html"><strong aria-hidden="true">5.</strong> Service Configuration - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../5-service-configuration/a.html"><strong aria-hidden="true">5.1.</strong> Configure a caching DNS server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/b.html"><strong aria-hidden="true">5.2.</strong> Maintain a DNS zone</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/c.html"><strong aria-hidden="true">5.3.</strong> Configure email aliases</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/d.html"><strong aria-hidden="true">5.4.</strong> Configure SSH servers and clients</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/e.html"><strong aria-hidden="true">5.5.</strong> Restrict access to the HTTP proxy server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/f.html"><strong aria-hidden="true">5.6.</strong> Configure an IMAP and IMAPS service</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/g.html"><strong aria-hidden="true">5.7.</strong> Query and modify the behavior of system services at various operating modes</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/h.html"><strong aria-hidden="true">5.8.</strong> Configure an HTTP server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/i.html"><strong aria-hidden="true">5.9.</strong> Configure HTTP server log files</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/l.html"><strong aria-hidden="true">5.10.</strong> Configure a database server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/m.html"><strong aria-hidden="true">5.11.</strong> Restrict access to a web page</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/n.html"><strong aria-hidden="true">5.12.</strong> Manage and configure containers</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/o.html"><strong aria-hidden="true">5.13.</strong> Manage and configure Virtual Machines</a></li></ol></li><li class="chapter-item expanded "><a href="../6-storage-management/index.html"><strong aria-hidden="true">6.</strong> Storage Management - 13%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6-storage-management/a.html"><strong aria-hidden="true">6.1.</strong> List, create, delete, and modify physical storage partitions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/b.html"><strong aria-hidden="true">6.2.</strong> Manage and configure LVM storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/c.html"><strong aria-hidden="true">6.3.</strong> Create and configure encrypted storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/d.html"><strong aria-hidden="true">6.4.</strong> Configure systems to mount file systems at or during boot</a></li><li class="chapter-item expanded "><a href="../6-storage-management/e.html"><strong aria-hidden="true">6.5.</strong> Configure and manage swap space</a></li><li class="chapter-item expanded "><a href="../6-storage-management/f.html"><strong aria-hidden="true">6.6.</strong> Create and manage RAID devices</a></li><li class="chapter-item expanded "><a href="../6-storage-management/g.html"><strong aria-hidden="true">6.7.</strong> Configure systems to mount file systems on demand</a></li><li class="chapter-item expanded "><a href="../6-storage-management/h.html"><strong aria-hidden="true">6.8.</strong> Create, manage and diagnose advanced file system permissions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/i.html"><strong aria-hidden="true">6.9.</strong> Setup user and group disk quotas for filesystems</a></li><li class="chapter-item expanded "><a href="../6-storage-management/l.html"><strong aria-hidden="true">6.10.</strong> Create and configure file systems</a></li></ol></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/index.html"><strong aria-hidden="true">7.</strong> Bonus/Miscellanea - 0%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/bash.html" class="active"><strong aria-hidden="true">7.1.</strong> bash</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/git.html"><strong aria-hidden="true">7.2.</strong> git</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/grub.html"><strong aria-hidden="true">7.3.</strong> Repair the GRUB from live CD or USB stick</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ca-certs.html"><strong aria-hidden="true">7.4.</strong> Install a CA certificate</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/self-signed-ssl-cert.html"><strong aria-hidden="true">7.5.</strong> Create a self-signed SSL certificate for Apache web server</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tls-issues.html"><strong aria-hidden="true">7.6.</strong> Debugging TLS handshake issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/dns.html"><strong aria-hidden="true">7.7.</strong> DNS essentials</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/net-manager.html"><strong aria-hidden="true">7.8.</strong> Network-Manager</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-tunneling.html"><strong aria-hidden="true">7.9.</strong> SSH-tunneling</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/corrupted-chars.html"><strong aria-hidden="true">7.10.</strong> Debugging corrupted character encoding issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/mic.html"><strong aria-hidden="true">7.11.</strong> How to test a microphone</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-login.html"><strong aria-hidden="true">7.12.</strong> Automate login via SSH</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/edid.html"><strong aria-hidden="true">7.13.</strong> How to fix low screen resolution</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tips-tricks.html"><strong aria-hidden="true">7.14.</strong> Tips & tricks</a></li></ol></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">8.</strong> References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs/edit/main/domains/7-bonus-miscellanea/bash.md " title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="bash"><a class="header" href="#bash">bash</a></h2>
+<p>Variables have a dual nature since eache variable is also an array.</p>
+<p>To define a variable, simply: <code>foo=42</code></p>
+<p>To reference the value of a variable: <code>echo $foo</code></p>
+<p>To remove a variable= <code>unset foo</code></p>
+<p>To assign a value which contains spaces, quote it: <code>foo=&quot;x j z&quot;</code></p>
+<p>Since every variable is an array, the variable itself is an implicit reference to the first index (0), so:</p>
+<pre><code>echo $foo
+# equals to
+echo ${foo[0]}
+</code></pre>
+<blockquote>
+<p>Note: Wrap the variable into curly braces for variable/array manipulation.</p>
+</blockquote>
+<p>You can declare an array with explicitly or with parenthes:</p>
+<pre><code>declare -a array_name
+array_name[index_1]=value_1
+array_name[index_2]=value_2
+array_name[index_n]=value_n
+# or
+array_name=(value_1, value_2, value_n)
+</code></pre>
+<p>To access all elements in an array:</p>
+<pre><code>echo ${array[@]}
+# or
+echo ${array[*]}
+</code></pre>
+<p>To copy an array: <code>copy=(&quot;${array[@]}&quot;)</code></p>
+<blockquote>
+<p>Note: double quotes are needed for values conaining white spaces.</p>
+</blockquote>
+<p>Special variables for grabbing arguments in functions and scripts:</p>
+<pre><code>$0          # script or shell name
+$[1-9]      # print the nth arg (1 &lt;= n &lt;= 9)
+$#          # the number of args
+$@          # all args passed
+$*          # same, but with a subtle difference, see below
+$?          # exit status of the previously run command (if !=0, it's an error)
+$$          # PID of the current shell
+$!          # PID of the most recently backgrounded process
+</code></pre>
+<blockquote>
+<p>Note: To know if you are in a subshell: <code>echo $SHLVL</code></p>
+</blockquote>
+<p>bash can operate on the value of a variable while deferencing that same variable:</p>
+<pre><code>foo=&quot;I'm a cat&quot;
+echo ${foo/cat/dog}
+</code></pre>
+<p>To replace all instances of a string: <code>echo ${foo//cat/dog}</code></p>
+<blockquote>
+<p>Note: a replacement operation does not modify the value of the variable.</p>
+</blockquote>
+<p>To delete a substring: <code>echo ${foo/cat}</code></p>
+<p><code>#</code> and <code>##</code> remove the shortest and longest prefix of a variable matching a certain pattern:</p>
+<pre><code>path=&quot;/usr/bin:/bin:/sbin&quot;
+echo ${path#/usr}           # prints out &quot;/bin:/bin:/sbin&quot;
+echo ${path#*/bin}          # prints out &quot;:/bin:/sbin&quot;
+echo ${path##*/bin}         # prints out &quot;:/sbin&quot;
+
+</code></pre>
+<p>Similarly, <code>%</code> is used for suffuxes.</p>
+<p>bash operators operate on both strings and array, so avoid common mistakes such as:</p>
+<pre><code>echo ${#array}          # wrong: prints out the length of the first element of the array (chars in a string)
+echo ${#array[@]}       # right: prints out the size of the array
+</code></pre>
+<p>To slice strings and arrays:</p>
+<pre><code>echo ${string:6:3}          # the first num is the start index, the second one is the size of slice
+echo ${array[@]:3:2}
+</code></pre>
+<p>Existence testing operators:</p>
+<pre><code>echo ${username-defualt}        # prints &quot;default&quot; if username var in unset
+echo ${username:-defualt}       # checks both for existence and emptiness
+echo ${unsetvar:=resetvar}      # like &quot;-&quot;, but sets the var if it doesn't have a value
+echo ${foo+42}                  # prints &quot;42&quot; if foo is set
+echo ${foo?failure: no args}    # crashes the program with the given message, if the var is unset
+</code></pre>
+<p><code>!</code> operator is used for <strong>indirect lookup</strong> or (indirect reference):</p>
+<pre><code>foo=bar
+bar=42
+echo ${!foo}        # print $bar, that is &quot;42&quot;
+</code></pre>
+<p>similarly, with arrays:</p>
+<pre><code>letters=(a b c d e)
+char=letters[1]
+echo ${!char}       # prints &quot;b&quot;
+</code></pre>
+<p>As to string declaration, you can use:</p>
+<ul>
+<li>single quotes (<code>'</code>) for literal strings</li>
+<li>double quotes (<code>&quot;</code>) for interpolated strings</li>
+</ul>
+<p>Mathematical expressions can be declared as follows:</p>
+<pre><code>echo $((3 + 3))
+# or
+((x = 3 + 3)); echo $x
+</code></pre>
+<p>To explicitly declare an integer variable:</p>
+<pre><code>declare -i number
+number=2+4*10
+</code></pre>
+<p>To dump textual content directly into stdin:</p>
+<pre><code># a file
+grep [pattern] &lt; myfile.txt
+# a string
+grep [pattern] &lt;&lt;&lt; &quot;this is a string&quot;
+# a here-document
+grep [pattern] &lt;&lt;EOF
+first line
+second line
+etc
+EOF
+</code></pre>
+<p>The notation <code>M&gt;&amp;N</code> redirects the output of channel M to channel N, e.g. to redirect stderr to stdout: <code>2&gt;&amp;1</code></p>
+<blockquote>
+<p>Note: in bash, <code>&amp;&gt;</code> equals to <code>2&gt;&amp;1</code>.</p>
+</blockquote>
+<blockquote>
+<p>Note: <code>&gt;</code> is the same as <code>1&gt;</code>.</p>
+</blockquote>
+<p>To learn more about redirections, look <a href="../1-essential-commands/e.html">here</a>.</p>
+<p>Capturing stdout can be accomplished as:</p>
+<pre><code>echo `date`
+# or
+echo $(date)
+</code></pre>
+<p><strong>Process substitution</strong> involves expanding output of a command into a temporary file which can be read from a command which expects a file to be passed:</p>
+<pre><code>cat &lt;(uptime)
+# which works as
+uptime | cat
+</code></pre>
+<p><code>wait</code> command waits for a PID's associated process to terminate, but without a PID it waits for all child processes to finish (e.g, it can be used after multiple processes are launched in a for loop):</p>
+<pre><code>time-consuming-command &amp;
+pid=$!
+wait $pid
+echo Process $pid finished!
+
+for f in *.jpg
+do
+  convert $f ${f%.jpg}.png &amp;
+done
+wait
+echo All images have been converted!
+</code></pre>
+<p><strong>Glob patterns</strong> are automatically expanded to an array of matching strings:</p>
+<ul>
+<li><code>*</code>, any string</li>
+<li><code>?</code>, a single char</li>
+<li><code>[aGfz]</code>, any char between square brackets</li>
+<li><code>[a-d]</code>, any char between <code>a</code> and <code>d</code></li>
+</ul>
+<p><strong>Brace expansion</strong> is used to expand elements inside curly braces into a set or sequence:</p>
+<pre><code>mkdir /opt/{zotero, skype, office}
+# or
+echo {0..10}
+</code></pre>
+<h3 id="control-structures"><a class="header" href="#control-structures">Control Structures</a></h3>
+<p>Conditions are expressed as a command (such as <code>test</code>) whose exit status is mapped to true/false (0/non-zero):</p>
+<pre><code>if http -k start
+then
+  echo OK
+else
+  echo KO
+fi
+# or
+
+if [ &quot;$1&quot; = &quot;-v&quot; ]
+then
+  echo &quot;switching to verbose output&quot;
+fi
+</code></pre>
+<blockquote>
+<p>Note: An alternative syntax for <code>test [args]</code> is <code>[args]</code>.</p>
+</blockquote>
+<blockquote>
+<p>Tip: Double brackets are safer than single brackets:</p>
+</blockquote>
+<pre><code>[ $a = $b ]         # will fail if one of the two variables is empty or contains a whitespace
+[ &quot;$a&quot; = &quot;$b&quot; ]     # you have to double-quote them to avoid this problem
+[[ $a = $b ]]       # this instead won't fail
+</code></pre>
+<blockquote>
+<p>Tip: Additionally, double brackets support:</p>
+</blockquote>
+<pre><code>[[ $a = ?at ]]      # glob patterns
+[[ $a &lt; $b ]]       # lexicographical comparison
+[[ $a =~ ^.at ]]    # regex patterns with the operator &quot;=~&quot;
+</code></pre>
+<p>To learn more, look <a href="https://scriptingosx.com/2018/02/single-brackets-vs-double-brackets/">here</a>.</p>
+<p>Iterations are declared as follows.</p>
+<pre><code>while [command]; do [command]; done
+# or
+for [var] in [array]; do [command]; done
+</code></pre>
+<p>Subroutine (functions) act almost like a separate script. They can see and modify variable defined in the outer scope:</p>
+<pre><code>funcion &lt;name&gt; {
+  # commands
+}
+
+# or
+
+&lt;name&gt; () {
+  # commands
+}
+</code></pre>
+<h3 id="array-syntax"><a class="header" href="#array-syntax">Array syntax</a></h3>
+<pre><code>arr=()                  # creates an empty array
+arr=(1 2 3)             # creates and initializes an array
+${arr[2]}               # retrieves the 3rd element
+${arr[@]}               # retrieves all element
+${!arr[@]}              # retrieves array indices
+${#arr[@]}              # get array size
+arr[0]=3                # overwrites first element
+arr+=(4)                # appends a value
+arr=($(ls))             # saves ls output as an array of filenames
+${arr[@]:s:n}           # retieves [n] elements starting at index [s]
+</code></pre>
+<blockquote>
+<p>Note: Beware of array quirks  when using <code>@</code> vs. <code>*</code>:</p>
+</blockquote>
+<ul>
+<li><code>*</code> combines all args into a single string, while <code>@</code> requotes the individual args</li>
+<li>if the var IFS (internal field separator) is set, then elements in <code>$*</code> are separated by this deimiter value.</li>
+</ul>
+<h3 id="test-flag-operators"><a class="header" href="#test-flag-operators">Test flag operators</a></h3>
+<pre><code># boolean conditions
+-a      # &amp;&amp;
+-o      # ||
+
+# integer comparison
+-eq     # &quot;equals to&quot;
+-ne     # &quot;not equal&quot;
+-gt     # &gt;
+-ge     # &gt;=
+-lt     # &lt;
+-le     # &lt;=
+
+# string comparison
+=
+==      # the pattern is literal if within double brackets and variables/string are within double quotes
+!=
+&lt;       # alphabetical order
+&gt;       # must be escaped if within single brackets, e.g. &quot;\&gt;&quot;
+-z      # string is null
+-n      # string is not null
+
+# file test
+
+-e      # file exists
+-f      # file is a regular file
+-d      # is a directory
+-h/-L   # is a symlink
+-s      # is not zero-size
+-r      # has read permissions
+-w      # has write permissions
+-x      # has execute permissions
+-u      # SUDI bit is active
+-g      # SGID bit is active
+-k      # sticky bit is active
+-nt/ot  # is newer/older than
+</code></pre>
+<p>To create a simple <a href="https://www.linux.com/training-tutorials/writing-simple-bash-script/">script</a>:</p>
+<ol>
+<li>put a <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> at the very first line: <code>#!/bin/bash</code></li>
+<li>write your stuff afterwards</li>
+<li>execute the script from its path (i.e <code>./script.sh</code>) or sourcing it (i.e. <code>source script.sh</code>)</li>
+</ol>
+<blockquote>
+<p>Note: When you execute the script you are opening a new shell, type the commands in the new shell, copy the output back to your current shell, then close the new shell. Any changes to environment will take effect only in the new shell and will be lost once the new shell is closed. When you <code>source</code> the script you are typing the commands in your current shell. Any changes to the environment will take effect and stay in your current shell.</p>
+</blockquote>
+<blockquote>
+<p>Note: source is a synonym for dot operator (i.e. '.') in bash, but not in POSIX sh, so for maximum compatibility use the period: so, <code>source filename [arguments]</code> is just like <code>. filename [arguments] </code></p>
+</blockquote>
+<hr />
+<p>References and further reading:</p>
+<ul>
+<li>This refresher is mostly based on a nice <a href="http://matt.might.net/articles/bash-by-example/">guide</a> written by Matt Might.</li>
+<li>You can find <a href="https://github.com/dylanaraps/pure-bash-bible">here</a> a huge collection of bash gems.</li>
+<li>For the source vs dot operator, see <a href="https://ss64.com/bash/source.html">here</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../7-bonus-miscellanea/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../7-bonus-miscellanea/git.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../7-bonus-miscellanea/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../7-bonus-miscellanea/git.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Maintain a DNS zone - Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../1-essential-commands/index.html"><strong aria-hidden="true">1.</strong> Essential Commands - 25%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-essential-commands/a.html"><strong aria-hidden="true">1.1.</strong> Log into local & remote graphical and text mode consoles</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/b.html"><strong aria-hidden="true">1.2.</strong> Search for files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/c.html"><strong aria-hidden="true">1.3.</strong> Evaluate and compare the basic file system features and options</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/d.html"><strong aria-hidden="true">1.4.</strong> Compare and manipulate file content</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/e.html"><strong aria-hidden="true">1.5.</strong> Use input-output redirection</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/f.html"><strong aria-hidden="true">1.6.</strong> Analyze text using basic regular expressions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/g.html"><strong aria-hidden="true">1.7.</strong> Archive, backup, compress, unpack, and uncompress files</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/h.html"><strong aria-hidden="true">1.8.</strong> Create, delete, copy, and move files and directories</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/i.html"><strong aria-hidden="true">1.9.</strong> Create and manage hard and soft links</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/l.html"><strong aria-hidden="true">1.10.</strong> List, set, and change standard file permissions</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/m.html"><strong aria-hidden="true">1.11.</strong> Read, and use system documentation</a></li><li class="chapter-item expanded "><a href="../1-essential-commands/n.html"><strong aria-hidden="true">1.12.</strong> Manage access to the root account</a></li></ol></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/index.html"><strong aria-hidden="true">2.</strong> Operation of Running Systems - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/a.html"><strong aria-hidden="true">2.1.</strong> Boot, reboot, and shut down a system safely</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/b.html"><strong aria-hidden="true">2.2.</strong> Boot or change system into different operating modes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/c.html"><strong aria-hidden="true">2.3.</strong> Install, configure and troubleshoot bootloaders</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/d.html"><strong aria-hidden="true">2.4.</strong> Diagnose and manage processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/e.html"><strong aria-hidden="true">2.5.</strong> Locate and analyze system log files</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/f.html"><strong aria-hidden="true">2.6.</strong> Schedule tasks to run at a set date and time</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/g.html"><strong aria-hidden="true">2.7.</strong> Verify completion of scheduled jobs</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/h.html"><strong aria-hidden="true">2.8.</strong> Update software to provide required functionality and security</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/i.html"><strong aria-hidden="true">2.9.</strong> Verify the integrity and availability of resources</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/l.html"><strong aria-hidden="true">2.10.</strong> Verify the integrity and availability of key processes</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/m.html"><strong aria-hidden="true">2.11.</strong> Change kernel runtime parameters, persistent and non-persistent</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/n.html"><strong aria-hidden="true">2.12.</strong> Use scripting to automate system maintenance tasks</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/o.html"><strong aria-hidden="true">2.13.</strong> Manage the startup process and services</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/p.html"><strong aria-hidden="true">2.14.</strong> List and identify SELinux/AppArmor file and process contexts</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/q.html"><strong aria-hidden="true">2.15.</strong> Manage software</a></li><li class="chapter-item expanded "><a href="../2-operation-of-running-systems/r.html"><strong aria-hidden="true">2.16.</strong> Identify the component of a Linux distribution that a file belongs to</a></li></ol></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/index.html"><strong aria-hidden="true">3.</strong> User and Group Management - 10%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-user-and-group-management/a.html"><strong aria-hidden="true">3.1.</strong> Create, delete, and modify local user accounts</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/b.html"><strong aria-hidden="true">3.2.</strong> Create, delete, and modify local groups and group memberships</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/c.html"><strong aria-hidden="true">3.3.</strong> Manage system-wide environment profiles</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/d.html"><strong aria-hidden="true">3.4.</strong> Manage template user environment</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/e.html"><strong aria-hidden="true">3.5.</strong> Configure user resource limits</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/f.html"><strong aria-hidden="true">3.6.</strong> Manage user privileges</a></li><li class="chapter-item expanded "><a href="../3-user-and-group-management/g.html"><strong aria-hidden="true">3.7.</strong> Configure PAM</a></li></ol></li><li class="chapter-item expanded "><a href="../4-networking/index.html"><strong aria-hidden="true">4.</strong> Networking - 12%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../4-networking/a.html"><strong aria-hidden="true">4.1.</strong> Configure networking and hostname resolution statically or dynamically</a></li><li class="chapter-item expanded "><a href="../4-networking/b.html"><strong aria-hidden="true">4.2.</strong> Configure network services to start automatically at boot</a></li><li class="chapter-item expanded "><a href="../4-networking/c.html"><strong aria-hidden="true">4.3.</strong> Implement packet filtering (iptables, firewalld or ufw)</a></li><li class="chapter-item expanded "><a href="../4-networking/d.html"><strong aria-hidden="true">4.4.</strong> Start, stop, and check the status of network services</a></li><li class="chapter-item expanded "><a href="../4-networking/e.html"><strong aria-hidden="true">4.5.</strong> Statically route IP traffic</a></li><li class="chapter-item expanded "><a href="../4-networking/f.html"><strong aria-hidden="true">4.6.</strong> Synchronize time using other network peers</a></li></ol></li><li class="chapter-item expanded "><a href="../5-service-configuration/index.html"><strong aria-hidden="true">5.</strong> Service Configuration - 20%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../5-service-configuration/a.html"><strong aria-hidden="true">5.1.</strong> Configure a caching DNS server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/b.html" class="active"><strong aria-hidden="true">5.2.</strong> Maintain a DNS zone</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/c.html"><strong aria-hidden="true">5.3.</strong> Configure email aliases</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/d.html"><strong aria-hidden="true">5.4.</strong> Configure SSH servers and clients</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/e.html"><strong aria-hidden="true">5.5.</strong> Restrict access to the HTTP proxy server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/f.html"><strong aria-hidden="true">5.6.</strong> Configure an IMAP and IMAPS service</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/g.html"><strong aria-hidden="true">5.7.</strong> Query and modify the behavior of system services at various operating modes</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/h.html"><strong aria-hidden="true">5.8.</strong> Configure an HTTP server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/i.html"><strong aria-hidden="true">5.9.</strong> Configure HTTP server log files</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/l.html"><strong aria-hidden="true">5.10.</strong> Configure a database server</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/m.html"><strong aria-hidden="true">5.11.</strong> Restrict access to a web page</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/n.html"><strong aria-hidden="true">5.12.</strong> Manage and configure containers</a></li><li class="chapter-item expanded "><a href="../5-service-configuration/o.html"><strong aria-hidden="true">5.13.</strong> Manage and configure Virtual Machines</a></li></ol></li><li class="chapter-item expanded "><a href="../6-storage-management/index.html"><strong aria-hidden="true">6.</strong> Storage Management - 13%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../6-storage-management/a.html"><strong aria-hidden="true">6.1.</strong> List, create, delete, and modify physical storage partitions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/b.html"><strong aria-hidden="true">6.2.</strong> Manage and configure LVM storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/c.html"><strong aria-hidden="true">6.3.</strong> Create and configure encrypted storage</a></li><li class="chapter-item expanded "><a href="../6-storage-management/d.html"><strong aria-hidden="true">6.4.</strong> Configure systems to mount file systems at or during boot</a></li><li class="chapter-item expanded "><a href="../6-storage-management/e.html"><strong aria-hidden="true">6.5.</strong> Configure and manage swap space</a></li><li class="chapter-item expanded "><a href="../6-storage-management/f.html"><strong aria-hidden="true">6.6.</strong> Create and manage RAID devices</a></li><li class="chapter-item expanded "><a href="../6-storage-management/g.html"><strong aria-hidden="true">6.7.</strong> Configure systems to mount file systems on demand</a></li><li class="chapter-item expanded "><a href="../6-storage-management/h.html"><strong aria-hidden="true">6.8.</strong> Create, manage and diagnose advanced file system permissions</a></li><li class="chapter-item expanded "><a href="../6-storage-management/i.html"><strong aria-hidden="true">6.9.</strong> Setup user and group disk quotas for filesystems</a></li><li class="chapter-item expanded "><a href="../6-storage-management/l.html"><strong aria-hidden="true">6.10.</strong> Create and configure file systems</a></li></ol></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/index.html"><strong aria-hidden="true">7.</strong> Bonus/Miscellanea - 0%</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/bash.html"><strong aria-hidden="true">7.1.</strong> bash</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/git.html"><strong aria-hidden="true">7.2.</strong> git</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/grub.html"><strong aria-hidden="true">7.3.</strong> Repair the GRUB from live CD or USB stick</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ca-certs.html"><strong aria-hidden="true">7.4.</strong> Install a CA certificate</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/self-signed-ssl-cert.html"><strong aria-hidden="true">7.5.</strong> Create a self-signed SSL certificate for Apache web server</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tls-issues.html"><strong aria-hidden="true">7.6.</strong> Debugging TLS handshake issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/dns.html"><strong aria-hidden="true">7.7.</strong> DNS essentials</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/net-manager.html"><strong aria-hidden="true">7.8.</strong> Network-Manager</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-tunneling.html"><strong aria-hidden="true">7.9.</strong> SSH-tunneling</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/corrupted-chars.html"><strong aria-hidden="true">7.10.</strong> Debugging corrupted character encoding issues</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/mic.html"><strong aria-hidden="true">7.11.</strong> How to test a microphone</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/ssh-login.html"><strong aria-hidden="true">7.12.</strong> Automate login via SSH</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/edid.html"><strong aria-hidden="true">7.13.</strong> How to fix low screen resolution</a></li><li class="chapter-item expanded "><a href="../7-bonus-miscellanea/tips-tricks.html"><strong aria-hidden="true">7.14.</strong> Tips & tricks</a></li></ol></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">8.</strong> References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes </h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/giulianopz/lfcs/edit/main/domains/5-service-configuration/b.md " title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="maintain-a-dns-zone"><a class="header" href="#maintain-a-dns-zone">Maintain a DNS zone</a></h2>
+<p>A <strong>DNS zone</strong> is a distinct part of the domain namespace which is delegated to a legal entity — a person, organization or company, who is responsible for maintaining the DNS zone. A DNS zone is also an administrative function, allowing for granular control of DNS components, such as authoritative name servers.</p>
+<p>When a web browser or other network device needs to find the IP address for a hostname such as “example.com”, it performs a <strong>DNS lookup</strong> - essentially a DNS zone check - and is taken to the DNS server that manages the DNS zone for that hostname. This server is called the <strong>authoritative name server</strong> for the domain. The authoritative name server then resolves the DNS lookup by providing the IP address, or other data, for the requested hostname.</p>
+<p>The Domain Name System (DNS) defines a domain namespace, which specifies <strong>Top Level Domains</strong> (such as “.com”), second-level domains, (such as “acme.com”) and lower-level domains, also called subdomains (such as “support.acme.com”). Each of these levels can be a DNS zone.</p>
+<p>For example, the root domain “acme.com” may be delegated to a Acme Corporation. Acme assumes responsibility for setting up an authoritative DNS server that holds the correct DNS records for the domain.</p>
+<p>At each hierarchical level of the DNS system, there is a Name Server containing a <strong>zone file</strong>, which holds the trusted, correct DNS records for that zone.</p>
+<p>The <strong>root</strong> of the DNS system, represented by a dot at the end of the domain name — for example, &quot;www.example.com.&quot; — is the primary DNS zone. Since 2016, the root zone is overseen by the Internet Corporation for Assigned Names and Numbers (ICANN), which delegates management to a subsidiary acting as the Internet Assigned Numbers Authority (IANA).</p>
+<p>The DNS root zone is operated by 13 logical servers, run by organizations like Verisign, the U.S. Army Research Labs and NASA. Any recursive DNS query (more about DNS query types <a href="../7-bonus-miscellanea/p.html">here</a>) starts by contacting one of these root servers, and requesting details for the next level down the tree — the Top Level Domain (TLD) server.</p>
+<p>There is a DNS zone for each Top Level Domain, such as “.com”, “.org” or country codes like “.co.uk”. There are currently over 1500 top level domains. Most top level domains are managed by ICANN/IANA.</p>
+<p><strong>Second-level domains</strong> like the domain “ns1.com”, are defined as separate DNS zones, operated by individuals or organizations. Organizations can run their own DNS name servers, or delegate management to an external provider.</p>
+<p>If a domain has subdomains, they can be part of the same zone. Alternatively, if a subdomain is an independent website, and requires separate DNS management, it can be defined as its own DNS zone.</p>
+<p>DNS servers can be deployed in a <strong>primary/secondary</strong> topology, where a secondary DNS server holds a read-only copy of the primary DNS server's DNS records. The primary server holds the primary zone file, and the secondary server constitutes an identical secondary zone; DNS requests are distributed between primary and secondary servers. A <strong>DNS zone transfer</strong> occurs when the primary server zone file is copied, in whole or in part, to the secondary DNS server.</p>
+<p>DNS <strong>zone files</strong> are defined in RFC 1035 and RFC 1034. A zone file contains mappings between domain names, IP addresses and other resources, organized in the form of <strong>resource records</strong> (RR).</p>
+<p>There are two types of zone files:</p>
+<ul>
+<li>a DNS Primary File which authoritatively describes a zone</li>
+<li>a DNS Cache File which lists the contents of a DNS cache — this is only a copy of the authoritative DNS zone.</li>
+</ul>
+<p>In a zone file, each line represents a DNS resource record (RR). A record is made up of the following fields:</p>
+<ul>
+<li><strong>Name</strong> is an alphanumeric identifier of the DNS record. It can be left blank, and inherits its value from the previous record.</li>
+<li><strong>TTL</strong> (time to live) specifies how long the record should be kept in the local cache of a DNS client. If not specified, the global TTL value at the top of the zone file is used.</li>
+<li><strong>Record class</strong> indicates the namespace — typically <strong>IN</strong>, which is the Internet namespace.</li>
+<li><strong>Record type</strong> is the DNS record type — for example an <strong>A</strong> record maps a hostname to an IPv4 address, and a <strong>CNAME</strong> is an alias which points a hostname to another hostname.</li>
+<li><strong>Record</strong> data has one or more information elements, depending on the record type, separated by a white space. For example an MX record has two elements — a priority and a domain name for an email server.</li>
+</ul>
+<p>DNS Zone files start with two mandatory records:</p>
+<ul>
+<li><strong>Global Time to Live</strong> (TTL), which specifies how long records should be kept in local DNS cache.</li>
+<li><strong>Start of Authority</strong> (SOA) record—specifies the primary authoritative name server for the DNS Zone.</li>
+</ul>
+<p>After these two records, the zone file can contain any number of resource records, which can include:</p>
+<ul>
+<li><strong>Name Server records</strong> (NS) — specifies that a specific DNS Zone, such as “example.com” is delegated to a specific authoritative name server</li>
+<li><strong>IPv4 Address Mapping records</strong> (A) — a hostname and its IPv4 address.</li>
+<li><strong>IPv6 Address records</strong> (AAAA) — a hostname and its IPv6 address.</li>
+<li><strong>Canonical Name records</strong> (CNAME) — points a hostname to an alias. This is another hostname, which the DNS client is redirected to</li>
+<li><strong>Mail exchanger record</strong> (MX) — specifies an SMTP email server for the domain.</li>
+</ul>
+<p>Zone File Tips:</p>
+<ul>
+<li>when adding a record for a hostname, the hostname must end with a period (.)</li>
+<li>hostnames which do not end with a period are considered relative to the main domain name — for example, when specifying a &quot;www&quot; or “ftp” record, there is no need for a period</li>
+<li>you can add comments in a zone file by adding a semicolon (<code>;</code>) after a resource record</li>
+<li>many admins like to use the last date edited as the serial of a zone, such as 2020012100 which is yyyymmddss (where <code>ss</code> is the Serial Number)</li>
+</ul>
+<hr />
+<h2 id="primary-server-maintaining-a-forward-zone"><a class="header" href="#primary-server-maintaining-a-forward-zone">Primary Server maintaining a Forward Zone</a></h2>
+<p>To add a DNS zone to BIND9, turning BIND9 into a Primary server, first edit <code>/etc/bind/named.conf.local</code>:</p>
+<pre><code>zone &quot;example.com&quot; {
+    type master;
+    file &quot;/etc/bind/db.example.com&quot;;
+};
+</code></pre>
+<p>Now use an existing zone file as a template to create the <strong>/etc/bind/db.example.com</strong> file: <code>sudo cp /etc/bind/db.local /etc/bind/db.example.com</code></p>
+<p>Edit the new zone file <code>/etc/bind/db.example.com</code> and change <code>localhost.</code> to the FQDN of your server, leaving the additional <code>.</code> at the end. Change <code>127.0.0.1</code> to the nameserver's IP Address and <code>root.localhost</code> to a valid email address, but with a <code>.</code> instead of the usual <code>@</code> symbol, again leaving the <code>.</code> at the end. Change the comment to indicate the domain this file is for.</p>
+<p>Create an A record for the base domain, <strong>example.com</strong>. Also, create an A record for <strong>ns.example.com</strong>, the name server in this example:</p>
+<pre><code>;
+; BIND data file for example.com
+;
+$TTL    604800
+@       IN      SOA     example.com. root.example.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+
+@       IN      NS      ns.example.com.
+@       IN      A       192.168.1.10
+@       IN      AAAA    ::1
+ns      IN      A       192.168.1.10
+</code></pre>
+<p>You must increment the Serial Number every time you make changes to the zone file. If you make multiple changes before restarting BIND9, simply increment the Serial once.</p>
+<p>Once you have made changes to the zone file BIND9 needs to be restarted for the changes to take effect: <code>sudo systemctl restart bind9.service</code></p>
+<h2 id="reverse-zone"><a class="header" href="#reverse-zone">Reverse Zone</a></h2>
+<p>Now that the zone is setup and resolving names to IP addresses, a reverse zone needs to be added to allows DNS to resolve an address to a name.</p>
+<p>Edit <strong>/etc/bind/named.conf.local</strong> and add the following:</p>
+<pre><code>zone &quot;1.168.192.in-addr.arpa&quot; {
+    type master;
+    file &quot;/etc/bind/db.192&quot;;
+};
+</code></pre>
+<blockquote>
+<p>Note: Replace 1.168.192 with the first three octets of whatever network you are using. Also, name the zone file /etc/bind/db.192 appropriately. It should match the first octet of your network. Reverse DNS lookups for IPv4 addresses use the special domain <code>in-addr.arpa</code>. In this domain, an IPv4 address is represented as a concatenated sequence of four decimal numbers, separated by dots, to which is appended the second level domain suffix <code>.in-addr.arpa</code>. The four decimal numbers are obtained by splitting the 32-bit IPv4 address into four octets and converting each octet into a decimal number. These decimal numbers are then concatenated in the order: least significant octet first (leftmost), to most significant octet last (rightmost). It is important to note that this is the reverse order to the usual dotted-decimal convention for writing IPv4 addresses in textual form. For example, to do a reverse lookup of the IP address <code>8.8.4.4</code> the PTR record for the domain name <code>4.4.8.8.in-addr.arpa</code> would be looked up, and found to point to <code>google-public-dns-b.google.com</code>. </p>
+</blockquote>
+<p>Now create the <strong>/etc/bind/db.192</strong> file from template: <code>sudo cp /etc/bind/db.127 /etc/bind/db.192</code></p>
+<p>Next edit /etc/bind/db.192 changing the same options as <strong>/etc/bind/db.example.com</strong>:</p>
+<pre><code>;
+; BIND reverse data file for local 192.168.1.XXX net
+;
+$TTL    604800
+@       IN      SOA     ns.example.com. root.example.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns.
+10      IN      PTR     ns.example.com.
+</code></pre>
+<p>The Serial Number in the Reverse zone needs to be incremented on each change as well. For each A record you configure in /etc/bind/db.example.com, that is for a different address, you need to create a PTR record in /etc/bind/db.192.</p>
+<p>After creating the reverse zone file restart BIND9: <code>sudo systemctl restart bind9.service</code></p>
+<h2 id="secondary-server"><a class="header" href="#secondary-server">Secondary Server</a></h2>
+<p>Once a Primary Server has been configured a secondary server is highly recommended in order to maintain the availability of the domain should the Primary become unavailable.</p>
+<p>First, on the primary server, the zone transfer needs to be allowed. Add the <code>allow-transfer</code> option to the example forward and reverse zone definitions in /etc/bind/named.conf.local:</p>
+<pre><code>zone &quot;example.com&quot; {
+    type master;
+    file &quot;/etc/bind/db.example.com&quot;;
+    allow-transfer { 192.168.1.11; };
+};
+    
+zone &quot;1.168.192.in-addr.arpa&quot; {
+    type master;
+    file &quot;/etc/bind/db.192&quot;;
+    allow-transfer { 192.168.1.11; };
+};
+</code></pre>
+<blockquote>
+<p>Note: Replace 192.168.1.11 with the IP address of your secondary nameserver.</p>
+</blockquote>
+<p>Restart BIND9 on the Primary server: <code>sudo systemctl restart bind9.service</code></p>
+<p>Next, on the scondary server, install the bind9 package the same way as on the primary. Then edit the /etc/bind/named.conf.local and add the following declarations for the forward and reverse zones:</p>
+<pre><code>zone &quot;example.com&quot; {
+    type slave;
+    file &quot;db.example.com&quot;;
+    masters { 192.168.1.10; };
+};        
+          
+zone &quot;1.168.192.in-addr.arpa&quot; {
+    type slave;
+    file &quot;db.192&quot;;
+    masters { 192.168.1.10; };
+};
+</code></pre>
+<blockquote>
+<p>Note: Replace 192.168.1.10 with the IP address of your primary nameserver.</p>
+</blockquote>
+<p>Restart BIND9 on the secondary server: <code>sudo systemctl restart bind9.service</code></p>
+<p>In /var/log/syslog you should see something similar to the following (some lines have been split to fit the format of this document):</p>
+<pre><code>client 192.168.1.10#39448: received notify for zone '1.168.192.in-addr.arpa'
+zone 1.168.192.in-addr.arpa/IN: Transfer started.
+transfer of '100.18.172.in-addr.arpa/IN' from 192.168.1.10#53:
+ connected using 192.168.1.11#37531
+zone 1.168.192.in-addr.arpa/IN: transferred serial 5
+transfer of '100.18.172.in-addr.arpa/IN' from 192.168.1.10#53:
+ Transfer completed: 1 messages, 
+6 records, 212 bytes, 0.002 secs (106000 bytes/sec)
+zone 1.168.192.in-addr.arpa/IN: sending notifies (serial 5)
+
+client 192.168.1.10#20329: received notify for zone 'example.com'
+zone example.com/IN: Transfer started.
+transfer of 'example.com/IN' from 192.168.1.10#53: connected using 192.168.1.11#38577
+zone example.com/IN: transferred serial 5
+transfer of 'example.com/IN' from 192.168.1.10#53: Transfer completed: 1 messages, 
+8 records, 225 bytes, 0.002 secs (112500 bytes/sec)
+</code></pre>
+<blockquote>
+<p>Note: A zone is only transferred if the Serial Number on the primary is larger than the one on the secondary. If you want to have your primary DNS notifying other secondary DNS servers of zone changes, you can add <code>also-notify { ipaddress; };</code> to /etc/bind/named.conf.local as shown in the example below:</p>
+</blockquote>
+<pre><code>zone &quot;example.com&quot; {
+    type master;
+    file &quot;/etc/bind/db.example.com&quot;;
+    allow-transfer { 192.168.1.11; };
+    also-notify { 192.168.1.11; }; 
+};
+
+zone &quot;1.168.192.in-addr.arpa&quot; {
+    type master;
+    file &quot;/etc/bind/db.192&quot;;
+    allow-transfer { 192.168.1.11; };
+    also-notify { 192.168.1.11; }; 
+};
+</code></pre>
+<blockquote>
+<p>Note: The default directory for non-authoritative zone files is /var/cache/bind/. This directory is also configured in AppArmor to allow the named daemon to write to it.</p>
+</blockquote>
+<h2 id="testing"><a class="header" href="#testing">Testing</a></h2>
+<p>A good way to test your zone files is by using the <strong>named-checkzone</strong> utility installed with the bind9 package. This utility allows you to make sure the configuration is correct before restarting BIND9 and making the changes live.</p>
+<p>To test our example forward zone file enter the following from a command prompt: <code>named-checkzone example.com /etc/bind/db.example.com</code></p>
+<p>If everything is configured correctly you should see output similar to:</p>
+<pre><code>zone example.com/IN: loaded serial 6
+OK
+</code></pre>
+<p>Similarly, to test the reverse zone file enter the following: <code>named-checkzone 1.168.192.in-addr.arpa /etc/bind/db.192</code></p>
+<p>The output should be similar to:</p>
+<pre><code>zone 1.168.192.in-addr.arpa/IN: loaded serial 3
+OK
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../5-service-configuration/a.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../5-service-configuration/c.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../5-service-configuration/a.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../5-service-configuration/c.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
