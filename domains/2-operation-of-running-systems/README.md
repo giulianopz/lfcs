@@ -1,0 +1,18 @@
+# 2. Operation of Running Systems - 20%
+
+- [Boot, reboot, and shut down a system safely](./a.md)
+- [Boot or change system into different operating modes](./b.md)
+- [Install, configure and troubleshoot bootloaders](./c.md)
+- [Diagnose and manage processes](./d.md)
+- [Locate and analyze system log files](./e.md)
+- [Schedule tasks to run at a set date and time (./cron, anacron, at)](./f.md)
+- [Verify completion of scheduled jobs](./g.md)
+- [Update software to provide required functionality and security](./h.md)
+- [Verify the integrity and availability of resources](./i.md)
+- [Verify the integrity and availability of key processes](./l.md)
+- [Change kernel runtime parameters, persistent and non-persistent](./m.md)
+- [Use scripting to automate system maintenance tasks](./n.md)
+- [Manage the startup process and services](./o.md)
+- [List and identify SELinux/AppArmor file and process contexts](./p.md)
+- [Manage software](./q.md)
+- [Identify the component of a Linux distribution that a file belongs to](./r.md)

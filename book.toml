@@ -1,0 +1,12 @@
+[book]
+authors = ["giuliano panzironi"]
+language = "en"
+multilingual = false
+src = "domains"
+title = "Linux Foundation Certified System Administrator (LFCS) Exam Personal Notes "
+
+[output.html]
+site-url = "/lfcs/"
+git-repository-url = "https://github.com/giulianopz/lfcs"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/giulianopz/lfcs/edit/main/{path} "
