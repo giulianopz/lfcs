@@ -1,5 +1,7 @@
 # Summary
 
+[Introduction](./README.md)
+
 - [Essential Commands - 25%](./1-essential-commands/README.md)
     - [Log into local & remote graphical and text mode consoles](./1-essential-commands/a.md)
     - [Search for files](./1-essential-commands/b.md)
