@@ -1,4 +1,4 @@
-## Main references for collecting documentation about topics in the checkilst:
+## References
 
 - [LFS201 course material](https://training.linuxfoundation.org/training/essentials-of-linux-system-administration/)
 - [UNIX & LINUX Sysadmin Handbook](https://www.admin.com/)
@@ -23,4 +23,4 @@
 - [EnableSysadmin](redhat.com/sysadmin)
 - [OpenSource](opensource.com)
 
-[^1]: not always up to date
+[^1]: beware, not always up to date
