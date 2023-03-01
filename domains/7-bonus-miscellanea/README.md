@@ -25,5 +25,6 @@
 - [GPG & SSH keys]() (WIP)
 - [Troubleshooting networks]() (WIP) 
 - [How to handle dynamic and static libraries in Linux]() (WIP) 
-- [How to fix Nvidia graphics card problems]() (WIP)
+- [Non-Free Firmware for Debian](./debian.md)
+- [How to fix Nvidia graphics card problems](./nvidia)
 - [Tips & tricks](./tips-tricks.md)
