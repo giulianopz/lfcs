@@ -5771,7 +5771,27 @@ echo -en $(echo &quot;$YOUR_HEX_STRING&quot; | sed -E 's/([0-9abcdef][0-9abcdef]
 <li><a href="https://wiki.archlinux.org/title/Kernel_parameters">Kernel parameters</a></li>
 <li><a href="https://wiki.archlinux.org/title/kernel_mode_setting#Forcing_modes_and_EDID">Kernel mode setting</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="non-free-firmware-for-debian"><a class="header" href="#non-free-firmware-for-debian">Non-Free Firmware for Debian</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="non-free-firmware-for-debian"><a class="header" href="#non-free-firmware-for-debian">Non-Free Firmware for Debian</a></h2>
+<p>After installing, you may need to install non-free firmware to get the drivers required by your hardware: e.g. to enable wireless connection.</p>
+<p>First, allow apt to download packages from contrib and non-free sources:</p>
+<pre><code class="language-bash">apt-add-repository contrib
+apt-add-repository non-free
+</code></pre>
+<p>Add some common firmware:</p>
+<pre><code>apt install firmware-linux-nonfree
+apt install firmware-misc-nonfree
+# if you have Realtek hardware in your machine
+apt install firmware-realtek
+</code></pre>
+<p>For the specific wifi drivers you need, read the Debian docs online. For example, for Intel cards you will need <a href="https://wiki.debian.org/iwlwifi">iwlwifi</a>: </p>
+<pre><code>apt update &amp;&amp; apt install firmware-iwlwifi
+# reload kernel module
+modprobe -r iwlwifi ; modprobe iwlwifi
+</code></pre>
+<p>For nvidia GPUs, use <code>nvidia-detect</code> to find out the appropriate drivers, e.g.:</p>
+<pre><code>apt install nvidia-driver
+</code></pre>
+<p>Check if the nvidia modules are loaded with <code>lsmod | grep nvidia</code>. If not, verify that you had already disabled Secure/Fast Boot in the BIOS/UEFI settings. </p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="how-to-fix-nvidia-graphics-card-problems"><a class="header" href="#how-to-fix-nvidia-graphics-card-problems">How to fix Nvidia graphics card problems</a></h2>
 <p>Unfortunately the FOSS project <a href="https://wiki.archlinux.org/title/nouveau">nouveau</a> is long from being able to replace the infamous proprietary nvidia drivers. Chances are you are going to install them to have basic stuff working, such as simply connecting an external monitor to your laptop.</p>
 <p>See the article on <a href="7-bonus-miscellanea/./debian.html">non-free firmware</a> to understand how to install them.</p>
