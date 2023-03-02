@@ -26,5 +26,5 @@
 - [Troubleshooting networks]() (WIP) 
 - [How to handle dynamic and static libraries in Linux]() (WIP) 
 - [Non-Free Firmware for Debian](./debian.md)
-- [How to fix Nvidia graphics card problems](./nvidia)
+- [How to fix Nvidia graphics card problems](./nvidia.md)
 - [Tips & tricks](./tips-tricks.md)

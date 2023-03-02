@@ -10,8 +10,9 @@ apt-add-repository non-free
 
 Add some common firmware:
 ```
-apt install firmware-linux-non-free
-apt install firmware-misc-non-free
+apt install firmware-linux-nonfree
+apt install firmware-misc-nonfree
+# if you have Realtek hardware in your machine
 apt install firmware-realtek
 ```
 

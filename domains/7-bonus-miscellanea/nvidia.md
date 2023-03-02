@@ -18,4 +18,4 @@ xrandr --setprovideroutputsource NVIDIA-G0 modesetting && xrandr --auto
 ```
 as explained in the nvidia [documentation](http://download.nvidia.com/XFree86/Linux-x86_64/450.80.02/README/randr14.html).
 
-If in trouble, consult or ask for help in their online [forum](https://forums.developer.nvidia.com/c/gpu-graphics/linux/148).
+If in trouble, consult or ask for help in their online [forum](https://forums.developer.nvidia.com/c/gpu-graphics/linux/148) and study [Xorg](https://wiki.archlinux.org/title/xorg) and the related tooling.

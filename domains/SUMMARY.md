@@ -91,7 +91,9 @@
   - [Debugging corrupted character encoding issues](./7-bonus-miscellanea/corrupted-chars.md) 
   - [How to test a microphone](./7-bonus-miscellanea/mic.md) 
   - [Automate login via SSH](./7-bonus-miscellanea/ssh-login.md) 
-  - [How to fix low screen resolution](./7-bonus-miscellanea/edid.md) 
+  - [How to fix low screen resolution](./7-bonus-miscellanea/edid.md)
+  - [Non-Free Firmware for Debian](./7-bonus-miscellanea/debian)
+  - [How to fix Nvidia graphics card problems](./7-bonus-miscellanea/nvidia.md)
   - [Tips & tricks](./7-bonus-miscellanea/tips-tricks.md)
 
 - [References](./references.md)
