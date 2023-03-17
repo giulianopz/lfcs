@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -151,9 +153,9 @@
                         <h2 id="how-to-fix-low-screen-resolution"><a class="header" href="#how-to-fix-low-screen-resolution">How to fix low screen resolution</a></h2>
 <p>Sometimes when you connect a device to a monitor (external or integrated), you may experience an unexpected low resolution that you cannot change via system setting GUI of your desktop environment: only lower resolutions could be available. </p>
 <p>This can happen especially if you are using a VGA-to-HDMI converter to connect an old pc to a newer monitor. If the comunication is unidirectional, from input (e.g., a mini pc supporting only VGA) to output (e.g. an external monitor supporting only HDMI), the monitor won't be able to send <a href="https://en.wikipedia.org/wiki/Extended_Display_Identification_Data">EDID</a> data packets which containts info regarding its capabilities.</p>
-<p>In such cases, you can still grab the EDID data from another pc connected to this monitor or online, if you are lucky enough to find it.</p>
+<p>In such cases, you can have to grab the EDID data from another pc connected to this monitor or online, if you are lucky enough to find it.</p>
 <p>Firstly, you should verify that the graphic card(s) of your pc can match the recommended resolution of your monitor: typically, 1920x1080 at 60 refresh rate (a standard also know as 1080p, Full HD or FHD,). For Intel cards, see <a href="https://www.intel.com/content/www/us/en/support/articles/000023781/graphics.html">here</a>.</p>
-<p>Once this is verified, you may try to just add the the intended resolution (let's say, 1920x1080) with <a href="https://www.x.org/releases/X11R7.5/doc/man/man1/xrandr.1.html">xrandr</a>:</p>
+<p>Once this is verified, you may try to just add the the intended resolution (let's tick to the default scenario, i.e. 1920x1080) with <a href="https://www.x.org/releases/X11R7.5/doc/man/man1/xrandr.1.html">xrandr</a>:</p>
 <pre><code># show available resolutions for common display types (VGA, HDMI, etc.)
 xrandr
 # generate correct params for the target resolution
@@ -171,11 +173,11 @@ xrandr --output VGA-1 --mode &quot;1920x1080_60.00&quot;
 <li><code>/etc/profile.d</code></li>
 </ul>
 <p>If this did not solve the problem for you, some extra work is needed: you will have to manually retrieve the EDID file and set it in a Xorg config file or append it to the kernel parameters in the boot loader's boot selection menu.</p>
-<p>To parse EDID info, install the <a href="https://manpages.ubuntu.com/manpages/jammy/man1/get-edid.1.html">read-edid</a> package: <code>sudo apt-get install read-edid</code></p>
+<p>To parse EDID info, install the <a href="https://manpages.ubuntu.com/manpages/jammy/man1/get-edid.1.html">read-edid</a> package: <code>apt install read-edid</code></p>
 <p>To retrieve the EDID file, you have two options:</p>
 <ul>
 <li>find it in the <a href="https://github.com/linuxhw/EDID">EDID repository</a> of the The Linux Hardware Project by searching for the model name of your monitor</li>
-<li>grab it from another pc connected to the monitor by running the followinf command (subustitute <code>card1-HDMI-A-1</code> with the <a href="https://en.wikipedia.org/wiki/Direct_Rendering_Manager">DRM</a> device found on this second pc):
+<li>grab it from another pc connected to the monitor by running the following command (substitute <code>card1-HDMI-A-1</code> with the <a href="https://en.wikipedia.org/wiki/Direct_Rendering_Manager">DRM</a> device found on this second pc):
 <pre><code>:~$ edid-decode &lt;/sys/class/drm/card1-HDMI-A-1/edid
 edid-decode (hex):
 
@@ -210,37 +212,37 @@ Vendor &amp; Product Identification:
 </code></pre>
 </li>
 </ul>
-<p>Once you have it, use the hexadecimal string at the beginning of the output to generate the binary file:</p>
+<p>Once you have it, use the first hexadecimal block at the beginning of the output of the command to generate the binary file:</p>
 <pre><code>YOUR_HEX_STRING=&quot;\
-00 ff ff ff ff ff ff 00 09 d1 07 78 45 54 00 00\
-03 12 01 03 a0 2b 1b 78 22 c4 f6 a3 57 4a 9c 23\
-11 4f 54 a5 6b 80 71 00 81 00 00 00 00 00 81 80\
-81 40 00 00 01 01 02 3a 80 18 71 38 2d 40 58 2c\
-45 00 a0 5a 00 00 00 1e 00 00 00 ff 00 52 31 38\
-31 32 34 34 31 53 4c 30 0a 20 00 00 00 fd 00 37\
-4c 1f 53 0f 00 0a 20 20 20 20 20 20 00 00 00 fc\
-00 42 65 6e 51 20 47 32 30 30 30 57 0a 0a 00 89&quot;;
-echo -en $(echo &quot;$YOUR_HEX_STRING&quot; | sed -E 's/([0-9abcdef][0-9abcdef])[[:space:]]?/\\x\1/g') &gt; VGA-1:edid/1920x1080.bin
+00 ff ff ff ff ff ff 00 09 d1 51 79 45 54 00 00\
+1f 1d 01 03 80 35 1e 78 2a 05 61 a7 56 52 9c 27\
+0f 50 54 a5 6b 80 d1 c0 81 c0 81 00 81 80 a9 c0\
+b3 00 d1 cf 01 01 02 3a 80 18 71 38 2d 40 58 2c\
+45 00 0f 28 21 00 00 1e 00 00 00 ff 00 31 38 4b\
+30 30 30 33 33 30 31 51 0a 20 00 00 00 fd 00 30\
+4b 1e 53 15 00 0a 20 20 20 20 20 20 00 00 00 fc\
+00 42 65 6e 51 20 45 57 32 34 38 30 0a 20 01 ba\&quot;;
+echo -en $(echo &quot;$YOUR_HEX_STRING&quot; | sed -E 's/([0-9abcdef][0-9abcdef])[[:space:]]?/\\x\1/g') &gt; edid.bin
 </code></pre>
-<p>In order to apply it only to a specific connector with a specific resolution, <a href="https://wiki.archlinux.org/title/kernel_mode_setting#Forcing_modes_and_EDID">force</a> this kernel mode setting (KMS) by naming the file according to the following pattern (as in the code snippet above): <code>DIR/RESOLUTION.bin</code>.</p>
+<p>In order to apply it only to a specific connector with a specific resolution, <a href="https://wiki.archlinux.org/title/kernel_mode_setting#Forcing_modes_and_EDID">force</a> this kernel mode setting (KMS) by naming the file (<code>edid.bin</code> in the example) according to the following pattern (as in the code snippet above): <code>CONNECTOR:edid/RESOLUTION.bin</code> (e.g. <code>VGA-1:edid/1920x1080.bin</code>).</p>
 <p>After having prepared your EDID, place it in a directory, e.g. called <code>edid</code> under <code>/usr/lib/firmware</code> and copy your binary into it.</p>
 <p>You now have two options to make this file available to the display manager (e.g. <a href="https://en.wikipedia.org/wiki/Simple_Desktop_Display_Manager">SDDM</a>):</p>
 <ul>
 <li>adding a config file to the <code>xorg.conf.d</code> directory with the relevant info, as described <a href="https://gist.github.com/hinell/0ebaad01b771a70844204f295aaf03b7#via-xorgconf">here</a></li>
 <li>modifying the Linux Kernel parameters to include a directive for reading the EDID file at boot time. </li>
 </ul>
-<p>The first option is lengthy and required you to understand hot wo properly configure <a href="https://wiki.archlinux.org/title/xorg#Configuration">Xorg</a>.</p>
+<p>The first option is lengthy and required you to understand how to properly configure <a href="https://wiki.archlinux.org/title/xorg#Configuration">Xorg</a>.</p>
 <p>The second is quicker but error-prone, so be extra-careful if going through the following steps:</p>
 <ul>
 <li>reboot the system, wait for the system to restart and then press and hold <code>Esc</code> key until the GRUB menu appears</li>
 <li>if it doesn't appear at all after multiple retries, chanches are that you must set a longer <a href="https://linuxhint.com/change-grub-timeout-linux/">timeout</a> for the GRUB</li>
-<li>press <code>e</code> when the menu appears and add the <code>drm.edid_firmware</code> to the end of the line starting with <code>linux</code>:</li>
+<li>press <code>e</code> when the menu appears and add the <code>drm.edid_firmware</code> argument to the end of the line starting with <code>linux</code>:</li>
 </ul>
-<pre><code>linux /boot/vmlinuz-linux root=UUID=0a3407de-014b-458b-b5c1-848e92a327a3 rw [...] drm.edid_firmware=VGA-1:edid/your_edid.bin
+<pre><code>linux /boot/vmlinuz-linux root=UUID=0a3407de-014b-458b-b5c1-848e92a327a3 rw [...] drm.edid_firmware=VGA-1:edid/1920x1080.bin
 </code></pre>
-<p>In the example above the name of the file is prefixed with the intended connector.</p>
 <p>Boot the system to verify if the change had the desired effect.</p>
 <p>If so, make the change permanent by editing the <code>/etc/default/grub</code> to set <code>GRUB_CMDLINE_LINUX_DEFAULT</code> option to the new parameter (e.g. <code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;drm.edid_firmware=VGA-1:edid/your_edid.bin&quot;</code>) and then regenerating the GRUB config with: <code>grub-mkconfig -o /boot/grub/grub.cfg</code>.</p>
+<p>Reboot to verify that the change works across system restarts.</p>
 <hr />
 <p>References:</p>
 <ul>
