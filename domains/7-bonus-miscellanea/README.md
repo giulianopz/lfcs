@@ -27,4 +27,5 @@
 - [How to handle dynamic and static libraries in Linux]() (WIP) 
 - [Non-Free Firmware for Debian](./debian.md)
 - [How to fix Nvidia graphics card problems](./nvidia.md)
+- [Making a Linux home server sleep on idle and wake on demand]() (WIP) # https://dgross.ca/blog/linux-home-server-auto-sleep/
 - [Tips & tricks](./tips-tricks.md)
