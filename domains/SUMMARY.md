@@ -94,6 +94,7 @@
   - [How to fix low screen resolution](./7-bonus-miscellanea/edid.md)
   - [Non-Free Firmware for Debian](./7-bonus-miscellanea/debian.md)
   - [How to fix Nvidia graphics card problems](./7-bonus-miscellanea/nvidia.md)
+  - [Quick and easy way to recover BIOS passwords on laptops](https://bios-pw.org/#)
   - [Tips & tricks](./7-bonus-miscellanea/tips-tricks.md)
 
 - [References](./references.md)

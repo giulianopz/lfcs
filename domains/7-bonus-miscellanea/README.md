@@ -28,4 +28,6 @@
 - [Non-Free Firmware for Debian](./debian.md)
 - [How to fix Nvidia graphics card problems](./nvidia.md)
 - [Making a Linux home server sleep on idle and wake on demand]() (WIP) # https://dgross.ca/blog/linux-home-server-auto-sleep/
+- [Quick and easy way to recover BIOS passwords on laptops](https://bios-pw.org/#)
 - [Tips & tricks](./tips-tricks.md)
+
