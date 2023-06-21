@@ -95,6 +95,7 @@
   - [Non-Free Firmware for Debian](./7-bonus-miscellanea/debian.md)
   - [How to fix Nvidia graphics card problems](./7-bonus-miscellanea/nvidia.md)
   - [Quick and easy way to recover BIOS passwords on laptops](https://bios-pw.org/#)
+  - [Recover from a failed installation](./7-bonus-miscellanea/failed.md)
   - [Tips & tricks](./7-bonus-miscellanea/tips-tricks.md)
 
 - [References](./references.md)
