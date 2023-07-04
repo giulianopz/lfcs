@@ -65,3 +65,5 @@ Use the full path to execute to not execute the built-in command:
 #or
 /bin/time [OPTIONS] COMMAND [ARG]...
 ```
+
+18. Take a screenshot from the command line on a X Window System (and with `imagemagick`): `sleep 5; xwd -root | convert xwd:- test.png`
