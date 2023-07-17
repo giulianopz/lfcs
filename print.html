@@ -5628,7 +5628,7 @@ nmcli d wifi connect &lt;some-wifi&gt; password &lt;pwd&gt;   # connect to an ac
 </blockquote>
 <h3 id="dynamic-port-forwarding-dpf"><a class="header" href="#dynamic-port-forwarding-dpf">Dynamic Port-Forwarding (DPF)</a></h3>
 <p>In this configuration, the SSH server acts as a SOCKS proxy, relaying all relevant traffic (including DNS name resolution) through the SSH connection. This is particularly useful when the client is on a network with limited access to the internet, for example, due to a VPN filtering your traffic (e.g. music streaming services suc as YouTube).</p>
-<p>For this to happen, the client (e.g., a browser) needs to be SOCKS-aware.</p>
+<p>For this to happen, the client (e.g. a browser) needs to be SOCKS-aware.</p>
 <p>To create a DPF:</p>
 <pre><code>ssh -D local-port -q -C -N -f [user@]ssh-server
 
@@ -5640,7 +5640,7 @@ nmcli d wifi connect &lt;some-wifi&gt; password &lt;pwd&gt;   # connect to an ac
 # -N, disallows execution of remote commands, useful for just forwarding ports
 # -f, forks the process to background
 </code></pre>
-<p>The you can configure your client to use the SOCKS proxy. For example, you can configure proxy access to the internet in Firefox from the Setting menu as follows:</p>
+<p>Then you can configure your client to use the SOCKS proxy. For example, you can configure proxy access to the internet in Firefox from the Setting menu as follows:</p>
 <p><img src="https://www.redhat.com/sysadmin/sites/default/files/styles/embed_medium/public/2021-01/firefox-socks-proxy-configuration_0.png?itok=PPO8MGG4"
      alt="Markdown Monster icon"
      style=" display: block; margin-left: auto; margin-right: auto;" 
