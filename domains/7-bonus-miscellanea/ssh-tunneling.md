@@ -45,7 +45,7 @@ The ssh server will listen on 8080, tunneling all traffic from this port to your
 
 In this configuration, the SSH server acts as a SOCKS proxy, relaying all relevant traffic (including DNS name resolution) through the SSH connection. This is particularly useful when the client is on a network with limited access to the internet, for example, due to a VPN filtering your traffic (e.g. music streaming services suc as YouTube).
 
-For this to happen, the client (e.g., a browser) needs to be SOCKS-aware.
+For this to happen, the client (e.g. a browser) needs to be SOCKS-aware.
 
 To create a DPF:
 ```
@@ -60,7 +60,7 @@ ssh -D local-port -q -C -N -f [user@]ssh-server
 # -f, forks the process to background
 ```
 
-The you can configure your client to use the SOCKS proxy. For example, you can configure proxy access to the internet in Firefox from the Setting menu as follows:
+Then you can configure your client to use the SOCKS proxy. For example, you can configure proxy access to the internet in Firefox from the Setting menu as follows:
 
 <img src="https://www.redhat.com/sysadmin/sites/default/files/styles/embed_medium/public/2021-01/firefox-socks-proxy-configuration_0.png?itok=PPO8MGG4"
      alt="Markdown Monster icon"
