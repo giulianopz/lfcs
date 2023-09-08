@@ -10,7 +10,7 @@ sudo passwd sysadmin # science
 ```
 sudo usermod -aG sudo sysadmin
 sudo visudo
->> sysadmin ALL=(ALL) NOPASSWD: ALL
+>> sysadmin ALL = NOPASSWD: ALL
 ```
 
 4. The default shell for this user is ​zsh:
