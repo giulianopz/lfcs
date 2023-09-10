@@ -69,7 +69,7 @@ To retrieve the EDID file, you have two options:
 
 Once you have it, use the first hexadecimal block at the beginning of the output of the command to generate the binary file:
 ```
-YOUR_HEX_STRING="\
+$ HEXSTR="\
 00 ff ff ff ff ff ff 00 09 d1 51 79 45 54 00 00\
 1f 1d 01 03 80 35 1e 78 2a 05 61 a7 56 52 9c 27\
 0f 50 54 a5 6b 80 d1 c0 81 c0 81 00 81 80 a9 c0\
@@ -77,8 +77,11 @@ b3 00 d1 cf 01 01 02 3a 80 18 71 38 2d 40 58 2c\
 45 00 0f 28 21 00 00 1e 00 00 00 ff 00 31 38 4b\
 30 30 30 33 33 30 31 51 0a 20 00 00 00 fd 00 30\
 4b 1e 53 15 00 0a 20 20 20 20 20 20 00 00 00 fc\
-00 42 65 6e 51 20 45 57 32 34 38 30 0a 20 01 ba\";
-echo -en $(echo "$YOUR_HEX_STRING" | sed -E 's/([0-9abcdef][0-9abcdef])[[:space:]]?/\\x\1/g') > edid.bin
+00 42 65 6e 51 20 45 57 32 34 38 30 0a 20 01 ba";
+
+$ echo -en $(echo "$HEXSTR" | sed -E 's/([0-9abcdef][0-9abcdef])[[:space:]]?/\\x\1/g') > edid.bin
+# check that the file is readable
+$ edid-decode edid.bin
 ```
 
 In order to apply it only to a specific connector with a specific resolution, [force](https://wiki.archlinux.org/title/kernel_mode_setting#Forcing_modes_and_EDID) this kernel mode setting (KMS) by naming the file (`edid.bin` in the example) according to the following pattern (as in the code snippet above): `CONNECTOR:edid/RESOLUTION.bin` (e.g. `VGA-1:edid/1920x1080.bin`).
