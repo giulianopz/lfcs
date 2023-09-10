@@ -7,5 +7,5 @@ tasks:
       - mdbook serve . -p 8000 -n 127.0.0.1 
   linkcheck:
     cmds:
-      # python -m pip install linkcheckmd
-      - ~/utilvenv/bin/python -m linkcheckmd ./domains/
+      # go install github.com/giulianopz/mdlinkcheck
+      - mdlinkcheck --dir ./domains/
