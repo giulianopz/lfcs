@@ -9,7 +9,7 @@ In such cases, you can have to grab the EDID data from another pc connected to t
 Firstly, you should verify that the graphic card(s) of your pc can match the recommended resolution of your monitor: typically, 1920x1080 at 60 refresh rate (a standard also know as 1080p, Full HD or FHD,). For Intel cards, see [here](https://www.intel.com/content/www/us/en/support/articles/000023781/graphics.html).
 
 Once this is verified, you may try to just add the the intended resolution (let's tick to the default scenario, i.e. 1920x1080) with [xrandr](https://www.x.org/releases/X11R7.5/doc/man/man1/xrandr.1.html):
-```
+```bash
 # show available resolutions for common display types (VGA, HDMI, etc.)
 xrandr
 # generate correct params for the target resolution
@@ -68,7 +68,7 @@ To retrieve the EDID file, you have two options:
     ```
 
 Once you have it, use the first hexadecimal block at the beginning of the output of the command to generate the binary file:
-```
+```bash
 $ HEXSTR="\
 00 ff ff ff ff ff ff 00 09 d1 51 79 45 54 00 00\
 1f 1d 01 03 80 35 1e 78 2a 05 61 a7 56 52 9c 27\
@@ -84,21 +84,19 @@ $ echo -en $(echo "$HEXSTR" | sed -E 's/([0-9abcdef][0-9abcdef])[[:space:]]?/\\x
 $ edid-decode edid.bin
 ```
 
-In order to apply it only to a specific connector with a specific resolution, [force](https://wiki.archlinux.org/title/kernel_mode_setting#Forcing_modes_and_EDID) this kernel mode setting (KMS) by naming the file (`edid.bin` in the example) according to the following pattern (as in the code snippet above): `CONNECTOR:edid/RESOLUTION.bin` (e.g. `VGA-1:edid/1920x1080.bin`).
-
-After having prepared your EDID, place it in a directory, e.g. called `edid` under `/usr/lib/firmware` and copy your binary into it.
+In order to apply it only to a specific connector with a specific resolution, [force](https://wiki.archlinux.org/title/kernel_mode_setting#Forcing_modes_and_EDID) this kernel mode setting (KMS) by copying the file (`edid.bin` in the example) into `/usr/lib/firmware` (create it if it does not exists) with a proper name and parent folder according to the following pattern: `CONNECTOR:edid/RESOLUTION.bin` (e.g. `/usr/lib/firmware/VGA-1:edid/1920x1080.bin`).
 
 You now have two options to make this file available to the display manager (e.g. [SDDM](https://en.wikipedia.org/wiki/Simple_Desktop_Display_Manager)):
 - adding a config file to the `xorg.conf.d` directory with the relevant info, as described [here](https://gist.github.com/hinell/0ebaad01b771a70844204f295aaf03b7#via-xorgconf)
 - modifying the Linux Kernel parameters to include a directive for reading the EDID file at boot time. 
 
-The first option is lengthy and required you to understand how to properly configure [Xorg](https://wiki.archlinux.org/title/xorg#Configuration).
+The first option is lengthy and requires you to understand how to properly configure [Xorg](https://wiki.archlinux.org/title/xorg#Configuration).
 
 The second is quicker but error-prone, so be extra-careful if going through the following steps:
-- reboot the system, wait for the system to restart and then press and hold `Esc` key until the GRUB menu appears
+- reboot the system, wait for the system to restart and then press and hold the `Esc` key until the GRUB menu appears
 - if it doesn't appear at all after multiple retries, chanches are that you must set a longer [timeout](https://linuxhint.com/change-grub-timeout-linux/) for the GRUB
 - press `e` when the menu appears and add the `drm.edid_firmware` argument to the end of the line starting with `linux`:
-```
+```bash
 linux /boot/vmlinuz-linux root=UUID=0a3407de-014b-458b-b5c1-848e92a327a3 rw [...] drm.edid_firmware=VGA-1:edid/1920x1080.bin
 ```
 Boot the system to verify if the change had the desired effect.
