@@ -30,5 +30,6 @@
 - [Making a Linux home server sleep on idle and wake on demand](https://dgross.ca/blog/linux-home-server-auto-sleep/) (WIP) 
 - [Quick and easy way to recover BIOS passwords on laptops](https://bios-pw.org/#)
 - [Optimize Linux](./optimize-linux.md) (WIP)
+- [Mapping Hosts and Ports Locally](./hostportmapping.md)
 - [Tips & tricks](./tips-tricks.md)
 
