@@ -67,3 +67,5 @@ Use the full path to execute to not execute the built-in command:
 ```
 
 18. Take a screenshot from the command line on a X Window System (and with `imagemagick`): `sleep 5; xwd -root | convert xwd:- test.png`
+
+19. Cat without cat: `echo "$(<file.txt)"` (credits [@jarv](https://jarv.org/posts/cat-without-cat/))
