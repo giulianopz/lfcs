@@ -183,15 +183,15 @@
 <p>One drawback of using /etc/fstab is that, regardless of how infrequently a user accesses the NFS mounted file system, the system must dedicate resources to keep the mounted file system in place. This is not a problem with one or two mounts, but when the system is maintaining mounts to many systems at one time, overall system performance can be affected. An alternative to /etc/fstab is to use the kernel-based <strong>automount</strong> utility. An automounter consists of two components:</p>
 <ul>
 <li>a kernel module that implements a file system, and</li>
-<li>a user-space daemon that performs all of the other functions. </li>
+<li>a user-space daemon that performs all of the other functions.</li>
 </ul>
 <p>The automount utility can mount and unmount NFS file systems automatically (on-demand mounting), therefore saving system resources. It can be used to mount other file systems including AFS, SMBFS, CIFS, and local file systems.</p>
-<p>hese automatic mount points are mounted only when they are accessed, and unmounted after a certain period of inactivity. This on-demand behavior saves bandwidth and results in better performance than static mounts managed by /etc/fstab. While <code>autofs</code> is a control script, <code>automount</code> is the command (daemon) that does the actual auto-mounting. </p>
+<p>hese automatic mount points are mounted only when they are accessed, and unmounted after a certain period of inactivity. This on-demand behavior saves bandwidth and results in better performance than static mounts managed by /etc/fstab. While <code>autofs</code> is a control script, <code>automount</code> is the command (daemon) that does the actual auto-mounting.</p>
 <hr />
 <h3 id="1-installation"><a class="header" href="#1-installation">1. Installation</a></h3>
 <p>Install the autofs package either by clicking here or entering the following in a terminal window: <code>sudo apt install autofs</code></p>
 <h3 id="2-configuration"><a class="header" href="#2-configuration">2. Configuration</a></h3>
-<p>autofs can be configured by editing configuration files. There are other ways to configure autofs on a network (see <a href="https://help.ubuntu.com/community/AutofsLDAP">AutofsLDAP</a>), but config files provide the simplest setup. </p>
+<p>autofs can be configured by editing configuration files. There are other ways to configure autofs on a network (see <a href="https://help.ubuntu.com/community/AutofsLDAP">AutofsLDAP</a>), but config files provide the simplest setup.</p>
 <p>The master configuration file for autofs is <code>/etc/auto.master</code> by default. Unless you have a good reason for changing this, leave it as the default.</p>
 <p>Here is the sample file provided by Ubuntu:</p>
 <pre><code>#

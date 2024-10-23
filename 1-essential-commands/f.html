@@ -191,7 +191,7 @@
 <tr><td>`</td><td>`</td></tr>
 <tr><td><code>()</code></td><td>group a section together, this can be useful for conditionals (`(a</td></tr>
 <tr><td><code>{}</code></td><td>specify how many of the preceding character (e.g. <code>a{12}</code> matches 12 <code>a</code>s in a row)</td></tr>
-<tr><td><code>[]</code></td><td>match any character in this set. - defines ranges (e.g. <code>[a-z]</code> is any lowercase letter), <code>^</code> means &quot;not&quot; (e.g. <code>[^,]+</code> match any number of non-commas in a row)</td></tr>
+<tr><td><code>[]</code></td><td>match any character in this set. - defines ranges (e.g. <code>[a-z]</code> is any lowercase letter), <code>^</code> means "not" (e.g. <code>[^,]+</code> match any number of non-commas in a row)</td></tr>
 <tr><td><code>^</code></td><td>beginning of line</td></tr>
 <tr><td><code>$</code></td><td>end of line</td></tr>
 </tbody></table>
@@ -222,8 +222,8 @@
 <li><code>-w</code>, forces the pattern to match an entire word</li>
 <li><code>-x</code>, forces patterns to match the whole line.</li>
 </ul>
-<p>The <code>egrep</code> tool is identical to grep, except that it uses extended regular expressions (actually, equivalent to <code>grep -E</code>). Extended regular expressions are identical to basic regular expressions, but the operators <code>{}</code>, <code>()</code>, <code>+</code>, <code>|</code> and <code>?</code> should not be escaped. </p>
-<p>PCREs can be used by means of the <code>-P</code> flag of <code>grep</code>. Perl has a richer and more predictable syntax than even the extended regular expressions syntax. </p>
+<p>The <code>egrep</code> tool is identical to grep, except that it uses extended regular expressions (actually, equivalent to <code>grep -E</code>). Extended regular expressions are identical to basic regular expressions, but the operators <code>{}</code>, <code>()</code>, <code>+</code>, <code>|</code> and <code>?</code> should not be escaped.</p>
+<p>PCREs can be used by means of the <code>-P</code> flag of <code>grep</code>. Perl has a richer and more predictable syntax than even the extended regular expressions syntax.</p>
 <blockquote>
 <p>Tip: If you have a choice, always use Perl-style regex.</p>
 </blockquote>
@@ -254,9 +254,9 @@ grep -n we gettysburg-address.txt                   # show line numbers as well 
 
 # lines before and after grep match
 ---------------------------------
-grep -B5 &quot;the living&quot; gettysburg-address.txt        # show all matches, and five lines before each match
-grep -A10 &quot;the living&quot; gettysburg-address.txt       # show all matches, and ten lines after each match
-grep -B5 -A5 &quot;the living&quot; gettysburg-address.txt    # five lines before and ten lines after
+grep -B5 "the living" gettysburg-address.txt        # show all matches, and five lines before each match
+grep -A10 "the living" gettysburg-address.txt       # show all matches, and ten lines after each match
+grep -B5 -A5 "the living" gettysburg-address.txt    # five lines before and ten lines after
 
 # invert the sense of matching
 -------------------
@@ -291,15 +291,15 @@ zgrep 'GET /blog' access_log.gz | less              # same thing, case-insensiti
 
 # submatch backreferences to print out words that repeat themselves:
 ---------------
-grep '^\(.*\)\1$' /usr/share/dict/words             # prints &quot;beriberi, bonbon, cancan, ...&quot;
+grep '^\(.*\)\1$' /usr/share/dict/words             # prints "beriberi, bonbon, cancan, ..."
 
-# match text after a string, but excluding this string from the captured text (so called, &quot;positive look-behind&quot;)
+# match text after a string, but excluding this string from the captured text (so called, "positive look-behind")
 ---------------
 grep -P '(?&lt;=name=)[ A-Za-z0-9]*' filename
 </code></pre>
 <p>For grep advanced features, look <a href="https://caspar.bgsu.edu/~courses/Stats/Labs/Handouts/grepadvanced.htm">here</a>.</p>
 <h3 id="2-sed"><a class="header" href="#2-sed">2. sed</a></h3>
-<p><code>sed</code> is a &quot;stream editor&quot;, which reads a file line-by-line, conditionally applying a sequence of operations to each line and (possibly) printing the result.</p>
+<p><code>sed</code> is a "stream editor", which reads a file line-by-line, conditionally applying a sequence of operations to each line and (possibly) printing the result.</p>
 <p>By default, sed uses basic regular expression syntax. To use the (more comfortable) extended syntax, supply the flag <code>-E</code>.</p>
 <p>Most sed programs consist of a single sed command: substitute (<code>s</code>). But a proper sed program is a sequence of sed commands. Most sed commands have one of three forms:</p>
 <ul>
@@ -312,14 +312,14 @@ grep -P '(?&lt;=name=)[ A-Za-z0-9]*' filename
 <li><code>{ operation1 ; ... ; operationN }</code>, executes all of the specified operations, in order, on the given address</li>
 <li><code>s/pattern/replacement/arguments</code>, replaces instances of pattern with replacement according to the arguments in the current line (in the replacement, <code>\n</code> stands for the nth submatch, while <code>&amp;</code> represents the entire match)</li>
 <li><code>b</code>, branches to a label, and if none is specified, then sed skips to processing the next line (think of this as a break operation)</li>
-<li><code>y/from/to/</code>, transliterates the characters in &quot;from&quot; to their corresponding character in &quot;to&quot;</li>
+<li><code>y/from/to/</code>, transliterates the characters in "from" to their corresponding character in "to"</li>
 <li><code>q</code>, quits sed</li>
 <li><code>d</code>, deletes the current line</li>
 <li><code>w</code>, file writes the current line to the specified file.</li>
 </ul>
 <p>Common arguments to the substitute operation:</p>
 <ul>
-<li>the most common argument to the substitute command is <code>g</code>, which means &quot;globally&quot; replace all matches on the current line, instead of just the first</li>
+<li>the most common argument to the substitute command is <code>g</code>, which means "globally" replace all matches on the current line, instead of just the first</li>
 <li><code>n</code>, tells sed to replace the nth match only, instead of the first</li>
 <li><code>p</code>, prints out the result if there is a substitution</li>
 <li><code>i</code>, ignores case during the match</li>
@@ -334,7 +334,7 @@ grep -P '(?&lt;=name=)[ A-Za-z0-9]*' filename
 <pre><code>sed -n '1,13p;40p' &lt;file&gt;
 sed '12q' &lt;file&gt;
 sed -n '1,+4p' &lt;file&gt;
-sed -n '1~5p' &lt;file&gt;   # &quot;first~step&quot; pattern matches a line every 5 lines starting from the first line
+sed -n '1~5p' &lt;file&gt;   # "first~step" pattern matches a line every 5 lines starting from the first line
 sed '1,3d' &lt;file&gt;   # deletes the first 3 lines from stdout (to overwrite the source file, use '-i' flag or '-i.bck' to backup the original file)
 # do not use '-n' with (d), otherwise the original file wil be overriden with the empty stdout
 sed '/pattern/d' &lt;file&gt; # delete all the lines matched by the given pattern
@@ -348,9 +348,9 @@ sed -E 's/([A-Z][a-z]*), ([A-Z][a-z]*( [A-Z][a-z]*[.]?)?)/\2 \1/g' &lt;file&gt; 
 </code></pre>
 <h3 id="3-awk"><a class="header" href="#3-awk">3. awk</a></h3>
 <p>The <code>awk</code> command provides a more traditional programming language for text processing than <code>sed</code>. Those accustomed to seeing only hairy awk one-liners might not even realize that awk is a real programming language.</p>
-<p>The major difference in philosophy between awk and sed is that awk is record-oriented rather than line-oriented. Each line of the input to awk is treated like a delimited record. The awk philosophy melds well with the Unix tradition of storing data in ad hoc line-oriented databases, e.g., /etc/passwd. The command line parameter <code>-F regex</code> sets the regular expression <em>regex</em> to be the field delimiter. </p>
+<p>The major difference in philosophy between awk and sed is that awk is record-oriented rather than line-oriented. Each line of the input to awk is treated like a delimited record. The awk philosophy melds well with the Unix tradition of storing data in ad hoc line-oriented databases, e.g., /etc/passwd. The command line parameter <code>-F regex</code> sets the regular expression <em>regex</em> to be the field delimiter.</p>
 <p>An awk program consists of pattern-action pairs: <code>pattern { statements }</code>, followed by an (optional) sequence of function definitions.</p>
-<p>In fact, an action is optional, and a pattern by itself is equivalent to: <code>pattern { print }</code>. As each record is read, each pattern is checked in order, and if it matches, then the corresponding action is executed. </p>
+<p>In fact, an action is optional, and a pattern by itself is equivalent to: <code>pattern { print }</code>. As each record is read, each pattern is checked in order, and if it matches, then the corresponding action is executed.</p>
 <p>The form for function defintion is: <code>function name(arg1,...,argN) { statements }</code></p>
 <p>The patterns can have forms such as:</p>
 <ul>
@@ -369,7 +369,7 @@ sed -E 's/([A-Z][a-z]*), ([A-Z][a-z]*( [A-Z][a-z]*[.]?)?)/\2 \1/g' &lt;file&gt; 
 <ul>
 <li>a special variable (<code>$1</code> or <code>NF</code>)</li>
 <li>a regular variable (<code>foo</code>)</li>
-<li>a string literal (<code>&quot;foobar&quot;</code>)</li>
+<li>a string literal (<code>"foobar"</code>)</li>
 <li>a numeric constant (<code>3</code>, <code>3.1</code>)</li>
 <li>a regex constant (<code>/foo|bar/</code>).</li>
 </ul>
@@ -406,9 +406,9 @@ sed -E 's/([A-Z][a-z]*), ([A-Z][a-z]*( [A-Z][a-z]*[.]?)?)/\2 \1/g' &lt;file&gt; 
 <li>nextfile</li>
 <li>delete array[expression]</li>
 <li>delete array</li>
-<li>exit [ expression ] </li>
+<li>exit [ expression ]</li>
 </ul>
-<p>The most common statement is <code>print</code>, which is equivalent to <code>print $0</code>. </p>
+<p>The most common statement is <code>print</code>, which is equivalent to <code>print $0</code>.</p>
 <p>Useful flags:</p>
 <ul>
 <li><code>-f filename</code>, uses the provided file as the awk program</li>
@@ -417,15 +417,15 @@ sed -E 's/([A-Z][a-z]*), ([A-Z][a-z]*( [A-Z][a-z]*[.]?)?)/\2 \1/g' &lt;file&gt; 
 </ul>
 <p>Examples:</p>
 <pre><code>ps aux | awk '{print $1}'   # prints the first column
-ps aux | awk '{printf(&quot;%-40s %s\n&quot;, $2, $11)}' # prints the first column with a 40 chars right-padding
+ps aux | awk '{printf("%-40s %s\n", $2, $11)}' # prints the first column with a 40 chars right-padding
 ps aux | awk '/firefox/' # filters records by regex pattern
 ps aux | awk '$2==1645'  # filters records by field comparison
 ps aux | awk '$2 &gt; 2100'    # filters records by numeric comparison
 ps aux | awk '/firefox/ &amp;&amp; $2 &gt; 2100' # combines a regex pattern with a math operator
-ps aux | awk 'BEGIN {printf(&quot;%-26s %s\n&quot;, &quot;Command&quot;, &quot;CPU&quot;)} $3&gt;10 {print $11, $3}' # adds a header before processing any data
-ps aux | awk '{printf(&quot;%s %4.0f MB\n&quot;, $11, $6/1024)}'  # controls scale and rounds up
-ps aux | awk 'BEGIN {sum=0} /firefox/ {sum+=$6} END {printf(&quot;Total memory consumed by Firefox: %.0f MB\n&quot;, sum/1024)}'  # sums field values in a column
-ps aux | awk 'BEGIN {i=1; while (i&lt;6) {print &quot;Square of&quot;, i, &quot;is&quot;, i*i; ++i}}'  # to use a while loop
+ps aux | awk 'BEGIN {printf("%-26s %s\n", "Command", "CPU")} $3&gt;10 {print $11, $3}' # adds a header before processing any data
+ps aux | awk '{printf("%s %4.0f MB\n", $11, $6/1024)}'  # controls scale and rounds up
+ps aux | awk 'BEGIN {sum=0} /firefox/ {sum+=$6} END {printf("Total memory consumed by Firefox: %.0f MB\n", sum/1024)}'  # sums field values in a column
+ps aux | awk 'BEGIN {i=1; while (i&lt;6) {print "Square of", i, "is", i*i; ++i}}'  # to use a while loop
 </code></pre>
 
                     </main>

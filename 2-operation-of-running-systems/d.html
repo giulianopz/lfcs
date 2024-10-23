@@ -203,7 +203,7 @@ ps aux # all processes
 <p>Examples:</p>
 <pre><code>ps -eo pid,ppid,cmd,%cpu,%mem --sort=-%cpu
 </code></pre>
-<p>where: </p>
+<p>where:</p>
 <ul>
 <li><code>-e</code>, shows same result of <code>-A</code></li>
 <li><code>-o</code>, specifies columns to show</li>
@@ -224,7 +224,7 @@ kill %1 # kills by job number
 </code></pre>
 <p>To return a process in foreground: <code>fg &lt;PID&gt;</code></p>
 <h3 id="process-priority"><a class="header" href="#process-priority">Process priority</a></h3>
-<p>List &quot;nice&quot; value of processes: <code>ps -e -o pid,nice,command</code>
+<p>List "nice" value of processes: <code>ps -e -o pid,nice,command</code>
 <strong>Niceness</strong> (NI) value is a user-space concept, while <strong>priority</strong> (PR) is the process's actual priority that use by Linux kernel. In a Linux system priorities are 0 to 139 in which 0 to 99 for real time and 100 to 139 for users. Nice value range is -20 to +19 where -20 is highest, 0 default and +19 is lowest. A negative nice value means higher priority, whereas a positive nice value means lower priority.The exact relation between nice value and priority is:</p>
 <pre><code>PR = 20 + NI
 </code></pre>
@@ -234,7 +234,7 @@ kill %1 # kills by job number
 </blockquote>
 <p>Execute a command in background with a given nice value to be added to the current one: <code>nice -n &lt;value&gt; &lt;command&gt; &amp;</code></p>
 <blockquote>
-<p>Note: In case you want to associate a negative nice value to the process, then you'll have to use double hyphen: </p>
+<p>Note: In case you want to associate a negative nice value to the process, then you'll have to use double hyphen:</p>
 </blockquote>
 <pre><code>nice --10 wall &lt;&lt;end
 System reboots in 5 minutes for Ubuntu Linux kernel update! 
@@ -249,7 +249,7 @@ end
 <p>Send a signal that correspond to number to process: <code>kill -&lt;number&gt; &lt;pid&gt;</code></p>
 <p>List all available signal and corresponding number: <code>kill -l</code></p>
 <p>Kill all child processes: <code>pkill -P &lt;ppid&gt;</code></p>
-<p>Kill all processes whose name matches a regex pattern: <code>pkill -9 &lt;pattern&gt;</code> </p>
+<p>Kill all processes whose name matches a regex pattern: <code>pkill -9 &lt;pattern&gt;</code></p>
 <p>Kill by exact name (safer than pkill), unless -r is specified: <code>killall &lt;name&gt;</code></p>
 
                     </main>

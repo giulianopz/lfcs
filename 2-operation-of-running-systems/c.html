@@ -198,7 +198,7 @@
 <p>If you're interested specifically in the options available for /etc/default/grub, you can invoke the configuration section directly:
 <code>info -f grub -n 'Simple configuration'</code></p>
 <p>When multiple operating systems or kernels are installed in the same machine, <code>GRUB_DEFAULT</code> requires an integer value that indicates which OS or kernel entry in the GRUB initial screen should be selected to boot by default. The list of entries can be viewed using the following command:
-<code>awk -F\' '$1==&quot;menuentry &quot; {print $2}' /boot/grub/grub.cfg</code></p>
+<code>awk -F\' '$1=="menuentry " {print $2}' /boot/grub/grub.cfg</code></p>
 <p>One final GRUB configuration variable that is of special interest is <code>GRUB_CMDLINE_LINUX</code>, which is used to pass options to the kernel. The options that can be passed through GRUB to the kernel are well documented in <code>man 7 kernel-command-line</code> and in <code>man 7 bootparam</code>.</p>
 <p>To bring the system to single-user mode to perform maintenance tasks, you can append the word <code>single</code> to GRUB_CMDLINE_LINUX and rebooting.
 After editing /etc/defalt/grub, you will need to run <code>update-grub</code> (Ubuntu) afterwards, to update <code>grub.cfg</code> (otherwise, changes will be lost upon boot).</p>
@@ -214,8 +214,8 @@ set root=(hd0,msdos1)
 insmod normal
 normal
 </code></pre>
-<p>Then in the GRUB menu, choose an entry and press Enter to boot using it. Once the system has booted you can issue the <code>grub2-install /dev/sdX</code> command (change <code>sdX</code> with the device you want to install GRUB on). This will rewrite the MBR information to point to the current installation and rewrite some GRUB 2 files (which are already working). Since it isn't done during execution of the previous command, running <code>sudo update-grub</code> after the install will ensure GRUB 2's menu is up-to-date. </p>
-<p>Other more complex scenarios are documented, along with their suggested fixes, in the <a href="https://help.ubuntu.com/community/Grub2/Troubleshooting">Ubuntu GRUB2 Troubleshooting guide</a>. </p>
+<p>Then in the GRUB menu, choose an entry and press Enter to boot using it. Once the system has booted you can issue the <code>grub2-install /dev/sdX</code> command (change <code>sdX</code> with the device you want to install GRUB on). This will rewrite the MBR information to point to the current installation and rewrite some GRUB 2 files (which are already working). Since it isn't done during execution of the previous command, running <code>sudo update-grub</code> after the install will ensure GRUB 2's menu is up-to-date.</p>
+<p>Other more complex scenarios are documented, along with their suggested fixes, in the <a href="https://help.ubuntu.com/community/Grub2/Troubleshooting">Ubuntu GRUB2 Troubleshooting guide</a>.</p>
 
                     </main>
 

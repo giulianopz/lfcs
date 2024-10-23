@@ -201,8 +201,8 @@
 <p>Comparing the outputs, you could see that the server and the JVM share some cipher suites, but they fail to agree on the TLS version. You can then either configure the server to support a cipher suite and the protocol version that the JVM supports too or instruct the JVM to use what the server expects: e.g you can run your Java application with a specific TLS version by means of <code>-Dhttps.protocols=TLSv1.2</code>.</p>
 <hr />
 <h3 id="tls-handshake-failures-in-java"><a class="header" href="#tls-handshake-failures-in-java">TLS handshake failures in Java</a></h3>
-<p>Private and public keys are used in asymmetric encryption. A public key can have an associated certificate. A certificate is a document that verifies the identity of the person, organization or device claiming to own the public key. A certificate is typically digitally signed by the verifying party as proof. </p>
-<p>In most cases, we use a keystore and a truststore when our application needs to communicate over SSL/TLS. </p>
+<p>Private and public keys are used in asymmetric encryption. A public key can have an associated certificate. A certificate is a document that verifies the identity of the person, organization or device claiming to own the public key. A certificate is typically digitally signed by the verifying party as proof.</p>
+<p>In most cases, we use a keystore and a truststore when our application needs to communicate over SSL/TLS.</p>
 <p>In disussions about Java the two terms like <em>keystore</em> and <em>truststore</em> are often used interchangeably since the same file can act as keystore as well as truststore: it's just a matter of pointing <code>javax.net.ssl.keyStore</code> and <code>javax.net.ssl.trustStore</code> properties to that file but there is a difference between keystore and truststore. Generally speaking, keystores hold keys that our application owns that we can use to prove the integrity of a message and the authenticity of the sender, say by signing payloads. A truststore is the opposite – while a keystore typically holds onto certificates that identify us, a truststore holds onto certificates that identify others.</p>
 <p>Usually, these are password-protected files that sit on the same file system as our running application. The default format used for these files is <strong>JKS</strong> until Java 8.</p>
 <p>Since Java 9, though, the default keystore format is PKCS12. The biggest difference between JKS and <strong>PKCS12</strong> is that JKS is a format specific to Java, while PKCS12 is a standardized and language-neutral way of storing encrypted private keys and certificates.</p>
@@ -218,7 +218,7 @@
 <p>validate the root certificate content: <code>keytool -v -printcert -file [ca.cert]</code></p>
 </li>
 <li>
-<p>import the root certificate into the JVM truststore: 
+<p>import the root certificate into the JVM truststore:
 <code>keytool -importcert -alias [startssl] -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass [changeit] -file [ca.der]</code></p>
 </li>
 </ol>
@@ -226,7 +226,7 @@
 <p>Note: <code>changeit</code> is the default password for the JVM truststore, you should use a new one for a application deployed in production.</p>
 </blockquote>
 <ol start="5">
-<li>verify that the root certificate has been imported: 
+<li>verify that the root certificate has been imported:
 <code>keystore -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass [changeit] -list | grep [startssl]</code></li>
 </ol>
 <p>You can learn more on the most frequent handshake failure scenarios in Java <a href="https://www.baeldung.com/java-ssl-handshake-failures">here</a>.</p>

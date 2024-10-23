@@ -180,7 +180,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="how-to-fix-low-screen-resolution"><a class="header" href="#how-to-fix-low-screen-resolution">How to fix low screen resolution</a></h2>
-<p>Sometimes when you connect a device to a monitor (external or integrated), you may experience an unexpected low resolution that you cannot change via system setting GUI of your desktop environment: only lower resolutions could be available. </p>
+<p>Sometimes when you connect a device to a monitor (external or integrated), you may experience an unexpected low resolution that you cannot change via system setting GUI of your desktop environment: only lower resolutions could be available.</p>
 <p>This can happen especially if you are using a VGA-to-HDMI converter to connect an old pc to a newer monitor. If the comunication is unidirectional, from input (e.g., a mini pc supporting only VGA) to output (e.g. an external monitor supporting only HDMI), the monitor won't be able to send <a href="https://en.wikipedia.org/wiki/Extended_Display_Identification_Data">EDID</a> data packets which containts info regarding its capabilities.</p>
 <p>In such cases, you can have to grab the EDID data from another pc connected to this monitor or online, if you are lucky enough to find it.</p>
 <p>Firstly, you should verify that the graphic card(s) of your pc can match the recommended resolution of your monitor: typically, 1920x1080 at 60 refresh rate (a standard also know as 1080p, Full HD or FHD,). For Intel cards, see <a href="https://www.intel.com/content/www/us/en/support/articles/000023781/graphics.html">here</a>.</p>
@@ -190,10 +190,10 @@ xrandr
 # generate correct params for the target resolution
 cvt 1920 1080 60
 # pass the above params to the next command
-xrandr --newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
 # make available the new resolution for the intended display type
-xrandr --addmode VGA-1 &quot;1920x1080_60.00&quot;
-xrandr --output VGA-1 --mode &quot;1920x1080_60.00&quot;
+xrandr --addmode VGA-1 "1920x1080_60.00"
+xrandr --output VGA-1 --mode "1920x1080_60.00"
 # go to the system settings GUI and select the resolution you have just configured if it's not still active after last command is executed
 </code></pre>
 <p>If this solved your problem, you have just to put these commands in an executable file sourced when the X session starts. Put this file in one of the following directories:</p>
@@ -242,7 +242,7 @@ Vendor &amp; Product Identification:
 </li>
 </ul>
 <p>Once you have it, use the first hexadecimal block at the beginning of the output of the command to generate the binary file:</p>
-<pre><code class="language-bash">$ HEXSTR=&quot;\
+<pre><code class="language-bash">$ HEXSTR="\
 00 ff ff ff ff ff ff 00 09 d1 51 79 45 54 00 00\
 1f 1d 01 03 80 35 1e 78 2a 05 61 a7 56 52 9c 27\
 0f 50 54 a5 6b 80 d1 c0 81 c0 81 00 81 80 a9 c0\
@@ -250,9 +250,9 @@ b3 00 d1 cf 01 01 02 3a 80 18 71 38 2d 40 58 2c\
 45 00 0f 28 21 00 00 1e 00 00 00 ff 00 31 38 4b\
 30 30 30 33 33 30 31 51 0a 20 00 00 00 fd 00 30\
 4b 1e 53 15 00 0a 20 20 20 20 20 20 00 00 00 fc\
-00 42 65 6e 51 20 45 57 32 34 38 30 0a 20 01 ba&quot;;
+00 42 65 6e 51 20 45 57 32 34 38 30 0a 20 01 ba";
 
-$ echo -en $(echo &quot;$HEXSTR&quot; | sed -E 's/([0-9abcdef][0-9abcdef])[[:space:]]?/\\x\1/g') &gt; edid.bin
+$ echo -en $(echo "$HEXSTR" | sed -E 's/([0-9abcdef][0-9abcdef])[[:space:]]?/\\x\1/g') &gt; edid.bin
 # check that the file is readable
 $ edid-decode edid.bin
 </code></pre>
@@ -260,7 +260,7 @@ $ edid-decode edid.bin
 <p>You now have two options to make this file available to the display manager (e.g. <a href="https://en.wikipedia.org/wiki/Simple_Desktop_Display_Manager">SDDM</a>):</p>
 <ul>
 <li>adding a config file to the <code>xorg.conf.d</code> directory with the relevant info, as described <a href="https://gist.github.com/hinell/0ebaad01b771a70844204f295aaf03b7#via-xorgconf">here</a></li>
-<li>modifying the Linux Kernel parameters to include a directive for reading the EDID file at boot time. </li>
+<li>modifying the Linux Kernel parameters to include a directive for reading the EDID file at boot time.</li>
 </ul>
 <p>The first option is lengthy and requires you to understand how to properly configure <a href="https://wiki.archlinux.org/title/xorg#Configuration">Xorg</a>.</p>
 <p>The second is quicker but error-prone, so be extra-careful if going through the following steps:</p>
@@ -272,7 +272,7 @@ $ edid-decode edid.bin
 <pre><code class="language-bash">linux /boot/vmlinuz-linux root=UUID=0a3407de-014b-458b-b5c1-848e92a327a3 rw [...] drm.edid_firmware=VGA-1:edid/1920x1080.bin
 </code></pre>
 <p>Boot the system to verify if the change had the desired effect.</p>
-<p>If so, make the change permanent by editing the <code>/etc/default/grub</code> to set <code>GRUB_CMDLINE_LINUX_DEFAULT</code> option to the new parameter (e.g. <code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;drm.edid_firmware=VGA-1:edid/your_edid.bin&quot;</code>) and then regenerating the GRUB config with: <code>grub-mkconfig -o /boot/grub/grub.cfg</code>.</p>
+<p>If so, make the change permanent by editing the <code>/etc/default/grub</code> to set <code>GRUB_CMDLINE_LINUX_DEFAULT</code> option to the new parameter (e.g. <code>GRUB_CMDLINE_LINUX_DEFAULT="drm.edid_firmware=VGA-1:edid/your_edid.bin"</code>) and then regenerating the GRUB config with: <code>grub-mkconfig -o /boot/grub/grub.cfg</code>.</p>
 <p>Reboot to verify that the change works across system restarts.</p>
 <hr />
 <p>References:</p>

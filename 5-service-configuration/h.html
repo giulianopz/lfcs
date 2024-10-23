@@ -218,9 +218,9 @@ Implementation</p>
 <p>The server also reads a file containing mime document types; the filename is set by the TypesConfig directive, typically via /etc/apache2/mods-available/mime.conf, which might also include additions and overrides, and is /etc/mime.types by default.</p>
 <h3 id="basic-settings"><a class="header" href="#basic-settings">Basic Settings</a></h3>
 <p>Apache2 ships with a virtual-host-friendly default configuration. That is, it is configured with a single default virtual host (using the <strong>VirtualHost</strong> directive) which can be modified or used as-is if you have a single site, or used as a template for additional virtual hosts if you have multiple sites. If left alone, the default virtual host will serve as yourdefault site, or the site users will see if the URL they enter does not match the ServerName directive of any of your custom sites. To modify the default virtual host, edit the file etc/apache2/sites-available/000-default.conf.</p>
-<p>Note </p>
+<p>Note</p>
 <blockquote>
-<p>The term <strong>Virtual Host</strong> refers to the practice of running more than one web site (such as company1.example.com and company2.example.com) on a single machine. Virtual hosts can be &quot;IP-based&quot;, meaning that you have a different IP address for every web site, or &quot;name-based&quot;, meaning that you have multiple names running on each IP address. The fact that they are running on the same physical server is not apparent to the end user.</p>
+<p>The term <strong>Virtual Host</strong> refers to the practice of running more than one web site (such as company1.example.com and company2.example.com) on a single machine. Virtual hosts can be "IP-based", meaning that you have a different IP address for every web site, or "name-based", meaning that you have multiple names running on each IP address. The fact that they are running on the same physical server is not apparent to the end user.</p>
 </blockquote>
 <p>Note</p>
 <blockquote>
@@ -277,7 +277,7 @@ sudo systemctl restart apache2.service
 </blockquote>
 <p>To generate a self-signed certificate:
 <code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/&lt;apache-self-signed&gt;.key -out /etc/ssl/private/&lt;apache-self-signed&gt;.crt</code></p>
-<p>Edit /etc/apache2/sites-available/mynewsite.conf as follows: </p>
+<p>Edit /etc/apache2/sites-available/mynewsite.conf as follows:</p>
 <pre><code>&lt;VirtualHost *:443&gt;
     ServerName mynewsite.com
     DocumentRoot /var/www/mynewsite

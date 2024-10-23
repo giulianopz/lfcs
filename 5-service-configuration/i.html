@@ -184,7 +184,7 @@
 <h2 id="reading-and-understanding-the-apache-log-files"><a class="header" href="#reading-and-understanding-the-apache-log-files">Reading and Understanding the Apache Log Files</a></h2>
 <p>The log files can be opened and parsed using standard commands like cat , less , grep , cut , awk , and so on.</p>
 <p>Here is an example record from the access log file that uses the Debian' combine log format:</p>
-<pre><code>192.168.33.1 - - [08/Jan/2020:21:39:03 +0000] &quot;GET / HTTP/1.1&quot; 200 6169 &quot;-&quot; &quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36&quot;
+<pre><code>192.168.33.1 - - [08/Jan/2020:21:39:03 +0000] "GET / HTTP/1.1" 200 6169 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
 </code></pre>
 <p>Let's break down what each field of the record means:</p>
 <ul>
@@ -192,11 +192,11 @@
 <li><code>%l</code> (-) - Remote logname. When the user name is not set, this field shows -.</li>
 <li><code>%u</code> (-) - If the request is authenticated, the remote user name is shown.</li>
 <li><code>%t</code> ([08/Jan/2020:21:39:03 +0000]) - Local server time.</li>
-<li><code>\&quot;%r\&quot;</code> (&quot;GET / HTTP/1.1&quot;) - First line of request. The request type, path, and protocol.</li>
+<li><code>\"%r\"</code> ("GET / HTTP/1.1") - First line of request. The request type, path, and protocol.</li>
 <li><code>%&gt;s</code> (200) - The final server response code. If the &gt; symbol is not used and the request has been internally redirected, it will show the status of the original request.</li>
 <li><code>%O</code> (396) - The size of server response in bytes.</li>
-<li><code>\&quot;%{Referer}i\&quot;</code> (&quot;-&quot;) - The URL of the referral.</li>
-<li><code>\&quot;%{User-Agent}i\&quot;</code> (Mozilla/5.0 ...) - The user agent of the client (web browser).</li>
+<li><code>\"%{Referer}i\"</code> ("-") - The URL of the referral.</li>
+<li><code>\"%{User-Agent}i\"</code> (Mozilla/5.0 ...) - The user agent of the client (web browser).</li>
 </ul>
 <h2 id="virtual-hosts-and-global-logging"><a class="header" href="#virtual-hosts-and-global-logging">Virtual Hosts and Global Logging</a></h2>
 <p>The logging behavior and the location of the files can be set either globally or per virtual host basis.</p>
@@ -207,7 +207,7 @@
 <p>The most basic syntax of the <strong>CustomLog</strong> directive is as follows:
 <code>CustomLog log_file format [condition];</code></p>
 <p>The second argument, format specifies the format of the log messages. It can be either an explicit format definition or a nickname defined by the LogFormat directive.</p>
-<pre><code>LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %O \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; combined
+<pre><code>LogFormat "%h %l %u %t \"%r\" %&gt;s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined
 CustomLog logs/access.log combined
 </code></pre>
 <p>The third argument <code>[condition]</code> is optional and allows you to write log messages only when a specific condition is met.</p>

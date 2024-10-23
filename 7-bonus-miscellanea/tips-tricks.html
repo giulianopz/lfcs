@@ -239,7 +239,7 @@
 <pre><code># listen fon incoming communication on a specific port in a shell
 :~$ nc -l 8080
 # send a request to this port from another shell in your machine
-:~$ curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;hello&quot;: &quot;world&quot;}' http://localhost:8080
+:~$ curl -X POST -H "Content-Type: application/json" -d '{"hello": "world"}' http://localhost:8080
 # return to the main shell to see the received request
 :~$ nc -l 8080
 POST / HTTP/1.1
@@ -249,7 +249,7 @@ Accept: */*
 Content-Type: application/json
 Content-Length: 18
 
-{&quot;hello&quot;: &quot;world&quot;}
+{"hello": "world"}
 </code></pre>
 <ol start="17">
 <li>Beware of commands with the same name, especially command shell built-in vs- external command as <code>time</code>:</li>
@@ -265,7 +265,12 @@ time is /bin/time
 /bin/time [OPTIONS] COMMAND [ARG]...
 </code></pre>
 <ol start="18">
-<li>Take a screenshot from the command line on a X Window System (and with <code>imagemagick</code>): <code>sleep 5; xwd -root | convert xwd:- test.png</code></li>
+<li>
+<p>Take a screenshot from the command line on a X Window System (and with <code>imagemagick</code>): <code>sleep 5; xwd -root | convert xwd:- test.png</code></p>
+</li>
+<li>
+<p>Cat without cat: <code>echo "$(&lt;file.txt)"</code> (credits <a href="https://jarv.org/posts/cat-without-cat/">@jarv</a>)</p>
+</li>
 </ol>
 
                     </main>

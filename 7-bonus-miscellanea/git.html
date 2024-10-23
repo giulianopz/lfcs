@@ -185,7 +185,7 @@
 <pre><code>touch README.md
 git init
 git add README.md
-git commit -m &quot;first commit&quot;
+git commit -m "first commit"
 git remote add origin https://github.com/{user-name}/{repository-name}.git
 git push -u origin main
 </code></pre>
@@ -198,15 +198,15 @@ git push -u origin main
 [diff]
     guitool = meld
 
-[difftool &quot;meld&quot;]
-    cmd = meld \&quot;$REMOTE\&quot; \&quot;$LOCAL\&quot; --label \&quot;DIFF (ORIGINAL MY)\&quot;
+[difftool "meld"]
+    cmd = meld \"$REMOTE\" \"$LOCAL\" --label \"DIFF (ORIGINAL MY)\"
 
 # choose a mergetool
 [merge]
     tool = meld
 
-[mergetool &quot;meld&quot;]
-    cmd = meld \&quot;$LOCAL\&quot; \&quot;$MERGED\&quot; \&quot;$REMOTE\&quot; --output \&quot;$MERGED\&quot;
+[mergetool "meld"]
+    cmd = meld \"$LOCAL\" \"$MERGED\" \"$REMOTE\" --output \"$MERGED\"
 
 # store your credentials in a plain-text file
 [credential]
@@ -236,7 +236,7 @@ Merge branch 'gh-pages'
 <p>In this situation, <code>git revert 8f937c6 -m 1</code> will get you the tree as it was in <code>8989ee0</code>, and <code>git revert -m 2</code> will reinstate the tree as it was in <code>7c6b236</code>.</p>
 <p>Reverting a revert commit may seem unlikely, but it's actually common when you need for example to create a PR of a feature branch which was merged but then reverted:</p>
 <pre><code># fix your code in the feature branch
-$ git commit -m &quot;fixed issues in feature-branch'
+$ git commit -m "fixed issues in feature-branch'
 
 # create a new branch tracking the target branch of the PR (e.g. develop)
 $ git checkout -b revert-the-revert-branch -t develop
@@ -259,7 +259,7 @@ $ git merge revert-the-revert-branch
 <p><img src="https://i.stack.imgur.com/qRAte.jpg" alt="reset-ops-visually-exaplained" /></p>
 <p>Typically, to discard all recent changes resetting the HEAD to the previous commit: <code>git reset --hard HEAD^</code></p>
 <p>Alternatively, to reset the current local branch to a particular point in time:
-<code>git reset --hard master@{&quot;10 minutes ago&quot;}</code></p>
+<code>git reset --hard master@{"10 minutes ago"}</code></p>
 <p>Remove a file from the staging area: <code>git restore --staged [&lt;filepath&gt;]</code></p>
 <p>Undo modifications on the working tree (restore files from latest commited version): <code>git checkout -- index.html</code></p>
 <p>Restore file from a custom commit (in current branch): <code>git checkout 6eb715d -- index.html</code></p>
@@ -288,7 +288,7 @@ $ git merge revert-the-revert-branch
 <p>Review the recent history interactively choosing if deleting some of the latest commits: <code>git rebase -i HEAD~[N]</code></p>
 <h2 id="stash"><a class="header" href="#stash">Stash</a></h2>
 <p>Show stash history: <code>git stash list</code></p>
-<p>Put a specific file into the stash: <code>git stash push -m [&quot;welcome_cart&quot;] [app/views/cart/welcome.html]</code></p>
+<p>Put a specific file into the stash: <code>git stash push -m ["welcome_cart"] [app/views/cart/welcome.html]</code></p>
 <p>View the content of the most recent stash commit: <code>git stash show -p</code></p>
 <p>View the content of an arbitrary stash: <code>git stash show -p stash@{1}</code></p>
 <p>Extract a single file from a stash commit:</p>
@@ -302,11 +302,11 @@ git show stash@{0}:[./relative filename] &gt; [newfile]
 <h2 id="log"><a class="header" href="#log">Log</a></h2>
 <p>Show commit logs: <code>git log</code></p>
 <blockquote>
-<p>Note: git log shows the current <code>HEAD</code> and its ancestry. That is, it prints the commit <code>HEAD</code> points to, then its parent, its parent, and so on. It traverses back through the repo's ancestry, by recursively looking up each commit's parent. <code>git reflog </code>doesn't traverse <code>HEAD</code>'s ancestry at all. The <code>reflog</code> is an ordered list of the commits that <code>HEAD</code> has pointed to: it's undo history for your repo. The reflog isn't part of the repo itself (it's stored separately to the commits themselves) and isn't included in pushes, fetches or clones: it's purely local. Aside: understanding <code>reflog</code> means you can't really lose data from your repo once it's been committed. If you accidentally reset to an older commit, or rebase wrongly, or any other operation that visually &quot;removes&quot; commits, you can use <code>reflog</code> to see where you were before and <code>git reset --hard</code> back to that ref to restore your previous state. Remember, refs imply not just the commit but the entire history behind it. (<a href="https://stackoverflow.com/a/17860179/9109880">source</a>)</p>
+<p>Note: git log shows the current <code>HEAD</code> and its ancestry. That is, it prints the commit <code>HEAD</code> points to, then its parent, its parent, and so on. It traverses back through the repo's ancestry, by recursively looking up each commit's parent. <code>git reflog </code>doesn't traverse <code>HEAD</code>'s ancestry at all. The <code>reflog</code> is an ordered list of the commits that <code>HEAD</code> has pointed to: it's undo history for your repo. The reflog isn't part of the repo itself (it's stored separately to the commits themselves) and isn't included in pushes, fetches or clones: it's purely local. Aside: understanding <code>reflog</code> means you can't really lose data from your repo once it's been committed. If you accidentally reset to an older commit, or rebase wrongly, or any other operation that visually "removes" commits, you can use <code>reflog</code> to see where you were before and <code>git reset --hard</code> back to that ref to restore your previous state. Remember, refs imply not just the commit but the entire history behind it. (<a href="https://stackoverflow.com/a/17860179/9109880">source</a>)</p>
 </blockquote>
 <p>Show only custom commits:</p>
-<pre><code>git log --author=&quot;Sven&quot;
-git log --grep=&quot;Message&quot;
+<pre><code>git log --author="Sven"
+git log --grep="Message"
 git log --until=2013-01-01
 git log --since=2013-01-01
 </code></pre>
@@ -316,7 +316,7 @@ git log --since=2013-01-01
 <pre><code>[alias]
 lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-lg = !&quot;git lg1&quot;
+lg = !"git lg1"
 </code></pre>
 <p>Followh the commit history of a single file: <code>git log --oneline -M --stat --follow -- src/somefile.ts</code></p>
 <h2 id="compare"><a class="header" href="#compare">Compare</a></h2>
@@ -359,10 +359,10 @@ git diff --ignore-all-space 6eb715d..HEAD
 <p>Clone to local folder: <code>git clone https://github.com/user/project.git ~/dir/folder</code></p>
 <p>Get everything ready to commit: <code>git add .</code></p>
 <p>Get custom file ready to commit: <code>git add index.html</code></p>
-<p>Commit changes: <code>git commit -m &quot;Message&quot;</code></p>
-<p>Commit changes with title and description: <code>git commit -m &quot;Title&quot; -m &quot;Description...&quot;</code></p>
-<p>Add and commit in one step: <code>git commit -a -m &quot;Message&quot;</code></p>
-<p>Rewrite the most recent <strong>not-pushed</strong> commit message: <code>git commit --amend -m &quot;New Message&quot;</code></p>
+<p>Commit changes: <code>git commit -m "Message"</code></p>
+<p>Commit changes with title and description: <code>git commit -m "Title" -m "Description..."</code></p>
+<p>Add and commit in one step: <code>git commit -a -m "Message"</code></p>
+<p>Rewrite the most recent <strong>not-pushed</strong> commit message: <code>git commit --amend -m "New Message"</code></p>
 <p>If the commit was pushed, it will take more steps to rewrite it:</p>
 <ul>
 <li>use <code>git rebase -i HEAD~n</code> to display a list of the last nn commits in your default text editor</li>
@@ -417,7 +417,7 @@ export PS1='\[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]
 <p><img src="../../assets/img/git-branch-name-bash-prompt.png" alt="git-branch-name-bash-prompt" /></p>
 <p><a href="https://wiki.archlinux.org/title/Bash/Prompt_customization">PS1</a> is the primary prompt (in bash) which is displayed before each command, thus it is the one most people customize. In the lines above PS1 is set to a string composed of <a href="https://misc.flogisoft.com/bash/tip_colors_and_formatting">backslash-escaped characters</a> that are expanded dynamically every time the prompt shows up.</p>
 <blockquote>
-<p>Warning: Using double quotes  (<code>&quot;</code>) instead of single quotes (<code>'</code>) will result in the function <code>parse_git_branch</code> to be evaluated only once (when you first enter the git dir).</p>
+<p>Warning: Using double quotes  (<code>"</code>) instead of single quotes (<code>'</code>) will result in the function <code>parse_git_branch</code> to be evaluated only once (when you first enter the git dir).</p>
 </blockquote>
 <hr />
 <h3 id="resources-to-learn-more"><a class="header" href="#resources-to-learn-more">Resources to learn more:</a></h3>

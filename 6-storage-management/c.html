@@ -182,16 +182,16 @@
                         <h2 id="create-and-configure-encrypted-storage"><a class="header" href="#create-and-configure-encrypted-storage">Create and configure encrypted storage</a></h2>
 <p>The following illustrates how to encrypt a secondary disk (<a href="https://dev-notes.eu/2020/12/LUKS-Encrypt-Hard-Drive-with-Cryptsetup-on-Ubuntu-20.04/">source</a>). For full-disk encryption, look <a href="https://help.ubuntu.com/community/Full_Disk_Encryption_Howto_2019">here</a>.</p>
 <p><strong>cryptsetup</strong> is a utility used to conveniently set up disk encryption based on the DMCrypt kernel module. These include plain dm-crypt volumes, LUKS volumes, loop-AES, TrueCrypt (including VeraCrypt extension) and BitLocker formats.</p>
-<p><strong>LUKS</strong> (Linux Unified Key Setup) is a standard for hard disk encryption. It standardizes a partition header, as well as the format of the bulk data. LUKS can manage multiple passwords, that can be revoked effectively and that are protected against dictionary attacks with PBKDF2. </p>
+<p><strong>LUKS</strong> (Linux Unified Key Setup) is a standard for hard disk encryption. It standardizes a partition header, as well as the format of the bulk data. LUKS can manage multiple passwords, that can be revoked effectively and that are protected against dictionary attacks with PBKDF2.</p>
 <hr />
 <p>Once you have physically connected the disk, find the unmounted disk in the system using <code>lsblk</code> (you can spot it by the size which should match the expexted one).</p>
 <blockquote>
-<p>Note: Once created, the LUKS partition will have the FSTYPE set as &quot;crypto_LUKS&quot;.</p>
+<p>Note: Once created, the LUKS partition will have the FSTYPE set as "crypto_LUKS".</p>
 </blockquote>
 <p>Double check disk info: <code>sudo hdparm -i /dev/sdd</code></p>
 <p>If this checks out, you have the device reference. Alternatively, list all drives in short format: <code>sudo lshw -short -C disk</code></p>
 <p>If the disk does not have an existing partition, create one: <code>sudo fdisk /dev/sdd</code></p>
-<p>Follow the instructions, hit all defaults to create one large partition: it will be something like &quot;/dev/sdd1&quot;.</p>
+<p>Follow the instructions, hit all defaults to create one large partition: it will be something like "/dev/sdd1".</p>
 <blockquote>
 <p>Note: If the disk is already partitioned, you can use an existing partition, but all data will be over-written.</p>
 </blockquote>
@@ -203,7 +203,7 @@
 <p>Warning: Your kernel may not support the default encryption method used by cryptsetup. In that case, you can examine /proc/crypto to see the methods your system supports, and then you can supply a method, as in: <code>sudo cryptsetup luksFormat --cipher aes /dev/sdd1</code></p>
 </blockquote>
 <p>The encrypted partition is accessed by means of a mapping. To create a mapping for the current session:</p>
-<pre><code># open the LUKS partition and create a mapping called &quot;backupSSD&quot;
+<pre><code># open the LUKS partition and create a mapping called "backupSSD"
 sudo cryptsetup luksOpen /dev/sdd1 backupSSD
 # checks for its presence
 ls -l /dev/mapper/backupSSD
@@ -223,7 +223,7 @@ lrwxrwxrwx 1 root root 7 Dec 17 15:48 /dev/mapper/backupSSD -&gt; ../dm-6
 &gt;Command successful.
 </code></pre>
 <p>This mapping is not persistent. If you want to open the disk/partition automatically on boot, you will need to amend /etc/crypttab to set up a mapped device name (see below).</p>
-<p>Do not omit this step - or the partition won't mount (<code>-L</code> denotes the partition label): <code>sudo mkfs.ext4 /dev/mapper/backupSSD -L &quot;Extra SSD 1TB&quot;</code></p>
+<p>Do not omit this step - or the partition won't mount (<code>-L</code> denotes the partition label): <code>sudo mkfs.ext4 /dev/mapper/backupSSD -L "Extra SSD 1TB"</code></p>
 <p>Create a mount point and give the mount point appropriate ownership:</p>
 <pre><code>sudo mkdir /media/secure-ssd
 sudo chown $USER:$USER /media/secure-ssd
@@ -271,7 +271,7 @@ mount /dev/mapper/backupSSD /media/secure-ssd
 <hr />
 <p>To check the passphrase:</p>
 <pre><code>sudo cryptsetup luksOpen --test-passphrase /dev/sdX &amp;&amp; echo correct
-# Prompts for password, echoes &quot;correct&quot; if successful
+# Prompts for password, echoes "correct" if successful
 # Alternatively, specify the intended slot
 cryptsetup luksOpen --test-passphrase --key-slot 0 /dev/sdX &amp;&amp; echo correct
 </code></pre>

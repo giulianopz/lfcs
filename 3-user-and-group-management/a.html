@@ -181,7 +181,7 @@
                     <main>
                         <h2 id="create-delete-and-modify-local-user-accounts"><a class="header" href="#create-delete-and-modify-local-user-accounts">Create, delete, and modify local user accounts</a></h2>
 <h3 id="add-a-user"><a class="header" href="#add-a-user">Add a User</a></h3>
-<p>In Ubuntu, there are two command-line tools that you can use to create a new user account: </p>
+<p>In Ubuntu, there are two command-line tools that you can use to create a new user account:</p>
 <ul>
 <li><code>useradd</code>, a low-level utility</li>
 <li><code>adduser</code>, a script written in Perl that acts as a friendly interactive frontend for <code>useradd</code>.</li>
@@ -189,7 +189,7 @@
 <p>Adding a new user is quick and easy, simply invoke <code>adduser &lt;username&gt;</code> command followed by the username and aswer all the questions when propted.</p>
 <p>When invoked, <code>useradd</code> creates a new user account according to the options specified on the command line and the default values set in the <code>/etc/default/useradd</code> file. <code>useradd</code> also reads the content of the /etc/login.defs file. This file contains configuration for the shadow password suite such as password expiration policy, ranges of user IDs used when creating system and regular users, and more.</p>
 <p>To create a user modifying some default values:
-<code>sudo useradd -s /usr/bin/zsh -d &quot;/home/students/moose&quot; -m -k /etc/skel -c &quot;Bullwinkle J Moose&quot; bmoose</code></p>
+<code>sudo useradd -s /usr/bin/zsh -d "/home/students/moose" -m -k /etc/skel -c "Bullwinkle J Moose" bmoose</code></p>
 <p>To be able to log in as the newly created user, you need to set the user password. To do that run the passwd command followed by the username:
 <code>sudo passwd &lt;username&gt;</code></p>
 <p>You to specify a list of supplementary groups which the user will be a member of with the -G (--groups) option:
@@ -233,11 +233,11 @@ sudo useradd -D | grep -i shell
 <p>To set the min and max number of days between password changes: <code>sudo chage -m 14 -M 30 &lt;username&gt;</code></p>
 <h3 id="block-a-user"><a class="header" href="#block-a-user">Block a user</a></h3>
 <p>To force immediate expiration of a user account: <code>sudo chage -d 0 &lt;username&gt;</code></p>
-<p>To disable the expiration of an account, set an empty expiry date: <code>sudo usermod -e &quot;&quot; &lt;username&gt;</code></p>
+<p>To disable the expiration of an account, set an empty expiry date: <code>sudo usermod -e "" &lt;username&gt;</code></p>
 <p>The <code>-L</code> option allows you to lock a user account: <code>sudo usermod -L &lt;username&gt;</code></p>
 <p>The commands will insert an exclamation point (!) mark in front of the encrypted password. When the password field in the /etc/shadow file contains an exclamation point, the user will not be able to login to the system using password authentication. Other login methods, like key-based authentication (SSH Login) or switching to the user (su) are still allowed. If you want to lock the account and disable all login methods, you also need to set the expiration date to 1. The following examples shows how to lock a user: <code>sudo usermod -L -e 1 &lt;username&gt;</code></p>
 <p>To unlock a user, run usermod with the <code>-U</code> option: <code>usermod -U &lt;username&gt;</code></p>
-<p>If your system also encounters some problem(s) and you are forced to put it down to fix the problem(s), create the <code>/etc/nologin</code> file to disallow user logins and notify users: if a user attempts to log in to a system where this file exists, the contents of the nologin file is displayed, and the user login is terminated. Superuser logins are not affected. </p>
+<p>If your system also encounters some problem(s) and you are forced to put it down to fix the problem(s), create the <code>/etc/nologin</code> file to disallow user logins and notify users: if a user attempts to log in to a system where this file exists, the contents of the nologin file is displayed, and the user login is terminated. Superuser logins are not affected.</p>
 <p>To block a specific user from accessing a shell: <code>chsh -s /bin/nologin &lt;username&gt;</code></p>
 <blockquote>
 <p>Note: A user could still log on to the system via programs such as ftp that do not necessarily require a shell to connect to a system.</p>
@@ -250,7 +250,7 @@ sudo mkdir -p /home/&lt;username&gt;/bin
 
 # restrict the path to a bin dir in his home
 sudo &lt;username&gt; /home/&lt;username&gt;/.bash_profile
-echo &quot;PATH=$HOME/bin&quot; &gt; /home/&lt;username&gt;/.bash_profile
+echo "PATH=$HOME/bin" &gt; /home/&lt;username&gt;/.bash_profile
 sudo chown root:root /home/&lt;username&gt;/.bash_profile
 sudo chmod 755 /home/&lt;username&gt;/.bash_profile
 
@@ -261,7 +261,7 @@ sudo ln -s /bin/uptime /home/&lt;username&gt;/bin
 sudo ln -s /bin/pinky /home/&lt;username&gt;/bin
 </code></pre>
 <blockquote>
-<p>Note: On some distributions, rbash may not exist, so just create it as a symlink to bash: sudo ln -s /bin/bash /bin/rbash </p>
+<p>Note: On some distributions, rbash may not exist, so just create it as a symlink to bash: sudo ln -s /bin/bash /bin/rbash</p>
 </blockquote>
 <h3 id="remove-a-user"><a class="header" href="#remove-a-user">Remove a User</a></h3>
 <p>In Ubuntu, you can use two commands to delete a user account: <code>userdel</code> and its interactive frontend <code>deluser</code>.</p>

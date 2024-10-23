@@ -184,7 +184,7 @@
 <p>To define a variable, simply: <code>foo=42</code></p>
 <p>To reference the value of a variable: <code>echo $foo</code></p>
 <p>To remove a variable= <code>unset foo</code></p>
-<p>To assign a value which contains spaces, quote it: <code>foo=&quot;x j z&quot;</code></p>
+<p>To assign a value which contains spaces, quote it: <code>foo="x j z"</code></p>
 <p>Since every variable is an array, the variable itself is an implicit reference to the first index (0), so:</p>
 <pre><code>echo $foo
 # equals to
@@ -206,7 +206,7 @@ array_name=(value_1, value_2, value_n)
 # or
 echo ${array[*]}
 </code></pre>
-<p>To copy an array: <code>copy=(&quot;${array[@]}&quot;)</code></p>
+<p>To copy an array: <code>copy=("${array[@]}")</code></p>
 <blockquote>
 <p>Note: double quotes are needed for values conaining white spaces.</p>
 </blockquote>
@@ -224,7 +224,7 @@ $!          # PID of the most recently backgrounded process
 <p>Note: To know if you are in a subshell: <code>echo $SHLVL</code></p>
 </blockquote>
 <p>bash can operate on the value of a variable while deferencing that same variable:</p>
-<pre><code>foo=&quot;I'm a cat&quot;
+<pre><code>foo="I'm a cat"
 echo ${foo/cat/dog}
 </code></pre>
 <p>To replace all instances of a string: <code>echo ${foo//cat/dog}</code></p>
@@ -233,10 +233,10 @@ echo ${foo/cat/dog}
 </blockquote>
 <p>To delete a substring: <code>echo ${foo/cat}</code></p>
 <p><code>#</code> and <code>##</code> remove the shortest and longest prefix of a variable matching a certain pattern:</p>
-<pre><code>path=&quot;/usr/bin:/bin:/sbin&quot;
-echo ${path#/usr}           # prints out &quot;/bin:/bin:/sbin&quot;
-echo ${path#*/bin}          # prints out &quot;:/bin:/sbin&quot;
-echo ${path##*/bin}         # prints out &quot;:/sbin&quot;
+<pre><code>path="/usr/bin:/bin:/sbin"
+echo ${path#/usr}           # prints out "/bin:/bin:/sbin"
+echo ${path#*/bin}          # prints out ":/bin:/sbin"
+echo ${path##*/bin}         # prints out ":/sbin"
 
 </code></pre>
 <p>Similarly, <code>%</code> is used for suffuxes.</p>
@@ -249,26 +249,26 @@ echo ${#array[@]}       # right: prints out the size of the array
 echo ${array[@]:3:2}
 </code></pre>
 <p>Existence testing operators:</p>
-<pre><code>echo ${username-defualt}        # prints &quot;default&quot; if username var in unset
+<pre><code>echo ${username-defualt}        # prints "default" if username var in unset
 echo ${username:-defualt}       # checks both for existence and emptiness
-echo ${unsetvar:=resetvar}      # like &quot;-&quot;, but sets the var if it doesn't have a value
-echo ${foo+42}                  # prints &quot;42&quot; if foo is set
+echo ${unsetvar:=resetvar}      # like "-", but sets the var if it doesn't have a value
+echo ${foo+42}                  # prints "42" if foo is set
 echo ${foo?failure: no args}    # crashes the program with the given message, if the var is unset
 </code></pre>
 <p><code>!</code> operator is used for <strong>indirect lookup</strong> or (indirect reference):</p>
 <pre><code>foo=bar
 bar=42
-echo ${!foo}        # print $bar, that is &quot;42&quot;
+echo ${!foo}        # print $bar, that is "42"
 </code></pre>
 <p>similarly, with arrays:</p>
 <pre><code>letters=(a b c d e)
 char=letters[1]
-echo ${!char}       # prints &quot;b&quot;
+echo ${!char}       # prints "b"
 </code></pre>
 <p>As to string declaration, you can use:</p>
 <ul>
 <li>single quotes (<code>'</code>) for literal strings</li>
-<li>double quotes (<code>&quot;</code>) for interpolated strings</li>
+<li>double quotes (<code>"</code>) for interpolated strings</li>
 </ul>
 <p>Mathematical expressions can be declared as follows:</p>
 <pre><code>echo $((3 + 3))
@@ -283,7 +283,7 @@ number=2+4*10
 <pre><code># a file
 grep [pattern] &lt; myfile.txt
 # a string
-grep [pattern] &lt;&lt;&lt; &quot;this is a string&quot;
+grep [pattern] &lt;&lt;&lt; "this is a string"
 # a here-document
 grep [pattern] &lt;&lt;EOF
 first line
@@ -344,9 +344,9 @@ else
 fi
 # or
 
-if [ &quot;$1&quot; = &quot;-v&quot; ]
+if [ "$1" = "-v" ]
 then
-  echo &quot;switching to verbose output&quot;
+  echo "switching to verbose output"
 fi
 </code></pre>
 <blockquote>
@@ -356,7 +356,7 @@ fi
 <p>Tip: Double brackets are safer than single brackets:</p>
 </blockquote>
 <pre><code>[ $a = $b ]         # will fail if one of the two variables is empty or contains a whitespace
-[ &quot;$a&quot; = &quot;$b&quot; ]     # you have to double-quote them to avoid this problem
+[ "$a" = "$b" ]     # you have to double-quote them to avoid this problem
 [[ $a = $b ]]       # this instead won't fail
 </code></pre>
 <blockquote>
@@ -364,7 +364,7 @@ fi
 </blockquote>
 <pre><code>[[ $a = ?at ]]      # glob patterns
 [[ $a &lt; $b ]]       # lexicographical comparison
-[[ $a =~ ^.at ]]    # regex patterns with the operator &quot;=~&quot;
+[[ $a =~ ^.at ]]    # regex patterns with the operator "=~"
 </code></pre>
 <p>To learn more, look <a href="https://scriptingosx.com/2018/02/single-brackets-vs-double-brackets/">here</a>.</p>
 <p>Iterations are declared as follows.</p>
@@ -408,8 +408,8 @@ ${arr[@]:s:n}           # retieves [n] elements starting at index [s]
 -o      # ||
 
 # integer comparison
--eq     # &quot;equals to&quot;
--ne     # &quot;not equal&quot;
+-eq     # "equals to"
+-ne     # "not equal"
 -gt     # &gt;
 -ge     # &gt;=
 -lt     # &lt;
@@ -420,7 +420,7 @@ ${arr[@]:s:n}           # retieves [n] elements starting at index [s]
 ==      # the pattern is literal if within double brackets and variables/string are within double quotes
 !=
 &lt;       # alphabetical order
-&gt;       # must be escaped if within single brackets, e.g. &quot;\&gt;&quot;
+&gt;       # must be escaped if within single brackets, e.g. "\&gt;"
 -z      # string is null
 -n      # string is not null
 

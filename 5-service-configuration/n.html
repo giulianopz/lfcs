@@ -208,13 +208,13 @@
 <p>Containers can be turned into images which you can use to build new containers.</p>
 <p>When you start up a Docker image, you can create, modify, and delete files just like you can with a virtual machine. The changes that you make will only apply to that container. You can start and stop it, but once you destroy it with the docker rm command, the changes will be lost for good.</p>
 <p>To this purpose, save the state of a container as a new Docker image committing the changes to a new Docker image instance using:
-<code>docker commit -m &quot;What you did to the image&quot; -a &quot;Author Name&quot; [container_id] [repository/new_image_name]</code></p>
+<code>docker commit -m "What you did to the image" -a "Author Name" [container_id] [repository/new_image_name]</code></p>
 <p>When you commit an image, the new image is saved locally on your computer.</p>
 <blockquote>
 <p>Note: Listing the Docker images again will show the new image, as well as the old one that it was derived from.</p>
 </blockquote>
 <blockquote>
-<p>Note: You can also build Images from a <code>Dockerfile</code>, which lets you automate the installation of software in a new image. </p>
+<p>Note: You can also build Images from a <code>Dockerfile</code>, which lets you automate the installation of software in a new image.</p>
 </blockquote>
 <p>The next logical step after creating a new image from an existing image is to share it by pushing the image to Docker Hub (or any other Docker registry).</p>
 <p>To push your image, first log into Docker Hub: <code>docker login -u docker-registry-username</code></p>

@@ -180,7 +180,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="how-dns-works"><a class="header" href="#how-dns-works">How DNS Works</a></h2>
-<p>DNS is a global system for translating IP addresses to human-readable domain names. When a user tries to access a web address like &quot;example.com&quot;, their web browser or application performs a DNS Query against a DNS server, supplying the hostname. The DNS server takes the hostname and resolves it into a numeric IP address, which the web browser can connect to.</p>
+<p>DNS is a global system for translating IP addresses to human-readable domain names. When a user tries to access a web address like "example.com", their web browser or application performs a DNS Query against a DNS server, supplying the hostname. The DNS server takes the hostname and resolves it into a numeric IP address, which the web browser can connect to.</p>
 <p>A component called a DNS Resolver is responsible for checking if the hostname is available in local cache, and if not, contacts a series of DNS Name Servers, until eventually it receives the IP of the service the user is trying to reach, and returns it to the browser or application. This usually takes less than a second.</p>
 <h2 id="dns-types-3-dns-query-types"><a class="header" href="#dns-types-3-dns-query-types">DNS Types: 3 DNS Query Types</a></h2>
 <p>There are three types of queries in the DNS system:</p>
@@ -188,7 +188,7 @@
 <li>Recursive Query</li>
 </ul>
 <blockquote>
-<p>In a recursive query, a DNS client provides a hostname, and the DNS Resolver &quot;must&quot; provide an answer—it responds with either a relevant resource record, or an error message if it can't be found. The resolver starts a recursive query process, starting from the DNS Root Server, until it finds the Authoritative Name Server (for more on Authoritative Name Servers see DNS Server Types below) that holds the IP address and other information for the requested hostname.</p>
+<p>In a recursive query, a DNS client provides a hostname, and the DNS Resolver "must" provide an answer—it responds with either a relevant resource record, or an error message if it can't be found. The resolver starts a recursive query process, starting from the DNS Root Server, until it finds the Authoritative Name Server (for more on Authoritative Name Servers see DNS Server Types below) that holds the IP address and other information for the requested hostname.</p>
 </blockquote>
 <ul>
 <li>Iterative Query</li>
@@ -208,13 +208,13 @@
 <li>DNS Resolver</li>
 </ul>
 <blockquote>
-<p>A DNS resolver (recursive resolver), is designed to receive DNS queries, which include a human-readable hostname such as &quot;www.example.com&quot;, and is responsible for tracking the IP address for that hostname</p>
+<p>A DNS resolver (recursive resolver), is designed to receive DNS queries, which include a human-readable hostname such as "www.example.com", and is responsible for tracking the IP address for that hostname</p>
 </blockquote>
 <ul>
 <li>DNS Root Server</li>
 </ul>
 <blockquote>
-<p>The root server is the first step in the journey from hostname to IP address. The DNS Root Server extracts the Top Level Domain (TLD) from the user's query — for example, www.example.com —... provides details for the .com TLD Name Server. In turn, that server will provide details for domains with the .com DNS zone, including &quot;example.com&quot;.</p>
+<p>The root server is the first step in the journey from hostname to IP address. The DNS Root Server extracts the Top Level Domain (TLD) from the user's query — for example, www.example.com —... provides details for the .com TLD Name Server. In turn, that server will provide details for domains with the .com DNS zone, including "example.com".</p>
 </blockquote>
 <blockquote>
 <p>There are 13 root servers worldwide, indicated by the letters A through M, operated by organizations like the Internet Systems Consortium, Verisign, ICANN, the University of Maryland, and the U.S. Army Research Lab.</p>
@@ -223,7 +223,7 @@
 <li>Authoritative DNS Server</li>
 </ul>
 <blockquote>
-<p>Higher level servers in the DNS hierarchy define which DNS server is the &quot;authoritative&quot; name server for a specific hostname, meaning that it holds the up-to-date information for that hostname.</p>
+<p>Higher level servers in the DNS hierarchy define which DNS server is the "authoritative" name server for a specific hostname, meaning that it holds the up-to-date information for that hostname.</p>
 </blockquote>
 <blockquote>
 <p>The Authoritative Name Server is the last stop in the name server query—it takes the hostname and returns the correct IP address to the DNS Resolver (or if it cannot find the domain, returns the message NXDOMAIN).</p>
@@ -235,7 +235,7 @@
 <li>IP Version 6 Address record (AAAA Record)—stores a hostname and its corresponding IPv6 address.</li>
 <li>Canonical Name record (CNAME Record)—can be used to alias a hostname to another hostname. When a DNS client requests a record that contains a CNAME, which points- to another hostname, the DNS resolution process is repeated with the new hostname.</li>
 <li>Mail exchanger record (MX Record)—specifies an SMTP email server for the domain, used to route outgoing emails to an email server.</li>
-<li>Name Server records (NS Record)—specifies that a DNS Zone, such as &quot;example.com&quot; is delegated to a specific Authoritative Name Server, and provides the address- of the name server.</li>
+<li>Name Server records (NS Record)—specifies that a DNS Zone, such as "example.com" is delegated to a specific Authoritative Name Server, and provides the address- of the name server.</li>
 <li>Reverse-lookup Pointer records (PTR Record)—allows a DNS resolver to provide an IP address and receive a hostname (reverse DNS lookup).</li>
 <li>Certificate record (CERT Record)—stores encryption certificates—PKIX, SPKI, PGP, and so on.</li>
 <li>Service Location (SRV Record)—a service location record, like MX but for other communication protocols.</li>
@@ -243,7 +243,7 @@
 <li>Start of Authority (SOA Record)—this record appears at the beginning of a DNS zone file, and indicates the Authoritative Name Server for the current DNS zone,- contact details for the domain administrator, domain serial number, and information on how frequently DNS information for this zone should be refreshed.</li>
 </ul>
 <h2 id="dns-can-do-much-more"><a class="header" href="#dns-can-do-much-more">DNS Can Do Much More</a></h2>
-<p>Now that's we've covered the major types of traditional DNS infrastructure, you should know that DNS can be more than just the &quot;plumbing&quot; of the Internet. Advanced DNS solutions can help do some amazing things, including:</p>
+<p>Now that's we've covered the major types of traditional DNS infrastructure, you should know that DNS can be more than just the "plumbing" of the Internet. Advanced DNS solutions can help do some amazing things, including:</p>
 <ul>
 <li>Global server load balancing (GSLB): fast routing of connections between globally distributed data centers</li>
 <li>Multi CDN: routing users to the CDN that will provide the best experience</li>
@@ -252,7 +252,7 @@
 <li>Internet traffic management: reducing network congestion and ensuring traffic flows to the appropriate resource in an optimal manner</li>
 </ul>
 <h2 id="dns-search-domains"><a class="header" href="#dns-search-domains">DNS search domains</a></h2>
-<p>A search domain is a domain used as part of a domain search list. The domain search list, as well as the local domain name, is used by a resolver to create a fully qualified domain name (FQDN) from a relative name. For this purpose, the local domain name functions as a single-item search list. </p>
+<p>A search domain is a domain used as part of a domain search list. The domain search list, as well as the local domain name, is used by a resolver to create a fully qualified domain name (FQDN) from a relative name. For this purpose, the local domain name functions as a single-item search list.</p>
 <p>DNS search domains are used to go from a machine name to a Fully Qualified Domain Name.</p>
 <p>DNS searches can only look at a Fully Qualified Domain Name, such as <em>mymachine.example.com</em>. But, it's a pain to type out <em>mymachine.example.com</em>, you want to be able to just type mymachine.</p>
 <p>Using Search Domains is the mechanism to do this. If you type a name that does not end with a period, it knows it needs to add the search domains for the lookup. So, lets say your Search Domains list was: <em>example.org, example.com</em>.</p>

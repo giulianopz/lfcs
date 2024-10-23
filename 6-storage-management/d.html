@@ -183,7 +183,7 @@
 <p>There are broadly two aproaches:</p>
 <ul>
 <li>per-user mounting (usually under /media)</li>
-<li>systemwide mounting (anywhere, often under /mnt) </li>
+<li>systemwide mounting (anywhere, often under /mnt)</li>
 </ul>
 <h3 id="1-per-user-mounting"><a class="header" href="#1-per-user-mounting">1. Per-user mounting</a></h3>
 <p>Per-user mounting does not require root access, it's just automating the desktop interface. Systemwide mounts (/etc/fstab) can allow access from before login, and are therefore much more suitable for access through a network, or by system services.</p>
@@ -254,7 +254,7 @@ UUID=df17fdb9-57a4-4302-856e-3cd656848355 none            swap    sw            
 <code>sudo mount -a</code></p>
 <p>Check if your filesystem was properly mounted:
 <code>mount | grep &lt;mount-point&gt;</code></p>
-<p>If you see no errors, the fstab entry is correct and you're safe to reboot. </p>
+<p>If you see no errors, the fstab entry is correct and you're safe to reboot.</p>
 <hr />
 <h3 id="mounting-iso-files"><a class="header" href="#mounting-iso-files">Mounting ISO Files</a></h3>
 <p>You can mount an ISO file using the loop device which is a special pseudo-device that makes a file accessible as a block device.</p>

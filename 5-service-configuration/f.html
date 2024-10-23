@@ -203,8 +203,8 @@
 <h3 id="dovecot-ssl-configuration"><a class="header" href="#dovecot-ssl-configuration">Dovecot SSL Configuration</a></h3>
 <p>Dovecot is configured to use SSL automatically by default, using the package ssl-cert which provides a self signed certificate.</p>
 <p>You can instead generate your own custom certificate for Dovecot using openssh, for example:</p>
-<pre><code>sudo openssl req -new -x509 -days 1000 -nodes -out &quot;/etc/dovecot/dovecot.pem&quot; \
-    -keyout &quot;/etc/dovecot/private/dovecot.pem&quot;
+<pre><code>sudo openssl req -new -x509 -days 1000 -nodes -out "/etc/dovecot/dovecot.pem" \
+    -keyout "/etc/dovecot/private/dovecot.pem"
 </code></pre>
 <p>See certificates-and-security for more details on creating custom certificates.</p>
 <p>Then edit /etc/dovecot/conf.d/10-ssl.conf and amend following lines to specify Dovecat use these custom certificates :</p>

@@ -185,7 +185,7 @@
 <ul>
 <li>one or more entire hard disks or partitions which are configured as physical volumes (<strong>PVs</strong>)</li>
 <li>a volume group (<strong>VG</strong>) is created using one or more physical volumes</li>
-<li>multiple logical volumes (<strong>LVs</strong>) which can then be created from a volume group. </li>
+<li>multiple logical volumes (<strong>LVs</strong>) which can then be created from a volume group.</li>
 </ul>
 <p>Each logical volume is somewhat equivalent to a traditional partition – with the advantage that it can be resized at will as said earlier.</p>
 <blockquote>
@@ -197,15 +197,15 @@
 <p>List the newly created PVs with: <code>sudo pvs</code></p>
 <p>Get detailed information about each PV with: <code>sudo pvdisplay /dev/sd[x]</code></p>
 <p>If you omit <code>/dev/sd[x]</code> as arg, you will get information about all the PVs.</p>
-<p>To create a volume group named &quot;vg00&quot; using /dev/sdb and /dev/sdc (we will save /dev/sdd for later to illustrate the possibility of adding other devices to expand storage capacity when needed): <code>sudo vgcreate vg00 /dev/sdb /dev/sdc</code></p>
+<p>To create a volume group named "vg00" using /dev/sdb and /dev/sdc (we will save /dev/sdd for later to illustrate the possibility of adding other devices to expand storage capacity when needed): <code>sudo vgcreate vg00 /dev/sdb /dev/sdc</code></p>
 <p>As it was the case with physical volumes, you can also view information about this volume group by issuing: <code>sudo vgdisplay vg00</code></p>
-<p>It is considered good practice to name each logical volume according to its intended use. For example, let's create two LVs named &quot;vol_projects&quot; (10 GB) and &quot;vol_backups&quot; (remaining space), which we can use later to store project documentation and system backups, respectively.</p>
+<p>It is considered good practice to name each logical volume according to its intended use. For example, let's create two LVs named "vol_projects" (10 GB) and "vol_backups" (remaining space), which we can use later to store project documentation and system backups, respectively.</p>
 <p>The <code>-n</code> option is used to indicate a name for the LV, whereas <code>-L</code> sets a fixed size and <code>-l</code> (lowercase L) is used to indicate a percentage of the remaining space in the container VG:</p>
 <pre><code>sudo lvcreate -n vol_projects -L 10G vg00
 sudo lvcreate -n vol_backups -l 100%FREE vg00
 </code></pre>
 <blockquote>
-<p>Warning: If you see a message like &quot;ext4 signature detected on at offset 1080. wipe it ?&quot; when manipulating partitions, the mentioned signature is basically a sign that there's something there, and it is not empty, so it means: &quot;There is already data here!...are you sure you want to go ahead?&quot;.</p>
+<p>Warning: If you see a message like "ext4 signature detected on at offset 1080. wipe it ?" when manipulating partitions, the mentioned signature is basically a sign that there's something there, and it is not empty, so it means: "There is already data here!...are you sure you want to go ahead?".</p>
 </blockquote>
 <blockquote>
 <p>Note: LVs will be symlinked in /dev/mapper and /dev/[VG-name].</p>
@@ -224,7 +224,7 @@ sudo mkfs.ext4 /dev/vg00/vol_backups
 sudo lvextend -l +100%FREE -r /dev/vg00/vol_backups
 </code></pre>
 <blockquote>
-<p>Note: If you don't use the (-r) switch, the filesytem must be resized apart, e.g for ext4 filesystems: <code>sudo resize2fs &lt;/dev/mapper/myvg-mylv&gt;</code> </p>
+<p>Note: If you don't use the (-r) switch, the filesytem must be resized apart, e.g for ext4 filesystems: <code>sudo resize2fs &lt;/dev/mapper/myvg-mylv&gt;</code></p>
 </blockquote>
 <p>It is important to include the minus (<code>-</code>) or plus (<code>+</code>) signs while resizing a logical volume. Otherwise, you're setting a fixed size for the LV instead of resizing it.</p>
 <p>It can happen that you arrive at a point when resizing logical volumes cannot solve your storage needs anymore and you need to buy an extra storage device. Keeping it simple, you will need another disk. We are going to simulate this situation by adding the remaining PV from our initial setup (/dev/sdd).</p>

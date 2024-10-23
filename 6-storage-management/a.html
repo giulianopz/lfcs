@@ -187,7 +187,7 @@
 <p>Manipulate interactively a partition table according to its format with:</p>
 <ul>
 <li><code>fdisk</code> for MBR</li>
-<li><code>gdisk</code> for GPT </li>
+<li><code>gdisk</code> for GPT</li>
 </ul>
 <blockquote>
 <p>Note: gdisk, cgdisk and sgdisk all have the same functionality but provide different user interfaces. gdisk is text-mode interactive, sgdisk is command-line, and cgdisk has a curses-based interface.</p>
@@ -199,10 +199,10 @@
 &gt;Changes will remain in memory only, until you decide to write them.
 &gt;Be careful before using the write command.
 </code></pre>
-<p>The fdisk utility awaits our commands. Ccreate a new partition, by typing &quot;n&quot;.</p>
+<p>The fdisk utility awaits our commands. Ccreate a new partition, by typing "n".</p>
 <pre><code>&gt;Command (m for help): n
 </code></pre>
-<p>you are to create a primary partition, so the answer to the next question is &quot;p&quot;.</p>
+<p>you are to create a primary partition, so the answer to the next question is "p".</p>
 <pre><code>&gt;Partition type
 &gt;   p   primary (0 primary, 0 extended, 4 free)
 &gt;   e   extended (container for logical partitions)
@@ -238,9 +238,9 @@
 &gt;Device     Boot Start     End Sectors Size Id Type
 &gt;/dev/sdb1        2048 4194303 4192256   2G 83 Linux
 </code></pre>
-<p>And in the output you can see that our disk now contains a new /dev/sdb1 partition that is ready to be used. </p>
+<p>And in the output you can see that our disk now contains a new /dev/sdb1 partition that is ready to be used.</p>
 <hr />
-<p>Deleting partition is basically the same process backwards. The utility is built in a logical way: you specify the device you would like to work on, and when you select partition deletion with the &quot;d&quot; command, it will delete our sole partition without any question, because there is only one on the disk:</p>
+<p>Deleting partition is basically the same process backwards. The utility is built in a logical way: you specify the device you would like to work on, and when you select partition deletion with the "d" command, it will delete our sole partition without any question, because there is only one on the disk:</p>
 <pre><code>fdisk /dev/sdb
 
 &gt;Welcome to fdisk (util-linux 2.32.1).
@@ -306,7 +306,7 @@ fdisk -l /dev/sdb
 &gt;OK; writing new GUID partition table (GPT) to /dev/sdb.
 &gt;The operation has completed successfully.
 </code></pre>
-<p>From the point of commands you did the same, initiated creating a new partition with &quot;n&quot;, accepted the defaults that cover the whole disk with the new partition, then written the changes to disk. Two new warnings appear, the first is there only because you partitioned the same disk with fdisk earlier, which was detected by gdisk. The last one is an additional &quot;are you sure?&quot; type of question, before you are allowed to finally overwrite that poor disk.</p>
+<p>From the point of commands you did the same, initiated creating a new partition with "n", accepted the defaults that cover the whole disk with the new partition, then written the changes to disk. Two new warnings appear, the first is there only because you partitioned the same disk with fdisk earlier, which was detected by gdisk. The last one is an additional "are you sure?" type of question, before you are allowed to finally overwrite that poor disk.</p>
 <blockquote>
 <p>Note: Listing GPT partitions requires the same switch to gdisk: gdisk -l &lt;/dev/sdb&gt;</p>
 </blockquote>

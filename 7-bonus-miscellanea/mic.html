@@ -188,7 +188,7 @@ card 0: PCH [HDA Intel PCH], device 0: ALC255 Analog [ALC255 Analog]
   Subdevice #0: subdevice #0
 </code></pre>
 <p>Select one of the audio-input devices from the list and use it to record a 10-second audio clip to see if it's working:</p>
-<pre><code>:~# arecord -f cd -d 10 --device=&quot;hw:0,0&quot; /tmp/test-mic.wav
+<pre><code>:~# arecord -f cd -d 10 --device="hw:0,0" /tmp/test-mic.wav
 </code></pre>
 <p><code>hw:0,0</code> is used to specify which microphone device to use: the first digit specifies the <strong>card</strong>, while the second digit specifies the <strong>device</strong>.</p>
 <p>Play what you have just recorded:</p>

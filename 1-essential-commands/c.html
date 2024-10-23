@@ -189,7 +189,7 @@
 <p>Or: <code>sudo fdisk -l /dev/sda1</code></p>
 <p>File system fatures:</p>
 <ul>
-<li><strong>ext</strong>, &quot;Extended Filesystem&quot;, old, deprecated</li>
+<li><strong>ext</strong>, "Extended Filesystem", old, deprecated</li>
 <li><strong>ext2</strong>, no journaling, max file size 2TB, lower writes to disk = good for USB sticks etc</li>
 <li><strong>ext3</strong>, journaling (journal, ordered, writeback), max file size 2TB; journaling, i.e. file changes and metadata are written to a journal before being committed; if a system crashes during an operation, the journal can be used to bring back the system files quicker with lower likeliness of corrupted files</li>
 <li><strong>ext4</strong>, from 2008, supports up to 16TB file size, can turn off journaling optionally</li>

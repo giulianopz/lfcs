@@ -206,15 +206,15 @@
 <p><strong>application logs</strong>: non-system applications tend to write to /var/log as well.</p>
 </li>
 </ul>
-<p>These sources can interact with each other: journald can forward all its messages to syslog. Applications can write to syslog or the journal. </p>
-<p>Typically, you'll find Linux server logs in the /var/log directory and sub-directory. This is where syslog daemons are normally configured to write. It's also where most applications (e.g Apache httpd) write by default. For systemd journal, the default location is /var/log/journal, but you can't view the files directly because they're binary. </p>
+<p>These sources can interact with each other: journald can forward all its messages to syslog. Applications can write to syslog or the journal.</p>
+<p>Typically, you'll find Linux server logs in the /var/log directory and sub-directory. This is where syslog daemons are normally configured to write. It's also where most applications (e.g Apache httpd) write by default. For systemd journal, the default location is /var/log/journal, but you can't view the files directly because they're binary.</p>
 <p>If your Linux distro uses systemd (and most modern distros do), then all your system logs are in the journal. To inspect the journal for logs related to a given unit, type: <code>journalctl -eu &lt;unit-name&gt;</code></p>
-<p>By default, journalctl pages data through less, but if you want to filter through grep you'll need to disable paging: <code>journalctl --no-pager | grep &quot;ufw&quot;</code></p>
-<p>If your distribution writes to local files via syslog, you can view them with standard text processing tools: <code>grep &quot;error&quot; /var/log/syslog | tail</code>. /var/log/syslog is the “catch-all” log file of rsyslod and contains much everything /var/log/messages used to contain in previous versions of Ubuntu, as this line from /etc/rsyslog.conf suggests: <code>*.* /var/log/syslog</code>. Each entry in this configuration file consists of two fields, the selector and the action. Each log message is associated with an application subsystem (called “facility” in the documentation) and each message is also associated with a priority level.</p>
+<p>By default, journalctl pages data through less, but if you want to filter through grep you'll need to disable paging: <code>journalctl --no-pager | grep "ufw"</code></p>
+<p>If your distribution writes to local files via syslog, you can view them with standard text processing tools: <code>grep "error" /var/log/syslog | tail</code>. /var/log/syslog is the “catch-all” log file of rsyslod and contains much everything /var/log/messages used to contain in previous versions of Ubuntu, as this line from /etc/rsyslog.conf suggests: <code>*.* /var/log/syslog</code>. Each entry in this configuration file consists of two fields, the selector and the action. Each log message is associated with an application subsystem (called “facility” in the documentation) and each message is also associated with a priority level.</p>
 <p>Some distributions have both: journald is set up to forward to syslog. This is done by setting <code>ForwardToSyslog=Yes</code> in /etc/systemd/journald.conf.</p>
 <p>Kernel logs go by default to /var/log/dmesg and /var/log/kern.log.</p>
 <p>To wait for new messages from the kernel ring buffer: <code>dmesg -w</code></p>
-<p>A neat utility to place messages into the System Log arbitrarily is the <code>logger</code> tool: <code>logger &quot;Hello World&quot;</code></p>
+<p>A neat utility to place messages into the System Log arbitrarily is the <code>logger</code> tool: <code>logger "Hello World"</code></p>
 <p>To send instead messages to the systemd journal: <code>echo 'hello' | systemd-cat [-t &lt;someapp&gt;] [-p &lt;logging-level&gt;]</code></p>
 <p>Show only the most recent journal entries, and continuously print new entries as they are appended to the journal: <code>journalctl -f</code></p>
 <p>To learn more about journactl options to view and manipulate systemd logs, look <a href="https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs">here</a>.</p>

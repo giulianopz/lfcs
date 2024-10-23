@@ -181,13 +181,13 @@
                     <main>
                         <h2 id="boot-reboot-and-shut-down-a-system-safely"><a class="header" href="#boot-reboot-and-shut-down-a-system-safely">Boot, reboot, and shut down a system safely</a></h2>
 <p>The <code>poweroff</code>, <code>shutdown (-h) now</code>, and <code>halt -p</code> commands all do the same thing as halt alone, while additionally sending an ACPI command to signal the power supply unit to disconnect the main power.</p>
-<p>Generally, one uses the <code>shutdown command</code> for system administration of multiuser shell servers, becaus it allows to specify a time delay and a warning message before shutdown or reboot happens: <code>sudo shutdown -r +30 &quot;Planned software upgrades&quot;</code></p>
+<p>Generally, one uses the <code>shutdown command</code> for system administration of multiuser shell servers, becaus it allows to specify a time delay and a warning message before shutdown or reboot happens: <code>sudo shutdown -r +30 "Planned software upgrades"</code></p>
 <p>To reboot the system immediately: <code>sudo reboot</code></p>
 <blockquote>
-<p>Note: The <code>reboot</code> command, on its own, is basically a shortcut to <code>shutdown -r now</code>. </p>
+<p>Note: The <code>reboot</code> command, on its own, is basically a shortcut to <code>shutdown -r now</code>.</p>
 </blockquote>
 <p>On most modern Linux distributions, <strong>systemd</strong> is the init system, so both rebooting and powering down can be performed through the systemd user interface, <strong>systemctl</strong>. The systemctl command accepts, among many other options, <strong>halt</strong> (halts disk activity but does not cut power) <strong>reboot</strong> (halts disk activity and sends a reset signal to the motherboard) and <strong>poweroff</strong> (halts disk acitivity, and then cut power). These commands are mostly equivalent to starting the target file of the same name. For instance, to trigger a reboot: <code>sudo systemctl start reboot.target</code>. Or, simply: <code>sudo systemctl reboot</code></p>
-<p>The <code>telinit</code> command is the front-end to your init system. </p>
+<p>The <code>telinit</code> command is the front-end to your init system.</p>
 <blockquote>
 <p>Note: Since the concept of SysV runlevels is obsolete the runlevel requests will be transparently translated into systemd unit activation requests.</p>
 </blockquote>
@@ -215,7 +215,7 @@
 <p>The Letters used spell <strong>REISUB</strong> - use the mnemonic <em>Reboot Even If System Utterly Broken</em>.</p>
 <p>The final option is, of course, the power button on your computer's physical exterior. Modern PCs have ACPI buttons, which just send the shutdown request to the kernel. If the ACPI daemon is listening and correctly configured, it can signal init and perform a clean shutdown.</p>
 <p>If ACPI doesn't work, you will need to cut off electrical power. This is done through a <strong>hard switch</strong> (generally labeled <strong>reset</strong>), possibly using the same button as before but holding it pressed for 5 or so seconds. Taking out the battery (on laptops) and physically disconnecting all power cables is, of course, the only method guaranteed to work. (Make sure no other method listed above works. Even as a last resort, unplugging your computer while it is running is still not recommended.)</p>
-<p>Resetting without shutting down can cause problems with the file system. To try and fix this problem, fsck will be run when you next boot up, and journaling filesystems will attempt to complete or rollback files which were changing. </p>
+<p>Resetting without shutting down can cause problems with the file system. To try and fix this problem, fsck will be run when you next boot up, and journaling filesystems will attempt to complete or rollback files which were changing.</p>
 <hr />
 <p>Keyboard schortcuts may vary depending on the desktop environment.
 On KDE, you can use these schortcuts to leave you computer:</p>

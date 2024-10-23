@@ -222,24 +222,24 @@ gzip myfiles.tar
 <p>Note: A differential backup backs up only the files that changed since the last full back. Incremental backups also back up only the changed data, but they only back up the data that has changed since the last backup — be it a full or incremental backup.</p>
 </blockquote>
 <blockquote>
-<p>Note: Each instance of <code>--verbose</code> on the command line increases the verbosity level by one, so if you need more details on the output, specify it twice. </p>
+<p>Note: Each instance of <code>--verbose</code> on the command line increases the verbosity level by one, so if you need more details on the output, specify it twice.</p>
 </blockquote>
 <p>To create incremental backups:</p>
 <pre><code>mkdir data
-echo &quot;File1 Data&quot; &gt; data/file1
-echo &quot;File2 Data&quot; &gt; data/file2
+echo "File1 Data" &gt; data/file1
+echo "File2 Data" &gt; data/file2
 tar --create --listed-incremental=data.snar --verbose --verbose --file=data.tar data
 &gt;tar: data: Directory is new
 &gt;drwxrwxr-x ubuntu/ubuntu     0 2018-04-03 14:00 data/
 &gt;-rw-rw-r-- ubuntu/ubuntu     5 2018-04-03 14:00 data/file1
 &gt;-rw-rw-r-- ubuntu/ubuntu     5 2018-04-03 14:00 data/file2
 
-echo &quot;File3 Data&quot; &gt; data/file3
+echo "File3 Data" &gt; data/file3
 tar --create --listed-incremental=data.snar --verbose --verbose --file=data1.tar data
 &gt;drwxrwxr-x ubuntu/ubuntu     0 2018-04-03 14:41 data/
 &gt;-rw-rw-r-- ubuntu/ubuntu    11 2018-04-03 14:41 data/file3
 
-echo &quot;more data&quot; &gt;&gt; data/file2
+echo "more data" &gt;&gt; data/file2
 tar --create --listed-incremental=data.snar --verbose --verbose --file=data2.tar data
 &gt;drwxrwxr-x ubuntu/ubuntu     0 2018-04-03 14:41 data/
 &gt;-rw-rw-r-- ubuntu/ubuntu    15 2018-04-03 14:47 data/file2
@@ -281,10 +281,10 @@ tar --extract --verbose --verbose --listed-incremental=/dev/null --file=data3.ta
 # the dir is now up-to-date to the last backup
 </code></pre>
 <blockquote>
-<p>Note: Each backup uses the same meta file (.sar) but its own archive. </p>
+<p>Note: Each backup uses the same meta file (.sar) but its own archive.</p>
 </blockquote>
 <hr />
-<p><code>rsync</code> is a fast and versatile command-line utility for synchronizing files and directories between two locations over a remote shell, or from/to a remote rsync daemon. It provides fast incremental file transfer by transferring only the differences between the source and the destination. It finds files that need to be transferred using a &quot;quick check&quot; algorithm (by default) that looks for files that have changed in size or in last-modified time.</p>
+<p><code>rsync</code> is a fast and versatile command-line utility for synchronizing files and directories between two locations over a remote shell, or from/to a remote rsync daemon. It provides fast incremental file transfer by transferring only the differences between the source and the destination. It finds files that need to be transferred using a "quick check" algorithm (by default) that looks for files that have changed in size or in last-modified time.</p>
 <p><code>sync</code> can be used for mirroring data, incremental backups, copying files between systems, and as a replacement for <code>scp</code>, <code>sftp</code>, and <code>cp</code> commands.</p>
 <p>rsync provides a number of options that control how the command behaves. The most widely used options are:</p>
 <ul>
@@ -296,7 +296,7 @@ tar --extract --verbose --verbose --listed-incremental=/dev/null --file=data3.ta
 <p>Tip: Use this option only if the connection to the remote machine is slow.</p>
 </blockquote>
 <ul>
-<li><code>-P</code>, equivalent to <code>--partial --progress</code>, when this option is used, rsync shows a progress bar during the transfer and keeps the partially transferred files. </li>
+<li><code>-P</code>, equivalent to <code>--partial --progress</code>, when this option is used, rsync shows a progress bar during the transfer and keeps the partially transferred files.</li>
 </ul>
 <blockquote>
 <p>Tip: Useful when transferring large files over slow or unstable network connections.</p>
@@ -322,7 +322,7 @@ tar --extract --verbose --verbose --listed-incremental=/dev/null --file=data3.ta
 </blockquote>
 <h3 id="using-rsync-to-sync-data-fromto-a-remote-machine"><a class="header" href="#using-rsync-to-sync-data-fromto-a-remote-machine">Using rsync to sync data from/to a remote machine</a></h3>
 <p>When using rsync to transfer data remotely, it must be installed on both the source and the destination machine. The new versions of rsync are configured to use SSH as default remote shell.</p>
-<p>In the following example, we are transferring a directory from a local to a remote machine: 
+<p>In the following example, we are transferring a directory from a local to a remote machine:
 <code>rsync -a /opt/media/ remote_user@remote_host_or_ip:/opt/media/</code></p>
 <blockquote>
 <p>Note: If we run the command again, we will get a shorter output, because no changes have been made. This illustrates rsync's ability to use modification times to determine if changes have been made.</p>
@@ -330,7 +330,7 @@ tar --extract --verbose --verbose --listed-incremental=/dev/null --file=data3.ta
 <p>To transfer data from a remote to a local machine, use the remote location as a source:
 <code>rsync -a remote_user@remote_host_or_ip:/opt/media/ /opt/media/</code></p>
 <p>If SSH on the remote host is listening on a port other than the default 22, specify the port using the <code>-e</code> option:
-<code>rsync -a -e &quot;ssh -p 2322&quot; /opt/media/ remote_user@remote_host_or_ip:/opt/media/</code></p>
+<code>rsync -a -e "ssh -p 2322" /opt/media/ remote_user@remote_host_or_ip:/opt/media/</code></p>
 <p>When transferring large amounts of data it is recommended to run the rsync command inside a screen session or to use the <code>-P</code> option:
 <code>rsync -a -P remote_user@remote_host_or_ip:/opt/media/ /opt/media/</code></p>
 <h3 id="exclude-files-and-directories"><a class="header" href="#exclude-files-and-directories">Exclude Files and Directories</a></h3>

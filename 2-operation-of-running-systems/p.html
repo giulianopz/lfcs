@@ -223,7 +223,7 @@ ps auZ
 <pre><code>sepolicy -a                                                         # see all policies with descriptions
 getsebool -a                                                        # see state of all policies
 </code></pre>
-<p>Change file SELinux security context: </p>
+<p>Change file SELinux security context:</p>
 <pre><code>chcon -t etc_t somefile                                             # set type TYPE in the target security context 
 chcon --reference RFILE file                                        # use RFILE's security context rather than specifying a CONTEXT value  
 </code></pre>
@@ -238,7 +238,7 @@ chcon --reference RFILE file                                        # use RFILE'
 semanage port -m -t ssh_port_t -p tcp 9999                          # -m for modiy, -a for add, -d for delete
 </code></pre>
 <p>If you need to set up a Apache virtual host using a directory other than /var/www/html as DocumentRoot. Apache will refuse to serve the content because the index.html has been labeled with the <code>default_t</code> SELinux type, which Apache can't access. To add apache read-only access to dir:</p>
-<pre><code>semanage fcontext -a -t httpd_sys_content_t &quot;/custom_dir(/.*)?&quot;     #  -a add, -t type
+<pre><code>semanage fcontext -a -t httpd_sys_content_t "/custom_dir(/.*)?"     #  -a add, -t type
 restorecon -R -v /custom_dir                                        # remember to run restorecon after you set the file context
 </code></pre>
 <h3 id="2-apparmor"><a class="header" href="#2-apparmor">2. AppArmor</a></h3>
@@ -246,7 +246,7 @@ restorecon -R -v /custom_dir                                        # remember t
 <p>The optional apparmor-utils package contains command line utilities that you can use to change the AppArmor execution mode, find the status of a profile, create new profiles, etc: <code>sudo apt-get install apparmor-utils</code></p>
 <p>Programs can run in:</p>
 <ul>
-<li>encforce mode (default) </li>
+<li>encforce mode (default)</li>
 <li>complain mode.</li>
 </ul>
 <p>The /etc/apparmor.d directory is where the AppArmor profiles are located. It can be used to manipulate the mode of all profiles. The files are named after the full path to the executable they profile replacing the “/” with “.”. For example /etc/apparmor.d/bin.ping is the AppArmor profile for the /bin/ping command. There are two main type of rules used in profiles:</p>
@@ -254,7 +254,7 @@ restorecon -R -v /custom_dir                                        # remember t
 <li>path entries: detail which files an application can access in the file system</li>
 <li>capability entries: determine what privileges a confined process is allowed to use.</li>
 </ul>
-<p>It comes with a list of utilities whose name always starts with &quot;aa-&quot;.</p>
+<p>It comes with a list of utilities whose name always starts with "aa-".</p>
 <p>Find out if AppArmor is enabled (returns <code>Y</code> if true):</p>
 <pre><code>cat /sys/module/apparmor/parameters/enabled
 </code></pre>
@@ -289,7 +289,7 @@ cat /etc/apparmor.d/profile.name | sudo apparmor_parser -a
 </code></pre>
 <p>The AppArmor Linux Security Modules (LSM) must be enabled from the linux kernel command line in the bootloader:</p>
 <pre><code>sudo mkdir -p /etc/default/grub.d
-echo 'GRUB_CMDLINE_LINUX_DEFAULT=&quot;$GRUB_CMDLINE_LINUX_DEFAULT apparmor=1 security=apparmor&quot;' | sudo tee /etc/default/grub.d/apparmor.cfg
+echo 'GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT apparmor=1 security=apparmor"' | sudo tee /etc/default/grub.d/apparmor.cfg
 sudo update-grub
 sudo reboot
 </code></pre>
@@ -297,7 +297,7 @@ sudo reboot
 <code>sudo systemctl disable --now apparmor</code></p>
 <p>To disable AppArmor at the kernel level:</p>
 <pre><code>sudo mkdir -p /etc/default/grub.d
-echo 'GRUB_CMDLINE_LINUX_DEFAULT=&quot;$GRUB_CMDLINE_LINUX_DEFAULT apparmor=0&quot;' | sudo tee /etc/default/grub.d/apparmor.cfg
+echo 'GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT apparmor=0"' | sudo tee /etc/default/grub.d/apparmor.cfg
 sudo update-grub
 sudo reboot
 </code></pre>

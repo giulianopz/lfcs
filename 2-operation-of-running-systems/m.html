@@ -216,8 +216,8 @@ sysctl -w net.ipv4.ip_forward=0
 </ul>
 <p>A better and easier way to set individual runtime parameters is using .conf files inside /etc/sysctl.d, grouping them by categories.</p>
 <p>For example, instead of setting net.ipv4.ip_forward=0 and net.ipv4.icmp_echo_ignore_all=1 in /etc/sysctl.conf, we can create a new file named net.conf inside /etc/sysctl.d:</p>
-<pre><code>echo &quot;net.ipv4.ip_forward=0&quot; &gt; /etc/sysctl.d/net.conf
-echo &quot;net.ipv4.icmp_echo_ignore_all=1&quot; &gt;&gt; /etc/sysctl.d/net.conf
+<pre><code>echo "net.ipv4.ip_forward=0" &gt; /etc/sysctl.d/net.conf
+echo "net.ipv4.icmp_echo_ignore_all=1" &gt;&gt; /etc/sysctl.d/net.conf
 </code></pre>
 <p>Again, type <code>sysctl -p </code> toreload permanent configuration. Alternatively, reboot the system.</p>
 

@@ -180,9 +180,9 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="manage-system-wide-environment-profiles"><a class="header" href="#manage-system-wide-environment-profiles">Manage system-wide environment profiles</a></h2>
-<p>In order to set a value to an existing <strong>environment variable</strong>, we use an assignment expression. For instance, to set the value of the &quot;LANG&quot; variable to &quot;he_IL.UTF-8&quot;, we use the following command: <code>LANG=he_IL.UTF-8</code></p>
+<p>In order to set a value to an existing <strong>environment variable</strong>, we use an assignment expression. For instance, to set the value of the "LANG" variable to "he_IL.UTF-8", we use the following command: <code>LANG=he_IL.UTF-8</code></p>
 <p>If we use an assignment expression for a variable that doesn't exist, the shell will create a <strong>shell variable</strong>, which is similar to an environment variable but does not influence the behaviour of other applications.</p>
-<p>A shell variable can be exported to become an environment variable with the export command. To create the &quot;EDITOR&quot; environment variable and assign the value &quot;nano&quot; to it, you can do:</p>
+<p>A shell variable can be exported to become an environment variable with the export command. To create the "EDITOR" environment variable and assign the value "nano" to it, you can do:</p>
 <pre><code>EDITOR=nano
 export EDITOR
 </code></pre>
@@ -191,26 +191,26 @@ export EDITOR
 </blockquote>
 <p>The bash shell provides a shortcut for creating environment variables. The previous example could be performed with the following single command:
 <code>export EDITOR=nano</code></p>
-<p>The printenv command prints the names and values of all currently defined environment variables: <code>printenv</code> </p>
+<p>The printenv command prints the names and values of all currently defined environment variables: <code>printenv</code></p>
 <blockquote>
 <p>Note: This command is equivalent to 'export -p' and 'env', while 'set' prints all shell variables and functions.</p>
 </blockquote>
 <p>To examine the value of a particular variable, we can specify its name to the printenv command: <code>printenv TERM</code></p>
 <p>Another way to achieve that is to use the dollar sign ($), as used in the following example: <code>echo $TERM</code></p>
-<p>The dollar sign can actually be used to combine the values of environment variables in many shell commands. For example, the following command can be used to list the contents of the &quot;Desktop&quot; directory within the current user's home directory: <code>ls $HOME/Desktop</code></p>
+<p>The dollar sign can actually be used to combine the values of environment variables in many shell commands. For example, the following command can be used to list the contents of the "Desktop" directory within the current user's home directory: <code>ls $HOME/Desktop</code></p>
 <p>For the sake of completeness: If you want to print the names and values also of the non-exported shell variables, i.e. not only the environment variables, this is one way: <code>( set -o posix ; set ) | less</code></p>
 <p>The <code>source</code> command reads and executes commands from the file specified as its argument in the current shell environment. It is useful to load functions, variables, and configuration files into shell scripts.</p>
 <h3 id="session-wide-environment-variables"><a class="header" href="#session-wide-environment-variables">Session-wide environment variables</a></h3>
 <p>A suitable file for environment variable settings that should affect just a particular user (rather than the system as a whole) is ~/.profile.</p>
-<p>Shell config files such as <code>~/.bashrc</code>, <code>~/.bash_profile</code>, and <code>~/.bash_login</code> are often suggested for setting environment variables. </p>
+<p>Shell config files such as <code>~/.bashrc</code>, <code>~/.bash_profile</code>, and <code>~/.bash_login</code> are often suggested for setting environment variables.</p>
 <blockquote>
-<p>Warning: While this may work on Bash shells for programs started from the shell, variables set in those files are not available by default to programs started from the graphical environment in a desktop session. </p>
+<p>Warning: While this may work on Bash shells for programs started from the shell, variables set in those files are not available by default to programs started from the graphical environment in a desktop session.</p>
 </blockquote>
 <h3 id="system-wide-environment-variables"><a class="header" href="#system-wide-environment-variables">System-wide environment variables</a></h3>
-<p>A suitable file for environment variable settings that affect the system as a whole (rather than just a particular user) is <code>/etc/environment</code>. An alternative is to create a file for the purpose in the <code>/etc/profile.d</code> directory. </p>
+<p>A suitable file for environment variable settings that affect the system as a whole (rather than just a particular user) is <code>/etc/environment</code>. An alternative is to create a file for the purpose in the <code>/etc/profile.d</code> directory.</p>
 <p>The <code>/etc/environment</code> file is specifically meant for system-wide environment variable settings. It is not a script file, but rather consists of assignment expressions, one per line: <code>FOO=bar</code></p>
 <blockquote>
-<p>Warning: Variable expansion does not work in /etc/environment. </p>
+<p>Warning: Variable expansion does not work in /etc/environment.</p>
 </blockquote>
 <p>iles with the .sh extension in the <code>/etc/profile.d</code> directory get executed whenever a bash login shell is entered (e.g. when logging in from the console or over ssh), as well as by the DisplayManager when the desktop session loads.</p>
 <p>You can for instance create the file /etc/profile.d/myenvvars.sh and set variables like this:</p>
@@ -218,10 +218,10 @@ export EDITOR
 export PATH=$PATH:$JAVA_HOME/bin
 </code></pre>
 <p>While <code>/etc/profile</code> is often suggested for setting environment variables system-wide, it is a configuration file of the base-files package, so it's not appropriate to edit that file directly. Use a file in /etc/profile.d instead.</p>
-<p><code>/etc/default/locale</code> is specifically meant for system-wide locale environment variable settings. It's written to by the installer and when you use Language Support to set the language or regional formats system-wide. On a desktop system there is normally no reason to edit this file manually. </p>
+<p><code>/etc/default/locale</code> is specifically meant for system-wide locale environment variable settings. It's written to by the installer and when you use Language Support to set the language or regional formats system-wide. On a desktop system there is normally no reason to edit this file manually.</p>
 <p>The <code>/etc/security/pam_env.conf</code> file specifies the environment variables to be set, unset or modified by pam_env(8). When someone logs in, this file is read and the environment variables are set according.</p>
 <blockquote>
-<p>Note: Any variables added to these locations will not be reflected when invoking them with a sudo command, as sudo has a default policy of resetting the Environment and setting a secure path (this behavior is defined in /etc/sudoers). As a workaround, you can use &quot;sudo su&quot; that will provide a shell with root privileges but retaining any modified PATH variables. Alternatively you can setup sudo not to reset certain environment variables by adding some explicit environment settings to keep in /etc/sudoers: Defaults env_keep += &quot;http_proxy SOMEOTHERVARIABLES ANOTHERVARIABLE ETC&quot;</p>
+<p>Note: Any variables added to these locations will not be reflected when invoking them with a sudo command, as sudo has a default policy of resetting the Environment and setting a secure path (this behavior is defined in /etc/sudoers). As a workaround, you can use "sudo su" that will provide a shell with root privileges but retaining any modified PATH variables. Alternatively you can setup sudo not to reset certain environment variables by adding some explicit environment settings to keep in /etc/sudoers: Defaults env_keep += "http_proxy SOMEOTHERVARIABLES ANOTHERVARIABLE ETC"</p>
 </blockquote>
 
                     </main>

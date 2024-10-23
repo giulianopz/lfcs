@@ -207,13 +207,13 @@ EOF
 <p>This operator instructs bash to read the input from stdin until a line containing only 'EOF' is found. At this point bash passes the all the input read so far to the stdin of the command.</p>
 <p>Redirect a single line of text to the stdin of a command: <code>grep ciao &lt;&lt;&lt; $'hello\nhalo\nciao'</code></p>
 <blockquote>
-<p>Note: <code>$'[text]'</code> allows to replace <code>\n</code> with a newline before passing the whole string to the command, <code>$&quot;[text]&quot;</code> won't do it.</p>
+<p>Note: <code>$'[text]'</code> allows to replace <code>\n</code> with a newline before passing the whole string to the command, <code>$"[text]"</code> won't do it.</p>
 </blockquote>
 <blockquote>
-<p>Note: This is equivalent to pipe the result of a command to the another one: <code>echo &quot;some text here&quot; | grep &quot;a pattern&quot;</code></p>
+<p>Note: This is equivalent to pipe the result of a command to the another one: <code>echo "some text here" | grep "a pattern"</code></p>
 </blockquote>
 <blockquote>
-<p>Note: It's also possible to pass text instead of a file by means of 'process substitution': <code>find . | grep -f &lt;(echo &quot;somefile&quot;)</code></p>
+<p>Note: It's also possible to pass text instead of a file by means of 'process substitution': <code>find . | grep -f &lt;(echo "somefile")</code></p>
 </blockquote>
 <p>Send stdout and stderr of one process to stdin of another process: <code>command1 |&amp; command2</code></p>
 <p>This works on bash versions starting 4.0. As the new features of bash 4.0 aren't widely used, the old, and more portable way to do the same is:

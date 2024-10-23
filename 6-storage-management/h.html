@@ -181,7 +181,7 @@
                     <main>
                         <h2 id="create-manage-and-diagnose-advanced-file-system-permissions"><a class="header" href="#create-manage-and-diagnose-advanced-file-system-permissions">Create, manage and diagnose advanced file system permissions</a></h2>
 <p>POSIX <strong>Access Control Lists</strong> (ACLs) are more fine-grained access rights for files and directories. An ACL consists of entries specifying access permissions on an associated object. ACLs can be configured per user, per group or via the effective rights mask.</p>
-<p>These permissions apply to an individual user or a group, and use the same as <strong>rwx</strong> found in regular permissions. </p>
+<p>These permissions apply to an individual user or a group, and use the same as <strong>rwx</strong> found in regular permissions.</p>
 <p>Before beginning to work with ACLs the file system must be mounted with ACLs turned on. This can be done in /etc/fstab for the changes to be permanent.</p>
 <ol start="0">
 <li>
@@ -192,14 +192,14 @@
 <pre><code>UUID=07aebd28-24e3-cf19-e37d-1af9a23a45d4    /home    ext4   defaults,acl   0   2
 </code></pre>
 <p>There is a possibility that the acl option is already active as default mount option on the filesystem. Btrfs does and Ext2/3/4 filesystems do too. Use the following command to check ext* formatted partitions for the option:</p>
-<pre><code>tune2fs -l /dev/sda1 | grep &quot;Default mount options:&quot;
+<pre><code>tune2fs -l /dev/sda1 | grep "Default mount options:"
 &gt;Default mount options:    user_xattr acl
 </code></pre>
 <p>You can set the default mount options of a filesystem using the tune2fs -o option partition command, for example:
 <code>tune2fs -o acl /dev/sda1</code></p>
-<p>Using the default mount options instead of an entry in /etc/fstab is very useful for external drives, such partition will be mounted with acl option also on other Linux machines. There is no need to edit /etc/fstab on every machine. </p>
+<p>Using the default mount options instead of an entry in /etc/fstab is very useful for external drives, such partition will be mounted with acl option also on other Linux machines. There is no need to edit /etc/fstab on every machine.</p>
 <blockquote>
-<p>Note: &quot;acl&quot; is specified as default mount option when creating an ext2/3/4 filesystem. This is configured in /etc/mke2fs.conf.</p>
+<p>Note: "acl" is specified as default mount option when creating an ext2/3/4 filesystem. This is configured in /etc/mke2fs.conf.</p>
 </blockquote>
 </li>
 <li>
@@ -212,26 +212,26 @@
 <hr />
 <p>ACL entries consist of a user (u), group (g), other (o) and an effective rights mask (m). An effective rights mask defines the most restrictive level of permissions. <code>setfacl</code> sets the permissions for a given file or directory. <code>getfacl</code> shows the permissions for a given file or directory.</p>
 <p>Defaults for a given object can be defined.</p>
-<p>ACLs can be applied to users or groups but it is easier to manage groups. Groups scale better than continuously adding or subtracting users. </p>
+<p>ACLs can be applied to users or groups but it is easier to manage groups. Groups scale better than continuously adding or subtracting users.</p>
 <p>You will notice that there is an ACL for a given file because it will exhibit a + (plus sign) after its Unix permissions in the output of <code>ls -l</code>:</p>
 <pre><code>ls -l /dev/audio
 &gt;crw-rw----+ 1 root audio 14, 4 nov.   9 12:49 /dev/audio
 </code></pre>
 <p>To list the ACLs for a given file or directory: <code>getfacl &lt;file-or-dir&gt;</code></p>
-<p>To set permissions for a user (user is either the user name or ID): <code>setfacl -m &quot;u:user:permissions&quot; &lt;file/dir&gt;</code></p>
-<p>To set permissions for a group (group is either the group name or ID): <code>setfacl -m &quot;g:group:permissions&quot; &lt;file/dir&gt;</code></p>
-<p>To set permissions for others: <code>setfacl -m &quot;other:permissions&quot; &lt;file/dir&gt;</code></p>
+<p>To set permissions for a user (user is either the user name or ID): <code>setfacl -m "u:user:permissions" &lt;file/dir&gt;</code></p>
+<p>To set permissions for a group (group is either the group name or ID): <code>setfacl -m "g:group:permissions" &lt;file/dir&gt;</code></p>
+<p>To set permissions for others: <code>setfacl -m "other:permissions" &lt;file/dir&gt;</code></p>
 <p>Removing a Group from an ACL: <code>setfacl -x g:green /var/www</code></p>
 <p>Transfer ACL attributes from a specification file:</p>
-<pre><code>echo &quot;g:green:rwx&quot; &gt; acl 
+<pre><code>echo "g:green:rwx" &gt; acl 
 setfacl -M acl /path/to/dir
 </code></pre>
 <p>Output from getfacl is accepted as input for setfacl with <code>-M</code> (<code>-b</code> clear ACLs, <code>-n</code> do not recalculate effective rights mask, <code>-</code> read from stdin): <code>getfacl dir1 | setfacl -b -n -M - dir2</code></p>
 <p>To copy the ACL of a file to another: <code>getfacl file1 | setfacl --set-file=- file2</code></p>
 <p>Copying the access ACL into the Default ACL of the sam dir: <code>getfacl --access dir | setfacl -d -M- dir</code></p>
-<p>To allow all newly created files or directories to inherit entries from the parent directory (this will not affect files which were already present in the directory, use <code>-R</code> to modify also these files): <code>setfacl -d -m &quot;entry&quot; &lt;dir&gt;</code></p>
+<p>To allow all newly created files or directories to inherit entries from the parent directory (this will not affect files which were already present in the directory, use <code>-R</code> to modify also these files): <code>setfacl -d -m "entry" &lt;dir&gt;</code></p>
 <p>Set ACL permissions recursively: <code>setfacl -Rm u:foo:r-x dir</code></p>
-<p>To remove a specific entry: <code>setfacl -x &quot;entry&quot; &lt;file/dir&gt;</code></p>
+<p>To remove a specific entry: <code>setfacl -x "entry" &lt;file/dir&gt;</code></p>
 <p>To remove the default entries: <code>setfacl -k &lt;file/dir&gt;</code></p>
 <p>To remove all entries (entries of the owner, group and others are retained): <code>setfacl -b &lt;file/dir&gt;</code></p>
 <hr />

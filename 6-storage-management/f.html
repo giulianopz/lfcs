@@ -296,7 +296,7 @@ sudo mount /dev/md0 /myraid
 </blockquote>
 <p><code>mdadm</code> provides the systemd service <code>mdmonitor.service</code> which can be useful for monitoring the health of your raid arrays and notifying you via email if anything goes wrong.</p>
 <p>This service is special in that it cannot be manually activated like a regular service; mdadm will take care of activating it via udev upon assembling your arrays on system startup, but it will only do so if an email address has been configured for its notifications:
-<code>echo &quot;MAILADDR user@domain&quot; | sudo tee -a /etc/mdadm/mdadm.conf</code></p>
+<code>echo "MAILADDR user@domain" | sudo tee -a /etc/mdadm/mdadm.conf</code></p>
 <blockquote>
 <p>Warning: Failure to configure an email address will result in the monitoring service silently failing to start.</p>
 </blockquote>
@@ -304,7 +304,7 @@ sudo mount /dev/md0 /myraid
 <p>Note: In order to send emails, a properly configured mail transfer agent is required.</p>
 </blockquote>
 <p>Then, to verify that everything is working as it should, run the following command: <code>mdadm --monitor --scan --oneshot --test</code></p>
-<p>If the test is successful and the email is delivered, then you are done; the next time your arrays are reassembled, mdmonitor.service will begin monitoring them for errors. </p>
+<p>If the test is successful and the email is delivered, then you are done; the next time your arrays are reassembled, mdmonitor.service will begin monitoring them for errors.</p>
 <p>Finally, add the new filesystem mount options to the /etc/fstab file for automatic mounting at boot:
 <code>echo '/dev/md0 /mnt/myraid ext4 defaults,nofail,discard 0 0' | sudo tee -a /etc/fstab</code></p>
 <h3 id="recover-from-raid-disk-failure"><a class="header" href="#recover-from-raid-disk-failure">Recover from RAID Disk Failure</a></h3>
@@ -317,7 +317,7 @@ sudo mount /dev/md0 /myraid
 <p>You can check the progress with: <code>cat /proc/mdstat</code></p>
 <p>Check that the device has been added with the command: <code>mdadm --misc --detail /dev/md0</code></p>
 <blockquote>
-<p>Note: For RAID0 arrays you may get the following error message: &quot;mdadm: add new device failed for /dev/sdc1 as 2: Invalid argument&quot;. This is because the above commands will add the new disk as a &quot;spare&quot; but RAID0 does not have spares. If you want to add a device to a RAID0 array, you need to &quot;grow&quot; and &quot;add&quot; in the same command, as demonstrated here: <code>mdadm --grow /dev/md0 --raid-devices=3 --add /dev/sdX1</code></p>
+<p>Note: For RAID0 arrays you may get the following error message: "mdadm: add new device failed for /dev/sdc1 as 2: Invalid argument". This is because the above commands will add the new disk as a "spare" but RAID0 does not have spares. If you want to add a device to a RAID0 array, you need to "grow" and "add" in the same command, as demonstrated here: <code>mdadm --grow /dev/md0 --raid-devices=3 --add /dev/sdX1</code></p>
 </blockquote>
 <hr />
 <p>One can remove a device from the array after marking it as faulty:
@@ -327,7 +327,7 @@ sudo mount /dev/md0 /myraid
 <p>To remove device permanently (for example, to use it individually from now on), see next session.</p>
 <h3 id="disassemble-a-working-array"><a class="header" href="#disassemble-a-working-array">Disassemble a working array</a></h3>
 <p>You may have to do this if you need to create a new array using the devices.</p>
-<p>Find the active arrays in the /proc/mdstat file by typing: </p>
+<p>Find the active arrays in the /proc/mdstat file by typing:</p>
 <pre><code>cat /proc/mdstat
 &gt;Output
 &gt;Personalities : [raid0] [linear] [multipath] [raid1] [raid6] [raid5] [raid4] [raid10] 

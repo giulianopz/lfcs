@@ -199,7 +199,7 @@
 <pre><code>sudo apt update
 sudo apt install bind9 bind9utils bind9-doc bind9-host
 </code></pre>
-<p>The BIND server will run as the <strong>bind</strong> user, which is created during installation, and listens on TCP and UDP port 53. The BIND daemon is called <strong>named</strong>. The <strong>rndc</strong> binary is used to reload/stop and control other aspects of the BIND daemon. Communication is done over TCP port 953. </p>
+<p>The BIND server will run as the <strong>bind</strong> user, which is created during installation, and listens on TCP and UDP port 53. The BIND daemon is called <strong>named</strong>. The <strong>rndc</strong> binary is used to reload/stop and control other aspects of the BIND daemon. Communication is done over TCP port 953.</p>
 <p>The DNS configuration files are stored in the /etc/bind directory. The primary configuration file is /etc/bind/named.conf, which in the layout provided by the package just includes these files:</p>
 <ul>
 <li>/etc/bind/named.conf.options: global DNS options</li>
@@ -238,7 +238,7 @@ sudo apt install bind9 bind9utils bind9-doc bind9-host
 <h2 id="setting-the-default-dns-resolver-on-ubuntu-2004-server"><a class="header" href="#setting-the-default-dns-resolver-on-ubuntu-2004-server">Setting the Default DNS Resolver on Ubuntu 20.04 Server</a></h2>
 <p><strong>systemd-resolved</strong> provides the stub resolver on Ubuntu 20.04. As mentioned in the beginning of this article, a stub resolver is a small DNS client on the end-user's computer that receives DNS requests from applications such as Firefox and forward requests to a recursive resolver.</p>
 <p>The default recursive resolver can be seen with this command: <code>systemd-resolve --status</code></p>
-<p>If you don'find <code>127.0.0.1</code> as your current DNS Server, BIND isn't the default. If your are testing it on your laptop, chances are that your current DNS server is your home router. </p>
+<p>If you don'find <code>127.0.0.1</code> as your current DNS Server, BIND isn't the default. If your are testing it on your laptop, chances are that your current DNS server is your home router.</p>
 <p>If you run the following command on the BIND server, the related DNS query won't be found in BIND log: <code>dig A facebook.com</code></p>
 <p>Instead, you need to explicitly tell dig to use BIND: <code>dig A facebook.com @127.0.0.1</code></p>
 <p>To set BIND as the default resolver, open the systemd-resolved configuration file: <code>sudo vi /etc/systemd/resolved.conf</code></p>

@@ -192,10 +192,10 @@
 </li>
 </ol>
 <blockquote>
-<p>Note: If you have separate partitions for /boo, /var and /usr, repeat steps 2 and 3 to mount them to /mnt/boot, /mnt/var and /mnt/usr respectively </p>
+<p>Note: If you have separate partitions for /boo, /var and /usr, repeat steps 2 and 3 to mount them to /mnt/boot, /mnt/var and /mnt/usr respectively</p>
 </blockquote>
 <ol start="4">
-<li>Bind-mount pseudo-filesystems: <code>for i in /sys /proc /run /dev; do sudo mount --bind &quot;$i&quot; &quot;/mnt/&quot;$i&quot;; done</code></li>
+<li>Bind-mount pseudo-filesystems: <code>for i in /sys /proc /run /dev; do sudo mount --bind "$i" "/mnt/"$i"; done</code></li>
 </ol>
 <blockquote>
 <p>Note: A <strong>bind mount</strong> is an alternate view of a directory tree. Classically, mounting creates a view of a storage device as a directory tree. A bind mount instead takes an existing directory tree and replicates it under a different point. The directories and files in the bind mount are the same as the original.</p>

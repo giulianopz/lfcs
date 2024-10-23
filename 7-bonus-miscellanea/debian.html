@@ -191,7 +191,7 @@ apt install firmware-misc-nonfree
 # if you have Realtek hardware in your machine
 apt install firmware-realtek
 </code></pre>
-<p>For the specific wifi drivers you need, read the Debian docs online. For example, for Intel cards you will need <a href="https://wiki.debian.org/iwlwifi">iwlwifi</a>: </p>
+<p>For the specific wifi drivers you need, read the Debian docs online. For example, for Intel cards you will need <a href="https://wiki.debian.org/iwlwifi">iwlwifi</a>:</p>
 <pre><code>apt update &amp;&amp; apt install firmware-iwlwifi
 # reload kernel module
 modprobe -r iwlwifi ; modprobe iwlwifi
@@ -199,7 +199,7 @@ modprobe -r iwlwifi ; modprobe iwlwifi
 <p>For nvidia GPUs, use <code>nvidia-detect</code> to find out the appropriate drivers, e.g.:</p>
 <pre><code>apt install nvidia-driver
 </code></pre>
-<p>Check if the nvidia modules are loaded with <code>lsmod | grep nvidia</code>. If not, verify that you had already disabled Secure/Fast Boot in the BIOS/UEFI settings. </p>
+<p>Check if the nvidia modules are loaded with <code>lsmod | grep nvidia</code>. If not, verify that you had already disabled Secure/Fast Boot in the BIOS/UEFI settings.</p>
 
                     </main>
 

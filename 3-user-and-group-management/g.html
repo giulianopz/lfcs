@@ -180,12 +180,12 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="configure-pam"><a class="header" href="#configure-pam">Configure PAM</a></h1>
-<p>PAM is a powerful suite of shared libraries used to dynamically authenticate a user to applications (or services) in a Linux system. It integrates multiple low-level authentication modules into a high-level API that provides dynamic authentication support for applications. </p>
+<p>PAM is a powerful suite of shared libraries used to dynamically authenticate a user to applications (or services) in a Linux system. It integrates multiple low-level authentication modules into a high-level API that provides dynamic authentication support for applications.</p>
 <p>To employ PAM, an application/program needs to be “PAM-aware“; it needs to have been written and compiled specifically to use PAM. To find out if a program is “PAM-aware” or not, check if it has been compiled with the PAM library using the <em>ldd</em> command:</p>
 <pre><code>sudo ldd /usr/sbin/sshd | grep libpam.so
 &gt; libpam.so.0 =&gt; /lib/x86_64-linux-gnu/libpam.so.0 (0x00007effddbe2000)
 </code></pre>
-<p>The main configuration file for PAM is <em>/etc/pam.conf</em> and the <em>/etc/pam.d/</em> directory contains the PAM configuration files for each PAM-aware application/services. </p>
+<p>The main configuration file for PAM is <em>/etc/pam.conf</em> and the <em>/etc/pam.d/</em> directory contains the PAM configuration files for each PAM-aware application/services.</p>
 <p>The syntax for the main configuration file is as follows: the file is made up of a list of rules written on a single line (you can extend rules using the “\” escape character) and comments are preceded with “#” marks and extend to the next end of line.</p>
 <p>The format of each rule is a space separated collection of tokens (the first three are case-insensitive):
 <code>service type control-flag module module-arguments</code>; where:</p>

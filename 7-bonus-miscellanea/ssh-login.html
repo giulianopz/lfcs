@@ -185,11 +185,11 @@
 <pre><code>#!/usr/bin/expect
 set timeout 60
 spawn ssh YOUR_USERNAME_HERE@[lindex $argv 0]
-expect &quot;Are you sure you&quot; {
-        send &quot;yes\r&quot;
+expect "Are you sure you" {
+        send "yes\r"
 }
-expect &quot;*?assphrase&quot; {
-        send &quot;YOUR_PASSWORD_HERE\r&quot;
+expect "*?assphrase" {
+        send "YOUR_PASSWORD_HERE\r"
         }
 interact
 </code></pre>
@@ -206,7 +206,7 @@ interact
 <li><code>interact</code> gives the control back to the current process so that stdin is sent to the current process, and subsequently, stdout and stderr are returned.</li>
 </ul>
 <p>If your home server doesn't have a static IP address, you could automate the IP discovery by scanning your own home network with an alias in your <code>.bash_aliases</code>:</p>
-<pre><code>alias sshlogin='for ip in $(nmap -sn 192.168.1.1/24 | grep -Po &quot;(?&lt;=Nmap scan report for )\d+\.\d+\.\d+\.\d+&quot;); do ./ABOVE_SCRIPT_NAME.sh $ip; done'
+<pre><code>alias sshlogin='for ip in $(nmap -sn 192.168.1.1/24 | grep -Po "(?&lt;=Nmap scan report for )\d+\.\d+\.\d+\.\d+"); do ./ABOVE_SCRIPT_NAME.sh $ip; done'
 </code></pre>
 <blockquote>
 <p>Note: Also the generation of such script can be automated with <a href="https://www.baeldung.com/linux/logging-into-ssh-server#3-using-autoexpect">autoexpect</a>.</p>

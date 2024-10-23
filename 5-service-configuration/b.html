@@ -185,7 +185,7 @@
 <p>The Domain Name System (DNS) defines a domain namespace, which specifies <strong>Top Level Domains</strong> (such as “.com”), second-level domains, (such as “acme.com”) and lower-level domains, also called subdomains (such as “support.acme.com”). Each of these levels can be a DNS zone.</p>
 <p>For example, the root domain “acme.com” may be delegated to a Acme Corporation. Acme assumes responsibility for setting up an authoritative DNS server that holds the correct DNS records for the domain.</p>
 <p>At each hierarchical level of the DNS system, there is a Name Server containing a <strong>zone file</strong>, which holds the trusted, correct DNS records for that zone.</p>
-<p>The <strong>root</strong> of the DNS system, represented by a dot at the end of the domain name — for example, &quot;www.example.com.&quot; — is the primary DNS zone. Since 2016, the root zone is overseen by the Internet Corporation for Assigned Names and Numbers (ICANN), which delegates management to a subsidiary acting as the Internet Assigned Numbers Authority (IANA).</p>
+<p>The <strong>root</strong> of the DNS system, represented by a dot at the end of the domain name — for example, "www.example.com." — is the primary DNS zone. Since 2016, the root zone is overseen by the Internet Corporation for Assigned Names and Numbers (ICANN), which delegates management to a subsidiary acting as the Internet Assigned Numbers Authority (IANA).</p>
 <p>The DNS root zone is operated by 13 logical servers, run by organizations like Verisign, the U.S. Army Research Labs and NASA. Any recursive DNS query (more about DNS query types <a href="../7-bonus-miscellanea/p.html">here</a>) starts by contacting one of these root servers, and requesting details for the next level down the tree — the Top Level Domain (TLD) server.</p>
 <p>There is a DNS zone for each Top Level Domain, such as “.com”, “.org” or country codes like “.co.uk”. There are currently over 1500 top level domains. Most top level domains are managed by ICANN/IANA.</p>
 <p><strong>Second-level domains</strong> like the domain “ns1.com”, are defined as separate DNS zones, operated by individuals or organizations. Organizations can run their own DNS name servers, or delegate management to an external provider.</p>
@@ -221,16 +221,16 @@
 <p>Zone File Tips:</p>
 <ul>
 <li>when adding a record for a hostname, the hostname must end with a period (.)</li>
-<li>hostnames which do not end with a period are considered relative to the main domain name — for example, when specifying a &quot;www&quot; or “ftp” record, there is no need for a period</li>
+<li>hostnames which do not end with a period are considered relative to the main domain name — for example, when specifying a "www" or “ftp” record, there is no need for a period</li>
 <li>you can add comments in a zone file by adding a semicolon (<code>;</code>) after a resource record</li>
 <li>many admins like to use the last date edited as the serial of a zone, such as 2020012100 which is yyyymmddss (where <code>ss</code> is the Serial Number)</li>
 </ul>
 <hr />
 <h2 id="primary-server-maintaining-a-forward-zone"><a class="header" href="#primary-server-maintaining-a-forward-zone">Primary Server maintaining a Forward Zone</a></h2>
 <p>To add a DNS zone to BIND9, turning BIND9 into a Primary server, first edit <code>/etc/bind/named.conf.local</code>:</p>
-<pre><code>zone &quot;example.com&quot; {
+<pre><code>zone "example.com" {
     type master;
-    file &quot;/etc/bind/db.example.com&quot;;
+    file "/etc/bind/db.example.com";
 };
 </code></pre>
 <p>Now use an existing zone file as a template to create the <strong>/etc/bind/db.example.com</strong> file: <code>sudo cp /etc/bind/db.local /etc/bind/db.example.com</code></p>
@@ -257,13 +257,13 @@ ns      IN      A       192.168.1.10
 <h2 id="reverse-zone"><a class="header" href="#reverse-zone">Reverse Zone</a></h2>
 <p>Now that the zone is setup and resolving names to IP addresses, a reverse zone needs to be added to allows DNS to resolve an address to a name.</p>
 <p>Edit <strong>/etc/bind/named.conf.local</strong> and add the following:</p>
-<pre><code>zone &quot;1.168.192.in-addr.arpa&quot; {
+<pre><code>zone "1.168.192.in-addr.arpa" {
     type master;
-    file &quot;/etc/bind/db.192&quot;;
+    file "/etc/bind/db.192";
 };
 </code></pre>
 <blockquote>
-<p>Note: Replace 1.168.192 with the first three octets of whatever network you are using. Also, name the zone file /etc/bind/db.192 appropriately. It should match the first octet of your network. Reverse DNS lookups for IPv4 addresses use the special domain <code>in-addr.arpa</code>. In this domain, an IPv4 address is represented as a concatenated sequence of four decimal numbers, separated by dots, to which is appended the second level domain suffix <code>.in-addr.arpa</code>. The four decimal numbers are obtained by splitting the 32-bit IPv4 address into four octets and converting each octet into a decimal number. These decimal numbers are then concatenated in the order: least significant octet first (leftmost), to most significant octet last (rightmost). It is important to note that this is the reverse order to the usual dotted-decimal convention for writing IPv4 addresses in textual form. For example, to do a reverse lookup of the IP address <code>8.8.4.4</code> the PTR record for the domain name <code>4.4.8.8.in-addr.arpa</code> would be looked up, and found to point to <code>google-public-dns-b.google.com</code>. </p>
+<p>Note: Replace 1.168.192 with the first three octets of whatever network you are using. Also, name the zone file /etc/bind/db.192 appropriately. It should match the first octet of your network. Reverse DNS lookups for IPv4 addresses use the special domain <code>in-addr.arpa</code>. In this domain, an IPv4 address is represented as a concatenated sequence of four decimal numbers, separated by dots, to which is appended the second level domain suffix <code>.in-addr.arpa</code>. The four decimal numbers are obtained by splitting the 32-bit IPv4 address into four octets and converting each octet into a decimal number. These decimal numbers are then concatenated in the order: least significant octet first (leftmost), to most significant octet last (rightmost). It is important to note that this is the reverse order to the usual dotted-decimal convention for writing IPv4 addresses in textual form. For example, to do a reverse lookup of the IP address <code>8.8.4.4</code> the PTR record for the domain name <code>4.4.8.8.in-addr.arpa</code> would be looked up, and found to point to <code>google-public-dns-b.google.com</code>.</p>
 </blockquote>
 <p>Now create the <strong>/etc/bind/db.192</strong> file from template: <code>sudo cp /etc/bind/db.127 /etc/bind/db.192</code></p>
 <p>Next edit /etc/bind/db.192 changing the same options as <strong>/etc/bind/db.example.com</strong>:</p>
@@ -286,15 +286,15 @@ $TTL    604800
 <h2 id="secondary-server"><a class="header" href="#secondary-server">Secondary Server</a></h2>
 <p>Once a Primary Server has been configured a secondary server is highly recommended in order to maintain the availability of the domain should the Primary become unavailable.</p>
 <p>First, on the primary server, the zone transfer needs to be allowed. Add the <code>allow-transfer</code> option to the example forward and reverse zone definitions in /etc/bind/named.conf.local:</p>
-<pre><code>zone &quot;example.com&quot; {
+<pre><code>zone "example.com" {
     type master;
-    file &quot;/etc/bind/db.example.com&quot;;
+    file "/etc/bind/db.example.com";
     allow-transfer { 192.168.1.11; };
 };
     
-zone &quot;1.168.192.in-addr.arpa&quot; {
+zone "1.168.192.in-addr.arpa" {
     type master;
-    file &quot;/etc/bind/db.192&quot;;
+    file "/etc/bind/db.192";
     allow-transfer { 192.168.1.11; };
 };
 </code></pre>
@@ -303,15 +303,15 @@ zone &quot;1.168.192.in-addr.arpa&quot; {
 </blockquote>
 <p>Restart BIND9 on the Primary server: <code>sudo systemctl restart bind9.service</code></p>
 <p>Next, on the scondary server, install the bind9 package the same way as on the primary. Then edit the /etc/bind/named.conf.local and add the following declarations for the forward and reverse zones:</p>
-<pre><code>zone &quot;example.com&quot; {
+<pre><code>zone "example.com" {
     type slave;
-    file &quot;db.example.com&quot;;
+    file "db.example.com";
     masters { 192.168.1.10; };
 };        
           
-zone &quot;1.168.192.in-addr.arpa&quot; {
+zone "1.168.192.in-addr.arpa" {
     type slave;
-    file &quot;db.192&quot;;
+    file "db.192";
     masters { 192.168.1.10; };
 };
 </code></pre>
@@ -340,16 +340,16 @@ transfer of 'example.com/IN' from 192.168.1.10#53: Transfer completed: 1 message
 <blockquote>
 <p>Note: A zone is only transferred if the Serial Number on the primary is larger than the one on the secondary. If you want to have your primary DNS notifying other secondary DNS servers of zone changes, you can add <code>also-notify { ipaddress; };</code> to /etc/bind/named.conf.local as shown in the example below:</p>
 </blockquote>
-<pre><code>zone &quot;example.com&quot; {
+<pre><code>zone "example.com" {
     type master;
-    file &quot;/etc/bind/db.example.com&quot;;
+    file "/etc/bind/db.example.com";
     allow-transfer { 192.168.1.11; };
     also-notify { 192.168.1.11; }; 
 };
 
-zone &quot;1.168.192.in-addr.arpa&quot; {
+zone "1.168.192.in-addr.arpa" {
     type master;
-    file &quot;/etc/bind/db.192&quot;;
+    file "/etc/bind/db.192";
     allow-transfer { 192.168.1.11; };
     also-notify { 192.168.1.11; }; 
 };

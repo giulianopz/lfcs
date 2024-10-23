@@ -207,7 +207,7 @@ sudo apt install squid
 <p>Once done, open the main configuration file and create a new ACL named allowed_ips and allow access to that ACL using the http_access directive:</p>
 <pre><code>#/etc/squid/squid.conf
 # ...
-acl allowed_ips src &quot;/etc/squid/allowed_ips.txt&quot;
+acl allowed_ips src "/etc/squid/allowed_ips.txt"
 # ...
 http_access allow localhost
 http_access allow allowed_ips
@@ -222,9 +222,9 @@ http_access deny all
 <p>If restricting access based on IP doesn't work for your use case, you can configure squid to use a back-end to authenticate users. Squid supports Samba, LDAP, and HTTP basic auth.</p>
 <p>In this guide, we'll use basic auth. It is a simple authentication method built into the HTTP protocol.</p>
 <p>To generate a crypted password, use the openssl tool. The following command appends the USERNAME:PASSWORD pair to the /etc/squid/htpasswd file:
-<code>printf &quot;USERNAME:$(openssl passwd -crypt PASSWORD)\n&quot; | sudo tee -a /etc/squid/htpasswd</code></p>
+<code>printf "USERNAME:$(openssl passwd -crypt PASSWORD)\n" | sudo tee -a /etc/squid/htpasswd</code></p>
 <p>For example, to create a user “josh” with password “P@ssvv0rT”, you would run:</p>
-<pre><code>printf &quot;josh:$(openssl passwd -crypt 'P@ssvv0rd')\n&quot; | sudo tee -a /etc/squid/htpasswd
+<pre><code>printf "josh:$(openssl passwd -crypt 'P@ssvv0rd')\n" | sudo tee -a /etc/squid/htpasswd
 &gt;josh:QMxVjdyPchJl6
 </code></pre>
 <p>The next step is to enable the HTTP basic authentication and include the file containing the user credentials to the squid configuration file.</p>
@@ -241,7 +241,7 @@ http_access allow authenticated
 # And finally deny all other access to this proxy
 http_access deny all
 </code></pre>
-<p>The first three lines are creating a new ACL named authenticated, and the last &quot;http_access allow&quot; line is allowing access to authenticated users.</p>
+<p>The first three lines are creating a new ACL named authenticated, and the last "http_access allow" line is allowing access to authenticated users.</p>
 <p>Restart the Squid service:
 <code>sudo systemctl restart squid</code></p>
 <h3 id="configuring-firewall"><a class="header" href="#configuring-firewall">Configuring firewall</a></h3>

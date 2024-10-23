@@ -180,10 +180,10 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="create-and-manage-hard-and-soft-links"><a class="header" href="#create-and-manage-hard-and-soft-links">Create and manage hard and soft links</a></h2>
-<p>A <strong>file</strong> is a named collection of related data that appears to the user as a single, contiguous block of information and that is retained in storage. </p>
-<p>Whereas users identify files by their names, Unix-like operating systems identify them by their <strong>inodes</strong>. An inode is a data structure that stores everything about a file apart from its name and actual content. A <strong>filename</strong> in a Unix-like operating system is just an entry in an inode table. Inode numbers are unique per filesystem, which means that an inode with a same number can exist on another filesystem in the same computer. </p>
+<p>A <strong>file</strong> is a named collection of related data that appears to the user as a single, contiguous block of information and that is retained in storage.</p>
+<p>Whereas users identify files by their names, Unix-like operating systems identify them by their <strong>inodes</strong>. An inode is a data structure that stores everything about a file apart from its name and actual content. A <strong>filename</strong> in a Unix-like operating system is just an entry in an inode table. Inode numbers are unique per filesystem, which means that an inode with a same number can exist on another filesystem in the same computer.</p>
 <blockquote>
-<p>Note: Saying that &quot;on a UNIX system, everything is a file; if something is not a file, it is a process&quot; is just an acceptable generalization.</p>
+<p>Note: Saying that "on a UNIX system, everything is a file; if something is not a file, it is a process" is just an acceptable generalization.</p>
 </blockquote>
 <p>There are two types of links in UNIX-like systems:</p>
 <ul>
@@ -200,7 +200,7 @@
 &gt;129978 2 ./book.pdf
 &gt;129978 2 ./hard-linked-book.pdf
 </code></pre>
-<p>If the other file in the same dir, this will be apparent since they have the same inode. Otherwise, this command will only show all regular files that have more than one link (name) to them, not telling you which names are linked to the same file, for that you could use <code>-samefile</code> or <code>-inum</code>, e.g.: <code>find -samefile &quot;$somefile&quot;</code></p>
+<p>If the other file in the same dir, this will be apparent since they have the same inode. Otherwise, this command will only show all regular files that have more than one link (name) to them, not telling you which names are linked to the same file, for that you could use <code>-samefile</code> or <code>-inum</code>, e.g.: <code>find -samefile "$somefile"</code></p>
 
                     </main>
 

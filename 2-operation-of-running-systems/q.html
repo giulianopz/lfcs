@@ -185,7 +185,7 @@
 <p>Note: Prefer using apt-get and apt-cache in your shell scripts as they are backward compatible between the different versions and have more options and features.</p>
 </blockquote>
 <p>The first command updates the APT package index which is essentially a database of available packages from the repositories defined in the <code>/etc/apt/sources.list</code> file and in the <code>/etc/apt/sources.list.d</code> directory.</p>
-<p>In addition to the officially supported package repositories available for Ubuntu, there exist additional community-maintained repositories which add thousands more packages for potential installation. Many other package sources are available, sometimes even offering only one package, as in the case of package sources provided by the developer of a single application. </p>
+<p>In addition to the officially supported package repositories available for Ubuntu, there exist additional community-maintained repositories which add thousands more packages for potential installation. Many other package sources are available, sometimes even offering only one package, as in the case of package sources provided by the developer of a single application.</p>
 <blockquote>
 <p>Warning: Two of the most popular are the <strong>universe</strong> and <strong>multiverse</strong> repositories. Packages in the multiverse repository often have licensing issues that prevent them from being distributed with a free operating system, and they may be illegal in your locality. Be advised that neither the universe or multiverse repositories contain officially supported packages. In particular, there may not be security updates for these packages. By default, the universe and multiverse repositories are enabled but if you would like to disable them edit /etc/apt/sources.list and comment the lines containing these repositories' names.</p>
 </blockquote>
@@ -215,7 +215,7 @@ sudo apt install ffmpeg
 <p>If for any reasons you want to remove a previously enabled repository, use the --remove option: <code>sudo add-apt-repository --remove 'deb [arch=amd64] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse'</code></p>
 <p>If you want to have more control over how your sources are organized you can manually edit the /etc/apt/sources.list file and add the apt repository line to the file, and then manually import the public repository key to your system with <code>apt-key</code>.</p>
 <hr />
-<p><code>dpkg</code> is a low-level package manager for Debian-based systems. It can install, remove, and build packages, but unlike other package management systems, it cannot automatically download and install packages or their dependencies. <code>apt</code> and <code>aptitude</code> are newer, and layer additional features on top of dpkg. </p>
+<p><code>dpkg</code> is a low-level package manager for Debian-based systems. It can install, remove, and build packages, but unlike other package management systems, it cannot automatically download and install packages or their dependencies. <code>apt</code> and <code>aptitude</code> are newer, and layer additional features on top of dpkg.</p>
 <p>To list all packages in the system's package database, including all packages, installed and uninstalled, from a terminal prompt type:
 <code>dpkg -l</code></p>
 <p>Depending on the number of packages on your system, this can generate a large amount of output. Pipe the output through grep to see if a specific package is installed: <code>dpkg -l | grep &lt;package-name-or-regex&gt;</code></p>
@@ -230,7 +230,7 @@ base-files: /etc/host.conf
 </blockquote>
 <p>You can install a local .deb file by entering: <code>sudo dpkg -i &lt;package&gt;_&lt;version&gt;-&lt;revision-num&gt;_&lt;arch&gt;.deb</code></p>
 <blockquote>
-<p>Note: For historical reasons, the 64-bit x86 architecture is called &quot;amd64&quot;, while the 32-bit version is named &quot;i386&quot;.</p>
+<p>Note: For historical reasons, the 64-bit x86 architecture is called "amd64", while the 32-bit version is named "i386".</p>
 </blockquote>
 <p>Uninstalling a package can be accomplished by: <code>sudo dpkg -r &lt;package&gt; # -P instead removes also config files</code></p>
 <blockquote>
@@ -248,11 +248,11 @@ base-files: /etc/host.conf
 <li>download the sources (or download it manually): <code> apt source &lt;package&gt;</code></li>
 </ol>
 <blockquote>
-<p>Note: You need a deb-src entry in your /etc/apt/sources.list file, like: <code>deb-src http://http.us.debian.org/debian unstable main</code> </p>
+<p>Note: You need a deb-src entry in your /etc/apt/sources.list file, like: <code>deb-src http://http.us.debian.org/debian unstable main</code></p>
 </blockquote>
 <ol start="2">
 <li>install the dependecies for the package: <code>apt build-dep &lt;package&gt;</code></li>
-<li>go into the extracted source directory and then build the package: </li>
+<li>go into the extracted source directory and then build the package:</li>
 </ol>
 <pre><code>dpkg-buildpackage -rfakeroot -b -uc -us
 # or

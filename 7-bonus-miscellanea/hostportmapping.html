@@ -180,7 +180,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="mapping-hosts-and-ports-locally"><a class="header" href="#mapping-hosts-and-ports-locally">Mapping Hosts and Ports Locally</a></h2>
-<p>Add an entry to <a href="https://linux.die.net/man/5/hosts"><code>/etc/hosts</code></a> mapping a given domain name to <code>127.0.0.1</code>: </p>
+<p>Add an entry to <a href="https://linux.die.net/man/5/hosts"><code>/etc/hosts</code></a> mapping a given domain name to <code>127.0.0.1</code>:</p>
 <pre><code class="language-bash">$ head -n3 /etc/hosts
 127.0.0.1	localhost
 127.0.1.1	yourmachinehostname.homenet.isp.com
@@ -188,7 +188,7 @@
 </code></pre>
 <p>Usually this is the first source (it depends on your Name Service Switch (<a href="https://linux.die.net/man/5/nsswitch.conf">NSS</a>) configuration file, <code>/etc/nsswitch.conf</code>) checked by an application that needs to perform name resolution via C library routines such as <a href="https://linux.die.net/man/3/getaddrinfo">getaddrinfo</a>. The next step should be sending DNS queries to the servers listed in the <a href="https://linux.die.net/man/5/resolv.conf">/etc/resolv.conf</a> file.</p>
 <blockquote>
-<p>Note: some programming languages as <a href="https://pkg.go.dev/net#hdr-Name_Resolution">Go</a> can use a custom resolver with their own logic as well. </p>
+<p>Note: some programming languages as <a href="https://pkg.go.dev/net#hdr-Name_Resolution">Go</a> can use a custom resolver with their own logic as well.</p>
 </blockquote>
 <p>This works fine but if you want to redirect the traffic to a specific port, you will also need to setup a reverse proxy: you can configure the Apache HTTP Server (with the <a href="https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html">mod_rewrite</a> module) or <code>nginx</code> (with the <a href="https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/">proxy_pass</a> directive) to proxy the incoming requests to the right destination port.</p>
 <p>To configure nginx, you could put the snippet below in <code>/etc/nginx/conf.d/registry.conf</code>:</p>
@@ -204,12 +204,12 @@
 </code></pre>
 <p>And you would be able to redirect <code>registry.io</code> to <code>127.0.0.1:5000</code>:</p>
 <pre><code class="language-bash">$ curl http://registry.io/v2/_catalog
-{&quot;repositories&quot;:[&quot;debian&quot;,&quot;alpine&quot;]}
+{"repositories":["debian","alpine"]}
 </code></pre>
 <hr />
 <p>If all you need is just to make a simple HTTP call for a one-shot test, you can instruct <a href="https://everything.curl.dev/usingcurl/connections/name">curl</a> to resolve a hostname to specific IP address:</p>
 <pre><code class="language-bash">$ curl --resolve registry.io:5000:127.0.0.1 http://registry.io:5000/v2/_catalog
-{&quot;repositories&quot;:[&quot;debian&quot;,&quot;alpine&quot;]}
+{"repositories":["debian","alpine"]}
 </code></pre>
 <p>In fact, the documentation for the flag says:</p>
 <pre><code>--resolve &lt;[+]host:port:addr[,addr]...&gt;
@@ -217,15 +217,15 @@
 </code></pre>
 <p>It even allows you to specify both a replacement name and a port number when a specific name and port number is used to connect:</p>
 <pre><code class="language-bash">curl --connect-to registry.io:80:127.0.0.1:5000 http://registry.io/v2/_catalog
-{&quot;repositories&quot;:[&quot;debian&quot;,&quot;alpine&quot;]}
+{"repositories":["debian","alpine"]}
 </code></pre>
 <hr />
 <p>Otherwise if you don't want to clutter your hosts file, you can install on your Linux distribution the <a href="https://man7.org/linux/man-pages/man8/nss-myhostname.8.html">nss-myhostname</a> package: it automatically resolves any subdomains of localhost to the <code>127.0.0.1</code>, so that you can simply refer to a server running locally by adding <code>.localhost</code> as a suffix along with its port, e.g.:</p>
 <pre><code class="language-bash">$ curl http://registry.localhost:5000/v2/_catalog
-{&quot;repositories&quot;:[&quot;debian&quot;,&quot;alpine&quot;]}
+{"repositories":["debian","alpine"]}
 </code></pre>
 <p>In this way (almost) everything works with zero configuration on your local environment, and so it's even better than using <a href="https://www.stevenrombauts.be/2018/01/use-dnsmasq-instead-of-etc-hosts/">dnsmasq</a> which requires a bit of configuration to get the same result.</p>
-<p>That said, your are still in need of specifying the target port. You will probably need <code>iptables</code> (or <code>ssh</code>) to setup a port forwarding if that is crucial for you. </p>
+<p>That said, your are still in need of specifying the target port. You will probably need <code>iptables</code> (or <code>ssh</code>) to setup a port forwarding if that is crucial for you.</p>
 <hr />
 <p>References:</p>
 <ul>

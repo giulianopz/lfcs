@@ -185,7 +185,7 @@
 <p>To restart the service, we can type: <code>sudo systemctl restart &lt;unit&gt;.service</code></p>
 <p>To attempt to reload the service without interrupting normal functionality, we can type: <code>sudo systemctl reload &lt;unit&gt;.service</code></p>
 <blockquote>
-<p>Note: &quot;Loading&quot; means parsing the unit's configuration and keeping it in memory.</p>
+<p>Note: "Loading" means parsing the unit's configuration and keeping it in memory.</p>
 </blockquote>
 <p>To enable a service to start automatically at boot, type: <code>sudo systemctl enable &lt;unit&gt;.service</code></p>
 <p>This will create a symbolic link from the system's copy of the service file (usually in /lib/systemd/system or /etc/systemd/system) into the location on disk where systemd looks for autostart files (usually <code>/etc/systemd/system/some_target.target.wants</code>).</p>

@@ -181,11 +181,11 @@
                     <main>
                         <h2 id="network-manager"><a class="header" href="#network-manager">Network-Manager</a></h2>
 <p>The point of <strong>NetworkManager</strong> is to make networking configuration and setup as painless and automatic as possible. If using DHCP, NetworkManager is intended to replace default routes, obtain IP addresses from a DHCP server and change nameservers whenever it sees fit. In effect, the goal of NetworkManager is to make networking Just Work.</p>
-<p>The computer should use the wired network connection when it's plugged in, but automatically switch to a wireless connection when the user unplugs it and walks away from the desk. Likewise, when the user plugs the computer back in, the computer should switch back to the wired connection. The user should, most times, not even notice that their connection has been managed for them; they should simply see uninterrupted network connectivity. </p>
+<p>The computer should use the wired network connection when it's plugged in, but automatically switch to a wireless connection when the user unplugs it and walks away from the desk. Likewise, when the user plugs the computer back in, the computer should switch back to the wired connection. The user should, most times, not even notice that their connection has been managed for them; they should simply see uninterrupted network connectivity.</p>
 <p>NetworkManager is composed of two layers:</p>
 <ul>
 <li>a daemon running as root: <code>network-manager</code>.</li>
-<li>a front-end: <code>nmcli</code> and <code>nmtui</code> (enclosed in package network-manager), <code>nm-tray</code>, <code>network-manager-gnome</code> (<code>nm-applet</code>), <code>plasma-nm</code>. </li>
+<li>a front-end: <code>nmcli</code> and <code>nmtui</code> (enclosed in package network-manager), <code>nm-tray</code>, <code>network-manager-gnome</code> (<code>nm-applet</code>), <code>plasma-nm</code>.</li>
 </ul>
 <p>Start network manager: <code>sudo systemctl start network-manager</code></p>
 <p>Enable starting the network manager when the system boots: <code>sudo systemctl enable network-manager</code></p>

@@ -187,7 +187,7 @@
 <p>Before getting started with libvirt it is best to make sure your hardware supports the necessary virtualization extensions for KVM. Enter the following from a terminal prompt:</p>
 <pre><code>kvm-ok
 # or alternatively, it should be enough to ensure this regex patter matches some lines in /proc/cpuinfo
-egrep &quot;vmx|svm&quot; /proc/cpuinfo 
+egrep "vmx|svm" /proc/cpuinfo 
 </code></pre>
 <blockquote>
 <p>Note: On many computers with processors supporting hardware assisted virtualization, it is necessary to activate an option in the BIOS to enable it.</p>

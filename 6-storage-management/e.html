@@ -182,7 +182,7 @@
                         <h2 id="configure-and-manage-swap-space"><a class="header" href="#configure-and-manage-swap-space">Configure and manage swap space</a></h2>
 <p>One of the easiest way of guarding against out-of-memory errors in applications is to add some swap space to your server.</p>
 <blockquote>
-<p>Warning: Although swap is generally recommended for systems utilizing traditional spinning hard drives, using swap with SSDs can cause issues with hardware degradation over time. </p>
+<p>Warning: Although swap is generally recommended for systems utilizing traditional spinning hard drives, using swap with SSDs can cause issues with hardware degradation over time.</p>
 </blockquote>
 <p>The information written to disk will be significantly slower than information kept in RAM, but the operating system will prefer to keep running application data in memory and use swap for the older data. Overall, having swap space as a fallback for when your system's RAM is depleted can be a good safety net against out-of-memory exceptions on systems with non-SSD storage available.</p>
 <h3 id="1-checking-the-system-for-swap-information"><a class="header" href="#1-checking-the-system-for-swap-information">1. Checking the System for Swap Information</a></h3>
@@ -222,14 +222,14 @@
 <h3 id="4-enabling-the-swap-file"><a class="header" href="#4-enabling-the-swap-file">4. Enabling the Swap File</a></h3>
 <p>First, we need to lock down the permissions of the file so that only the users with root privileges can read the contents. This prevents normal users from being able to access the file, which would have significant security implications.</p>
 <p>Make the file only accessible to root by typing: <code>sudo chmod 600 /swapfile</code></p>
-<p>We can now mark the file as swap space by typing: </p>
+<p>We can now mark the file as swap space by typing:</p>
 <pre><code>sudo mkswap /swapfile
 &gt;Output
 &gt;Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
 &gt;no label, UUID=6e965805-2ab9-450f-aed6-577e74089dbf
 </code></pre>
 <p>After marking the file, we can enable the swap file, allowing our system to start utilizing it: <code>sudo swapon /swapfile</code></p>
-<p>Verify that the swap is available by typing: </p>
+<p>Verify that the swap is available by typing:</p>
 <pre><code>sudo swapon --show
 &gt;Output
 &gt;NAME      TYPE  SIZE USED PRIO

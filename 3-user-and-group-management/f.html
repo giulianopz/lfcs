@@ -182,9 +182,9 @@
                         <h2 id="manage-user-privileges"><a class="header" href="#manage-user-privileges">Manage user privileges</a></h2>
 <p>A user with administrative privileges is sometimes called a <code>super user</code>. This is simply because that user has more privileges than normal users. Commands like <code>su</code> and <code>sudo</code> are programs for temporarily giving you “super user” (administrative) privileges.</p>
 <p><code>Administrative privileges</code> are associated with your user account. Administrator users are allowed to have these privileges while Standard users are not. Without administrative privileges you will not be able to install software. Some user accounts (e.g <code>root</code>) have permanent administrative privileges. You should not use administrative privileges all of the time, because you might accidentally change something you did not intend to (like delete a needed system file, for example).</p>
-<p>These privileges are gained by adding the user to the <code>sudo</code> group. Users in the &quot;sudo&quot; group can use sudo to gain administrative privileges after supplying their password. </p>
+<p>These privileges are gained by adding the user to the <code>sudo</code> group. Users in the "sudo" group can use sudo to gain administrative privileges after supplying their password.</p>
 <blockquote>
-<p>Note: Up until Ubuntu 11.10, administrator access using the sudo tool was granted via the &quot;admin&quot; Unix group. Starting with Ubuntu 12.04, administrator access are granted via the &quot;sudo&quot;group. This makes Ubuntu more consistent with the upstream implementation and Debian. For compatibility purposes, the admin group is still available to provide sudo/administrator access.</p>
+<p>Note: Up until Ubuntu 11.10, administrator access using the sudo tool was granted via the "admin" Unix group. Starting with Ubuntu 12.04, administrator access are granted via the "sudo"group. This makes Ubuntu more consistent with the upstream implementation and Debian. For compatibility purposes, the admin group is still available to provide sudo/administrator access.</p>
 </blockquote>
 <p>If you want a new user to be able to perform administrative tasks, you need to add the user to the <code>sudo</code> group:
 <code>sudo usermod -aG sudo &lt;username&gt;</code></p>

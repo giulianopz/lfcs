@@ -185,8 +185,8 @@
 [base64-encoded binary data]
 -----END [label]-----
 </code></pre>
-<p>PEM data is commonly stored in files with a <code>.pem</code> suffix, a <code>.cer</code> or <code>.crt</code> suffix (for certificates), or a <code>.key</code> suffix (for public or private keys). The label inside a PEM file (&quot;CERTIFICATE&quot;, &quot;CERTIFICATE REQUEST&quot;, &quot;PRIVATE KEY&quot; and &quot;X509 CRL&quot;) represents the type of the data more accurately than the file suffix, since many different types of data can be saved in a <code>.pem</code> file:</p>
-<p>A PEM file may contain multiple instances. For instance, an operating system might provide a file containing a list of trusted CA certificates, or a web server might be configured with a &quot;chain&quot; file containing an end-entity certificate plus a list of intermediate certificates. </p>
+<p>PEM data is commonly stored in files with a <code>.pem</code> suffix, a <code>.cer</code> or <code>.crt</code> suffix (for certificates), or a <code>.key</code> suffix (for public or private keys). The label inside a PEM file ("CERTIFICATE", "CERTIFICATE REQUEST", "PRIVATE KEY" and "X509 CRL") represents the type of the data more accurately than the file suffix, since many different types of data can be saved in a <code>.pem</code> file:</p>
+<p>A PEM file may contain multiple instances. For instance, an operating system might provide a file containing a list of trusted CA certificates, or a web server might be configured with a "chain" file containing an end-entity certificate plus a list of intermediate certificates.</p>
 <blockquote>
 <p>Note: A certification authority (<strong>CA</strong>) is an entity that issues digital certificates (usually encoded in <strong>X.509</strong> standard). A CA acts as a trusted third party—trusted both by the subject (owner) of the certificate and by the party relying upon the certificate.</p>
 </blockquote>
@@ -209,9 +209,9 @@
 </li>
 </ol>
 <p>You can import CA certificates in one line by running:</p>
-<pre><code>sudo bash -c &quot;echo -n | openssl s_client -showcerts -connect ${hostname}:${port} \
+<pre><code>sudo bash -c "echo -n | openssl s_client -showcerts -connect ${hostname}:${port} \
 2&gt;/dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' \
-&gt;&gt; `curl-config --ca`&quot;
+&gt;&gt; `curl-config --ca`"
 </code></pre>
 <blockquote>
 <p>Note: You may need to install the following package: ``sudo apt-get install libcurl4-openssl-dev`</p>

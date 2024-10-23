@@ -184,7 +184,7 @@
 <li>Prerequisites:</li>
 </ol>
 <pre><code>sudo apt install apache2
-sudo ufw allow &quot;Apache Full&quot;
+sudo ufw allow "Apache Full"
 sudo a2enmod ssl
 sudo systemctl restart apache2
 </code></pre>
@@ -216,14 +216,14 @@ sudo systemctl restart apache2
 <li>Add a stub web page:</li>
 </ol>
 <pre><code>mkdir [/var/www/your-domain-or-ip]
-echo &quot;&lt;h1&gt;it worked&lt;/h1&gt;&quot; &gt; /var/www/[your-domain-or-ip]/index.html
+echo "&lt;h1&gt;it worked&lt;/h1&gt;" &gt; /var/www/[your-domain-or-ip]/index.html
 </code></pre>
 <ol start="5">
 <li>Enable the configuration:</li>
 </ol>
 <pre><code>sudo a2ensite [your-domain-or-ip].conf
 sudo apache2ctl configtest
-# if it prints out &quot;syntax ok&quot;
+# if it prints out "syntax ok"
 sudo systemctl reload apache2
 </code></pre>
 <ol start="6">

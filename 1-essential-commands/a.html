@@ -180,7 +180,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="log-into-local--remote-graphical-and-text-mode-consoles"><a class="header" href="#log-into-local--remote-graphical-and-text-mode-consoles">Log into local &amp; remote graphical and text mode consoles</a></h2>
-<p>Console and terminal are closely related. Originally, they meant a piece of equipment through which you could interact with a computer: in the early days of unix, that meant a teleprinter-style device resembling a typewriter, sometimes called a teletypewriter, or <strong>tty</strong> in shorthand. The name <em>terminal</em> came from the electronic point of view, and the name <em>console</em> from the furniture point of view. </p>
+<p>Console and terminal are closely related. Originally, they meant a piece of equipment through which you could interact with a computer: in the early days of unix, that meant a teleprinter-style device resembling a typewriter, sometimes called a teletypewriter, or <strong>tty</strong> in shorthand. The name <em>terminal</em> came from the electronic point of view, and the name <em>console</em> from the furniture point of view.</p>
 <p>For a quick historical overview look <a href="https://www.computernetworkingnotes.com/linux-tutorials/linux-virtual-console-and-terminal-explained.html">here</a> and <a href="https://askubuntu.com/questions/506510/what-is-the-difference-between-terminal-console-shell-and-command-line">here</a>.</p>
 <p>Long story short, in modern terminology:</p>
 <ul>
@@ -199,13 +199,13 @@
 </li>
 </ul>
 <blockquote>
-<p>This is how the line beginning with &quot;linux&quot; looks like for Ubuntu 18.04 LTS:
+<p>This is how the line beginning with "linux" looks like for Ubuntu 18.04 LTS:
 <code>linux      /boot/vmlinuz-4.18.0-15-generic root=UUID=1438eb20-da3d-4880-bb3a-414e+++0a929 ro quiet splash $vt_handoff 3</code></p>
 </blockquote>
 <ul>
 <li>
 <p>a remote text environment as a full login session you can use <strong>ssh</strong>:
-<code>ssh -i &lt;*rsa.pub&gt; -p &lt;9199&gt; username@host -t &quot;exec bash&quot;</code></p>
+<code>ssh -i &lt;*rsa.pub&gt; -p &lt;9199&gt; username@host -t "exec bash"</code></p>
 </li>
 <li>
 <p>a remote environment in GUI mode you can use <code>ssh -X</code> to enable X11 forwarding or a remote desktop client for a full graphical interface (by default, Ubuntu comes with <strong>Remmina</strong> remote desktop client with support for VNC and RDP protocols).</p>

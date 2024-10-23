@@ -180,14 +180,14 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="configure-user-resource-limits"><a class="header" href="#configure-user-resource-limits">Configure user resource limits</a></h2>
-<p>Any user can change it's own soft limits, between &quot;zero&quot;, and the hard limit (typically enforced by pam_limit).</p>
+<p>Any user can change it's own soft limits, between "zero", and the hard limit (typically enforced by pam_limit).</p>
 <p>To print all the resource limits for the current user:
 <code>ulimit -a</code></p>
-<p>Show the current Soft limit for &quot;memlock&quot;:</p>
+<p>Show the current Soft limit for "memlock":</p>
 <pre><code>ulimit -S -l
 &gt; 64
 </code></pre>
-<p>Set the current Soft &quot;memlock&quot; limit to 48KiB:</p>
+<p>Set the current Soft "memlock" limit to 48KiB:</p>
 <pre><code>ulimit -S -l 48
 </code></pre>
 <p>The system resources are defined in a configuration file located at <em>/etc/security/limits.conf</em>. <em>ulimit</em>, when called, will report these values.</p>

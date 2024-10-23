@@ -186,9 +186,9 @@
 &gt;#cron.*                         /var/log/cron.log
 </code></pre>
 <p>If this line is commentd as above, the cron logs are on the syslog dump file.</p>
-<p><code>crond</code> (unless configured otherwise, as said above) will send a log message to syslog every time it invokes a scheduled job. The simplest way to verify that cron tried to run the job is to simply examine the logs: <code>grep -E &quot;(ana)*cron&quot; /var/log/syslog</code></p>
+<p><code>crond</code> (unless configured otherwise, as said above) will send a log message to syslog every time it invokes a scheduled job. The simplest way to verify that cron tried to run the job is to simply examine the logs: <code>grep -E "(ana)*cron" /var/log/syslog</code></p>
 <blockquote>
-<p>Note: If you have a mail transfer agent — such as Sendmail — installed and properly configured on your server, you can send the output of cron tasks to the email address associated with your Linux user profile. You can also manually specify an email address by providing a MAILTO setting at the top of the crontab. </p>
+<p>Note: If you have a mail transfer agent — such as Sendmail — installed and properly configured on your server, you can send the output of cron tasks to the email address associated with your Linux user profile. You can also manually specify an email address by providing a MAILTO setting at the top of the crontab.</p>
 </blockquote>
 <p>For <code>anacron</code>, you can force the execution of the scheduled jobs: <code>sudo anacron -f -n</code>, and then examining the logs: <code>tail -f  /var/log/syslog</code>. The timestamp for each job is stored in <code>/var/spool/anacron</code>.</p>
 
