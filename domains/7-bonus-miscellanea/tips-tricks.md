@@ -28,13 +28,7 @@
 
 14. [Micro BGP Suite: The Swiss Army Knife of Routing Analysis](https://labs.ripe.net/author/lorenzo_cogotti/micro-bgp-suite-the-swiss-army-knife-of-routing-analysis/)
 
-15. Playgrounds to fiddle around with:
-    1.  [systemd by example](https://systemd-by-example.com/)
-    2.  [mess with dns](https://messwithdns.net/)
-    3.  [a simple DNS lookup tool](https://dns-lookup.jvns.ca/)
-    4.  [nginx](https://nginx-playground.wizardzines.com/)
-
-16. Capture (unencrypted) HTTP traffic on localhost with nc, e.g.:
+15. Capture (unencrypted) HTTP traffic on localhost with nc, e.g.:
 ```
 # listen fon incoming communication on a specific port in a shell
 :~$ nc -l 8080
@@ -52,13 +46,14 @@ Content-Length: 18
 {"hello": "world"}
 ```
 
-17. Beware of commands with the same name, especially command shell built-in vs- external command as `time`:
+16. Beware of commands with the same name, especially command shell built-in vs external command as `time`:
 ```bash
 :~$ type -a time
 time is a shell keyword
 time is /usr/bin/time
 time is /bin/time
 ```
+
 Use the full path to execute to not execute the built-in command:
 ```bash
 /usr/bin/time [OPTIONS] COMMAND [ARG]...
@@ -66,6 +61,10 @@ Use the full path to execute to not execute the built-in command:
 /bin/time [OPTIONS] COMMAND [ARG]...
 ```
 
-18. Take a screenshot from the command line on a X Window System (and with `imagemagick`): `sleep 5; xwd -root | convert xwd:- test.png`
+17. Take a screenshot from the command line on a X Window System (with `imagemagick`): `sleep 5; xwd -root | convert xwd:- test.png`
 
-19. Cat without cat: `echo "$(<file.txt)"` (credits [@jarv](https://jarv.org/posts/cat-without-cat/))
+18. Cat without cat: `echo "$(<file.txt)"` (credits [@jarv](https://jarv.org/posts/cat-without-cat/))
+
+19. On bash, you can relaunch a command along with its args and flags by using the esclamation mark, e.g.: `!gcc` will re-execute the last occurence of `gcc` in the shell history.
+
+20 Again, on bash, `!!` will re-execute the very last command in shell history. That's very handy, especially when you just forget to prefix a command with `sudo`: in this case you can simply run `sudo !!`. 
