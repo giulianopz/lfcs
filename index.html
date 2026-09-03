@@ -12,21 +12,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,12 +35,24 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-3c3a3c2c.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-e3d414d5.js"></script>
     </head>
     <body>
-    <div id="body-container">
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -70,56 +81,59 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -127,46 +141,52 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
                         <a href="https://github.com/giulianopz/lfcs" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
                         </a>
-                        <a href="https://github.com/giulianopz/lfcs/edit/main/domains/README.md " title="Suggest an edit" aria-label="Suggest an edit">
-                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        <a href="https://github.com/giulianopz/lfcs/edit/main/domains/README.md " title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p>These are my personal notes to prepare for the <a href="https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/#exams">LFCS</a> exam.</p>
 <p>This book consists of a detailed guide for each topic in the official checklist of domains the candidates are requested to master in order to pass the exam.</p>
 <p>These notes has been collected from a wide range of <a href="./references.html">sources</a> available on the web and partially re-elaborated by me, plus some additional topics of interest for a developer/sysadmin (still in progress): even if you are not interested in the certification at all (but curious about <code>*nix</code> systems), you may nevertheless find useful the guides in the first domain (<em>Essential Commands</em>) since they cover the very basic commands to work inside a bash shell.</p>
 <p>Please, note that I took into consideration only Ubuntu (18.04/20.04) as exam environment. Things can be different in CentOS.</p>
-<p align="center"><img src="https://images.youracclaim.com/images/1e6611ca-8afe-4ecc-ad4d-305fba52ee7e/1_LFCS-600x600.png" width="300" height="300"/></p>
+<p align="center"><img src="data:image/png;base64,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" width="300" height="300" /></p>
+
 
                     </main>
 
@@ -174,7 +194,7 @@
                         <!-- Mobile navigation buttons -->
 
                             <a rel="next prefetch" href="1-essential-commands/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
                         <div style="clear: both"></div>
@@ -185,12 +205,17 @@
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
                     <a rel="next prefetch" href="1-essential-commands/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -199,15 +224,16 @@
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
 
         <!-- Custom JS scripts -->
+
 
 
     </div>
